@@ -1,0 +1,6 @@
+.history/
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+account.json
+source-repos/terraform*
