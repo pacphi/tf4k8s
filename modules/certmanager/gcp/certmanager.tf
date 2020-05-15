@@ -15,19 +15,7 @@ data "template_file" "prereqs" {
   }
 }
 
-# resource "k14s_kapp" "prereqs" {
-#   app = "certmanager-prereqs"
-#   namespace = kubernetes_namespace.certmanager.metadata[0].name
-
-#   files = [
-#     "https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml"
-#   ]
-
-#   config_yaml = data.template_file.prereqs.rendered
-# }
-
 resource "helm_release" "certmanager" {
-  # depends_on = [k14s_kapp.prereqs]
 
   name       = "cert-manager"
   namespace  = kubernetes_namespace.certmanager.metadata[0].name
