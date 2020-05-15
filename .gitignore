@@ -6,3 +6,4 @@ terraform.log
 account.json
 source-repos/terraform*
 experiments/**/*.tf
+graph.svg
