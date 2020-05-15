@@ -2,6 +2,7 @@
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup
+terraform.log
 account.json
 source-repos/terraform*
 experiments/**/*.tf

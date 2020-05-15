@@ -29,8 +29,9 @@ fi
 
 gcloud config set project $PROJECT_NAME
 
-# Enable Compute, Container, and Container Registry APIs
+# Enable IAM, Compute, Container, and Container Registry APIs
 
+gcloud services enable iam.googleapis.com
 gcloud services enable compute.googleapis.com
 gcloud services enable container.googleapis.com
 gcloud services enable containerregistry.googleapis.com
@@ -58,6 +59,14 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
   --role='roles/container.admin'
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role='roles/container.clusterAdmin'
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role='roles/container.developer'
 
 # Create Service account JSON key file
 

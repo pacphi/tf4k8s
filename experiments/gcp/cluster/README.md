@@ -32,8 +32,14 @@ Edit `simple-cluster.tf` and amend the values for
 Create the cluster
 
 ```
+./create-cluster.sh <project-id>
+```
+> When you do not want to create a new project (or don't have permissions to create one to house the service account and cluster)
+
+```
 ./create-cluster.sh
 ```
+> When you want to create a new project to house the service account and cluster
 
 List available clusters
 
@@ -58,3 +64,9 @@ And if you want to tear everything down
 ```
 ./teardown.sh
 ```
+> When you don't want to delete the project (and subsequently delete all cloud objects within it)
+
+```
+./teardown.sh <project-id>
+```
+> Nuke the project and everything in it
