@@ -1,7 +1,7 @@
 locals {
   project = "<project-id>>"
-  credentials = file("../cluster/account.json")
-  kubeconfig_path = "<path-to-kubeconfig>>"
+  credentials = file("<path/to/account.json>")
+  kubeconfig_path = "<path/to/kubeconfig>>"
   kubeconfig = file("<path/to/kubeconfig>")
 }
 
