@@ -1,6 +1,6 @@
 # Terraform a Simple GKE Cluster
 
-Based on the following Terraform Registry module [hajowieland/k8s/google](https://registry.terraform.io/modules/hajowieland/k8s/google/1.1.1)
+Based on the following Terraform [example](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
 
 
 If the account you are using has the IAM role `roles/resourcemanager/projectCreator` role assigned or has the `resourcemanager.projects.create` permission, then execute
