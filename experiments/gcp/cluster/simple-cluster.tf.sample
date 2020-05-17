@@ -2,6 +2,7 @@ module "gke" {
   source  = "../../../modules/cluster/gke"
 
   gcp_project = "<project-id>"
+  gcp_service_account_credentials = "</path/to/service-account.json>"
   gcp_region = "<region>"
   gke_name = "tanzu-gke-lab"
   gke_pool_name = "tanzu-gke-lab-pool"

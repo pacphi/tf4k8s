@@ -7,12 +7,12 @@ set -e
 if [ -z "$1" ]; then
 
   RANDOM_ID=$RANDOM
-  PROJECT_NAME=terraform-k8s-$RANDOM_ID
+  PROJECT_NAME=terraform-gke-$RANDOM_ID
 
 # Create project
 
 gcloud projects create $PROJECT_NAME --name="Terraform Kubernetes GKE" \
-  --labels=type=k8s
+  --labels=type=gke
 
 ## List your projects
 
@@ -37,7 +37,6 @@ gcloud services enable container.googleapis.com
 gcloud services enable containerregistry.googleapis.com
 
 # Create Service Account for Terraform
-
 SERVICE_ACCOUNT_NAME=terraform
 PROJECT_ID=$(gcloud config get-value project)
 gcloud iam service-accounts create $SERVICE_ACCOUNT_NAME \
@@ -72,4 +71,6 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 
 gcloud iam service-accounts keys create \
   --iam-account "${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
-  account.json
+  /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json
+
+echo "Find your new service account credentials here [ /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json ]"

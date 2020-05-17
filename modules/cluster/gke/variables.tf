@@ -4,6 +4,11 @@ variable "random_cluster_suffix" {
   default     = ""
 }
 
+variable "gcp_service_account_credentials" {
+  description = "Path to service account credentials file in JSON format"
+  type        = string
+}
+
 variable "gcp_project" {
   description = "GCP Project ID"
   type        = string

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-terraform destroy -auto-approve
+SERVICE_ACCOUNT_NAME=terraform
 
 if [ -z "$1" ]; then
   SERVICE_ACCOUNT_NAME=terraform
@@ -28,7 +28,8 @@ if [ -z "$1" ]; then
 
   gcloud iam service-accounts delete "${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" --quiet
 else
+  PROJECT_ID="$1"
   gcloud projects delete "$PROJECT_ID"
 fi
 
-rm -f account.json
+rm -f /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json
