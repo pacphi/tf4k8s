@@ -19,7 +19,6 @@ Edit `certmanager.tf` and amend the values for
 * `dns_zone_name`
 * `gke_name`
 * `gcp_zone`
-* `credentials`
 * `kubeconfig_path`
 
 This script will perform a helm deploy of this [chart](https://hub.helm.sh/charts/jetstack/cert-manager).

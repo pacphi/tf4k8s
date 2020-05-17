@@ -6,7 +6,6 @@ locals {
   gke_name = "<gke-cluster-name>"
   gcp_zone = "<gcp-zone>"
   dns_zone_name = "<cloud-dns-zone>"
-  credentials = file("/path/to/file.json")
   kubeconfig_path = "/path/to/kubeconfig"
 }
 
@@ -18,12 +17,6 @@ module "certmanager" {
   environment_name = local.environment_name
   acme_email = local.acme_email
   dns_zone_name = local.dns_zone_name
-}
-
-provider "google" {
-  project = local.project
-  credentials = local.credentials
-  version = "~> 3.21.0"
 }
 
 provider "kubernetes" {
