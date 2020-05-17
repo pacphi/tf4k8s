@@ -1,14 +1,12 @@
 locals {
-  project = "<project-id>>"
-  credentials = file("<path/to/account.json>")
+  domain = "<domain>"
   kubeconfig_path = "<path/to/kubeconfig>>"
-  kubeconfig = file("<path/to/kubeconfig>")
 }
 
 module "harbor" {
   source = "../../../modules/harbor"
 
-  domain = "<domain-name>"
+  domain = local.domain
 }
 
 output "harbor_endpoint" {
@@ -26,12 +24,6 @@ output "harbor_admin_password" {
   value       = module.harbor.harbor_admin_password
 }
 
-provider "google" {
-  project = local.project
-  credentials = local.credentials
-  version = "~> 3.21.0"
-}
-
 provider "kubernetes" {
   config_path = local.kubeconfig_path
 }
@@ -45,6 +37,6 @@ provider "helm" {
 
 provider "k14s" {
   kapp {
-    kubeconfig_yaml = local.kubeconfig
+    kubeconfig_yaml = file(local.kubeconfig_path)
   }
 }
