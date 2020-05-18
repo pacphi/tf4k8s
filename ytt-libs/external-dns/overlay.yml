@@ -1,0 +1,55 @@
+#@ load("@ytt:overlay", "overlay")
+#@ load("@ytt:data", "data")
+
+#@ for/end kind in ["Deployment", "ServiceAccount"]:
+#@overlay/match by=overlay.subset({"kind": kind}),expects="1+"
+---
+metadata:
+  #@overlay/match missing_ok=True
+  namespace: #@ data.values.namespace
+
+#@overlay/match by=overlay.subset({"kind": "ClusterRoleBinding", "metadata":{"name":"external-dns-viewer"}})
+---
+subjects:
+  #@overlay/match by=overlay.index(0)
+  - namespace: #@ data.values.namespace
+
+#@overlay/match by=overlay.subset({"kind": "ClusterRole", "metadata":{"name":"external-dns"}})
+---
+rules:
+#@overlay/append
+- apiGroups: [ "networking.istio.io"]
+  resources: ["gateways"]
+  verbs: ["get", "watch", "list" ]
+
+#@overlay/match by=overlay.subset({"kind": "Deployment", "metadata":{"name":"external-dns"}})
+---
+spec:
+  template:
+    spec:
+      containers:
+        #@overlay/match by=overlay.subset({"name":"external-dns"})
+        #@overlay/match-child-defaults missing_ok=True
+        - args:
+          #@overlay/remove
+          #@overlay/match by=overlay.index(5)
+          -
+          #@overlay/remove
+          #@overlay/match by=overlay.index(2)
+          -
+          #@overlay/match by=overlay.index(2)
+          - #@ "--provider="+data.values.provider
+          #@overlay/match by=overlay.index(3)
+          - --policy=sync
+          #@ if data.values.zoneIdFilter != "":
+          #@overlay/append
+          - #@ "--zone-id-filter="+data.values.zoneIdFilter
+          #@ end
+          #@ if data.values.domainFilter != "":
+          #@overlay/append
+          - #@ "--domain-filter="+data.values.domainFilter
+          #@ end
+          #@ if data.values.enableIstio and data.values.enableIstio != "false":
+          #@overlay/append
+          - --source=istio-gateway
+          #@ end

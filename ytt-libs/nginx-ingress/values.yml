@@ -1,0 +1,4 @@
+#@data/values
+---
+nginx:
+  namespace: default

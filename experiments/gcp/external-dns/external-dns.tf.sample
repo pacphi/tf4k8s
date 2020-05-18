@@ -1,0 +1,20 @@
+locals {
+  kubeconfig_path = "</path/to/kubeconfig>"
+  ytt_lib_dir = "${path.module}/../../../ytt-libs"
+}
+
+module "external_dns" {
+  source = "../../../modules/external-dns/gcp"
+  ytt_lib_dir      = local.ytt_lib_dir
+
+  environment_name = "<environment-name>"
+  domain_filter    = "<domain-filter>"
+  zone_id_filter   = "<cloud-dns-zone>"
+  enable_istio     = false
+}
+
+provider "k14s" {
+  kapp {
+    kubeconfig_yaml = file(local.kubeconfig_path)
+  }
+}
