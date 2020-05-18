@@ -4,8 +4,8 @@ resource "kubernetes_namespace" "certmanager" {
   }
 }
 
-data "template_file" "prereqs" {
-  template = file("${path.module}/templates/prereqs.yml")
+data "template_file" "issuer_config" {
+  template = file("${path.module}/templates/cluster-issuer.yml")
 
   vars = {
     project      = var.project
@@ -15,9 +15,23 @@ data "template_file" "prereqs" {
   }
 }
 
+resource "k14s_kapp" "clusterissuer" {
+  app = "certmanager-cluster-issuer"
+
+  namespace = "default"
+
+  config_yaml = data.template_file.issuer_config.rendered
+
+  deploy {
+    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
+  }
+
+  depends_on = [helm_release.certmanager]
+}
+
 resource "helm_release" "certmanager" {
 
-  name       = "cert-manager"
+  name       = "certifier"
   namespace  = kubernetes_namespace.certmanager.metadata[0].name
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"

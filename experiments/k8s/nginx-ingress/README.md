@@ -1,6 +1,6 @@
 # Terraform for configuring NGINX Ingress integrated with External DNS
 
-Uses [k14s](https://github.com/k14s/terraform-provider-k14s) Terraform provider to configure [nginx ingress](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/nginx-ingress.md#deploy-the-nginx-ingress-controller).
+Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to configure [nginx ingress](https://kubernetes.github.io/ingress-nginx/).
 
 Starts with the assumption that you have already provisioned a cluster.
 
