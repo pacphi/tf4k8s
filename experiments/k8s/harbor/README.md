@@ -17,6 +17,8 @@ Edit `harbor.tf` and amend the values for
 * `domain`
 * `kubeconfig_path`
 
+Install harbor 
+
 ```
 ./create-harbor.sh
 ```
