@@ -1,0 +1,154 @@
+#@data/values
+---
+#! Used by any component that has an external interface. It is used for traffic to system components of CF.
+#! - usually you'll want to configure a DNS entry for *.<system_domain> to point to the cluster's external load balancer
+system_domain: ${system_domain}
+
+#! The root domains used for apps that are pushed to CF.
+#! - you can use the same domain for system and apps if desired
+app_domains:
+#@overlay/append
+- ${app_domain}
+
+#! The password for the CF "admin" user.
+#! - operators can use the admin user to test `cf push`
+cf_admin_password: ${cf_admin_password}
+
+#! The blobstore secret key shared between CAPI and the blobstore.
+cf_blobstore:
+  secret_key: ${cf_blobstore_secret_key}
+
+#! The admin password for operators to access the database.
+cf_db:
+  admin_password: ${cf_db_admin_password}
+
+#! The db password shared between CAPI and the database.
+capi:
+  database:
+    password: ${ccdb_password}
+
+#! Notes about X.509 certificates:
+#! - the certificates and keys are base64 encoded
+#! - all of the certs should have KeyUsage that includes server and client authentication
+
+#! certificate, private key, and certificate authority used to identify the CF installation (i.e. the ingress gateway).
+#! - should be valid for *.system.cf.example.com, and *.cf-system.svc.cluster.local
+system_certificate:
+  crt: &crt ${internal_tls_cert}
+  key: &key ${internal_tls_key}
+  ca: &ca ${internal_tls_ca_cert}
+
+#! certificate, private key, and certificate authority used to identify the CF installation (i.e. the ingress gateway).
+#! - should be valid for *.apps.cf.example.com
+#! - may be the system cert, as long as the system cert is valid for the apps domain as well
+workloads_certificate:
+  crt: *crt
+  key: *key
+  ca: *ca
+
+#! Log Cache CA certificate and private key
+#! - the common name needs to be log-cache-ca
+log_cache_ca:
+  crt: *crt
+  key: *key
+
+#! Certificate and private key for the Log Cache server
+#! - these are used for both server and client mTLS interactions within Log Cache
+#! - the common name needs to be log-cache
+log_cache:
+  crt: *crt
+  key: *key
+
+#! Certificate and private key for the metrics component of Log Cache
+#! - these are used for both server and client mTLS interactions within Log Cache
+#! - the common name needs to be log-cache-metrics
+log_cache_metrics:
+  crt: *crt
+  key: *key
+
+#! Certificate and private key for the gateway component of Log Cache
+#! - these are used for both server and client mTLS interactions within Log Cache
+#! - the common name needs to be log-cache-gateway
+#! - the alternative_names list should include localhost
+log_cache_gateway:
+  crt: *crt
+  key: *key
+
+#! Certificate and private key for the syslog component of Log Cache
+#! - these are used for both server and client mTLS interactions within Log Cache
+#! - the common name needs to be log-cache-syslog
+log_cache_syslog:
+  crt: *crt
+  key: *key
+
+metric_proxy:
+  ca:
+    crt: *crt
+    key: *key
+  cert:
+    #! This certificate should be valid for metric-proxy.cf-system.svc.cluster.local
+    crt: *crt
+    key: *key
+
+uaa:
+  database:
+    #! The db password shared between UAA and the database.
+    password: ${uaa_db_password}
+  #! The secret used for the UAA admin client.
+  admin_client_secret: ${uaa_admin_client_secret}
+  certificate:
+    #! This certificate should be valid for uaa.cf-system.svc.cluster.local
+    crt: *crt
+    key: *key
+  #! JWT policy configuration
+  jwt_policy:
+    #! This private key should NOT be base64 encoded
+    signing_key: ${internal_tls_key_unencoded}
+  #! Encyption key for encrypting data stored in the database
+  encryption_key:
+    passphrase: ${encryption_key_passphrase}
+  #! Configuration for UAA's SAML provider
+  login:
+    service_provider:
+      #! This certificate/key should NOT be base64 encoded
+      key: ${internal_tls_key_unencoded}
+      certificate: ${internal_tls_cert_unencoded}
+
+doppler:
+  tls:
+    #! Certificate and private key for doppler to support TLS communication
+    #! - this certificate should be valid for doppler.cf-system.svc.cluster.local
+    crt: *crt
+    key: *key
+
+eirini:
+  tls:
+    #! Certificate and private key for eirini to support TLS communication
+    #! - this certificate should be valid for eirini.cf-system.svc.cluster.local
+    crt: *crt
+    key: *key
+
+#! To push apps from source code, you need to configure the `app_registry` block
+#! Example below is for docker hub. For other registry examples, see below. 
+
+app_registry:
+   hostname: ${registry_domain}
+   #! often times this is just your `docker_user`
+   repository: ${registry_repository}
+   username: ${registry_username}
+   password: ${registry_password}
+
+#! example below is for a Google container registry. Make sure to remove other registry blocks if you intend to use GCR
+#! app_registry:
+#!  hostname: gcr.io
+#!  repository: <gcr.io/gcp_project_id/cf-workloads>
+#!  username: _json_key
+#!  password: |
+#!    contents_of_service_account_json
+
+#! example below is for a Azure container registry. Make sure to remove other registry blocks if you intend to use ACR
+#! app_registry:
+#!  hostname: <registry-name>.azurecr.io
+#!  repository: <registry-name>.azurecr.io
+#!  username: <username>
+#!  password: <password>

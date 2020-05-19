@@ -1,0 +1,12 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+- path: vendor
+  contents:
+  - path: github.com/cloudfoundry/cf-for-k8s
+    git:
+      url: https://github.com/cloudfoundry/cf-for-k8s
+      ref: 5eae6ad1dd60b2c8a81ae6c70e620f039de6c228
+    includePaths:
+    - config/**/*
+    - config-optional/use-external-dns-for-wildcard.yml

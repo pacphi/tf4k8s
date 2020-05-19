@@ -4,15 +4,16 @@ Here we'll use [gcloud](https://cloud.google.com/sdk/gcloud) and a minimal compl
 
 * Create a service account with appropriate role and permissions
 * Provision cloud resources (like DNS)
-* Create a simple GKE cluster 
+* Create a simple GKE cluster
 * Install additional Kubernetes infrastructure modules (like cert-manager, nginx-ingress, external-dns)
 * Install Harbor
+* Install [cf-for-k8s](https://github.com/cloudfoundry/cf-for-k8s)
 
 and much more.
 
 It makes sense to follow a path
 
-* Install [prerequisite software](https://github.com/pacphi/tf4k8s/tree/master/bom)
+* Install [prerequisite software](../../bom)
 * [Setup a service account](iam)
 * [Setup DNS](dns)
 * [Provision cluster](cluster)
@@ -20,5 +21,6 @@ It makes sense to follow a path
 * [Install nginx-ingress](../k8s/nginx-ingress)
 * [Install external-dns](external-dns)
 * [Install Harbor](../k8s/harbor)
+* [Install cf-for-k8s](../k8s/cf4k8s)
 
 Afterwards, you can choose your own adventure.
