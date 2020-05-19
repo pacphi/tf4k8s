@@ -1,5 +1,5 @@
 output "sys_domain" {
-  value = local.sys_domain
+  value = local.system_domain
 }
 
 output "app_domain" {
@@ -7,7 +7,7 @@ output "app_domain" {
 }
 
 output "cf_api_endpoint" {
-  value = "api.${local.sys_domain}"
+  value = "api.${local.system_domain}"
 }
 
 output "cf_admin_username" {

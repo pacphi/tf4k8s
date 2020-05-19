@@ -1,7 +1,6 @@
-locals{
+locals {
   project = "<project-id>"
   acme_email = "<valid-email-address>"
-  iaas = "<cloud-provider>" # e.g., aws, azure, or gcp
   registry_domain       = "<domain>" # e.g., harbor.lab.jilted.io
   registry_repository   = "<domain>/library"
   registry_username     = "admin"
@@ -44,7 +43,7 @@ module "cf-for-k8s" {
 }
 
 module "acme" {
-  source = "../../modules/acme/${local.iaas}"
+  source = "../../modules/acme/<iaas>" # where <iaas> is one of [ aws, azure, gcp ]
 
   project = local.project
   common_name = "*.${module.cf-for-k8s.sys_domain}"

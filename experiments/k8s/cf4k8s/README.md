@@ -13,14 +13,15 @@ cp cf4k8s.tf.sample cf4k8s.tf
 Edit `cf4k8s.tf` and amend the values for
 
 * `project`
-* `acme_email` = "<valid-email-address>"`
+* `base_domain`
+* `acme_email`
 * `iaas`
 * `registry_domain`
 * `registry_repository`
 * `registry_password`
 * `kubeconfig_path`
 
-Install cf-for-k8s 
+Install cf-for-k8s
 
 ```
 ./create-cf4k8s.sh

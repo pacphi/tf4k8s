@@ -2,8 +2,6 @@ variable "domain" {}
 
 variable "ytt_lib_dir" {}
 
-variable "blocker" {}
-
 variable "tls_cert" {}
 
 variable "tls_key" {}

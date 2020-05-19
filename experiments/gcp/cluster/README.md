@@ -1,6 +1,6 @@
 # Terraform a Simple GKE Cluster
 
-Based on the following Terraform [example](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
+Based on the following Terraform [example](https://www.terraform.io/docs/providers/google/r/container_cluster.html).
 
 Assumes a service account has been created with appropriate role and permissions to create a GKE cluster.
 

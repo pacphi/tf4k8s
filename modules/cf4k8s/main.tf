@@ -47,7 +47,11 @@ data "k14s_ytt" "cf4k8s" {
     "${var.ytt_lib_dir}/cf-for-k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config-optional",
   ]
 
-  config_yaml = [data.template_file.values.rendered]
+  config_yaml = data.template_file.values.rendered
+
+  deploy {
+    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
+  }
 }
 
 resource "k14s_kapp" "cf4k8s" {
