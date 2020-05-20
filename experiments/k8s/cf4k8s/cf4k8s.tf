@@ -24,7 +24,7 @@ variable "registry_repository" {
 
 variable "registry_username" {
   description = "Container image/artifact registry/repository username"
-  default "admin"
+  default = "admin"
 }
 
 variable "registry_password" {
