@@ -6,9 +6,10 @@ module "external_dns" {
   zone_id_filter   = var.zone_id_filter
   enable_istio     = var.enable_istio
   kubeconfig_path  = var.kubeconfig_path
+  ytt_lib_dir      = var.ytt_lib_dir
 }
 
-variable "environemnt_variable" {
+variable "environment_name" {
   description = "An environment name"
 }
 
@@ -28,4 +29,9 @@ variable "enable_istio" {
 variable "kubeconfig_path" {
   description = "The path to your .kubeconfig"
   default = "~/.kubeconfig"
+}
+
+variable "ytt_lib_dir" {
+  description = "Path to directory where YAML template files will be operated upon by ytt k14s Teraform provider; @see https://github.com/k14s/terraform-provider-k14s/blob/master/docs/k14s_ytt.md"
+  default = "../../../ytt-libs"
 }

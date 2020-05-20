@@ -1,6 +1,6 @@
 data "k14s_ytt" "externaldns" {
   files = [
-    "${local.ytt_lib_dir}/external-dns"
+    "${var.ytt_lib_dir}/external-dns"
   ]
 
   values = merge({

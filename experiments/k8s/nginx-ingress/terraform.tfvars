@@ -1,1 +1,1 @@
-kubeconfig_path = "/tmp/tanzu-gke-lab-fb334b65717f-kubeconfig"
+kubeconfig_path = "/tmp/tanzu-gke-lab-f6f5931898c3-kubeconfig"

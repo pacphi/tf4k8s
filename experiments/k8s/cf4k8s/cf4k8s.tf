@@ -7,6 +7,7 @@ module "cf4k8s" {
   registry_username     = var.registry_username
   registry_password     = var.registry_password
   kubeconfig_path  = var.kubeconfig_path
+  ytt_lib_dir      = var.ytt_lib_dir
 }
 
 variable "base_domain" {
@@ -33,6 +34,11 @@ variable "registry_password" {
 variable "kubeconfig_path" {
   description = "The path to your .kubeconfig"
   default = "~/.kubeconfig"
+}
+
+variable "ytt_lib_dir" {
+  description = "Path to directory where YAML template files will be operated upon by ytt k14s Teraform provider; @see https://github.com/k14s/terraform-provider-k14s/blob/master/docs/k14s_ytt.md"
+  default = "../../../ytt-libs"
 }
 
 output "cf_api_endpoint" {

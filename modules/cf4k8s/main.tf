@@ -62,8 +62,8 @@ resource "k14s_kapp" "cf4k8s_cert" {
 
 data "k14s_ytt" "cf4k8s" {
   files = [
-    "${local.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config",
-    "${local.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config-optional",
+    "${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config",
+    "${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config-optional",
   ]
 
   config_yaml = data.template_file.values.rendered
