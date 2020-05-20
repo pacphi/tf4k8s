@@ -9,7 +9,6 @@ Edit `terraform.tfvars` and amend the values for
 * `project`
 * `base_domain`
 * `acme_email`
-* `iaas`
 * `registry_domain`
 * `registry_repository`
 * `registry_password`
