@@ -15,5 +15,4 @@ resource "google_dns_record_set" "ns_record" {
 
   ttl = 30
   type = "NS"
-
 }

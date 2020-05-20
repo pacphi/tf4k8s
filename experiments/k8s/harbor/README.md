@@ -6,16 +6,12 @@ Harbor is an open source container image registry that secures images with role-
 
 Starts with the assumption that you have already provisioned a cluster.
 
-Make a copy of `harbor.tf.sample` and rename it
-
-```
-cp harbor.tf.sample harbor.tf
-```
-
-Edit `harbor.tf` and amend the values for
+Edit `terraform.tfvars` and amend the values for
 
 * `domain`
 * `kubeconfig_path`
+
+Install harbor 
 
 ```
 ./create-harbor.sh

@@ -4,13 +4,7 @@ Uses [k14s](https://github.com/k14s/terraform-provider-k14s) Terraform provider 
 
 Starts with the assumption that you have already provisioned a cluster.
 
-Make a copy of `external-dns.tf.sample` and rename it
-
-```
-cp external-dns.tf.sample external-dns.tf
-```
-
-Edit `external-dns.tf` and amend the values for
+Edit `terraform.tfvars` and amend the values for
 
 * `environment_name`
 * `domain_filter`

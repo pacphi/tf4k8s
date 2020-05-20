@@ -16,4 +16,7 @@ variable "enable_istio" {
   default = false
 }
 
+variable "kubeconfig_path" {}
+
 variable "ytt_lib_dir" {}
+

@@ -1,12 +1,17 @@
-locals {
-  domain = "<domain>"
-  kubeconfig_path = "<path/to/kubeconfig>>"
-}
-
 module "harbor" {
   source = "../../../modules/harbor"
 
-  domain = local.domain
+  domain = var.domain
+  kubeconfig_path = var.kubeconfig_path
+}
+
+variable "domain" {
+  description = "The base domain wherein harbor.<domain> will be deployed"
+}
+
+variable "kubeconfig_path" {
+  description = "The path to your .kubeconfig"
+  default = "~/.kubeconfig"
 }
 
 output "harbor_endpoint" {
@@ -24,19 +29,3 @@ output "harbor_admin_password" {
   value       = module.harbor.harbor_admin_password
 }
 
-provider "kubernetes" {
-  config_path = local.kubeconfig_path
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = local.kubeconfig_path
-  }
-  version = "~> 1.2.0"
-}
-
-provider "k14s" {
-  kapp {
-    kubeconfig_yaml = file(local.kubeconfig_path)
-  }
-}

@@ -1,0 +1,8 @@
+project = "fe-cphillipson"
+domain = "lab.ironleg.me"
+environment_name = "lab"
+acme_email = "cphillipson@vmware.com"
+gke_name = "tanzu-gke-lab-fb334b65717f"
+gcp_zone = "us-west1-a"
+dns_zone_name = "lab-zone"
+kubeconfig_path = "/tmp/tanzu-gke-lab-f6f5931898c3-kubeconfig"
