@@ -1,6 +1,6 @@
 data "k14s_ytt" "externaldns" {
   files = [
-    "${var.ytt_lib_dir}/external-dns"
+    "${local.ytt_lib_dir}/external-dns"
   ]
 
   values = merge({
@@ -27,3 +27,4 @@ resource "k14s_kapp" "externaldns" {
     command = "sleep 90"
   }
 }
+

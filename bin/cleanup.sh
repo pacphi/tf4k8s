@@ -6,18 +6,18 @@ cd ..
 cd experiments
 cd gcp
 cd certmanager
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../cluster
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../dns
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../external-dns
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../..
 cd k8s
 cd cf4k8s
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../harbor
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg
 cd ../nginx-ingress
-rm -Rf .terraform terr* graph.svg
+rm -Rf .terraform terraform.tfstate* graph.svg

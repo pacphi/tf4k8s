@@ -6,13 +6,8 @@ This sample assumes your authoritative names servers and DNS record information 
 
 > You'll want to make sure you've set an environment variable that the [Terraform Google Provider](https://www.terraform.io/docs/providers/google/index.html) [credentials](https://www.terraform.io/docs/providers/google/guides/provider_reference.html#credentials-1) configuration attribute will use and that the account has appropriate role assigned with permissions to successfully execute creation of a managed zone and record set.
 
-Make a copy of `managed-zone.tf.sample` and rename it
 
-```
-cp managed-zone.tf.sample managed-zone.tf
-```
-
-Edit `managed-zone.tf` and amend the values for
+Edit `terraform.tfvars` and amend the values for
 
 * `project`
 * `root_zone_name`

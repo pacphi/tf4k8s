@@ -4,13 +4,7 @@ This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) t
 
 Starts with the assumption that you have already provisioned a GKE cluster.
 
-Make a copy of `certmanager.tf.sample` and rename it
-
-```
-cp certmanager.tf.sample certmanager.tf
-```
-
-Edit `certmanager.tf` and amend the values for
+Edit `terraform.tfvars` and amend the values for
 
 * `project`
 * `domain`

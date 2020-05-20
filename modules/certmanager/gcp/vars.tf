@@ -8,3 +8,4 @@ variable "domain" {}
 
 variable "project" {}
 
+variable "kubeconfig_path" {}

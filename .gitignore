@@ -8,3 +8,4 @@ source-repos/terraform*
 experiments/**/*.tf
 graph.svg
 ytt-libs/cf4k8s/vendor/
+vendir.lock.yml

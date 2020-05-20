@@ -4,13 +4,7 @@
 
 Starts with the assumption that you have already provisioned a cluster.
 
-Make a copy of `cf4k8s.tf.sample` and rename it
-
-```
-cp cf4k8s.tf.sample cf4k8s.tf
-```
-
-Edit `cf4k8s.tf` and amend the values for
+Edit `terraform.tfvars` and amend the values for
 
 * `project`
 * `base_domain`
