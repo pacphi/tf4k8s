@@ -38,7 +38,7 @@ variable "kubeconfig_path" {
 
 variable "ytt_lib_dir" {
   description = "Path to directory where YAML template files will be operated upon by ytt k14s Teraform provider; @see https://github.com/k14s/terraform-provider-k14s/blob/master/docs/k14s_ytt.md"
-  default = "../../../ytt-libs"
+  default = "../../ytt-libs"
 }
 
 output "cf_api_endpoint" {
