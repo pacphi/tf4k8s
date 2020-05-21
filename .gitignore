@@ -5,6 +5,7 @@ terraform.tfstate.backup
 terraform.log
 source-repos/terraform*
 graph.svg
-ytt-libs/cf4k8s/vendor/
+ytt-libs/**/vendor/
 vendir.lock.yml
-modules/cf4k8s/templates/config.yml
+modules/**/templates/config.yml
+modules/**/templates/kpack-webhook.yml
