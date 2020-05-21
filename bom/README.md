@@ -10,9 +10,13 @@ You'll need a minimal complement of software to provision IaaS and build, run, a
 
 ## Linux
 
-Coming soon
+```
+./setup-linux.sh
+```
 
 
 ## Windows
 
-Coming soon
+```
+.\windows.ps1
+```
