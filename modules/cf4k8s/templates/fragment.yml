@@ -1,0 +1,32 @@
+#@data/values
+---
+#! The password for the CF "admin" user.
+#! - operators can use the admin user to test `cf push`
+cf_admin_password: ${cf_admin_password}
+
+#! To push apps from source code, you need to configure the `app_registry` block
+#! Example below is for docker hub. For other registry examples, see below.
+
+app_registry:
+   hostname: ${registry_domain}
+   #! often times this is just your `docker_user`
+   repository: ${registry_repository}
+   username: ${registry_username}
+   password: ${registry_password}
+
+#! example below is for a Google container registry. Make sure to remove other registry blocks if you intend to use GCR
+#! app_registry:
+#!  hostname: gcr.io
+#!  repository: <gcr.io/gcp_project_id/cf-workloads>
+#!  username: _json_key
+#!  password: |
+#!    contents_of_service_account_json
+
+#! example below is for a Azure container registry. Make sure to remove other registry blocks if you intend to use ACR
+#! app_registry:
+#!  hostname: <registry-name>.azurecr.io
+#!  repository: <registry-name>.azurecr.io
+#!  username: <username>
+#!  password: <password>
+
+

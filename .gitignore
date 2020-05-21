@@ -7,3 +7,4 @@ source-repos/terraform*
 graph.svg
 ytt-libs/cf4k8s/vendor/
 vendir.lock.yml
+modules/cf4k8s/templates/config.yml

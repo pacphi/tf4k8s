@@ -17,8 +17,9 @@ Edit `terraform.tfvars` and amend the values for
 Install cf-for-k8s
 
 ```
-./create-cf4k8s.sh
+./create-cf4k8s.sh <base_domain>
 ```
+> Set `base_domain` to be the same value as defined in `terraform.tfvars`
 
 To tear it down
 

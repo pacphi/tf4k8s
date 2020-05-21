@@ -17,20 +17,6 @@ data "template_file" "cf4k8s_config" {
     app_domain = local.app_domain
 
     cf_admin_password = random_password.gen.result
-    cf_blobstore_secret_key = random_password.gen.result
-    cf_db_admin_password = random_password.gen.result
-    ccdb_password = random_password.gen.result
-    uaa_db_password = random_password.gen.result
-    uaa_admin_client_secret = random_password.gen.result
-    encryption_key_passphrase = random_password.gen.result
-
-    # @see https://github.com/hashicorp/terraform/issues/16775#issuecomment-349170517
-    internal_tls_cert_unencoded        = "${jsonencode(tls_locally_signed_cert.cf.cert_pem)}"
-    internal_tls_key_unencoded         = "${jsonencode(tls_private_key.cf.private_key_pem)}"
-
-    internal_tls_cert        = base64encode(tls_locally_signed_cert.cf.cert_pem)
-    internal_tls_key         = base64encode(tls_private_key.cf.private_key_pem)
-    internal_tls_ca_cert     = base64encode(tls_self_signed_cert.acme_ca.cert_pem)
 
     registry_domain     = var.registry_domain
     registry_repository = var.registry_repository
@@ -64,6 +50,16 @@ resource "k14s_kapp" "cf4k8s_cert" {
   namespace = "default"
 
   config_yaml = data.template_file.cf4k8s_cert.rendered
+
+  debug_logs = true
+
+  deploy {
+    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
+  }
+
+  depends_on = [
+    local_file.cf4k8s_cert_rendered
+  ]
 }
 
 data "k14s_ytt" "cf4k8s_ytt" {

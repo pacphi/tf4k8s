@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
 sudo apt-get install -y snapd unzip graphviz wget
 
 sudo snap install snap-store
@@ -35,5 +36,10 @@ rm -Rf terraform-provider-k14s-binaries.tgz
 
 ALIYUN_VERSION=3.0.44 && \
 curl -LO "https://github.com/aliyun/aliyun-cli/releases/download/v${ALIYUN_VERSION}/aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz" && \
-tar xzvf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz -C /usr/local/bin && \
+sudo tar xzvf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz -C /usr/local/bin && \
 rm -Rf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz
+
+BOSH_VERSION=6.2.1
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
+chmod +x bosh && \
+sudo mv bosh /usr/local/bin

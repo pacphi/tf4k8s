@@ -11,6 +11,7 @@ scoop bucket add extras
 scoop install 7zip
 
 # Dev Tools
+choco install bosh-cli
 scoop install curl
 scoop install git
 scoop install vscode

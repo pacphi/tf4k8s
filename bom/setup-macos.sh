@@ -12,6 +12,8 @@ brew install ytt kbld kapp imgpkg kwt vendir
 
 brew install jpoon/homebrew-oci-cli/oci-cli
 
+brew install cloudfoundry/tap/bosh-cli
+
 # Install Terraform k14s provider; @see https://github.com/k14s/terraform-provider-k14s
 TF_K14S_PLUGIN_VERSION=0.4.0 && \
 mkdir -p ~/.terraform.d/plugins && \
