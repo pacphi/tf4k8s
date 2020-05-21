@@ -43,3 +43,8 @@ BOSH_VERSION=6.2.1
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
 chmod +x bosh && \
 sudo mv bosh /usr/local/bin
+
+PIVNET_VERSION=1.0.3
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
+chmod +x pivnet && \
+sudo mv pivnet /usr/local/bin
