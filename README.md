@@ -39,7 +39,7 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 ### CI/CD
 
 - [ ] Gitlab
-- [ ] VMWare Tanzu Build Service
+- [x] VMWare Tanzu Build Service
 - [ ] Concourse
 - [ ] Spinnaker
 
