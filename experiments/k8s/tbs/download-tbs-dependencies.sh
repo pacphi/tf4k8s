@@ -8,15 +8,15 @@ if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ]; then
 fi
 
 PIVNET_API_TOKEN="$1"
-DOCKER_REGISTRY_USERNAME="$2"
-DOCKER_REGISTRY_PASSWORD="$3"
+IMAGE_REGISTRY_USERNAME="$2"
+IMAGE_REGISTRY_PASSWORD="$3"
 
 pivnet login --api-token=$PIVNET_API_TOKEN
 
 VERSION="2"
 pivnet accept-eula --product-slug='tbs-dependencies' --release-version="${VERSION}"
 
-docker login registry.pivotal.io -u "${DOCKER_REGISTRY_USERNAME}" -p "${DOCKER_REGISTRY_PASSWORD}"
+docker login registry.pivotal.io -u "${IMAGE_REGISTRY_USERNAME}" -p "${IMAGE_REGISTRY_PASSWORD}"
 docker pull registry.pivotal.io/tbs-dependencies/orgcloudfoundrydotnet-core:v0.0.6
 docker pull registry.pivotal.io/tbs-dependencies/orgcloudfoundrynginx:0.0.25
 docker pull registry.pivotal.io/tbs-dependencies/orgcloudfoundryhttpd:0.0.21
