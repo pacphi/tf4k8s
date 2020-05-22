@@ -20,9 +20,9 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 ## Basics
 
 - [x] Create an IAM service account
-- [x] DNS Zone management
-- [x] Certificate management
-- [x] Ingress and External DNS
+- [x] Add DNS Zone management
+- [x] Add Certificate management
+- [x] Add Ingress and External DNS
 
 ## Installable modules
 
@@ -47,6 +47,7 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 
 - [ ] Elasticsearch, Logstash, Kibana
 - [ ] Grafana
+- [ ] Tanzu Observability
 
 ### Stream Processing
 
@@ -62,9 +63,8 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
 
 
-## Integrations
+### Policy Management
 
-- [ ] Tanzu Observability
 - [ ] Tanzu Mission Control
 
 
