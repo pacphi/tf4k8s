@@ -9,3 +9,5 @@ ytt-libs/**/vendor/
 vendir.lock.yml
 modules/**/templates/config.yml
 modules/**/templates/kpack-webhook.yml
+*.tgz
+*.tar
