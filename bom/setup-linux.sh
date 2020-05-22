@@ -39,12 +39,17 @@ curl -LO "https://github.com/aliyun/aliyun-cli/releases/download/v${ALIYUN_VERSI
 sudo tar xzvf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz -C /usr/local/bin && \
 rm -Rf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz
 
-BOSH_VERSION=6.2.1
+BOSH_VERSION=6.2.1 && \
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
 chmod +x bosh && \
 sudo mv bosh /usr/local/bin
 
-PIVNET_VERSION=1.0.3
+PIVNET_VERSION=1.0.3 && \
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
+
+K9S_VERSION=0.19.6
+curl -LO "https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz"
+sudo tar xzvf k9s_Linux_x86_64.tar.gz -C /usr/local/bin && \
+rm -Rf k9s_Linux_x86_64.tar.gz

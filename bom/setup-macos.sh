@@ -9,6 +9,7 @@ brew install awscli aliyun-cli azure-cli doctl git graphviz terraform tflint htt
 brew cask install google-cloud-sdk
 brew tap k14s/tap
 brew install ytt kbld kapp imgpkg kwt vendir
+brew install derailed/k9s/k9s
 
 brew install jpoon/homebrew-oci-cli/oci-cli
 

@@ -25,6 +25,7 @@ scoop install terraform
 scoop install tflint
 scoop install httpie -source python
 scoop install kubectl
+scoop install k9s
 scoop install helm
 scoop install helmfile
 scoop install octant
