@@ -1,6 +1,8 @@
 # Bill of Materials
 
-You'll need a minimal complement of software to provision IaaS and build, run, and work with Kubernetes clusters. Let's make this easy to get started.
+You'll need a minimal complement of software to provision IaaS and build, run, and work with Kubernetes clusters.
+
+Let's make this easy to get started.
 
 ## MacOS
 
@@ -13,6 +15,7 @@ You'll need a minimal complement of software to provision IaaS and build, run, a
 ```
 ./setup-linux.sh
 ```
+> Ubuntu distros only
 
 
 ## Windows
