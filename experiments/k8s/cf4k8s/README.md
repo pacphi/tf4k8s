@@ -6,7 +6,6 @@ Starts with the assumption that you have already provisioned a cluster.
 
 Edit `terraform.tfvars` and amend the values for
 
-* `project`
 * `base_domain`
 * `acme_email`
 * `registry_domain`

@@ -1,4 +1,3 @@
-project = "fe-cphillipson"
 base_domain = "lab.ironleg.me"
 acme_email = "cphillipson@vmware.com"
 registry_domain = "harbor.lab.ironleg.me"
