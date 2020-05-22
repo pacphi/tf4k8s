@@ -17,6 +17,7 @@ sudo snap install kubectl --classic
 sudo snap install helm --classic
 sudo snap install helmfile-snap
 sudo snap install http
+sudo snap install k9s
 
 curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
 
@@ -48,8 +49,3 @@ PIVNET_VERSION=1.0.3 && \
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
-
-K9S_VERSION=0.19.6
-curl -LO "https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz"
-sudo tar xzvf k9s_Linux_x86_64.tar.gz -C /usr/local/bin && \
-rm -Rf k9s_Linux_x86_64.tar.gz
