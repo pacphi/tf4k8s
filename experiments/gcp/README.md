@@ -11,7 +11,7 @@ Here we'll use [gcloud](https://cloud.google.com/sdk/gcloud) and a minimal compl
 
 and much more.
 
-It makes sense to follow a path
+## The basics
 
 * Install [prerequisite software](../../bom)
 * [Setup a service account](iam)
@@ -23,4 +23,6 @@ It makes sense to follow a path
 * [Install Harbor](../k8s/harbor)
 * [Install cf-for-k8s](../k8s/cf4k8s)
 
-Afterwards, you can choose your own adventure.
+## For additional exploration
+
+* [Install VMWare Tanzu Application Service for Kubernetes](../k8s/tas4k8s)
