@@ -6,10 +6,12 @@ This sample assumes your authoritative names servers and DNS record information 
 
 Edit `terraform.tfvars` and amend the values for
 
-* `project`
-* `root_zone_name`
-* `environment_name`
-* `dns_prefix`
+* `base_domain`
+* `domain_prefix`
+* `resource_group_name`
+* `az_subscription_id`
+* `az_client_id`
+* `az_tenant_id`
 
 All we're doing here is creating a new managed zone and adding an NS record to the "root zone".
 
