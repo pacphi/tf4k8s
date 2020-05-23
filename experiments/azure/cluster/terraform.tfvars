@@ -1,0 +1,13 @@
+aks_resource_group = "aks-lab"
+enable_logs = false
+ssh_public_key = "/tmp/az_rsa.pub"
+az_subscription_id = "d67c4971-e658-4g9e-ab4c-d2acbcb65474"
+az_client_id = "a7859f75-dfc3-474f-b094-0abd4egb9d5e"
+az_client_secret = "why-would-i-share-this"
+az_tenant_id = "19247f74-261g-4db2-6a50-c65a6377b0d2"
+aks_region = "West US 2"
+aks_name = "aks-lab"
+aks_nodes = 5
+aks_node_type = "Standard_D2_v3"
+aks_pool_name = "akslabpool" # must start with a lowercase letter, have max length of 12, and only have characters a-z0-9
+aks_node_disk_size = 30

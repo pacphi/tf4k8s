@@ -1,5 +1,11 @@
 # Create a new service account on Google Cloud Platform
 
+Authenticate
+
+```
+gcloud auth login
+```
+
 To create a new project, service account and credentials file
 
 ```
