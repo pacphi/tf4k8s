@@ -3,7 +3,6 @@ module "certmanager" {
 
   project = var.project
   domain = var.domain
-  environment_name = var.environment_name
   acme_email = var.acme_email
   dns_zone_name = var.dns_zone_name
   kubeconfig_path = var.kubeconfig_path
@@ -15,10 +14,6 @@ variable "project" {
 
 variable "domain" {
   description = "A publicly addressable Internet domain"
-}
-
-variable "environment_name" {
-  description = "An environment name"
 }
 
 variable "acme_email" {

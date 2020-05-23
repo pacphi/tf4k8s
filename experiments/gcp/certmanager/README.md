@@ -8,7 +8,6 @@ Edit `terraform.tfvars` and amend the values for
 
 * `project`
 * `domain`
-* `environment_name`
 * `acme_mail`
 * `dns_zone_name`
 * `gke_name`
