@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  namespace: ${namespace}
+spec:
+  acme:
+    email: ${acmeEmail}
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    # @see https://cert-manager.io/docs/configuration/acme/dns01/azuredns/
+    - dns01:
+        azuredns:
+          clientID: ${clientId}
+          clientSecretSecretRef:
+            # The following is the secret we created in Kubernetes. Issuer will use this to present challenge to Azure DNS.
+            name: azuredns-config
+            key: client-secret
+          subscriptionID: ${subscriptionId}
+          tenantID: ${tenantId}
+          resourceGroupName: ${resourceGroup}
+          hostedZoneName: ${domain}
+          # Azure Cloud Environment, default to AzurePublicCloud
+          environment: AzurePublicCloud
+
