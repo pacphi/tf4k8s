@@ -7,6 +7,7 @@ resource "kubernetes_namespace" "certmanager" {
 resource "kubernetes_secret" "az_client_secret" {
   metadata {
     name = "azuredns-config"
+    namespace = kubernetes_namespace.certmanager.metadata[0].name
   }
 
   data = {
@@ -21,7 +22,7 @@ data "template_file" "issuer_config" {
     clientId       = var.az_client_id
     subscriptionId = var.az_subscription_id
     tenantId       = var.az_tenant_id
-    resourceGroup  = var.resource_group_name
+    resourceGroup  = var.cluster_issuer_resource_group
     acmeEmail      = var.acme_email
     domain         = var.domain
     namespace      = kubernetes_namespace.certmanager.metadata[0].name

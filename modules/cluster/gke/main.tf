@@ -91,5 +91,5 @@ data "template_file" "kubeconfig" {
 
 resource "local_file" "kubeconfig" {
   content  = data.template_file.kubeconfig.rendered
-  filename = "/tmp/${var.gke_name}-${random_id.cluster_name.hex}-kubeconfig"
+  filename = "/tmp/gke/${var.gke_name}-${random_id.cluster_name.hex}-kubeconfig"
 }

@@ -17,12 +17,12 @@ and much more.
 * [Setup a service account](iam)
 * [Setup DNS](dns)
 * [Provision cluster](cluster)
+* [Install cert-manager](certmanager)
+* [Install nginx-ingress](../k8s/nginx-ingress)
+* [Install external-dns](external-dns)
+* [Install Harbor](../k8s/harbor)
 
 ## Roadmap
 
-- [ ] Install cert-manager
-- [ ] Install nginx-ingress
-- [ ] Install external-dns
-- [ ] Install Harbor
 - [ ] Install cf-for-k8s
 - [ ] Install VMWare Tanzu Application Service for Kubernetes

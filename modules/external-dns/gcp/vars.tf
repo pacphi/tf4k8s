@@ -1,5 +1,3 @@
-variable "environment_name" {}
-
 variable "namespace" {
   default = "external-dns"
 }
