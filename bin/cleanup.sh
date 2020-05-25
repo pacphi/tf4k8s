@@ -1,9 +1,17 @@
 #!/bin/bash
 
+set -e
+
+if [ -z "$1" ]; then
+	echo "Usage: ./bin/cleanup.sh {iaas}"
+	exit 1
+fi
+
+IAAS="$1"
 # Destroys all Terraform artifacts, directories and files under experiments and its subdirectories
 
 cd experiments
-cd gcp
+cd "${IAAS}"
 cd certmanager
 rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
 cd ../cluster
