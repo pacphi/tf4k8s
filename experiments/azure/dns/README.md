@@ -2,7 +2,11 @@
 
 Oftentimes, you'll have the requirement to add and manage DNS sub-domains.
 
-This sample assumes your authoritative names servers and DNS record information is managed external to Microsoft Azure.  It's also assumed a managed zone (known as the "root zone") has already been set up in Azure DNS.
+Assumes:
+
+* your authoritative names servers and DNS record information is managed external to Microsoft Azure
+* a managed zone (known as the "root zone") has already been set up in Azure DNS.
+* resource group already exists
 
 Edit `terraform.tfvars` and amend the values for
 

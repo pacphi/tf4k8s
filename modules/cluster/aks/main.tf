@@ -11,25 +11,24 @@ locals {
   workstation-external-cidr = "${chomp(data.http.workstation-external-ip.body)}/32"
 }
 
-resource "azurerm_resource_group" "rg" {
+data "azurerm_resource_group" "rg" {
   name     = var.aks_resource_group
-  location = var.aks_region
 }
 
 ## Log Analytics for Container logs (enable_logs = true)
 resource "azurerm_log_analytics_workspace" "logworkspace" {
   count               = var.enable_logs ? 1 : 0
   name                = "${var.aks_name}-${random_id.cluster_name[count.index].hex}-law"
-  location            = azurerm_resource_group.rg[count.index].location
-  resource_group_name = azurerm_resource_group.rg[count.index].name
+  location            = data.azurerm_resource_group.rg[count.index].location
+  resource_group_name = data.azurerm_resource_group.rg[count.index].name
   sku                 = "PerGB2018"
 }
 
 resource "azurerm_log_analytics_solution" "logsolution" {
   count                 = var.enable_logs ? 1 : 0
   solution_name         = "ContainerInsights"
-  location              = azurerm_resource_group.rg[count.index].location
-  resource_group_name   = azurerm_resource_group.rg[count.index].name
+  location              = data.azurerm_resource_group.rg[count.index].location
+  resource_group_name   = data.azurerm_resource_group.rg[count.index].name
   workspace_resource_id = azurerm_log_analytics_workspace.logworkspace[count.index].id
   workspace_name        = azurerm_log_analytics_workspace.logworkspace[count.index].name
 
@@ -43,15 +42,15 @@ resource "azurerm_log_analytics_solution" "logsolution" {
 # Get latest Kubernetes version available
 data "azurerm_kubernetes_service_versions" "current" {
   location = var.aks_region
-  depends_on = [azurerm_resource_group.rg]
+  depends_on = [ data.azurerm_resource_group.rg ]
 }
 
 # AKS with standard kubenet network profile
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = "${var.aks_name}-${random_id.cluster_name.hex}"
   kubernetes_version  = data.azurerm_kubernetes_service_versions.current.latest_version
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
   dns_prefix          = "${var.aks_name}-${random_id.cluster_name.hex}"
   api_server_authorized_ip_ranges = [ local.workstation-external-cidr ]
 
