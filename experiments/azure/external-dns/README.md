@@ -8,6 +8,7 @@ Edit `terraform.tfvars` and amend the values for
 
 * `az_subscription_id`
 * `az_client_id`
+* `az_client_secret`
 * `az_tenant_id`
 * `resource_group_name`
 * `domain_filter`
