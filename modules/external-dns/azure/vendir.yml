@@ -1,0 +1,11 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+- path: vendor
+  contents:
+  - path: .
+    git:
+      url: https://github.com/bitnami/charts
+      ref: 14a03dc8eb5c03e4f9388b19a1c0ab043a140869
+    includePaths:
+    - bitnami/external-dns/values-production.yaml

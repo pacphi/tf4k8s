@@ -1,16 +1,11 @@
 module "external_dns" {
   source = "../../../modules/external-dns/gcp"
 
-  environment_name = var.environment_name
   domain_filter    = var.domain_filter
   zone_id_filter   = var.zone_id_filter
   enable_istio     = var.enable_istio
   kubeconfig_path  = var.kubeconfig_path
   ytt_lib_dir      = var.ytt_lib_dir
-}
-
-variable "environment_name" {
-  description = "An environment name"
 }
 
 variable "domain_filter" {

@@ -21,14 +21,14 @@ az account set --subscription=<subsciption-id>
 > Replace `<subscription-id>` with an active subscription id
 
 
-To create a new resource group, service principal and public key
+To create a service principal
 
 ```
 ./create-iam.sh <subscription-id> <environment-name> <service-principal-password>
 ```
 
-To destroy the resource group you created (and all cloud resources within it)
+To destroy the service principal
 
 ```
-./destroy-iam.sh <resource-group>
+./destroy-iam.sh <environment-name>
 ```

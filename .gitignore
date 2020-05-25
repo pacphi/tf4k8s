@@ -2,10 +2,11 @@
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup
+terraform.tfvars.backup
 terraform.log
 source-repos/terraform*
 graph.svg
-ytt-libs/**/vendor/
+vendor/
 vendir.lock.yml
 modules/**/templates/config.yml
 modules/**/templates/kpack-webhook.yml

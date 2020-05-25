@@ -2,7 +2,10 @@
 
 Based on the following Terraform [example](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.htm).
 
-Assumes a service account has been created with appropriate role and permissions to create a GKE cluster.
+Assumes:
+
+* resource group already exists
+* service account has been created with appropriate role and permissions to create an AKS cluster
 
 Edit `terraform.tfvars` and amend the values for
 

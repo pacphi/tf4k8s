@@ -5,6 +5,7 @@ module "managed-zone" {
   domain_prefix = var.domain_prefix
   resource_group_name = var.resource_group_name
   az_client_id = var.az_client_id
+  az_client_secret = var.az_client_secret
   az_subscription_id = var.az_subscription_id
   az_tenant_id = var.az_tenant_id
 }
@@ -23,6 +24,10 @@ variable "resource_group_name" {
 
 variable "az_client_id" {
   description = "Azure Service Principal appId"
+}
+
+variable "az_client_secret" {
+  description = "Azure Service Principal password"
 }
 
 variable "az_subscription_id" {
