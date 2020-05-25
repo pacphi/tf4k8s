@@ -3,7 +3,7 @@ module "external_dns" {
 
   domain_filter    = var.domain_filter
 
-  resource_group_name = var.resouce_group_name
+  resource_group_name = var.resource_group_name
   az_client_id = var.az_client_id
   az_subscription_id = var.az_subscription_id
   az_tenant_id = var.az_tenant_id
