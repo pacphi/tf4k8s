@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "external_dns" {
 }
 
 data "local_file" "external_dns_config" {
-  filename = "${path.module}/vendor/values-production.yaml"
+  filename = "${path.module}/vendor/bitnami/external-dns/values-production.yaml"
 }
 
 resource "helm_release" "external_dns" {
@@ -16,7 +16,7 @@ resource "helm_release" "external_dns" {
   chart      = "external-dns"
   version    = "3.0.2"
 
-  # For additional configuration  options @see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml#L128
+  # For additional configuration options @see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml#L128
 
   set {
     name = "azure.cloud"
@@ -26,11 +26,6 @@ resource "helm_release" "external_dns" {
   set {
     name  = "azure.resourceGroup"
     value = var.resource_group_name
-  }
-
-  set {
-    name = "domainFilters"
-    value = [ var.domain_filter ]
   }
 
   set_sensitive {
@@ -43,6 +38,5 @@ resource "helm_release" "external_dns" {
     value = var.az_subscription_id
   }
 
-  # @see https://www.terraform.io/docs/providers/helm/r/release.html#values
-  values = data.local_file.external_dns_config.content
+  values = [ "\"domainFilters\" : [ \"${var.domain_filter}\" ]" ]
 }
