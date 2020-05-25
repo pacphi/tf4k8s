@@ -7,3 +7,5 @@ variable "az_subscription_id" {}
 variable "az_tenant_id" {}
 
 variable "domain_filter" {}
+
+variable "kubeconfig_path" {}
