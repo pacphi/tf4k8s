@@ -11,6 +11,7 @@ Edit `terraform.tfvars` and amend the values for
 * `resource_group_name`
 * `az_subscription_id`
 * `az_client_id`
+* `az_client_secret`
 * `az_tenant_id`
 
 All we're doing here is creating a new managed zone and adding an NS record to the "root zone".
