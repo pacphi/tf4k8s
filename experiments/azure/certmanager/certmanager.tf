@@ -3,6 +3,7 @@ module "certmanager" {
 
   az_subscription_id = var.az_subscription_id
   az_client_id = var.az_client_id
+  az_client_secret = var.az_client_secret
   az_tenant_id = var.az_tenant_id
   cluster_issuer_resource_group = var.cluster_issuer_resource_group
   domain = var.domain
@@ -17,6 +18,10 @@ variable "az_subscription_id" {
 
 variable "az_client_id" {
   description = "Azure Service Principal appId"
+}
+
+variable "az_client_secret" {
+  description = "Azure Service Principal password"
 }
 
 variable "az_tenant_id" {
