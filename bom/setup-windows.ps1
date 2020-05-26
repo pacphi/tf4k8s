@@ -1,16 +1,23 @@
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+# This script should be run in an administrative shell
 
-scoop bucket add extras
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')
+
+
 
 #####################
 # SOFTWARE
 #####################
 
+scoop bucket add extras
+
 # 7Zip
 scoop install 7zip
 
 # Dev Tools
+scoop install aria2
 choco install bosh-cli
 scoop install curl
 scoop install git
@@ -23,7 +30,7 @@ scoop install gcloud
 scoop install graphviz
 scoop install terraform
 scoop install tflint
-scoop install httpie -source python
+choco install httpie -source python
 scoop install kubectl
 scoop install k9s
 scoop install helm
