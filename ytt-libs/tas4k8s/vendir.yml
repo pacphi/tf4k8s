@@ -6,6 +6,6 @@ directories:
   - path: .
     git:
       url: https://github.com/cloudfoundry/cf-for-k8s
-      ref: 14224c198182a043c6057874f43d9a9c549b5b31
+      ref: a1027bb173e710bb011e883da83ea2ec906985f8
     includePaths:
     - config-optional/use-external-dns-for-wildcard.yml
