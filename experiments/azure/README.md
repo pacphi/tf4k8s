@@ -21,8 +21,8 @@ and much more.
 * [Install nginx-ingress](../k8s/nginx-ingress)
 * [Install external-dns](external-dns)
 * [Install Harbor](../k8s/harbor)
+* [Install cf-for-k8s](../k8s/cf4k8s)
 
 ## Roadmap
 
-- [ ] Install cf-for-k8s
 - [ ] Install VMWare Tanzu Application Service for Kubernetes
