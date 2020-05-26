@@ -4,7 +4,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Install minimal complement of tools
-brew install awscli aliyun-cli azure-cli doctl git graphviz terraform tflint httpie kubernetes-cli helm helmfile octant
+brew install awscli aws-iam-authenticator aliyun-cli azure-cli doctl git graphviz terraform tflint httpie kubernetes-cli helm helmfile octant
 
 brew cask install google-cloud-sdk
 brew tap k14s/tap

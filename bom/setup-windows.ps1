@@ -18,19 +18,20 @@ scoop install 7zip
 
 # Dev Tools
 scoop install aria2
-choco install bosh-cli
+choco install -y bosh-cli
 scoop install curl
 scoop install git
 scoop install vscode
 scoop install aliyun
 scoop install azure-cli
+choco install -y aws-iam-authenticator
 scoop install aws
 scoop install doctl
 scoop install gcloud
 scoop install graphviz
 scoop install terraform
 scoop install tflint
-choco install httpie -source python
+choco install -y httpie -source python
 scoop install kubectl
 scoop install k9s
 scoop install helm

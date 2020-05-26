@@ -21,6 +21,10 @@ sudo snap install k9s
 
 curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
 
+curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/aws-iam-authenticator
+chmod +x aws-iam-authenticator
+sudo mv aws-iam-authenticator /usr/local/bin
+
 wget https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.deb
 dpkg -i octant_0.9.1_Linux-64bit.deb
 
