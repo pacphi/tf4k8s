@@ -23,6 +23,6 @@ and much more.
 * [Install Harbor](../k8s/harbor)
 * [Install cf-for-k8s](../k8s/cf4k8s)
 
-## Roadmap
+## For additional exploration
 
-- [ ] Install VMWare Tanzu Application Service for Kubernetes
+* [Install VMWare Tanzu Application Service for Kubernetes](../k8s/tas4k8s)
