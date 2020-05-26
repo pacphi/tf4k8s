@@ -1,7 +1,12 @@
 resource "kubernetes_namespace" "certmanager" {
   metadata {
     name = "cert-manager"
+
+    labels = {
+      "certmanager.k8s.io/disable-validation" = true
+    }
   }
+
 }
 
 resource "kubernetes_secret" "az_client_secret" {
@@ -25,7 +30,7 @@ data "template_file" "issuer_config" {
     resourceGroup  = var.cluster_issuer_resource_group
     acmeEmail      = var.acme_email
     domain         = var.domain
-    namespace      = kubernetes_namespace.certmanager.metadata[0].name
+    namespace    = kubernetes_namespace.certmanager.metadata[0].name
   }
 }
 

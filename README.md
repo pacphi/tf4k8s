@@ -15,7 +15,8 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 
 ## Currently Supported IaaS
 
-- [x] [Google Cloud Platform](experiments/gcp)
+- [x] [Google Cloud Platform (GKE)](experiments/gcp)
+- [x] [Microsoft Azure (AKS)](experiments/azure)
 
 ## Basics
 
@@ -72,4 +73,3 @@ Provision managed services in a public cloud and bind them to applications
 
 - [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
 - [ ] Amazon Web Service (EKS)
-- [ ] Microsoft Azure (AKS)
