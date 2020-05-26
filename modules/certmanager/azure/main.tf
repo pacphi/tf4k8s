@@ -16,7 +16,7 @@ resource "kubernetes_secret" "az_client_secret" {
   }
 
   data = {
-    password = var.az_client_secret
+    "client-secret" = var.az_client_secret
   }
 }
 
