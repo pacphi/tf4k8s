@@ -1,6 +1,6 @@
 # Terraform for installing VMware Tanzu Application Service for Kubernetes
 
-// TODO Add description
+Deploy a commercially supported beta of the Cloud Foundry Application Runtime on Kubernetes.
 
 Starts with the assumption that you have already provisioned a cluster.
 

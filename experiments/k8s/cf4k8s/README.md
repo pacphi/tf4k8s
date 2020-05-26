@@ -1,6 +1,6 @@
 # Terraform for installing cf-for-k8s
 
-// TODO Add description
+Deploy the Cloud Foundry Application Runtime on Kubernetes.
 
 Starts with the assumption that you have already provisioned a cluster.
 
