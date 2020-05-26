@@ -44,6 +44,7 @@ Yes, you could specify an alternate image registry provider
 ./install-tbs-integrated-with-harbor.sh {harbor-domain} {harbor-project} {harbor-username} {harbor-password}
 ```
 > Replace the curly-braced parameters above with your Harbor domain, project and administrative credentials
+> You'll need to have manually authored credentials in `/tmp/credentials.yml`.  See [Create a Credentials File](https://docs.pivotal.io/build-service/0-1-0/installing.html#other-create-creds-file).
 
 ## Verify your installation
 
