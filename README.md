@@ -2,7 +2,13 @@
 
 An exploration into the use of Terraform to provision Kubernetes clusters on popular IaaS.
 
+## Vision
+
+Launch a relatively comprehensive end-to-end demo environment for discussion purposes and/or hands-on workshops in under an hour.
+
 ## Organization
+
+Sub-directories of this repository contain
 
 * `bom`
   * Bill of materials; what do you need to get started?
@@ -11,27 +17,30 @@ An exploration into the use of Terraform to provision Kubernetes clusters on pop
 * `modules`
   * Building blocks to be composed as you see fit
 * `ytt-libs`
-  * yaml; templates and miscellaneous scripts
+  * YAML-based templates consumed by [ytt](https://get-ytt.io) then deployed with [kapp](https://get-kapp.io)
 
-## Currently Supported IaaS
+## Supported IaaS
+
+Get started with...
 
 - [x] [Google Cloud Platform (GKE)](experiments/gcp)
 - [x] [Microsoft Azure (AKS)](experiments/azure)
+- [ ] Amazon Web Service (EKS)
+- [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
 
-## Basics
+## Current experiments
 
-- [x] Create an IAM service account
+- [x] Identity management
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
-
-## Installable modules
-
-- [x] Harbor
-- [x] cf-for-k8s
-- [x] VMWare Tanzu Application Service for Kubernetes
+- [x] Install Harbor
+- [x] Install cf-for-k8s
+- [x] Install VMWare Tanzu Application Service for Kubernetes
 
 ## Roadmap
+
+Above-mentioned experiments will evolve to include automating base configuration and installation of an additional complement of capabilities/components aimed at modeling a modern enterprise software factory / product delivery supply chain.
 
 ### Cloud Foundry
 
@@ -49,27 +58,45 @@ Provision managed services in a public cloud and bind them to applications
 
 ### CI/CD
 
+- [ ] Jenkins
 - [ ] Gitlab
 - [x] VMWare Tanzu Build Service
 - [ ] Concourse
 - [ ] Spinnaker
 
-### Monitoring
+
+### Monitoring/Metrics
 
 - [ ] Elasticsearch, Logstash, Kibana
+- [ ] Prometheus
 - [ ] Grafana
 - [ ] Tanzu Observability
 
-### Stream Processing
+### Cluster/Policy Management
+
+- [ ] Tanzu Mission Control
+
+### Services
+
+#### Stream Processing
 
 - [ ] Kafka
 - [ ] Spring Cloud Dataflow
 
-### Policy Management
+#### Caching
 
-- [ ] Tanzu Mission Control
+- [ ] Redis
 
-### IaaS Support
+#### Databases
 
-- [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
-- [ ] Amazon Web Service (EKS)
+- [ ] Mongo
+
+### Cloud Native Samples
+
+#### Microservices
+
+- [ ] Java with Spring Boot and Spring Cloud
+- [ ] DotNet Core with Steeltoe
+- [ ] Python wih Django and Flask
+
+#### Reference Pipelines
