@@ -106,11 +106,13 @@ choco install -y aws-iam-authenticator
 scoop install aws
 scoop install doctl
 scoop install gcloud
+choco install -y gnupg
 scoop install graphviz
 scoop install terraform
 choco install -y terraform-docs
 scoop install tflint
 choco install -y httpie -source python
+choco install -y keybase
 scoop install kubectl
 scoop install k9s
 scoop install helm
