@@ -1,5 +1,5 @@
 module "managed-zone" {
-  source = "../../../modules/dns/aks"
+  source = "../../../modules/dns/azure"
 
   base_domain = var.base_domain
   domain_prefix = var.domain_prefix
