@@ -1,6 +1,6 @@
 # Terraform for Kubernetes
 
-An exploration into the use of Terraform to provision Kubernetes clusters on any IaaS.
+An exploration into the use of Terraform to provision Kubernetes clusters on popular IaaS.
 
 ## Organization
 
@@ -33,9 +33,19 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 
 ## Roadmap
 
-### Administration
+### Cloud Foundry
+
+#### Administration
 
 - [ ] Stratos
+
+#### Open Service Broker-compatible API servers
+
+Provision managed services in a public cloud and bind them to applications
+
+- [ ] [Google Cloud Platform](https://github.com/GoogleCloudPlatform/gcp-service-broker)
+- [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
+- [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
 
 ### CI/CD
 
@@ -55,19 +65,9 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 - [ ] Kafka
 - [ ] Spring Cloud Dataflow
 
-### Open Service Broker-compatible API servers
-
-Provision managed services in a public cloud and bind them to applications
-
-- [ ] [Google Cloud Platform](https://github.com/GoogleCloudPlatform/gcp-service-broker)
-- [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
-- [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
-
-
 ### Policy Management
 
 - [ ] Tanzu Mission Control
-
 
 ### IaaS Support
 
