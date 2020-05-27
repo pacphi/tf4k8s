@@ -4,7 +4,9 @@ This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) t
 
 Starts with the assumption that you have already provisioned an AKS cluster.
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars` 
+
+Amend the values for
 
 * `az_subscription_id`
 * `az_client_id`
@@ -15,11 +17,16 @@ Edit `terraform.tfvars` and amend the values for
 * `acme_mail`
 * `kubeconfig_path`
 
-This script will perform a helm deploy of this [chart](https://hub.helm.sh/charts/jetstack/cert-manager).
+
+## Create
 
 ```
 ./create-certmanager.sh
 ```
+
+This script will perform a helm deploy of this [chart](https://hub.helm.sh/charts/jetstack/cert-manager).
+
+## Destroy
 
 To tear it down
 
@@ -29,7 +36,7 @@ To tear it down
 
 ## Troubleshooting
 
-If you notice that you're challenged on visiting a website in your browser
+If you notice that you're still challenged on visiting a website in your browser
 
 ```
 Your connection is not private

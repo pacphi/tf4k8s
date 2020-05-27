@@ -7,12 +7,17 @@ This sample assumes your authoritative names servers and DNS record information 
 > You'll want to make sure you've set an environment variable that the [Terraform Google Provider](https://www.terraform.io/docs/providers/google/index.html) [credentials](https://www.terraform.io/docs/providers/google/guides/provider_reference.html#credentials-1) configuration attribute will use and that the account has appropriate role assigned with permissions to successfully execute creation of a managed zone and record set.
 
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars` 
+
+Amend the values for
 
 * `project`
 * `root_zone_name`
 * `environment_name`
 * `dns_prefix`
+
+
+## Create a zone
 
 All we're doing here is creating a new managed zone and adding an NS record to the "root zone".
 
@@ -20,7 +25,7 @@ All we're doing here is creating a new managed zone and adding an NS record to t
 ./create-zone.sh
 ```
 
-To tear it down
+## Teardown zone
 
 ```
 ./destroy-zone.sh

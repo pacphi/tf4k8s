@@ -4,7 +4,9 @@ This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) t
 
 Starts with the assumption that you have already provisioned a GKE cluster.
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `project`
 * `domain`
@@ -14,13 +16,16 @@ Edit `terraform.tfvars` and amend the values for
 * `gcp_zone`
 * `kubeconfig_path`
 
-This script will perform a helm deploy of this [chart](https://hub.helm.sh/charts/jetstack/cert-manager).
+
+## Create
 
 ```
 ./create-certmanager.sh
 ```
 
-To tear it down
+This script will perform a helm deploy of this [chart](https://hub.helm.sh/charts/jetstack/cert-manager).
+
+## Teardown
 
 ```
 ./destroy-certmanager.sh
@@ -28,7 +33,7 @@ To tear it down
 
 ## Troubleshooting
 
-If you notice that you're challenged on visiting a website in your browser
+If you notice that you're still challenged on visiting a website in your browser
 
 ```
 Your connection is not private

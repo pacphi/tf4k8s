@@ -1,10 +1,13 @@
 # Create a new service account on Google Cloud Platform
 
-Authenticate
+## Authenticate
 
 ```
 gcloud auth login
 ```
+
+
+## Create a new service account
 
 To create a new project, service account and credentials file
 
@@ -19,6 +22,8 @@ To do the same, but in an existing project
 ```
 ./create-iam.sh <project-id>
 ```
+
+## Destroy service account
 
 To destroy the service account and credentials file
 

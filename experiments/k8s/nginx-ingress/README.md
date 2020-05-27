@@ -4,15 +4,19 @@ Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform p
 
 Starts with the assumption that you have already provisioned a cluster.
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `kubeconfig_path`
+
+## Install
 
 ```
 ./create-nginx-ingress.sh
 ```
 
-To tear it down
+## Remove
 
 ```
 ./destroy-nginx-ingress.sh

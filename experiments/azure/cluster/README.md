@@ -7,7 +7,9 @@ Assumes:
 * resource group already exists
 * service account has been created with appropriate role and permissions to create an AKS cluster
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `aks_resource_group`
 * `enable_logs`
@@ -25,17 +27,19 @@ Edit `terraform.tfvars` and amend the values for
 
 > You're also free to update any other input variable value
 
-Create the cluster
+## Create the cluster
 
 ```
 ./create-cluster.sh
 ```
 
-List available clusters
+## List available clusters
 
 ```
 ./list-clusters.sh
 ```
+
+## Update kubeconfig
 
 Use the name and location of the cluster you just created to update `kubeconfig` and set the current context for `kubectl`
 
@@ -43,13 +47,13 @@ Use the name and location of the cluster you just created to update `kubeconfig`
 ./set-kubectl-context.sh <aks-cluster-name> <azure-resource-group>
 ```
 
-Validate you have some pods running
+## Validate you have some pods running
 
 ```
 kubectl get pods -A
 ```
 
-And if you want to tear down the cluster
+## Teardown the cluster
 
 ```
 ./destroy-cluster.sh
