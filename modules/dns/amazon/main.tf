@@ -3,7 +3,7 @@ data "aws_route53_zone" "selected" {
 }
 
 resource "aws_route53_zone" "zone" {
-  name = "${var.dns_prefix}.${data.aws_route53_zone.selected.name}"
+  name = "${var.domain_prefix}.${data.aws_route53_zone.selected.name}"
   force_destroy = true
 }
 
