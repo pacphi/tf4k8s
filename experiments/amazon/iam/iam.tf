@@ -103,8 +103,11 @@ output "this_iam_user_unique_id" {
   value = module.iam_user.this_iam_user_unique_id
 }
 
-
 provider "aws" {
   version = "~> 2.0"
   region  = var.region
+}
+
+terraform {
+  required_version = "~> 0.12"
 }

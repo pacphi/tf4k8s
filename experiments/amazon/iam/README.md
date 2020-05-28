@@ -32,6 +32,8 @@ You'll be prompted to supply
 ./create-iam.sh
 ```
 
+Repeat the [Authenticate](#authenticate) step above with your new credentials. Don't forget to decrypt your secret if you supplied a PGP key.
+
 ## Destroy the user account
 
 ```
