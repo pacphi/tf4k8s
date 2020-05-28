@@ -15,3 +15,5 @@ git clone https://github.com/hajowieland/terraform-azurerm-k8s # Microsft Azure
 git clone https://github.com/hajowieland/terraform-digitalocean-k8s # Digital Ocean
 git clone https://github.com/hajowieland/terraform-google-k8s # Google Cloud Platform
 git clone https://github.com/hajowieland/terraform-oci-k8s # Oracle Cloud Infrastructure
+
+git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster # Hashicorp Learn tutorial on EKS

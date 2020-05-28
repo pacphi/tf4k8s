@@ -14,7 +14,7 @@ and much more.
 ## The basics
 
 * Install [prerequisite software](../../bom)
-* [Setup a service account](iam)
+* [Setup a service principal](iam)
 * [Setup DNS](dns)
 * [Provision cluster](cluster)
 * [Install cert-manager](certmanager)

@@ -4,7 +4,9 @@ Based on the following Terraform [example](https://www.terraform.io/docs/provide
 
 Assumes a service account has been created with appropriate role and permissions to create a GKE cluster.
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `gcp_project`
 * `gcp_service_account_credentials`
@@ -12,17 +14,19 @@ Edit `terraform.tfvars` and amend the values for
 
 > You're also free to update any other input variable value
 
-Create the cluster
+## Create the cluster
 
 ```
 ./create-cluster.sh
 ```
 
-List available clusters
+## List available clusters
 
 ```
 ./list-clusters.sh
 ```
+
+## Update kubeconfig
 
 Use the name and location of the cluster you just created to update `kubeconfig` and set the current context for `kubectl`
 
@@ -30,13 +34,13 @@ Use the name and location of the cluster you just created to update `kubeconfig`
 ./set-kubectl-context.sh <gke-cluster-name> <gke-zone>
 ```
 
-Validate you have some pods running
+## Validate you have some pods running
 
 ```
 kubectl get pods -A
 ```
 
-And if you want to tear down the cluster
+## Tear down the cluster
 
 ```
 ./destroy-cluster.sh

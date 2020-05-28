@@ -1,8 +1,14 @@
 # Terraform for Kubernetes
 
-An exploration into the use of Terraform to provision Kubernetes clusters on any IaaS.
+An exploration into the use of Terraform to provision Kubernetes clusters on popular IaaS.
+
+## Vision
+
+Launch a relatively comprehensive end-to-end demo environment for discussion purposes and/or hands-on workshops in under an hour.
 
 ## Organization
+
+Sub-directories of this repository contain
 
 * `bom`
   * Bill of materials; what do you need to get started?
@@ -11,51 +17,39 @@ An exploration into the use of Terraform to provision Kubernetes clusters on any
 * `modules`
   * Building blocks to be composed as you see fit
 * `ytt-libs`
-  * yaml; templates and miscellaneous scripts
+  * YAML-based templates consumed by [ytt](https://get-ytt.io) then deployed with [kapp](https://get-kapp.io)
 
-## Currently Supported IaaS
+## Supported IaaS
+
+Get started with...
 
 - [x] [Google Cloud Platform (GKE)](experiments/gcp)
 - [x] [Microsoft Azure (AKS)](experiments/azure)
+- [ ] Amazon Web Service (EKS)
+- [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
 
-## Basics
+## Current experiments
 
-- [x] Create an IAM service account
+- [x] Identity management
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
-
-## Installable modules
-
-- [x] Harbor
-- [x] cf-for-k8s
-- [x] VMWare Tanzu Application Service for Kubernetes
+- [x] Install Harbor
+- [x] Install cf-for-k8s
+- [x] Install VMWare Tanzu Application Service for Kubernetes
+- [x] Install VMWare Tanzu Build Service
 
 ## Roadmap
 
-### Administration
+Above-mentioned experiments will evolve to include automating base configuration and installation of an additional complement of capabilities/components aimed at modeling a modern enterprise software factory / product delivery supply chain.
+
+### Cloud Foundry
+
+#### Administration
 
 - [ ] Stratos
 
-### CI/CD
-
-- [ ] Gitlab
-- [x] VMWare Tanzu Build Service
-- [ ] Concourse
-- [ ] Spinnaker
-
-### Monitoring
-
-- [ ] Elasticsearch, Logstash, Kibana
-- [ ] Grafana
-- [ ] Tanzu Observability
-
-### Stream Processing
-
-- [ ] Kafka
-- [ ] Spring Cloud Dataflow
-
-### Open Service Broker-compatible API servers
+#### Open Service Broker-compatible API servers
 
 Provision managed services in a public cloud and bind them to applications
 
@@ -63,13 +57,50 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
 - [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
 
+### CI/CD
 
-### Policy Management
+- [ ] Jenkins
+- [ ] Gitlab
+- [x] VMWare Tanzu Build Service
+- [ ] Concourse
+- [ ] Spinnaker
+- [ ] Tekton
+
+#### Reference Pipelines
+
+// TBD
+
+### Logging/Monitoring/Metrics
+
+- [ ] [FluentBit](https://docs.fluentbit.io/manual/installation/kubernetes)
+- [ ] Elasticsearch, Logstash, Kibana
+- [ ] Prometheus
+- [ ] Grafana
+- [ ] Tanzu Observability
+
+### Cluster/Policy Management
 
 - [ ] Tanzu Mission Control
 
+### Services
 
-### IaaS Support
+#### Stream Processing
 
-- [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
-- [ ] Amazon Web Service (EKS)
+- [ ] Kafka
+- [ ] Spring Cloud Dataflow
+
+#### Caching
+
+- [ ] Redis
+
+#### Databases
+
+- [ ] Mongo
+
+### Cloud Native Samples
+
+#### Microservices
+
+- [ ] Java with Spring Boot and Spring Cloud
+- [ ] DotNet Core with Steeltoe
+- [ ] Python wih Django and Flask

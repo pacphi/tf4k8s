@@ -8,7 +8,9 @@ Assumes:
 * a managed zone (known as the "root zone") has already been set up in Azure DNS.
 * resource group already exists
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `base_domain`
 * `domain_prefix`
@@ -18,13 +20,15 @@ Edit `terraform.tfvars` and amend the values for
 * `az_client_secret`
 * `az_tenant_id`
 
+## Create a zone
+
 All we're doing here is creating a new managed zone and adding an NS record to the "root zone".
 
 ```
 ./create-zone.sh
 ```
 
-To tear it down
+## Teardown zone
 
 ```
 ./destroy-zone.sh

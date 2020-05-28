@@ -4,7 +4,9 @@ Deploy a commercially supported beta of the Cloud Foundry Application Runtime on
 
 Starts with the assumption that you have already provisioned a cluster.
 
-Edit `terraform.tfvars` and amend the values for
+## Edit `terraform.tfvars`
+
+Amend the values for
 
 * `base_domain`
 * `acme_email`
@@ -15,12 +17,14 @@ Edit `terraform.tfvars` and amend the values for
 
 Install VMware Tanzu Application Service for Kubernetes
 
+## Install
+
 ```
 ./create-tas4k8s.sh <base_domain> <tanzu-network-api-token>
 ```
 > Set `base_domain` to be the same value as defined in `terraform.tfvars`
 
-To tear it down
+## Remove
 
 ```
 ./destroy-tas4k8s.sh
