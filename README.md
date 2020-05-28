@@ -82,6 +82,12 @@ Provision managed services in a public cloud and bind them to applications
 
 - [ ] Tanzu Mission Control
 
+### Additional "building blocks" and maintenance
+
+- [ ] [Contour](https://github.com/projectcontour/contour)
+- [ ] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro) [ECR](https://aws.amazon.com/ecr/getting-started/), [GCR](https://cloud.google.com/container-registry), [Artifactory](https://hub.helm.sh/charts?q=artifactory)
+- [ ] [Velero](https://velero.io)
+
 ### Services
 
 #### Stream Processing
@@ -103,4 +109,4 @@ Provision managed services in a public cloud and bind them to applications
 
 - [ ] Java with Spring Boot and Spring Cloud
 - [ ] DotNet Core with Steeltoe
-- [ ] Python wih Django and Flask
+- [ ] Python with Django and Flask
