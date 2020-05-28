@@ -3,6 +3,7 @@ module "managed-zone" {
 
   base_hosted_zone_id = var.base_hosted_zone_id
   domain_prefix = var.domain_prefix
+  region = var.region
 }
 
 variable "base_hosted_zone_id" {
@@ -25,9 +26,4 @@ output "sub_domain" {
 
 output "hosted_zone_id" {
   value = module.managed-zone.hosted_zone_id
-}
-
-provider "aws" {
-  version = "~> 2.0"
-  region  = var.region
 }

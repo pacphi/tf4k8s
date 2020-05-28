@@ -4,7 +4,7 @@ Deploy the Cloud Foundry Application Runtime on Kubernetes.
 
 Starts with the assumption that you have already provisioned a cluster.
 
-## Edit `terraform.tfvars` 
+## Edit `terraform.tfvars`
 
 Amend the values for
 
