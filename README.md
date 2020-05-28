@@ -56,6 +56,7 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] [Google Cloud Platform](https://github.com/GoogleCloudPlatform/gcp-service-broker)
 - [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
 - [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
+- [ ] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/pivotal/cloud-service-broker)
 
 ### CI/CD
 
@@ -85,7 +86,7 @@ Provision managed services in a public cloud and bind them to applications
 ### Additional "building blocks" and maintenance
 
 - [ ] [Contour](https://github.com/projectcontour/contour)
-- [ ] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro) [ECR](https://aws.amazon.com/ecr/getting-started/), [GCR](https://cloud.google.com/container-registry), [Artifactory](https://hub.helm.sh/charts?q=artifactory)
+- [ ] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), [ECR](https://aws.amazon.com/ecr/getting-started/), [GCR](https://cloud.google.com/container-registry), [Artifactory](https://hub.helm.sh/charts?q=artifactory)
 - [ ] [Velero](https://velero.io)
 
 ### Services
