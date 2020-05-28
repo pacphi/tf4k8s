@@ -37,6 +37,7 @@ Get started with...
 - [x] Install Harbor
 - [x] Install cf-for-k8s
 - [x] Install VMWare Tanzu Application Service for Kubernetes
+- [x] Install VMWare Tanzu Build Service
 
 ## Roadmap
 
@@ -63,10 +64,15 @@ Provision managed services in a public cloud and bind them to applications
 - [x] VMWare Tanzu Build Service
 - [ ] Concourse
 - [ ] Spinnaker
+- [ ] Tekton
 
+#### Reference Pipelines
 
-### Monitoring/Metrics
+// TBD
 
+### Logging/Monitoring/Metrics
+
+- [ ] [FluentBit](https://docs.fluentbit.io/manual/installation/kubernetes)
 - [ ] Elasticsearch, Logstash, Kibana
 - [ ] Prometheus
 - [ ] Grafana
@@ -98,5 +104,3 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] Java with Spring Boot and Spring Cloud
 - [ ] DotNet Core with Steeltoe
 - [ ] Python wih Django and Flask
-
-#### Reference Pipelines
