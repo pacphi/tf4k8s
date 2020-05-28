@@ -1,0 +1,9 @@
+eks_name = "techblitz-k8s-lab"
+desired_nodes = 5
+min_nodes = 5
+max_nodes = 10
+kubernetes_version = "1.16.4-1-amazon2"
+region = "us-west-2"
+availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+ssh_key_name = "techblitz-key"
+node_pool_instance_type = "t3a.medium"

@@ -6,3 +6,8 @@ data "template_file" "kubeconfig" {
     token   = var.token
   }
 }
+
+resource "local_file" "kubeconfig" {
+    content     = data.template_file.kubeconfig.rendered
+    filename = "${var.directory}/${var.filename}"
+}

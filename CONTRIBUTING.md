@@ -4,7 +4,7 @@
 
 1. <a href="#introduction">Introduction</a><br>
 1. <a href="#motivation">Motivation</a><br>
-1. <a href="#workflow">Work flow</a><br>
+1. <a href="#workflow">Workflow</a><br>
 1. <a href="#process">Process description</a><br>
 1. <a href="#glossary">Glossary</a><br>
 1. <a href="#references">References</a>

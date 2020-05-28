@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "vpc_endpoint_eks_cluster_sg" {
 # EKS Cluster
 resource "aws_eks_cluster" "cluster" {
   enabled_cluster_log_types = []
-  name                      = local.full_environment_prefix
+  name                      = "${var.eks_name}-${random_id.cluster_name.hex}"
   role_arn                  = aws_iam_role.cluster.arn
 
   vpc_config {
@@ -31,12 +31,12 @@ resource "aws_eks_cluster" "cluster" {
 }
 
 resource "aws_cloudwatch_log_group" "cluster" {
-  name              = "/aws/eks/${local.full_environment_prefix}/cluster"
+  name              = "/aws/eks/${var.eks_name}-${random_id.cluster_name.hex}/cluster"
   retention_in_days = 7
 }
 
 resource "aws_iam_role" "cluster" {
-  name = "${local.full_environment_prefix}-cluster-role"
+  name = "${var.eks_name}-${random_id.cluster_name.hex}-cluster-role"
 assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -51,7 +51,7 @@ assume_role_policy = <<POLICY
   ]
 }
 POLICY
-tags = var.tags
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment"     "cluster_AmazonEKSClusterPolicy" {

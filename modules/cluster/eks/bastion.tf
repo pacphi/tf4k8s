@@ -1,5 +1,5 @@
 resource "aws_security_group" "provisioner" {
-  name        = "${local.full_environment_prefix}-provisioner-sg"
+  name        = "${var.eks_name}-${random_id.cluster_name.hex}-provisioner-sg"
   description = "Allow SSH access to provisioner host and outbound internet access"
   vpc_id      = module.vpc.vpc_id
 
@@ -58,7 +58,7 @@ resource "aws_eip" "provisioner" {
 resource "aws_instance" "provisioner" {
   ami                    = local.ami_id
   instance_type          = local.instance_type
-  key_name               = var.ssh_key_name
+  key_name               = module.ssh_key_pair.key_name
   subnet_id              = module.vpc.public_subnets[0]
   vpc_security_group_ids = [aws_security_group.provisioner.id]
 
@@ -72,6 +72,6 @@ resource "aws_instance" "provisioner" {
   }
 
   tags = {
-    Name = "${local.full_environment_prefix}-bastion"
+    Name = "${var.eks_name}-${random_id.cluster_name.hex}-bastion"
   }
 }

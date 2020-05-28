@@ -1,3 +1,3 @@
 #!/bin/bash
 
-aws eks list-clusters
+echo "$(aws eks list-clusters --max-items 5)"

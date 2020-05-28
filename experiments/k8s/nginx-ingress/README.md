@@ -1,4 +1,4 @@
-# Terraform for configuring NGINX Ingress integrated with External DNS
+# Terraform for configuring NGINX Ingress
 
 Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to configure [nginx ingress](https://kubernetes.github.io/ingress-nginx/).
 

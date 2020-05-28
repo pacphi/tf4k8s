@@ -1,7 +1,7 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.38.0"
-  name = "${local.full_environment_prefix}-vpc"
+  name = "${var.eks_name}-${random_id.cluster_name.hex}-vpc"
   azs = var.availability_zones
   cidr = "10.60.0.0/18"
 
@@ -25,7 +25,7 @@ module "vpc" {
   tags = merge(
     var.tags,
     {
-      "kubernetes.io/cluster/${local.full_environment_prefix}" = "shared"
+      "kubernetes.io/cluster/${var.eks_name}-${random_id.cluster_name.hex}" = "shared"
     },
   )
 
@@ -41,14 +41,14 @@ resource "random_id" "vpc_endpoint_sg_suffix" {
 }
 
 resource "aws_security_group" "vpc_endpoint" {
-  name        = "${local.full_environment_prefix}-sg-${random_id.vpc_endpoint_sg_suffix.hex}"
+  name        = "${var.eks_name}-${random_id.cluster_name.hex}-sg-${random_id.vpc_endpoint_sg_suffix.hex}"
   description = "Security Group used by VPC Endpoints."
   vpc_id      = module.vpc.vpc_id
 
   tags = merge(
     var.tags,
     {
-      "Name" = "${local.full_environment_prefix}-sg-${random_id.vpc_endpoint_sg_suffix.hex}"
+      "Name" = "${var.eks_name}-${random_id.cluster_name.hex}-sg-${random_id.vpc_endpoint_sg_suffix.hex}"
     }
   )
 
