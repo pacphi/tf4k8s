@@ -20,7 +20,6 @@ Amend the values for
 * `ssh_key_name`
 * `node_pool_instance_type`
 
-> You're also free to update any other input variable value
 
 ## Create the cluster
 
@@ -39,7 +38,7 @@ Amend the values for
 Use the name and location of the cluster you just created to update `kubeconfig` and set the current context for `kubectl`
 
 ```
-./set-kubectl-context.sh <aks-cluster-name> <azure-resource-group>
+./set-kubectl-context.sh <aws-region> <eks-cluster-name>
 ```
 
 ## Validate you have some pods running
