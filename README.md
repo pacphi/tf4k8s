@@ -25,7 +25,8 @@ Get started with...
 
 - [x] [Google Cloud Platform (GKE)](experiments/gcp)
 - [x] [Microsoft Azure (AKS)](experiments/azure)
-- [ ] Amazon Web Service (EKS)
+- [x] [Amazon Web Service (EKS)](experiments/amazon)
+- [ ] Tanzu Mission Control
 - [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
 
 ## Current experiments
