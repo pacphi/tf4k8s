@@ -80,10 +80,14 @@ A _repository_ holds code as it is developed. There are three interconnected rep
 
 * GitHub Guides. [Mastering Markdown](https://guides.github.com/features/mastering-markdown/). Accessed 2018-09-13.<br>The document that you are reading is formatted with Markdown syntax. So if you are going to edit this document, you should learn to use Markdown.
 
-* Jenny Bryan. 2018. [Happy Git and GitHub for the useR](http://happygitwithr.com/). Accessed 2018-09-13.
+* Jenny Bryan. 2018. [Happy Git and GitHub for the User](http://happygitwithr.com/). Accessed 2018-09-13.
 
 * [Git Reference Manual](https://git-scm.com/docs). Accessed 2018-09-13.
 
 * Scott Chacon and Ben Straub. 2014. [Pro Git](https://git-scm.com/book/en/), 2nd edition. Accessed 2018-09-13.
 
 * [How to undo (almost) anything with Git](https://github.com/blog/2019-how-to-undo-almost-anything-with-git). Accessed 2018-09-13.
+
+## Attribution
+
+The content for this page is adapted from [John David Smith](https://github.com/smithjd)'s [sqlpetr](https://github.com/smithjd/sqlpetr) Github repository.
