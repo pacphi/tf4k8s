@@ -2,7 +2,7 @@
 
 This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) to automate the management and issuance of TLS certificates from [Let's Encrypt](https://letsencrypt.org).
 
-Starts with the assumption that you have already provisioned an AKS cluster.
+Starts with the assumption that you have already provisioned an EKS cluster.
 
 ## Edit `terraform.tfvars`
 
