@@ -5,6 +5,9 @@ data "aws_eks_cluster_auth" "this" {
 module "kubeconfig" {
   source = "../../generate-kubeconfig"
 
+  username       = aws_eks_cluster.cluster.arn
+  cluster_name   = aws_eks_cluster.cluster.arn
+  context_name   = aws_eks_cluster.cluster.arn
   directory      = "/tmp/eks"
   filename       = "${var.eks_name}-${random_id.cluster_name.hex}-kubeconfig"
   endpoint       = aws_eks_cluster.cluster.endpoint

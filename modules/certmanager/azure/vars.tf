@@ -34,7 +34,7 @@ variable "acme_email" {
 }
 
 variable "kubeconfig_path" {
-  description = "The path to your .kubeconfig"
+  description = "The path to your .kube/config"
   type = string
-  default = "~/.kubeconfig"
+  default = "~/.kube/config"
 }

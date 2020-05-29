@@ -69,6 +69,11 @@ output "eks_cluster_name" {
   value = module.eks.eks_cluster_name
 }
 
+output "eks_cluster_arn" {
+  description = "The Amazon Resource Name (ARN) of the cluster"
+  value = module.eks.eks_cluster_arn
+}
+
 output "eks_region" {
   description = "The AWS region within which the EKS cluster is running"
   value = module.eks.eks_region

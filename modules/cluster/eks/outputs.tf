@@ -15,7 +15,12 @@ output "ssh_public_key_filename" {
 
 output "eks_cluster_name" {
   description = "The name of the EKS cluster"
-  value = aws_eks_cluster.cluster.name
+  value = aws_eks_cluster.cluster.id
+}
+
+output "eks_cluster_arn" {
+  description = "The Amazon Resource Name (ARN) of the cluster"
+  value = aws_eks_cluster.cluster.arn
 }
 
 output "eks_region" {
