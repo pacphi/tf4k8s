@@ -104,6 +104,7 @@ scoop install aliyun
 scoop install azure-cli
 choco install -y aws-iam-authenticator
 scoop install aws
+choco install -y cloudfoundry-cli
 scoop install doctl
 scoop install gcloud
 choco install -y gnupg

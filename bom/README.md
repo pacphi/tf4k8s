@@ -26,6 +26,10 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 
 - [x] [VMWare Tanzu Network](https://network.pivotal.io) client ([pivnet](https://github.com/pivotal-cf/pivnet-cli#installing))
 
+### Cloud Foundry-centric
+
+- [x] [cf](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+
 ### Kubernetes-centric
 
 - [x] [helm](https://helm.sh/docs/intro/install/)
@@ -71,7 +75,7 @@ Employs [apt-get](https://help.ubuntu.com/community/AptGet/Howto) and [snap](htt
 ### Windows
 
 ```
-.\windows.ps1
+.\setup-windows.ps1
 ```
 
 Employs [chocolatey](https://chocolatey.org) and [scoop](https://scoop.sh)

@@ -67,3 +67,9 @@ PIVNET_VERSION=1.0.3 && \
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
+
+wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+
+sudo apt-get update -y
+sudo apt-get install -y cf-cli
