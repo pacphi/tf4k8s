@@ -25,6 +25,6 @@ variable "dns_zone_name" {
 }
 
 variable "kubeconfig_path" {
-  description = "The path to your .kubeconfig"
-  default = "~/.kubeconfig"
+  description = "The path to your .kube/config"
+  default = "~/.kube/config"
 }
