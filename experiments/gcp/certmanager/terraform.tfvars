@@ -1,7 +1,6 @@
 project = "fe-cphillipson"
 domain = "lab.ironleg.me"
 acme_email = "cphillipson@vmware.com"
-gke_name = "tanzu-gke-lab-fb334b65717f"
-gcp_zone = "us-west1-a"
+gke_name = "tanzu-gke-lab-4716d7b8c6d6"
 dns_zone_name = "lab-zone"
 kubeconfig_path = "~/.kube/config"
