@@ -9,7 +9,6 @@ data "template_file" "loki_stack_cert" {
 
   vars = {
     grafana_domain = local.grafana_domain
-    prometheus_domain = local.prometheus_domain
     namespace     = kubernetes_namespace.loki_stack.metadata[0].name
   }
 }
@@ -24,6 +23,11 @@ resource "k14s_kapp" "loki_stack_cert" {
   deploy {
     raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
   }
+}
+
+resource "random_password" "admin_password" {
+  length = 16
+  special = false
 }
 
 resource "helm_release" "loki_stack" {
@@ -42,7 +46,7 @@ resource "helm_release" "loki_stack" {
 
   set {
     name = "grafana.enabled"
-    value = true
+    value = false
   }
 
   set {
@@ -64,6 +68,29 @@ resource "helm_release" "loki_stack" {
     name = "prometheus.server.persistentVolume.enabled"
     value = false
   }
+
+  timeout    = 500
+}
+
+data "template_file" "grafana_config" {
+  template = file("${path.module}/templates/values.yml")
+
+  vars = {
+    grafana_domain  = local.grafana_domain
+    admin_password = random_password.admin_password.result
+  }
+}
+
+resource "helm_release" "grafana" {
+  depends_on = [helm_release.loki_stack]
+
+  name       = "grafana"
+  namespace  = kubernetes_namespace.loki_stack.metadata[0].name
+  repository = "https://kubernetes-charts.storage.googleapis.com"
+  chart      = "grafana"
+  version    = "5.0.2"
+
+  values = [data.template_file.grafana_config.rendered]
 
   timeout    = 500
 }

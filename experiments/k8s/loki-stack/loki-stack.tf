@@ -6,10 +6,22 @@ module "loki-stack" {
 }
 
 variable "domain" {
-  description = "The base domain wherein fluentbit, grafana.<domain> and prometheus.<domain> as part of loki-stack will be deployed"
+  description = "The base domain wherein fluentbit, grafana.<domain> and prometheus.<domain> as part of Loki Stack will be deployed"
 }
 
 variable "kubeconfig_path" {
   description = "The path to your .kube/config"
   default = "~/.kube/config"
+}
+
+output "grafana_username" {
+  value = module.loki-stack.grafana_username
+}
+
+output "grafana_password" {
+  value = module.loki-stack.grafana_password
+}
+
+output "grafana_domain" {
+  value = module.loki-stack.grafana_domain
 }

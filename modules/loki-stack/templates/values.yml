@@ -1,0 +1,12 @@
+adminPassword: ${admin_password}
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  hosts:
+    - ${grafana_domain}
+  tls:
+    - secretName: grafana-tls-secret
+      hosts:
+        - ${grafana_domain}
