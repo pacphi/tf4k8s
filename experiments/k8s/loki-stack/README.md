@@ -27,7 +27,7 @@ Set the data source URL to be `http://{cluster-ip}:{port}`. To obtain the `{clus
 kubectl get service loki-stack --namespace loki-stack
 ```
 
-Query logs from any container using LogQL
+Query logs from any container using [LogQL](https://github.com/grafana/loki/blob/master/docs/logql.md)
 
 ## Remove
 
