@@ -35,10 +35,11 @@ Get started with...
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
-- [x] Install Harbor
-- [x] Install cf-for-k8s
-- [x] Install VMWare Tanzu Application Service for Kubernetes
-- [x] Install VMWare Tanzu Build Service
+- [x] Install [Harbor](experiments/k8s/harbor)
+- [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
+- [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
+- [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
+- [x] Install [Loki Stack](experiments/k8s/loki-stack)
 
 ## Roadmap
 
@@ -74,10 +75,10 @@ Provision managed services in a public cloud and bind them to applications
 
 ### Logging/Monitoring/Metrics
 
-- [ ] [FluentBit](https://docs.fluentbit.io/manual/installation/kubernetes)
+- [x] [FluentBit](https://docs.fluentbit.io/manual/installation/kubernetes)
 - [ ] Elasticsearch, Logstash, Kibana
-- [ ] Prometheus
-- [ ] Grafana
+- [x] Prometheus
+- [x] Grafana
 - [ ] VMWare Tanzu Observability
 
 ### Cluster/Policy Management
