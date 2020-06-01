@@ -24,10 +24,16 @@ cd ../..
 cd k8s
 cd cf4k8s
 rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../tas4k8s
+cd ../efk-stack
 rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
 cd ../harbor
 rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
+cd ../loki-stack
+rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
 cd ../nginx-ingress
+rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
+cd ../tas4k8s
+rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
+cd ../wavefront
 rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
 

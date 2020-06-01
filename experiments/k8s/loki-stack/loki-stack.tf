@@ -6,7 +6,7 @@ module "loki-stack" {
 }
 
 variable "domain" {
-  description = "The base domain wherein fluentbit, grafana.<domain> and prometheus.<domain> as part of Loki Stack will be deployed"
+  description = "The base domain wherein fluentbit, loki, prometheus, and grafana.<domain> as part of Loki Stack will be deployed"
 }
 
 variable "kubeconfig_path" {
