@@ -40,6 +40,7 @@ Get started with...
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
 - [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
+- [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
 
 ## Roadmap
 
@@ -79,7 +80,7 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] Elasticsearch, Logstash, Kibana
 - [x] Prometheus
 - [x] Grafana
-- [ ] VMWare Tanzu Observability
+- [x] VMWare Tanzu Observability
 
 ### Cluster/Policy Management
 
