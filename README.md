@@ -6,6 +6,36 @@ An exploration into the use of Terraform to provision Kubernetes clusters on pop
 
 Launch a relatively comprehensive end-to-end demo environment for discussion purposes and/or hands-on workshops in under an hour.
 
+## Getting Started
+
+Choose your own adventure on one of the following cloud providers
+
+- [x] [Google Cloud Platform (GKE)](experiments/gcp)
+- [x] [Microsoft Azure (AKS)](experiments/azure)
+- [x] [Amazon Web Service (EKS)](experiments/amazon)
+
+Manage clusters in your own data-center with
+
+- [ ] VMWare vSphere 7 with Kubernetes (VMWare Tanzu Kubernetes Grid)
+
+Or provision new / attach existing Kubernetes clusters via
+
+- [ ] VMWare Tanzu Mission Control
+
+## Current experiments
+
+- [x] Identity management
+- [x] Add DNS Zone management
+- [x] Add Certificate management
+- [x] Add Ingress and External DNS
+- [x] Install [Harbor](experiments/k8s/harbor)
+- [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
+- [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
+- [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
+- [x] Install [Loki Stack](experiments/k8s/loki-stack)
+- [x] Install [EFK Stack](experiments/k8s/efk-stack)
+- [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
+
 ## Organization
 
 Sub-directories of this repository contain
@@ -19,28 +49,6 @@ Sub-directories of this repository contain
 * `ytt-libs`
   * YAML-based templates consumed by [ytt](https://get-ytt.io) then deployed with [kapp](https://get-kapp.io)
 
-## Supported IaaS
-
-Get started with...
-
-- [x] [Google Cloud Platform (GKE)](experiments/gcp)
-- [x] [Microsoft Azure (AKS)](experiments/azure)
-- [x] [Amazon Web Service (EKS)](experiments/amazon)
-- [ ] VMWare Tanzu Mission Control
-- [ ] vSphere 7 with Kubernetes (Tanzu Kubernetes Grid)
-
-## Current experiments
-
-- [x] Identity management
-- [x] Add DNS Zone management
-- [x] Add Certificate management
-- [x] Add Ingress and External DNS
-- [x] Install [Harbor](experiments/k8s/harbor)
-- [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
-- [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
-- [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
-- [x] Install [Loki Stack](experiments/k8s/loki-stack)
-- [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
 
 ## Roadmap
 
