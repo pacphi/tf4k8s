@@ -11,7 +11,7 @@ data "template_file" "kibana_cert" {
 resource "k14s_kapp" "kibana_cert" {
   app = "kibana-cert"
 
-  namespace = var.namespace
+  namespace = "default"
 
   config_yaml = data.template_file.kibana_cert.rendered
 
@@ -39,11 +39,6 @@ resource "helm_release" "kibana" {
   repository = "https://Helm.elastic.co"
   chart      = "kibana"
   version    = "7.7.0"
-
-  set {
-    name = "env.ELASTICSEARCH_URL"
-    value = "http://elasticsearch-client:9200"
-  }
 
   values = [data.template_file.kibana_config.rendered]
 }

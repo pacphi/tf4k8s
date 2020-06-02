@@ -21,11 +21,13 @@ Amend the values for
 ./create-efk-stack.sh
 ```
 
-Access Kibana
+In Kibana, go to the `Management` → `Kibana` → `Index Patterns` page, and click `Create index pattern`.
 
-Configure the index with `logstash*` using `@timestamp` as the `Time field filter`
+Enter `metricbeat-*` and on the next step select the `@timestamp` field to finalize the creation of the index pattern in Kibana.
 
-Go to `Discover` and you can now add your custom filters
+Create another index pattern using `kubernetes-*` and `@timestamp`
+
+Visit the `Discover` page.  You should be able to see and query for any and all log records or metrics being collected from your Kubernetes cluster.
 
 ## Remove
 
