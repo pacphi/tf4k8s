@@ -1,7 +1,28 @@
-module "efk-stack" {
-  source = "../../../modules/efk-stack"
+data "kubernetes_namespace" "n" {
+  metadata {
+    name = "logging"
+  }
+}
+
+module "elasticsearch" {
+  source = "../../../modules/elasticsearch"
+
+  namespace = data.kubernetes_namespace.n.metadata[0].name
+  kubeconfig_path = var.kubeconfig_path
+}
+
+module "kibana" {
+  source = "../../../modules/kibana"
 
   domain = var.domain
+  namespace = data.kubernetes_namespace.n.metadata[0].name
+  kubeconfig_path = var.kubeconfig_path
+}
+
+module "fluentbit" {
+  source = "../../../modules/fluentbit"
+
+  namespace = data.kubernetes_namespace.n.metadata[0].name
   kubeconfig_path = var.kubeconfig_path
   ytt_lib_dir = var.ytt_lib_dir
 }
@@ -21,5 +42,5 @@ variable "ytt_lib_dir" {
 }
 
 output "kibana_domain" {
-  value = module.efk-stack.kibana_domain
+  value = module.kibana.kibana_domain
 }

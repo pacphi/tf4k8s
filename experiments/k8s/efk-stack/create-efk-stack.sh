@@ -1,5 +1,7 @@
 #!/bin/bash
 
+kubectl create namespace logging
+
 rm -Rf ../../../ytt-libs/fluentbit/vendor
 rm -f ../../../ytt-libs/fluentbit/vendir.lock.yml
 
