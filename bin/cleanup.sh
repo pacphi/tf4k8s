@@ -1,4 +1,5 @@
 #!/bin/bash
+# Destroys all Terraform artifacts, directories and files under experiments and its subdirectories
 
 set -e
 
@@ -8,32 +9,24 @@ if [ -z "$1" ]; then
 fi
 
 IAAS="$1"
-# Destroys all Terraform artifacts, directories and files under experiments and its subdirectories
+
+EXPERIMENTS=( "certmanager" "cluster" "dns" "external-dns" )
+K8S_MODULES=( "cf4k8s" "efk-stack" "harbor" "loki-stack" "nginx-ingress" "tas4k8s" "wavefront" )
 
 cd experiments
 cd "${IAAS}"
-cd certmanager
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../cluster
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../dns
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../external-dns
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../..
-cd k8s
-cd cf4k8s
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../efk-stack
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../harbor
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../loki-stack
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../nginx-ingress
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../tas4k8s
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
-cd ../wavefront
-rm -Rf .terraform terraform.tfstate* terraform.log graph.svg
+# @see https://www.cyberciti.biz/faq/bash-for-loop-array/
+for i in "${EXPERIMENTS[@]}"
+do
+  cd "$i"
+  rm -Rf .terraform/ terraform.tfstate* terraform.log graph.svg
+  cd ..
+done
 
+cd ../k8s
+for i in "${K8S_MODULES[@]}"
+do
+  cd $i
+  rm -Rf .terraform/ terraform.tfstate* terraform.log graph.svg
+  cd ..
+done

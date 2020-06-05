@@ -20,11 +20,22 @@ locals {
 }
 
 resource "google_container_cluster" "gke" {
+  provider           = google-beta
   name               = "${var.gke_name}-${random_id.cluster_name.hex}"
   location           = var.gcp_region
   project            = var.gcp_project
-  min_master_version = var.gke_node_version
-  node_version       = var.gke_node_version
+
+  release_channel {
+    channel = var.release_channel
+  }
+
+  maintenance_policy {
+    recurring_window {
+      start_time = "2019-01-01T00:00:00-07:00"
+      end_time = "2019-01-01T06:00:00-07:00"
+      recurrence = "FREQ=DAILY"
+    }
+  }
 
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
@@ -56,11 +67,10 @@ resource "google_container_cluster" "gke" {
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   project    = var.gcp_project
-  name       = var.gke_pool_name
+  name       = "np-${random_id.cluster_name.hex}"
   location   = var.gcp_region
   cluster    = google_container_cluster.gke.name
   node_count = var.gke_nodes
-  version    = var.gke_node_version
 
   node_config {
     preemptible     = var.gke_preemptible

@@ -75,6 +75,6 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 
 gcloud iam service-accounts keys create \
   --iam-account "${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
-  /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json
+  /tmp/gcp/${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json
 
-echo "Find your new service account credentials here [ /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json ]"
+echo "Find your new service account credentials here [ /tmp/gcp/${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json ]"

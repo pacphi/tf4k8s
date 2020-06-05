@@ -5,7 +5,8 @@ metadata:
   namespace: ${namespace}
 spec:
   dnsNames:
-  - '${system_domain}'
+  - '*.${system_domain}'
+  - '*.${app_domain}'
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod

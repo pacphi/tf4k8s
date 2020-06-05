@@ -50,12 +50,6 @@ variable "gke_node_type" {
   default     = "n1-standard-2"
 }
 
-variable "gke_node_version" {
-  description = "GKE node version to be installed (e.g. 1.14.10-gke.27)"
-  type        = string
-  default     = "1.15.11-gke.3"
-}
-
 variable "gke_serviceaccount" {
   description = "GCP service account for GKE (e.g. `default`)"
   type        = string
@@ -72,4 +66,9 @@ variable "gke_oauth_scopes" {
     "https://www.googleapis.com/auth/logging.write",
     "https://www.googleapis.com/auth/monitoring"
   ]
+}
+
+variable "release_channel" {
+  type = string
+  default = "RAPID"
 }

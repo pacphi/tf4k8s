@@ -85,7 +85,7 @@ Provision managed services in a public cloud and bind them to applications
 ### Logging/Monitoring/Metrics
 
 - [x] [FluentBit](https://docs.fluentbit.io/manual/installation/kubernetes)
-- [ ] Elasticsearch, Logstash, Kibana
+- [x] Elasticsearch, Kibana
 - [x] Prometheus
 - [x] Grafana
 - [x] VMWare Tanzu Observability
@@ -101,6 +101,13 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] [Velero](https://velero.io)
 
 ### Services
+
+#### Blob stores
+
+- [ ] Minio
+- [ ] Amazon S3
+- [ ] Google Cloud Storage Bucket
+- [ ] Azure Blob Storage
 
 #### Stream Processing
 

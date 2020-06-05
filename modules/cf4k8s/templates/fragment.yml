@@ -4,6 +4,17 @@
 #! - operators can use the admin user to test `cf push`
 cf_admin_password: ${cf_admin_password}
 
+system_certificate:
+  #! This certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
+  crt: ${system_fullchain_certificate}
+  key: ${system_private_key}
+  ca: ""
+workloads_certificate:
+  #! This certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
+  crt: ${workloads_fullchain_certificate}
+  key: ${workloads_private_key}
+  ca: ""
+
 #! To push apps from source code, you need to configure the `app_registry` block
 #! Example below is for docker hub. For other registry examples, see below.
 

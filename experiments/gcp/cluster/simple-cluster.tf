@@ -5,7 +5,6 @@ module "gke" {
   gcp_service_account_credentials = var.gcp_service_account_credentials
   gcp_region = var.gcp_region
   gke_name = var.gke_name
-  gke_pool_name = var.gke_pool_name
   gke_nodes = var.gke_nodes
   gke_preemptible = var.gke_preemptible
   gke_node_type = var.gke_node_type
@@ -26,10 +25,6 @@ variable "gcp_region" {
 
 variable "gke_name" {
   description = "A name for your Google Kubernetes Engine cluster"
-}
-
-variable "gke_pool_name" {
-  description = "A name for your Google Kubernetes Engine cluster node pool"
 }
 
 variable "gke_nodes" {

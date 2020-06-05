@@ -9,21 +9,54 @@ Starts with the assumption that you have already provisioned a cluster.
 Amend the values for
 
 * `base_domain`
-* `acme_email`
 * `registry_domain`
 * `registry_repository`
 * `registry_password`
 * `kubeconfig_path`
 
+## Create a new file named `iaas.tfvars`
+
+Add and (of course) amend values for
+
+```
+email = ...
+domain = ...
+```
+
+then depending upon your IaaS, uncomment and amend values for blocks of configuration as follows
+
+### Amazon
+
+```
+dns_zone_id = ...
+```
+
+### Azure
+
+```
+client_id = ...
+client_secret = ...
+tenant_id = ...
+subscription_id = ...
+resource_group_name = ...
+```
+
+### GCP
+
+```
+project = ...
+```
+
 ## Install
 
 ```
-./create-cf4k8s.sh <base_domain>
+./create-cf4k8s.sh <iaas> <base_domain>
 ```
-> Set `base_domain` to be the same value as defined in `terraform.tfvars`
+> Set `iaas` to be one of [ amazon, azure, gcp ] and set `base_domain` to be the same value as defined in `terraform.tfvars`
 
 ## Remove
 
 ```
-./destroy-cf4k8s.sh
+./destroy-cf4k8s.sh <iaas>
 ```
+> Set `iaas` to be one of [ amazon, azure, gcp ]

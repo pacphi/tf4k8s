@@ -36,4 +36,4 @@ else
   gcloud projects delete "$PROJECT_ID"
 fi
 
-rm -f /tmp/gcp-${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json
+rm -f /tmp/gcp/${SERVICE_ACCOUNT_NAME}-${PROJECT_ID}-service-account-credentials.json

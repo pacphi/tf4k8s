@@ -12,3 +12,5 @@ modules/**/templates/config.yml
 modules/**/templates/kpack-webhook.yml
 *.tgz
 *.tar
+iaas.tfvars
+*.auto.tfvars

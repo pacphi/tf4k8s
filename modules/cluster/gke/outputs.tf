@@ -8,7 +8,7 @@ output "gke_cluster_name" {
 }
 
 output "gke_node_version_deployed" {
-  value = var.gke_node_version
+  value = google_container_cluster.gke.master_version
 }
 
 output "gcp_region" {
