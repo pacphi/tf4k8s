@@ -26,3 +26,4 @@ and much more.
 ## For additional exploration
 
 * [Install VMWare Tanzu Application Service for Kubernetes](../k8s/tas4k8s)
+* [Create an S3 bucket](blobstore)

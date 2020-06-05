@@ -105,9 +105,9 @@ Provision managed services in a public cloud and bind them to applications
 #### Blob stores
 
 - [ ] Minio
-- [ ] Amazon S3
-- [ ] Google Cloud Storage Bucket
-- [ ] Azure Blob Storage
+- [x] Amazon S3
+- [x] Google Cloud Storage Bucket
+- [x] Azure Blob Storage
 
 #### Stream Processing
 
