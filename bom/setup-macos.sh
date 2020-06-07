@@ -19,6 +19,9 @@ brew install pivotal/tap/pivnet-cli
 
 brew install cloudfoundry/tap/cf-cli
 
+brew tap argoproj/tap
+brew install argoproj/tap/argocd
+
 # Install Terraform k14s provider; @see https://github.com/k14s/terraform-provider-k14s
 TF_K14S_PLUGIN_VERSION=0.4.0 && \
 mkdir -p ~/.terraform.d/plugins && \

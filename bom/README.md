@@ -32,6 +32,7 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 
 ### Kubernetes-centric
 
+- [x] [argo-cd](https://github.com/argoproj/argo-cd/blob/master/docs/cli_installation.md)
 - [x] [helm](https://helm.sh/docs/intro/install/)
 - [x] [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [x] [k14s](https://k14s.io)

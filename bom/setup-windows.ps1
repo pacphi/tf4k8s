@@ -128,8 +128,8 @@ tar xzvf terraform-provider-k14s-binaries.tgz -C $HOME/.terraform.d/plugins/
 Remove-Item terraform-provider-k14s-binaries.tgz
 
 
-md $HOME/bin/k14s -ea 0
-cd $HOME/bin/k14s
+md $HOME/.apps/bin -ea 0
+cd $HOME/.apps/bin
 
 Set-Variable YTT_VERSION 0.27.2
 curl -LO "https://github.com/k14s/ytt/releases/download/v$YTT_VERSION/ytt-windows-amd64.exe"
@@ -147,4 +147,8 @@ Set-Variable PIVNET_VERSION 1.0.3
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
-Add-EnvPath -Path "$HOME/bin/k14s" -Container "Machine"
+Set-Variable ARGOCD_VERSION 1.5.6
+curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
+Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
+
+Add-EnvPath -Path "$HOME/.apps/bin" -Container "Machine"

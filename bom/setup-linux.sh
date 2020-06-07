@@ -68,6 +68,10 @@ wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIV
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
 
+ARGOCD_VERSION=1.5.6 && \
+curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64 && \
+chmod +x /usr/local/bin/argocd
+
 wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
 echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 
