@@ -34,6 +34,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
 - [x] Install [EFK Stack](experiments/k8s/efk-stack)
+- [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
 - [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
 
 ## Organization
@@ -104,7 +105,7 @@ Provision managed services in a public cloud and bind them to applications
 
 #### Blob stores
 
-- [ ] Minio
+- [x] Minio
 - [x] Amazon S3
 - [x] Google Cloud Storage Bucket
 - [x] Azure Blob Storage

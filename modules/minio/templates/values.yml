@@ -1,0 +1,19 @@
+
+accessKey:
+  password: ${accesskey_password}
+secretKey:
+  password: ${secretkey_password}
+
+ingress:
+  enabled: true
+  certManager: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+  hosts:
+    - name: ${minio_domain}
+      tls: true
+      tlsSecret: minio-tls-secret
+
+  secrets:
+  - name: minio-tls-secret
