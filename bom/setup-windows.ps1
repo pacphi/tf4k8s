@@ -121,7 +121,7 @@ scoop install helmfile
 scoop install octant
 scoop tar install
 
-Set-Variable TF_K14S_PLUGIN_VERSION 0.4.0
+Set-Variable TF_K14S_PLUGIN_VERSION 0.5.0
 md $HOME/.terraform.d/plugins -ea 0
 curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v$TF_K14S_PLUGIN_VERSION/terraform-provider-k14s-binaries.tgz"
 tar xzvf terraform-provider-k14s-binaries.tgz -C $HOME/.terraform.d/plugins/
