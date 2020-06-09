@@ -8,7 +8,7 @@ data "http" "workstation-external-ip" {
 }
 
 locals {
-  workstation-external-cidr = "${chomp(data.http.workstation-external-ip.body)}/32"
+  workstation-external-cidr = var.all_inbound ? "0.0.0.0/0" : "${chomp(data.http.workstation-external-ip.body)}/32"
 }
 
 data "azurerm_resource_group" "rg" {

@@ -72,3 +72,9 @@ variable "release_channel" {
   type = string
   default = "RAPID"
 }
+
+variable "all_inbound" {
+  description = "Allow inbound access from any IP address?"
+  type = bool
+  default = true
+}

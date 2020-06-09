@@ -70,3 +70,9 @@ variable "aks_node_disk_size" {
   type        = number
   default     = 30
 }
+
+variable "all_inbound" {
+  description = "Allow inbound access from any IP address?"
+  type = bool
+  default = true
+}
