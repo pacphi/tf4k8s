@@ -4,7 +4,10 @@ Uses [kubernetes](https://www.terraform.io/docs/providers/kubernetes/index.html)
 
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
-Starts with the assumption that you have already provisioned a cluster.
+Assumes
+
+* that you have already provisioned a cluster
+* that you have installed and configured nginx-ingress with [SSL Passthrough](../nginx-ingress/README.md#enabling-ssl-passthrough)
 
 ## Edit `terraform.tfvars`
 
