@@ -1,2 +1,2 @@
-domain = "coe.ironleg.me"
+domain = "doa.ironleg.me"
 kubeconfig_path = "~/.kube/config"

@@ -45,7 +45,9 @@ https://argocd.<domain>
 
 Login with your newly minted credentials.
 
-At this point it's up to you whether or not you'd like to follow the rest of the steps outlined in the [Getting Started](https://argoproj.github.io/argo-cd/getting_started/#creating-apps-via-ui) guide, or choose your own path forward.
+At this point it's up to you whether or not you'd like to follow the rest of the steps outlined in the [Getting Started](https://argoproj.github.io/argo-cd/getting_started/#creating-apps-via-ui) guide or choose your own path forward.
+
+Consult this [guide](https://argoproj.github.io/argo-cd/user-guide/private-repositories/) if you want to work with a private Git repository.
 
 ## Teardown
 
@@ -54,14 +56,3 @@ Teardown your installation with
 ```
 ./destroy-argocd.sh
 ```
-
-
-## Known Issue
-
-On login you will be challenged with the following message
-
-```
-WARNING: server certificate had error: x509: certificate is valid for localhost, argocd-server, argocd-server.argocd, argocd-server.argocd.svc, argocd-server.argocd.svc.cluster.local, not ... Proceed insecurely (y/n)?
-```
-
-To fix, we'll need to update the Helm chart configuration to support certificates issued by cert-manager.

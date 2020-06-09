@@ -1,6 +1,6 @@
 ## ArgoCD configuration
 ## Ref: https://github.com/argoproj/argo-cd
-##
+## @see https://hub.helm.sh/charts/argo/argo-cd
 nameOverride: argocd
 fullnameOverride: ""
 
@@ -392,7 +392,7 @@ server:
 
   ## Certificate configuration
   certificate:
-    enabled: false
+    enabled: true
     domain: ${argocd_domain}
     issuer:
       name: letsencrypt-prod
@@ -447,9 +447,9 @@ server:
     paths:
       - /
     tls:
-      - secretName: argocd-tls-secret
-        hosts:
-          - ${argocd_domain}
+      - hosts:
+        - ${argocd_domain}
+        secretName: argocd-secret
 
   # Create a OpenShift Route with SSL passthrough for UI and CLI
   # Consider setting 'hostname' e.g. https://argocd.apps-crc.testing/ using your Default Ingress Controller Domain
