@@ -9,7 +9,6 @@ Starts with the assumption that you have already provisioned a cluster.
 Amend the values for
 
 * `base_domain`
-* `acme_email`
 * `registry_domain`
 * `registry_repository`
 * `registry_password`
