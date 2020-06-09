@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: greetings
+  cloud:
+    kubernetes:
+      config:
+        name: greetings
+        namespace: bitter-tears
+        sources:
+         - name: greetings-config

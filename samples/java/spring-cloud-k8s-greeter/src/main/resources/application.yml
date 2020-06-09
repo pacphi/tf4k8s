@@ -1,0 +1,5 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans,configprops,env,info,health,mappings,metrics,loggers,shutdown,threaddump
