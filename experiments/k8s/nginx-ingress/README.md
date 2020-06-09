@@ -10,6 +10,17 @@ Amend the values for
 
 * `kubeconfig_path`
 
+### Enabling SSL Passthrough
+
+If you wish to enable [SSL Passthrough](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough), you should set
+
+```
+extra_args_key = "enable-ssl-passthrough"
+extra_args_value = ""
+```
+
+> You'll want to do this if you intend to install [Argo CD](../argo-cd)
+
 ## Install
 
 ```

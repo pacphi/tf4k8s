@@ -28,6 +28,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
+- [x] Install [Argo CD](experiments/k8s/argo-cd)
 - [x] Install [Harbor](experiments/k8s/harbor)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
@@ -72,6 +73,7 @@ Provision managed services in a public cloud and bind them to applications
 
 ### CI/CD
 
+- [x] Argo CD
 - [ ] Jenkins
 - [ ] Gitlab
 - [x] VMWare Tanzu Build Service
