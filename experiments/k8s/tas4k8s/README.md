@@ -12,6 +12,8 @@ Amend the values for
 * `registry_domain`
 * `registry_repository`
 * `registry_password`
+* `pivnet_username`
+* `pivnet_password`
 * `kubeconfig_path`
 
 Install VMware Tanzu Application Service for Kubernetes
