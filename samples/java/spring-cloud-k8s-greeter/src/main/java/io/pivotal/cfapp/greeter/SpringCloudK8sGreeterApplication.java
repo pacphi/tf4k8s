@@ -5,13 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
-
 @SpringBootApplication
 @ConfigurationPropertiesScan
 public class SpringCloudK8sGreeterApplication {
@@ -20,6 +20,7 @@ public class SpringCloudK8sGreeterApplication {
 		SpringApplication.run(SpringCloudK8sGreeterApplication.class, args);
 	}
 
+	@RefreshScope
 	@Configuration
 	@ConfigurationProperties(prefix = "dialog")
 	public class DialogConfig {

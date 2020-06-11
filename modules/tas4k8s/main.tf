@@ -9,25 +9,51 @@ resource "random_password" "gen" {
   special = false
 }
 
-data "template_file" "tas4k8s_config" {
-  template = file("${path.module}/templates/config.yml")
+data "template_file" "cf_values" {
+  template = file("${path.module}/templates/cf-values.yml")
 
   vars = {
-    system_domain = local.system_domain
-    app_domain = local.app_domain
-
     cf_admin_password = random_password.gen.result
+  }
+}
 
+resource "local_file" "cf_values_rendered" {
+  content     = data.template_file.cf_values.rendered
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/cf-values.yml"
+}
+
+data "template_file" "app_registry_values" {
+  template = file("${path.module}/templates/app-registry-values.yml")
+
+  vars = {
     registry_domain     = var.registry_domain
     registry_repository = var.registry_repository
     registry_username   = var.registry_username
     registry_password   = var.registry_password
   }
 }
+resource "local_file" "app_registry_values_rendered" {
+  content     = data.template_file.app_registry_values.rendered
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/app-registry-values.yml"
+}
 
-resource "local_file" "tas4k8s_config_rendered" {
-  content     = data.template_file.tas4k8s_config.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-rendered.yml"
+data "template_file" "system_registry_values" {
+  template = file("${path.module}/templates/system-registry-values.yml")
+
+  vars = {
+    pivnet_username     = var.pivnet_username
+    pivnet_password     = var.pivnet_password
+  }
+}
+
+resource "local_file" "system_registry_values_rendered" {
+  content     = data.template_file.system_registry_values.rendered
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/system-registry-values.yml"
+}
+
+resource "local_file" "load_balancer_values_rendered" {
+  content     = file("${path.module}/templates/load-balancer-values.yml")
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/load-balancer-values.yml"
 }
 
 data "template_file" "tas4k8s_cert" {
@@ -64,29 +90,37 @@ resource "k14s_kapp" "tas4k8s_cert" {
 
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config/_deps/cf-for-k8s/config",
+    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config",
+    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values",
     "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-optional/use-external-dns-for-wildcard.yml"
   ]
 
   debug_logs = true
 
-  config_yaml = data.template_file.tas4k8s_config.rendered
-
   depends_on = [
-    local_file.tas4k8s_config_rendered
+    local_file.cf_values_rendered,
+    local_file.app_registry_values_rendered,
+    local_file.system_registry_values_rendered,
+    local_file.load_balancer_values_rendered
   ]
 }
 
-resource "local_file" "tas4k8s_ytt" {
-  content = data.k14s_ytt.tas4k8s_ytt.result
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-ytt.yml"
+data "k14s_kbld" "tas4k8s_config" {
+  config_yaml = data.k14s_ytt.tas4k8s_ytt.result
+
+  debug_logs = true
+}
+
+resource "local_file" "tas4k8s_config" {
+  content     = data.k14s_kbld.tas4k8s_config.result
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/tas.yml"
 }
 
 resource "k14s_kapp" "tas4k8s" {
   app = "tas"
   namespace = "default"
 
-  config_yaml = data.k14s_ytt.tas4k8s_ytt.result
+  config_yaml = local_file.tas4k8s_config.content
 
   debug_logs = true
 
@@ -95,8 +129,7 @@ resource "k14s_kapp" "tas4k8s" {
   }
 
   depends_on = [
-    k14s_kapp.tas4k8s_cert,
-    local_file.tas4k8s_ytt
+    k14s_kapp.tas4k8s_cert
   ]
 
 }

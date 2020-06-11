@@ -173,10 +173,13 @@ EOF
 ) >/dev/null
 
 cat <<EOF
+#@data/values
+---
 system_domain: "${DOMAIN}"
 app_domains:
 #@overlay/append
 - "apps.${DOMAIN}"
+
 cf_blobstore:
   secret_key: $(bosh interpolate ${VARS_FILE} --path=/blobstore_secret_key)
 

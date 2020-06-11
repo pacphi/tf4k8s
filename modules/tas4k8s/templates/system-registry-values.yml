@@ -1,0 +1,8 @@
+#@data/values
+---
+system_registry:
+  hostname: "registry.pivotal.io"
+  username: "${pivnet_username}"
+  password: "${pivnet_password}"
+
+#! as per https://docs.pivotal.io/tas-kubernetes/0-2/configuring-image-registries.html#configure-system-registry-values
