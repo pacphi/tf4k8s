@@ -1,0 +1,14 @@
+#@data/values
+---
+app_registry:
+  hostname: ${registry_domain}
+  #! often times this is just your `docker_user`
+  repository: ${registry_repository}
+  username: ${registry_username}
+  password: ${registry_password}
+
+#! To push apps from source code, you need to configure the `app_registry` block
+#! Example below is for docker hub. For other registry examples, see below.
+
+#! as per https://docs.pivotal.io/tas-kubernetes/0-2/configuring-image-registries.html#harbor
+#! We'll opt to use default admin account and library project

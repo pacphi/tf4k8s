@@ -1,0 +1,6 @@
+#@data/values
+---
+cf_admin_password: ${cf_admin_password}
+
+#! The password for the CF "admin" user.
+#! - operators can use the admin user to test `cf push`

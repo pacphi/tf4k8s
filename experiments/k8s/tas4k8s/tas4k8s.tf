@@ -6,6 +6,8 @@ module "tas4k8s" {
   registry_repository   = var.registry_repository
   registry_username     = var.registry_username
   registry_password     = var.registry_password
+  pivnet_username     = var.pivnet_username
+  pivnet_password     = var.pivnet_password
   kubeconfig_path  = var.kubeconfig_path
   ytt_lib_dir      = var.ytt_lib_dir
 }
@@ -29,6 +31,14 @@ variable "registry_username" {
 
 variable "registry_password" {
   description = "Container image/artifact registry/repository password"
+}
+
+variable "pivnet_username" {
+  description = "Tanzu Network image/artifact registry/repository username"
+}
+
+variable "pivnet_password" {
+  description = "Tanzu Network image/artifact registry/repository password"
 }
 
 variable "kubeconfig_path" {
