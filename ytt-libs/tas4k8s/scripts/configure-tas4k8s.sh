@@ -26,15 +26,3 @@ mkdir -p vendor
 cp -Rf /tmp/tanzu-application-service/config vendor
 cp -Rf /tmp/tanzu-application-service/config-optional vendor
 cp -Rf /tmp/tanzu-application-service/configuration-values vendor
-
-# # PATCH
-# # Add kpack webhook configuration
-# KPACK_ADDITION=$(cat << EOF
-
-# kpack_webhook_server_tls:
-#   crt: ""
-#   key: ""
-#   ca: ""
-# EOF
-# )
-# echo "${KPACK_ADDITION}" >> vendor/config/_deps/cf-for-k8s/config/values.yml
