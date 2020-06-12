@@ -8,7 +8,6 @@ Let's get this out of the way now.  If you attempt to deploy this to cf4k8s or t
 
 ```
 git clone https://github.com/pacphi/tf4k8s
-git checkout why-spring-cloud-k8s-does-not-function-on-tas4k8s
 cd samples/java/spring-cloud-k8s-greeter
 ```
 

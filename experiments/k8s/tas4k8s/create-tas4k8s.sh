@@ -8,7 +8,6 @@ fi
 DOMAIN="tas.$1"
 PIVNET_API_TOKEN="$2"
 
-rm -f ../../../modules/tas4k8s/templates/config.yml
 rm -Rf ../../../ytt-libs/tas4k8s/vendor
 
 # Fetch specific commit from https://github.com/cloudfoundry/cf-for-k8s
