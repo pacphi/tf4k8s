@@ -14,7 +14,7 @@ Amend the values for
 * `registry_password`
 * `kubeconfig_path`
 
-## Create a new file named `iaas.tfvars`
+## Create a new file named `iaas.auto.tfvars`
 
 Add and (of course) amend values for
 

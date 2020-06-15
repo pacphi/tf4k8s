@@ -12,8 +12,8 @@ rm -f ../../../modules/cf4k8s/templates/config.yml
 rm -Rf ../../../ytt-libs/cf4k8s/vendor
 rm -f ../../../ytt-libs/cf4k8s/vendir.lock.yml
 
-# Make copy of iaas.tfvars in modules/cf4k8s/acme
-cp -f iaas.tfvars ../../../modules/cf4k8s/acme
+# Make copy of iaas.auto.tfvars in modules/cf4k8s/acme/${IAAS}
+cp -f iaas.auto.tfvars "../../../modules/cf4k8s/acme/${IAAS}"
 
 # Fetch specific commit from https://github.com/cloudfoundry/cf-for-k8s
 cd ../../../ytt-libs/cf4k8s || exit
@@ -26,8 +26,8 @@ cd ../../modules/cf4k8s || exit
 cd "acme/$IAAS" || exit
 terraform init
 terraform validate
-terraform plan -var-file=../iaas.tfvars
-terraform apply -var-file=../iaas.tfvars -auto-approve
+terraform plan
+terraform apply -auto-approve
 cd ../.. || exit
 
 cp -n templates/fragment.yml templates/config.yml

@@ -11,11 +11,11 @@ terraform destroy -auto-approve
 
 cd "../../../modules/cf4k8s/acme/${IAAS}" || exit
 terraform destroy -auto-approve
+rm -Rf .terraform/ terraform.log terraform.tfstate* iaas.auto.tfvars
 
 cd ../.. || exit
 rm -f certs.auto.tfvars
 rm -f templates/config.yml
-rm -Rf "acme/${IAAS}/.terraform" "acme/${IAAS}/terraform.log" "acme/${IAAS}/terraform.tfstate*"
 
 cd ../.. || exit
 rm -Rf ytt-libs/cf4k8s/vendor

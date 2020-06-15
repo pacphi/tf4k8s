@@ -1,3 +1,7 @@
+locals {
+  extraArgsExpression = length(trimspace(var.extra_args_key)) > 0 && length(trimspace(var.extra_args_value)) > 0 ? indent(4, "\n${var.extra_args_key}: ${var.extra_args_value}") : "{}"
+}
+
 resource "kubernetes_namespace" "nginx" {
   metadata {
     name = "nginx-ingress"
@@ -8,8 +12,7 @@ data "template_file" "nginx_config" {
   template = file("${path.module}/templates/values.yml")
 
   vars = {
-    extraArgsKey  = var.extra_args_key
-    extraArgsValue  = var.extra_args_value
+    extraArgsExpression  = local.extraArgsExpression
   }
 }
 

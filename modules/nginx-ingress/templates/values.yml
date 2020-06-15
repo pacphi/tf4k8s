@@ -1,3 +1,2 @@
 controller:
-  extraArgs:
-    ${extraArgsKey}: "${extraArgsValue}"
+  extraArgs: ${extraArgsExpression}

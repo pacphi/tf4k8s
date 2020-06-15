@@ -12,5 +12,5 @@ data "template_file" "kubeconfig" {
 
 resource "local_file" "kubeconfig" {
     content     = data.template_file.kubeconfig.rendered
-    filename = "${var.directory}/${var.filename}"
+    filename = pathexpand("${var.directory}/${var.filename}")
 }

@@ -96,5 +96,5 @@ resource "azurerm_public_ip" "public_ip" {
 ## kubeconfig file
 resource "local_file" "kubeconfigaks" {
   content  = azurerm_kubernetes_cluster.aks.kube_config_raw
-  filename = "/tmp/aks/${var.aks_name}-${random_id.cluster_name.hex}-kubeconfig"
+  filename = pathexpand("~/.tf4k8s/azure/${var.aks_name}-${random_id.cluster_name.hex}-kubeconfig")
 }

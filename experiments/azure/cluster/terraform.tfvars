@@ -1,6 +1,6 @@
 aks_resource_group = "aks-lab"
 enable_logs = false
-ssh_public_key = "/tmp/az_rsa.pub"
+ssh_public_key = "~/.tf4k8s/azure/az_rsa.pub"
 az_subscription_id = "d67c4971-e658-4g9e-ab4c-d2acbcb65474"
 az_client_id = "a7859f75-dfc3-474f-b094-0abd4egb9d5e"
 az_client_secret = "why-would-i-share-this"

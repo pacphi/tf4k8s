@@ -6,6 +6,7 @@ Assumes:
 
 * resource group already exists
 * service account has been created with appropriate role and permissions to create an AKS cluster
+* an SSH private/public [key-pair](https://www.ssh.com/ssh/keygen/) using RSA algorithm has been created
 
 ## Edit `terraform.tfvars`
 
