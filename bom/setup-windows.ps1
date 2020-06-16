@@ -151,4 +151,9 @@ Set-Variable ARGOCD_VERSION 1.5.6
 curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
 Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
 
+Set-Variable KREW_VERSION 0.3.4
+curl -LO "https://github.com/kubernetes-sigs/krew/releases/download/v$KREW_VERSION/krew.exe"
+curl -LO "https://github.com/kubernetes-sigs/krew/releases/download/v$KREW_VERSION/krew.yaml"
+krew install --manifest=krew.yaml
+
 Add-EnvPath -Path "$HOME/.apps/bin" -Container "Machine"

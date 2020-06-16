@@ -39,6 +39,7 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
   * including imgpkg, kapp, kbld, kwt, and vendir
 - [x] [k14s Terraform provider](https://github.com/k14s/terraform-provider-k14s)
 - [x] [k9s](https://k9scli.io/topics/install/)
+- [x] [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
 - [x] [octant](https://octant.dev)
 
 ### Other
