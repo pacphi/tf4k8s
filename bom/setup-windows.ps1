@@ -109,6 +109,8 @@ scoop install doctl
 scoop install gcloud
 choco install -y gnupg
 scoop install graphviz
+choco install -y libressl
+choco install -y openssl
 scoop install terraform
 choco install -y terraform-docs
 scoop install tflint

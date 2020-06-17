@@ -19,10 +19,6 @@ resource "k14s_kapp" "loki_stack_cert" {
   namespace = "default"
 
   config_yaml = data.template_file.loki_stack_cert.rendered
-
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
 }
 
 resource "random_password" "admin_password" {
@@ -73,7 +69,7 @@ resource "helm_release" "loki_stack" {
 }
 
 data "template_file" "grafana_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.yml")
 
   vars = {
     grafana_domain  = local.grafana_domain

@@ -1,0 +1,14 @@
+externalURL: https://${harbor_domain}
+harborAdminPassword: ${admin_password}
+expose:
+  tls:
+    secretName: harbor-tls-secret
+    notarySecretName: harbor-tls-secret
+  ingress:
+    hosts:
+      core: ${harbor_domain}
+      notary: ${notary_domain}
+    annotations:
+      kubernetes.io/ingress.class: "contour"
+      ingress.kubernetes.io/force-ssl-redirect: "true"
+      kubernetes.io/ingress.allow-http: "false"

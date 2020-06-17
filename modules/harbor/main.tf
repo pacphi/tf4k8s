@@ -20,10 +20,6 @@ resource "k14s_kapp" "harbor_cert" {
   namespace = "default"
 
   config_yaml = data.template_file.harbor_cert.rendered
-
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
 }
 
 resource "random_password" "admin_password" {
@@ -32,7 +28,7 @@ resource "random_password" "admin_password" {
 }
 
 data "template_file" "harbor_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.yml")
 
   vars = {
     harbor_domain  = local.harbor_domain

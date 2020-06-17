@@ -1,5 +1,5 @@
 project = "fe-cphillipson"
-domain = "doa.ironleg.me"
+domain = "daf.ironleg.me"
 acme_email = "cphillipson@vmware.com"
-dns_zone_name = "doa-zone"
+dns_zone_name = "daf-zone"
 kubeconfig_path = "~/.kube/config"

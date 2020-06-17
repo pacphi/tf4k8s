@@ -47,6 +47,8 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 - [x] [git](https://git-scm.com/downloads)
 - [x] [gpg](https://gnupg.org/download/)
 - [x] [graphviz](https://graphviz.gitlab.io/download/)
+- [x] [libressl](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/)
+- [x] [openssl](https://www.openssl.org/source/)
 - [x] [keybase](https://keybase.io/download)
 - [x] [httpie](https://httpie.org/docs#installation)
 - [x] [terraform-docs](https://github.com/segmentio/terraform-docs)

@@ -15,6 +15,7 @@ module "kibana" {
   source = "../../../modules/kibana"
 
   domain = var.domain
+  ingress = var.ingress
   namespace = kubernetes_namespace.n.metadata[0].name
   kubeconfig_path = var.kubeconfig_path
 }
@@ -35,6 +36,10 @@ module "metricbeat" {
 
 variable "domain" {
   description = "The base domain wherein elasticsearch, fluentbit, kibana.<domain>, and metricbeat will be deployed"
+}
+
+variable "ingress" {
+  description = "Used to specify which Ingress controller should serve a particular Ingress object.  Choices are: [ contour, nginx ]."
 }
 
 variable "kubeconfig_path" {

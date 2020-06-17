@@ -16,14 +16,10 @@ resource "k14s_kapp" "kibana_cert" {
   config_yaml = data.template_file.kibana_cert.rendered
 
   debug_logs = true
-
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
 }
 
 data "template_file" "kibana_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.yml")
 
   vars = {
     kibana_domain  = local.kibana_domain

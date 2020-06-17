@@ -27,10 +27,6 @@ resource "k14s_kapp" "clusterissuer" {
 
   config_yaml = data.template_file.issuer_config.rendered
 
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
-
   depends_on = [helm_release.certmanager]
 }
 

@@ -18,7 +18,7 @@ and much more.
 * [Setup DNS](dns)
 * [Provision cluster](cluster)
 * [Install cert-manager](certmanager)
-* [Install nginx-ingress](../k8s/nginx-ingress)
+* [Install nginx-ingress](../k8s/nginx-ingress) or [Contour](../k8s/contour)
 * [Install external-dns](external-dns)
 * [Install Harbor](../k8s/harbor)
 * [Install cf-for-k8s](../k8s/cf4k8s)

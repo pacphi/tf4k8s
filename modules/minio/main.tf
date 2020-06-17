@@ -19,10 +19,6 @@ resource "k14s_kapp" "minio_cert" {
   namespace = "default"
 
   config_yaml = data.template_file.minio_cert.rendered
-
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
 }
 
 resource "random_password" "accesskey_password" {
@@ -36,7 +32,7 @@ resource "random_password" "secretkey_password" {
 }
 
 data "template_file" "minio_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.yml")
 
   vars = {
     minio_domain  = local.minio_domain
@@ -50,9 +46,9 @@ resource "helm_release" "minio" {
 
   name       = "minio"
   namespace  = kubernetes_namespace.minio.metadata[0].name
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://kubernetes-charts.storage.googleapis.com"
   chart      = "minio"
-  version    = "3.4.7"
+  version    = "5.0.29"
 
   values = [data.template_file.minio_config.rendered]
 

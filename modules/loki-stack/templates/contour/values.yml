@@ -1,0 +1,14 @@
+adminPassword: ${admin_password}
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "contour"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/tls-acme: "true"
+  hosts:
+    - ${grafana_domain}
+  tls:
+    - secretName: grafana-tls-secret
+      hosts:
+        - ${grafana_domain}

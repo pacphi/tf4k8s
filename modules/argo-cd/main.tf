@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "argocd" {
 }
 
 data "template_file" "argocd_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.yml")
 
   vars = {
     argocd_domain  = local.argocd_domain

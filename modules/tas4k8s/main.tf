@@ -79,10 +79,6 @@ resource "k14s_kapp" "tas4k8s_cert" {
 
   debug_logs = true
 
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
-
   depends_on = [
     local_file.tas4k8s_cert_rendered
   ]
@@ -124,12 +120,7 @@ resource "k14s_kapp" "tas4k8s" {
 
   debug_logs = true
 
-  deploy {
-    raw_options = ["--dangerous-allow-empty-list-of-resources=true"]
-  }
-
   depends_on = [
     k14s_kapp.tas4k8s_cert
   ]
-
 }

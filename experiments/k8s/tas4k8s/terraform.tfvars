@@ -1,4 +1,4 @@
-base_domain = "doa.ironleg.me"
+base_domain = "daf.ironleg.me"
 registry_domain = "harbor.doa.ironleg.me"
 registry_repository = "harbor.doa.ironleg.me/library"
 registry_username = "admin"

@@ -11,6 +11,7 @@ Starts with the assumption that you have already provisioned a cluster.
 Amend the values for
 
 * `domain`
+* `ingress`
 * `kubeconfig_path`
 
 ## Create
