@@ -99,7 +99,7 @@ Provision managed services in a public cloud and bind them to applications
 
 ### Additional "building blocks" and maintenance
 
-- [ ] [Contour](https://github.com/projectcontour/contour)
+- [x] [Contour](https://github.com/projectcontour/contour)
 - [ ] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), [ECR](https://aws.amazon.com/ecr/getting-started/), [GCR](https://cloud.google.com/container-registry), [Artifactory](https://hub.helm.sh/charts?q=artifactory)
 - [ ] [Velero](https://velero.io)
 
