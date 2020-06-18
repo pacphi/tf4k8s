@@ -28,7 +28,6 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
-- [x] Install [Argo CD](experiments/k8s/argo-cd)
 - [x] Install [Harbor](experiments/k8s/harbor)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
@@ -37,6 +36,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [EFK Stack](experiments/k8s/efk-stack)
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
 - [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
+- [x] Enable continuous deployment with [Argo CD](experiments/k8s/argo-cd) or [Tekton](experiments/k8s/tekton)
 
 ## Organization
 
@@ -79,7 +79,7 @@ Provision managed services in a public cloud and bind them to applications
 - [x] VMWare Tanzu Build Service
 - [ ] Concourse
 - [ ] Spinnaker
-- [ ] Tekton
+- [x] Tekton
 
 #### Reference Pipelines
 

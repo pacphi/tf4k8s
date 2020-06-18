@@ -9,6 +9,7 @@ data "template_file" "argocd_config" {
 
   vars = {
     argocd_domain  = local.argocd_domain
+    argocd_version = local.argocd_version
   }
 }
 
@@ -18,7 +19,7 @@ resource "helm_release" "argocd" {
   namespace  = kubernetes_namespace.argocd.metadata[0].name
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  version    = "2.3.5"
+  version    = "2.3.6"
 
   values = [data.template_file.argocd_config.rendered]
 

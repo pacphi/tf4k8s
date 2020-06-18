@@ -22,6 +22,9 @@ brew install cloudfoundry/tap/cf-cli
 brew tap argoproj/tap
 brew install argoproj/tap/argocd
 
+brew tap tektoncd/tools
+brew install tektoncd/tools/tektoncd-cli
+
 # Install Terraform k14s provider; @see https://github.com/k14s/terraform-provider-k14s
 TF_K14S_PLUGIN_VERSION=0.5.0 && \
 mkdir -p ~/.terraform.d/plugins && \

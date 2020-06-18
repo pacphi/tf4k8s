@@ -41,6 +41,7 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 - [x] [k9s](https://k9scli.io/topics/install/)
 - [x] [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
 - [x] [octant](https://octant.dev)
+- [x] [tekton](https://github.com/tektoncd/cli)
 
 ### Other
 

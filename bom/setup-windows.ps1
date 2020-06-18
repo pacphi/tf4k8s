@@ -122,6 +122,7 @@ scoop install helm
 scoop install helmfile
 scoop install octant
 scoop tar install
+choco install -y tektoncd-cli
 
 Set-Variable TF_K14S_PLUGIN_VERSION 0.5.0
 md $HOME/.terraform.d/plugins -ea 0
@@ -149,7 +150,7 @@ Set-Variable PIVNET_VERSION 1.0.3
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
-Set-Variable ARGOCD_VERSION 1.5.6
+Set-Variable ARGOCD_VERSION 1.6.0
 curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
 Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
 
