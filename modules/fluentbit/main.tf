@@ -3,19 +3,8 @@ resource "helm_release" "fluentbit" {
 
   name       = "fluent-bit"
   namespace  = var.namespace
-  repository = "https://kubernetes-charts.storage.googleapis.com"
+  repository = "https://fluent.github.io/helm-charts"
   chart      = "fluent-bit"
-  version    = "2.8.16"
-
-  set {
-    name = "backend.type"
-    value = "es"
-  }
-
-  set {
-    name = "backend.es.host"
-    value = "elasticsearch-master"
-  }
+  version    = "0.3.2"
 
 }
-

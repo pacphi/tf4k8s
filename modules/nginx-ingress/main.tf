@@ -20,9 +20,9 @@ resource "helm_release" "nginx-ingress" {
 
   name       = "nginx"
   namespace  = kubernetes_namespace.nginx.metadata[0].name
-  repository = "https://kubernetes-charts.storage.googleapis.com"
-  chart      = "nginx-ingress"
-  version    = "1.39.1"
+  repository = "https://charts.bitnami.com/bitnami"
+  chart      = "nginx-ingress-controller"
+  version    = "5.3.24"
 
   # For additional configuration  options @see https://github.com/helm/charts/tree/master/stable/nginx-ingress#configuration
 
@@ -32,7 +32,7 @@ resource "helm_release" "nginx-ingress" {
   }
 
   set {
-    name  = "controller.publishService.enabled"
+    name  = "publishService.enabled"
     value = "true"
   }
 

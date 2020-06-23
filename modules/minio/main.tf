@@ -4,23 +4,6 @@ resource "kubernetes_namespace" "minio" {
   }
 }
 
-data "template_file" "minio_cert" {
-  template = file("${path.module}/templates/cert.yml")
-
-  vars = {
-    minio_domain = local.minio_domain
-    namespace     = kubernetes_namespace.minio.metadata[0].name
-  }
-}
-
-resource "k14s_kapp" "minio_cert" {
-  app = "minio-cert"
-
-  namespace = "default"
-
-  config_yaml = data.template_file.minio_cert.rendered
-}
-
 resource "random_password" "accesskey_password" {
   length = 10
   special = false
@@ -42,13 +25,12 @@ data "template_file" "minio_config" {
 }
 
 resource "helm_release" "minio" {
-  depends_on = [k14s_kapp.minio_cert]
 
   name       = "minio"
   namespace  = kubernetes_namespace.minio.metadata[0].name
-  repository = "https://kubernetes-charts.storage.googleapis.com"
+  repository = "https://charts.bitnami.com/bitnami"
   chart      = "minio"
-  version    = "5.0.29"
+  version    = "3.4.12"
 
   values = [data.template_file.minio_config.rendered]
 

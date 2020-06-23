@@ -1,4 +1,5 @@
-adminPassword: ${admin_password}
+admin:
+  password: ${admin_password}
 ingress:
   enabled: true
   annotations:
@@ -7,8 +8,6 @@ ingress:
     kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/tls-acme: "true"
   hosts:
-    - ${grafana_domain}
-  tls:
-    - secretName: grafana-tls-secret
-      hosts:
-        - ${grafana_domain}
+    - name: ${grafana_domain}
+      tls: true
+      tlsSecret: grafana-tls-secret

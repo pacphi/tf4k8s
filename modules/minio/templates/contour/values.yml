@@ -1,19 +1,18 @@
-# @see https://github.com/helm/charts/blob/master/stable/minio/README.md#configuration
-
-accessKey: ${accesskey_password}
-secretKey: ${secretkey_password}
+accessKey:
+  password: ${accesskey_password}
+secretKey:
+  password: ${secretkey_password}
 
 ingress:
   enabled: true
+  certManager: true
   annotations:
     kubernetes.io/ingress.class: contour
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/tls-acme: "true"
-  path: /
   hosts:
-    - ${minio_domain}
-  tls:
-    - secretName: minio-tls-secret
-      hosts:
-        - ${minio_domain}
+    - name: ${minio_domain}
+      path: /
+      tls: true
+      tlsSecret: minio-tls-secret
