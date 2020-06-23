@@ -1,0 +1,1 @@
+variable "kubeconfig_path" {}
