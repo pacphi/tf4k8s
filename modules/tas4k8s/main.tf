@@ -30,9 +30,11 @@ data "local_file" "deployment_values_tmp" {
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.tmp"
 }
 
+# PATCH #3
+# Prepend cf-values.yml to the originally generated deployment-values.tmp
 resource "local_file" "cf_values_rendered" {
   content  = replace(data.local_file.deployment_values_tmp.content, "#@library/ref \"@github.com/cloudfoundry/cf-for-k8s\"", data.template_file.cf_values.rendered)
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/cf-values.yml"
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
 data "template_file" "app_registry_values" {
@@ -101,8 +103,7 @@ resource "k14s_kapp" "tas4k8s_cert" {
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
     "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values"#,
-    #"${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-optional/use-external-dns-for-wildcard.yml"
+    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values"
   ]
 
   debug_logs = true

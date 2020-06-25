@@ -7,7 +7,7 @@ fi
 
 DOMAIN="$1"
 
-# PATCH
+# PATCH #1
 # Overwrite the generate-values.sh script that's bundled in
 # /tmp/tanzu-application-service/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/hack
 # with {tf4k8s_root}/modules/tas4k8s/scripts/seed-config.sh so that Terraform variables
@@ -26,3 +26,15 @@ mkdir -p vendor
 cp -Rf /tmp/tanzu-application-service/config vendor
 cp -Rf /tmp/tanzu-application-service/config-optional vendor
 cp -Rf /tmp/tanzu-application-service/configuration-values vendor
+
+# PATCH #2
+# Note: ytt 0.28.0 introduces the ability to target a data/values file at a library.
+# tanzu-application-service now consumes cf-for-k8s as a library and takes advantage of that ytt feature
+# in https://github.com/pivotal/tanzu-application-service/commit/747c717ebabc4844357241a4bf58290390bdedfd#diff-4ea4a837e2e8d9f061110d2bfa1a2f27
+# With that change, a TAS operator is expected to configure cf-for-k8s explicitly (via a data/value file annotated with @library/ref).
+
+# However, if we want to supply additional configuration to cf-for-k8s we need to copy that into place within the library directory.
+# Since TAS releases do not package https://github.com/cloudfoundry/cf-for-k8s/tree/master/config-optional, earlier we had to vendir
+# that directory and copy one or more file into place. In this case, we're integrating external-dns with Istio ingress.
+
+cp -f vendor/config-optional/use-external-dns-for-wildcard.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
