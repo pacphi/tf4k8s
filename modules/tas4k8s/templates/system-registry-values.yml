@@ -1,7 +1,7 @@
 #@data/values
 ---
 system_registry:
-  hostname: "registry.pivotal.io"
+  hostname: "${pivnet_registry_hostname}"
   username: "${pivnet_username}"
   password: "${pivnet_password}"
 

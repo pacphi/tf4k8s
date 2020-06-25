@@ -6,6 +6,7 @@ module "tas4k8s" {
   registry_repository   = var.registry_repository
   registry_username     = var.registry_username
   registry_password     = var.registry_password
+  pivnet_registry_hostname = var.pivnet_registry_hostname
   pivnet_username     = var.pivnet_username
   pivnet_password     = var.pivnet_password
   kubeconfig_path  = var.kubeconfig_path
@@ -31,6 +32,11 @@ variable "registry_username" {
 
 variable "registry_password" {
   description = "Container image/artifact registry/repository password"
+}
+
+variable "pivnet_registry_hostname" {
+  description = "Tanzu Network image/artifact registry hostname.  (This is the source of tas4k8s install images)."
+  default = "registry.pivotal.io"
 }
 
 variable "pivnet_username" {

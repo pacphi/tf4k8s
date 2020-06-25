@@ -9,17 +9,32 @@ resource "random_password" "gen" {
   special = false
 }
 
+data "local_file" "certs_vars" {
+  filename = "${path.module}/certs.auto.tfvars"
+}
+
 data "template_file" "cf_values" {
   template = file("${path.module}/templates/cf-values.yml")
 
   vars = {
     cf_admin_password = random_password.gen.result
+
+    system_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1)
+    system_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1)
+    workloads_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1)
+    workloads_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1)
   }
 }
 
+data "local_file" "deployment_values_tmp" {
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.tmp"
+}
+
+# PATCH #3
+# Prepend cf-values.yml to the originally generated deployment-values.tmp
 resource "local_file" "cf_values_rendered" {
-  content     = data.template_file.cf_values.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/cf-values.yml"
+  content  = replace(data.local_file.deployment_values_tmp.content, "#@library/ref \"@github.com/cloudfoundry/cf-for-k8s\"", data.template_file.cf_values.rendered)
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
 data "template_file" "app_registry_values" {
@@ -32,6 +47,7 @@ data "template_file" "app_registry_values" {
     registry_password   = var.registry_password
   }
 }
+
 resource "local_file" "app_registry_values_rendered" {
   content     = data.template_file.app_registry_values.rendered
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/app-registry-values.yml"
@@ -41,8 +57,9 @@ data "template_file" "system_registry_values" {
   template = file("${path.module}/templates/system-registry-values.yml")
 
   vars = {
-    pivnet_username     = var.pivnet_username
-    pivnet_password     = var.pivnet_password
+    pivnet_registry_hostname = var.pivnet_registry_hostname
+    pivnet_username          = var.pivnet_username
+    pivnet_password          = var.pivnet_password
   }
 }
 
@@ -87,8 +104,7 @@ resource "k14s_kapp" "tas4k8s_cert" {
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
     "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-optional/use-external-dns-for-wildcard.yml"
+    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values"
   ]
 
   debug_logs = true

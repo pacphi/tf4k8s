@@ -8,6 +8,8 @@ variable "registry_username" {}
 
 variable "registry_password" {}
 
+variable "pivnet_registry_hostname" {}
+
 variable "pivnet_username" {}
 
 variable "pivnet_password" {}
