@@ -8,9 +8,7 @@ variable "registry_username" {}
 
 variable "registry_password" {}
 
-variable "pivnet_registry_hostname" {
-  default = "registry.pivotal.io"
-}
+variable "pivnet_registry_hostname" {}
 
 variable "pivnet_username" {}
 

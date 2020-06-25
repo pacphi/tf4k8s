@@ -6,6 +6,7 @@ module "tas4k8s" {
   registry_repository   = var.registry_repository
   registry_username     = var.registry_username
   registry_password     = var.registry_password
+  pivnet_registry_hostname = var.pivnet_registry_hostname
   pivnet_username     = var.pivnet_username
   pivnet_password     = var.pivnet_password
   kubeconfig_path  = var.kubeconfig_path
