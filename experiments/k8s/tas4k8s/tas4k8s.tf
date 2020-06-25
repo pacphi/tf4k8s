@@ -33,6 +33,11 @@ variable "registry_password" {
   description = "Container image/artifact registry/repository password"
 }
 
+variable "pivnet_registry_hostname" {
+  description = "Tanzu Network image/artifact registry hostname.  (This is the source of tas4k8s install images)."
+  default = "registry.pivotal.io"
+}
+
 variable "pivnet_username" {
   description = "Tanzu Network image/artifact registry/repository username"
 }

@@ -57,8 +57,9 @@ data "template_file" "system_registry_values" {
   template = file("${path.module}/templates/system-registry-values.yml")
 
   vars = {
-    pivnet_username     = var.pivnet_username
-    pivnet_password     = var.pivnet_password
+    pivnet_registry_hostname = var.pivnet_registry_hostname
+    pivnet_username          = var.pivnet_username
+    pivnet_password          = var.pivnet_password
   }
 }
 
