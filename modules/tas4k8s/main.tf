@@ -9,16 +9,29 @@ resource "random_password" "gen" {
   special = false
 }
 
+data "local_file" "certs_vars" {
+  filename = "${path.module}/certs.auto.tfvars"
+}
+
 data "template_file" "cf_values" {
   template = file("${path.module}/templates/cf-values.yml")
 
   vars = {
     cf_admin_password = random_password.gen.result
+
+    system_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1)
+    system_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1)
+    workloads_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1)
+    workloads_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1)
   }
 }
 
+data "local_file" "deployment_values_tmp" {
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.tmp"
+}
+
 resource "local_file" "cf_values_rendered" {
-  content     = data.template_file.cf_values.rendered
+  content  = replace(data.local_file.deployment_values_tmp.content, "#@library/ref \"@github.com/cloudfoundry/cf-for-k8s\"", data.template_file.cf_values.rendered)
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/cf-values.yml"
 }
 
@@ -32,6 +45,7 @@ data "template_file" "app_registry_values" {
     registry_password   = var.registry_password
   }
 }
+
 resource "local_file" "app_registry_values_rendered" {
   content     = data.template_file.app_registry_values.rendered
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/app-registry-values.yml"
@@ -87,8 +101,8 @@ resource "k14s_kapp" "tas4k8s_cert" {
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
     "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-optional/use-external-dns-for-wildcard.yml"
+    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values"#,
+    #"${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config-optional/use-external-dns-for-wildcard.yml"
   ]
 
   debug_logs = true

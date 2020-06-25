@@ -1,6 +1,17 @@
+#@library/ref "@github.com/cloudfoundry/cf-for-k8s"
 #@data/values
 ---
-cf_admin_password: ${cf_admin_password}
-
 #! The password for the CF "admin" user.
 #! - operators can use the admin user to test `cf push`
+cf_admin_password: ${cf_admin_password}
+
+system_certificate:
+  #! These certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
+  crt: ${system_fullchain_certificate}
+  key: ${system_private_key}
+  ca: ""
+workloads_certificate:
+  #! These certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
+  crt: ${workloads_fullchain_certificate}
+  key: ${workloads_private_key}
+  ca: ""

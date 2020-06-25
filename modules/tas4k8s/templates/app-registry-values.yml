@@ -1,3 +1,4 @@
+#@library/ref "@github.com/cloudfoundry/cf-for-k8s"
 #@data/values
 ---
 app_registry:
