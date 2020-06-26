@@ -89,3 +89,7 @@ tar zxvf krew.tar.gz &&
 KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
 "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
 "$KREW" update
+
+curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.8.1/kind-$(uname)-amd64" &&
+chmod +x kind &&
+sudo mv kind /usr/local/bin

@@ -116,6 +116,7 @@ choco install -y terraform-docs
 scoop install tflint
 choco install -y httpie -source python
 choco install -y keybase
+choco install -y kind
 scoop install kubectl
 scoop install k9s
 scoop install helm
