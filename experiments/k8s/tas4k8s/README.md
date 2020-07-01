@@ -73,7 +73,7 @@ Verify and/or update the values for `TAS4K8S_VERSION` and `TAS4K8S_PRODUCT_FILE_
 ## Remove
 
 ```
-./destroy-cf4k8s.sh <iaas>
+./destroy-tas4k8s.sh <iaas>
 ```
 > Set `iaas` to be one of [ amazon, azure, gcp ]
 
