@@ -1,4 +1,4 @@
-# Terraform for creating a Ggoogle Container Registry
+# Terraform for creating a Google Container Registry
 
 Sometimes you need a place to put your container images.  Why not use Google Cloud Platform's registry?
 
