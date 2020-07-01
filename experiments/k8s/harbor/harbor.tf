@@ -1,5 +1,5 @@
 module "harbor" {
-  source = "../../../modules/harbor"
+  source = "../../../modules/registry/harbor"
 
   domain = var.domain
   ingress = var.ingress
