@@ -66,3 +66,7 @@ The following documentation provides more detailed information about how to work
 ```
 ./destroy-jcr.sh
 ```
+
+## Troubleshooting
+
+* If you forgot to accept the EULA on first-time configuration, see this Stack Overflow [answer](https://stackoverflow.com/questions/60095151/how-can-i-automatically-accept-artifactory-eula) to remedy.
