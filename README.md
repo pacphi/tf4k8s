@@ -28,7 +28,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
-- [x] Install [Harbor](experiments/k8s/harbor)
+- [x] Install a registry like [ACR](experiments/azure/registry), [GCR](experiments/gcp/registry), [Harbor](experiments/k8s/harbor) or [JCR](experiments/k8s/jcr)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
 - [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
@@ -100,7 +100,7 @@ Provision managed services in a public cloud and bind them to applications
 ### Additional "building blocks" and maintenance
 
 - [x] [Contour](https://github.com/projectcontour/contour)
-- [ ] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), GCR](https://cloud.google.com/container-registry), [Artifactory](https://hub.helm.sh/charts?q=artifactory)
+- [x] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), GCR](https://cloud.google.com/container-registry), [JFrog Container Registry](https://github.com/jfrog/charts/tree/master/stable/artifactory-jcr)
 - [ ] [Velero](https://velero.io)
 
 ### Services

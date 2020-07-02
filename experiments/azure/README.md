@@ -6,7 +6,7 @@ Here we'll use [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
 * Provision cloud resources (like DNS)
 * Create a simple AKS cluster
 * Install additional Kubernetes infrastructure modules (like cert-manager, nginx-ingress, external-dns)
-* Install Harbor
+* Install a container registry
 * Install [cf-for-k8s](https://github.com/cloudfoundry/cf-for-k8s)
 
 and much more.
@@ -20,10 +20,11 @@ and much more.
 * [Install cert-manager](certmanager)
 * [Install nginx-ingress](../k8s/nginx-ingress) or [Contour](../k8s/contour)
 * [Install external-dns](external-dns)
-* [Install Harbor](../k8s/harbor)
+* Install a container registry like [ACR](registry), [Harbor](../k8s/harbor) or [JCR](../k8s/jcr)
 * [Install cf-for-k8s](../k8s/cf4k8s)
 
 ## For additional exploration
 
 * [Install VMWare Tanzu Application Service for Kubernetes](../k8s/tas4k8s)
 * [Create an Azure storage container](blobstore)
+
