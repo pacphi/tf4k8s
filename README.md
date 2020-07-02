@@ -100,7 +100,7 @@ Provision managed services in a public cloud and bind them to applications
 ### Additional "building blocks" and maintenance
 
 - [x] [Contour](https://github.com/projectcontour/contour)
-- [x] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), GCR](https://cloud.google.com/container-registry), [JFrog Container Registry](https://github.com/jfrog/charts/tree/master/stable/artifactory-jcr)
+- [x] Registries: [ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro), [GCR](https://cloud.google.com/container-registry), [JFrog Container Registry](https://github.com/jfrog/charts/tree/master/stable/artifactory-jcr)
 - [ ] [Velero](https://velero.io)
 
 ### Services
