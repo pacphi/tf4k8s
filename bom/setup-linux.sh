@@ -22,9 +22,9 @@ curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELM
 sudo mv helmfile /usr/local/bin
 
 TERRAFORM_VERSION=0.12.28
-curl -Lo ./terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-unzip terraform.zip
-rm -f terraform.zip
+curl -Lo https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 sudo mv terraform /usr/local/bin
 
 curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
@@ -69,7 +69,7 @@ chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
 
 ARGOCD_VERSION=1.6.1 && \
-curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-amd64 && \
+curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-amd64 && \
 chmod +x /usr/local/bin/argocd
 
 TEKTON_VERSION=0.10.0 && \
