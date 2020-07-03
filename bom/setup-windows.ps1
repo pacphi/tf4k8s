@@ -125,7 +125,7 @@ scoop install octant
 scoop tar install
 choco install -y tektoncd-cli
 
-Set-Variable TF_K14S_PLUGIN_VERSION 0.5.0
+Set-Variable TF_K14S_PLUGIN_VERSION 0.6.0
 md $HOME/.terraform.d/plugins -ea 0
 curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v$TF_K14S_PLUGIN_VERSION/terraform-provider-k14s-binaries.tgz"
 tar xzvf terraform-provider-k14s-binaries.tgz -C $HOME/.terraform.d/plugins/
@@ -135,7 +135,7 @@ Remove-Item terraform-provider-k14s-binaries.tgz
 md $HOME/.apps/bin -ea 0
 cd $HOME/.apps/bin
 
-Set-Variable YTT_VERSION 0.27.2
+Set-Variable YTT_VERSION 0.28.0
 curl -LO "https://github.com/k14s/ytt/releases/download/v$YTT_VERSION/ytt-windows-amd64.exe"
 Rename-Item -Path "ytt-windows-amd64.exe" -NewName "ytt.exe"
 
@@ -143,15 +143,15 @@ Set-Variable VENDIR_VERSION 0.8.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
 Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
 
-Set-Variable KAPP_VERSION 0.26.0
+Set-Variable KAPP_VERSION 0.30.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
 Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
 
-Set-Variable PIVNET_VERSION 1.0.3
+Set-Variable PIVNET_VERSION 1.0.4
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
-Set-Variable ARGOCD_VERSION 1.6.0
+Set-Variable ARGOCD_VERSION 1.6.1
 curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
 Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
 
