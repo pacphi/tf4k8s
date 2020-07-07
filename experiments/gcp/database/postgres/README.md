@@ -1,10 +1,10 @@
-# Terraform for creating a GCP MySQL database instance
+# Terraform for creating a GCP PostgreSQL database instance
 
 Sometimes you need a database.  Why not use Google Cloud Platform's Cloud SQL?
 
 Cloud SQL is an easy-to-use service that delivers fully managed SQL databases in the cloud. Cloud SQL provides PostgreSQL, SQL Server, and MySQL databases.
 
-This sample takes advantage of the [mysql](https://registry.terraform.io/modules/GoogleCloudPlatform/sql-db/google/3.2.0/submodules/mysql) sub-module of [sql-db](https://registry.terraform.io/modules/GoogleCloudPlatform/sql-db/google/3.2.0) within the Terraform Registry.
+This sample takes advantage of the [postgresql](https://registry.terraform.io/modules/GoogleCloudPlatform/sql-db/google/3.2.0/submodules/postgresql) sub-module of [sql-db](https://registry.terraform.io/modules/GoogleCloudPlatform/sql-db/google/3.2.0) within the Terraform Registry.
 
 Starts with the assumption that you will use a service account's credentials that has appropriate role/permissions to create/delete a Cloud SQL database instance.
 
@@ -34,7 +34,7 @@ Amend the values for
 
 You'll probably want to connect to the database instance you just created, huh?
 
-In order to obtain the ssl_key, ssl_cert, and ssl_ca you'll, there's a convenient script to generate them and a sample [mysql](https://cloud.google.com/sql/docs/mysql/connect-admin-ip#connect-ssl) client command
+In order to obtain the ssl_key, ssl_cert, and ssl_ca you'll, there's a convenient script to generate them and a sample [psql](https://cloud.google.com/sql/docs/postgres/connect-admin-ip#connect-ssl) client command
 
 ### Edit terraform.tfvars 
 
@@ -76,4 +76,4 @@ To tear it down
 
 ## Troubleshooting
 
-If you're going to setup the database instance with an `encryption_key_name` then you will need to perform some work outside of Terraform as described [here](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).  The service account you use to create the database instance must also have the `roles/cloudkms.cryptoKeyEncrypterDecrypter` role assigned.
+If you're going to setup the database instance with an `encryption_key_name` then you will need to perform some work outside of Terraform as described [here](https://cloud.google.com/sql/docs/postgres/configure-cmek#grantkey).  The service account you use to create the database instance must also have the `roles/cloudkms.cryptoKeyEncrypterDecrypter` role assigned.

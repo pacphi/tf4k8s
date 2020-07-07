@@ -20,4 +20,5 @@ resource "local_file" "cert_file" {
 resource "local_file" "key_file" {
   content = google_sql_ssl_cert.client_cert.private_key
   filename = pathexpand("~/.tf4k8s/gcp/${var.instance_name}.ssl_key.pem")
+  file_permission = "0600"
 }

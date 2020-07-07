@@ -1,4 +1,4 @@
-module "cloudsql_mysql_connect" {
+module "cloudsql_connect" {
   source = "../../../../modules/database/gcp/generate-certs"
 
   project = var.project
@@ -20,6 +20,11 @@ variable "instance_name" {
   description = "The name of an existing Cloud SQL database instance"
 }
 
+variable "database_name" {
+  description = "The name of an existing database within Cloud SQL database instance"
+  default = "default"
+}
+
 variable "database_username" {
   description = "The name of a database instance user"
   default = "default"
@@ -34,17 +39,21 @@ variable "service_account_credentials" {
 }
 
 output "ssl_key" {
-  value = module.cloudsql_mysql_connect.ssl_key
+  value = module.cloudsql_connect.ssl_key
 }
 
 output "ssl_cert" {
-  value = module.cloudsql_mysql_connect.ssl_cert
+  value = module.cloudsql_connect.ssl_cert
 }
 
 output "ssl_ca" {
-  value = module.cloudsql_mysql_connect.ssl_ca
+  value = module.cloudsql_connect.ssl_ca
 }
 
 output "mysql_client_encypted_connection_command" {
-  value = "mysql --host=${var.instance_public_ip_address} --ssl-key=${module.cloudsql_mysql_connect.ssl_key} --ssl-cert=${module.cloudsql_mysql_connect.ssl_cert} --ssl-ca=${module.cloudsql_mysql_connect.ssl_ca} -u ${var.database_username} -p"
+  value = "mysql --host=${var.instance_public_ip_address} --ssl-key=${module.cloudsql_connect.ssl_key} --ssl-cert=${module.cloudsql_connect.ssl_cert} --ssl-ca=${module.cloudsql_connect.ssl_ca} -u ${var.database_username} -p"
+}
+
+output "psql_client_encypted_connection_command" {
+  value = "psql \"sslmode=verify-ca hostaddr=${var.instance_public_ip_address} sslkey=${module.cloudsql_connect.ssl_key} sslcert=${module.cloudsql_connect.ssl_cert} sslrootcert=${module.cloudsql_connect.ssl_ca} user=${var.database_username} dbname=${var.database_name}\""
 }

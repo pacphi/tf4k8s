@@ -2,15 +2,15 @@ resource "random_id" "suffix" {
   byte_length = 4
 }
 
-module "cloudsql_mysql" {
-  source  = "GoogleCloudPlatform/sql-db/google//modules/mysql"
+module "cloudsql_postgres" {
+  source  = "GoogleCloudPlatform/sql-db/google//modules/postgresql"
   version = "3.2.0"
   
   database_version = var.database_version
   tier = var.database_tier
   user_name = var.database_username
-  db_charset = "utf8"
-  db_collation = "utf8_general_ci"
+  db_charset = "UTF8"
+  db_collation = "en_US.UTF8"
   encryption_key_name = var.encryption_key_name 
   name = "${var.name}-${random_id.suffix.hex}"
   project_id = var.project
@@ -23,7 +23,6 @@ module "cloudsql_mysql" {
   availability_type = "ZONAL"
 
   backup_configuration = {
-    binary_log_enabled = false
     enabled = false
     start_time = "02:00"
   }
@@ -40,10 +39,8 @@ module "cloudsql_mysql" {
   delete_timeout = "10m"
   disk_autoresize = true
   disk_type = "PD_SSD"
-  failover_replica = false
   maintenance_window_day = 6
   maintenance_window_hour = 2
   maintenance_window_update_track = "stable"
   pricing_plan = "PER_USE"
-  user_host = "%"
 }
