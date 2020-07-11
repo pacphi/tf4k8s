@@ -61,7 +61,7 @@ Amend the values for
 
 ### for AWS
 
-These are source from `~/.aws/credentials`.
+These are sourced from `~/.aws/credentials`.
 
 ### for Azure
 
