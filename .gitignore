@@ -17,3 +17,4 @@ samples/**/bin/**
 .ytt/
 dist/
 Dockerfile
+manifest.yml
