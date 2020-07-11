@@ -25,7 +25,7 @@ data "template_file" "config_template" {
   template = file("${path.module}/templates/manifest.tpl")
 
   vars = {
-    gcp_credentials = var.gcp_credentials
+    gcp_credentials = indent(6, "|\n${var.gcp_credentials}")
     gcp_project = var.gcp_project
 
     db_host = var.db_host

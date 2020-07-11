@@ -14,11 +14,7 @@ cd "${IAAS}"
 if [ $IAAS == "gcp" ]; then
     credentials=$(cat ${GOOGLE_APPLICATION_CREDENTIALS})
 	project_id=$(cat ${GOOGLE_APPLICATION_CREDENTIALS} | jq .project_id | tr -d '"')
-	suffix=$(cat ${GOOGLE_APPLICATION_CREDENTIALS} | jq .private_key_id | tr -d '"')
-	cred_filename="~/.tf4k8s/gcp/${project_id}-${suffix}.json"
-	rm -f "${cred_filename}"
-	echo $credentials > "${cred_filename}"
-	export TF_VAR_gcp_credentials="${cred_filename}"
+	export TF_VAR_gcp_credentials="${credentials}"
 	export TF_VAR_gcp_project="${project_id}"
 fi
 
