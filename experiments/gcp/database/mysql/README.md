@@ -77,3 +77,22 @@ To tear it down
 ## Troubleshooting
 
 If you're going to setup the database instance with an `encryption_key_name` then you will need to perform some work outside of Terraform as described [here](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).  The service account you use to create the database instance must also have the `roles/cloudkms.cryptoKeyEncrypterDecrypter` role assigned.
+
+
+## Creating a database for use with Pivotal Cloud Service Broker
+
+Use this sample `terraform.tfvars` replacing values as appropriate
+
+```
+project = "fe-cphillipson"
+region = "us-west1"
+zone = "c"
+database_version = "MYSQL_5_7"
+database_tier = "db-f1-micro"
+database_username = "admin"
+encryption_key_name = ""
+name = "pivotal-csb"
+additional_databases = [ { project = "fe-cphillipson", name = "servicebroker", charset = "utf8", collation = "utf8_general_ci", instance = "pivotal-csb" } ]
+additional_users = []
+service_account_credentials = "~/.ssh/FE-cphillipson-c116bc661602.json"
+```

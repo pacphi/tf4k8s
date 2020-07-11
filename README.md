@@ -124,6 +124,8 @@ Provision managed services in a public cloud and bind them to applications
 #### Databases
 
 - [ ] Mongo
+- [ ] MySQL
+- [ ] Postgres
 
 ### Cloud Native Samples
 
