@@ -36,6 +36,10 @@ variable "gcp_credentials" {
   description = "Path to service account credentials file in JSON format"
 }
 
+variable "gcp_project" {
+  description = "The GCP project that will host all managed services provisioned by the broker"
+}
+
 variable "registry_repository" {
  description = "Container image/artifact registry/repository name"
 }

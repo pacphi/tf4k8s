@@ -19,6 +19,7 @@ if [ $IAAS == "gcp" ]; then
 	rm -f "${cred_filename}"
 	echo $credentials > "${cred_filename}"
 	export TF_VAR_gcp_credentials="${cred_filename}"
+	export TF_VAR_gcp_project="${project_id}"
 fi
 
 terraform init

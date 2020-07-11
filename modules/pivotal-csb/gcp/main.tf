@@ -26,6 +26,7 @@ data "template_file" "config_template" {
 
   vars = {
     gcp_credentials = var.gcp_credentials
+    gcp_project = var.gcp_project
 
     db_host = var.db_host
     db_name = var.db_name

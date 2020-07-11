@@ -2,6 +2,7 @@ module "pivotal-csb" {
   source = "../../../../modules/pivotal-csb/gcp"
 
   gcp_credentials = var.gcp_credentials
+  gcp_project = var.gcp_project
 
   db_host = var.db_host
   db_name = var.db_name
@@ -60,6 +61,10 @@ variable "db_client_key_file" {
 
 variable "gcp_credentials" {
   description = "Path to service account credentials file in JSON format"
+}
+
+variable "gcp_project" {
+  description = "The GCP project that will host all managed services provisioned by the broker"
 }
 
 variable "registry_repository" {

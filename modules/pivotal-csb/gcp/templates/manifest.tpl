@@ -10,6 +10,7 @@ applications:
   env:
     GSB_BROKERPAK_BUILTIN_PATH: /gcp-brokerpak
     GOOGLE_CREDENTIALS: ${gcp_credentials}
+    GOOGLE_PROJECT: ${gcp_project}
     DB_HOST: ${db_host}
     DB_NAME: ${db_name}
     DB_PORT: ${db_port}
