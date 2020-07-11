@@ -1,7 +1,7 @@
 .history/
 .terraform/
 terraform.tfstate
-terraform.tfstate.backup
+terraform.tfstate.*
 terraform.tfvars.backup
 terraform.log
 source-repos/terraform*
@@ -15,3 +15,5 @@ modules/**/templates/kpack-webhook.yml
 *.auto.tfvars
 samples/**/bin/**
 .ytt/
+dist/
+Dockerfile
