@@ -28,6 +28,7 @@ and much more.
 * [Install VMWare Tanzu Application Service for Kubernetes](../k8s/tas4k8s)
 * [Create an Azure storage container](blobstore)
 * [Install Pivotal Cloud Service Broker](../k8s/pivotal-csb)
+* [Install Stratos](../k8s/stratos)
 * Install a continuous deployment engine like [ArgoCD](../k8s/argo-cd) or [Tekton](../k8s/tekton)
 * Enable canary deployments with [Flagger](../k8s/flagger)
 * Integrate observability with a choice of [Wavefront](../k8s/wavefront), [EFK](../k8s/efk-stack) or [Loki](../k8s/loki-stack) stacks

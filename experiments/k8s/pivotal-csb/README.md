@@ -79,6 +79,8 @@ az_tenant_id = "19247f74-261g-4db2-6a50-c65a6377b0d2"
 
 These are sourced from an environment variable `GOOGLE_APPLICATION_CREDENTIALS`
 
+Special note: make sure that the Service Networking API is [enabled](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
+
 
 ## Install
 
