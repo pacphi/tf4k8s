@@ -91,3 +91,13 @@ These are sourced from an environment variable `GOOGLE_APPLICATION_CREDENTIALS`
 ```
 ./destroy-pivotal-csb.sh {iaas}
 ```
+
+## Verify that services have been installed
+
+```
+cf service-access
+```
+
+## Enabling service access
+
+If you wish for (a) service(s) to be accessible in (an)other organization(s) and space(s) within your `cf4k8s` or `tas4k8s` installation, then please consult the following [guide](https://docs.cloudfoundry.org/services/access-control.html).
