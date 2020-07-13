@@ -65,11 +65,12 @@ These are sourced from `~/.aws/credentials`.
 
 ### for Azure
 
-Create a file called `azure-csb.auto.tfvars` and add the following key-value pairs
+Create a file called `credentials.auto.tfvars` in the `azure` sub-directory and add the following key-value pairs
 
 ```
 az_subscription_id = "d67c4971-e658-4g9e-ab4c-d2acbcb65474"
 az_client_id = "a7859f75-dfc3-474f-b094-0abd4egb9d5e"
+az_client_secret = "b6248a79-ecc5-613d-b124-724d4egb9d3"
 az_tenant_id = "19247f74-261g-4db2-6a50-c65a6377b0d2"
 ```
 > These are sample credentials. Replace the values above with your own credentials.

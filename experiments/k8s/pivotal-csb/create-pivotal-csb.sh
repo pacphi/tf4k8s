@@ -7,9 +7,14 @@ fi
 
 IAAS="$1"
 
-cp terraform.tfvars "${IAAS}/gcp-csb.auto.tfvars"
+cp terraform.tfvars "${IAAS}/csb.auto.tfvars"
 
 cd "${IAAS}"
+
+if [ $IAAS == "aws" ]; then
+    credentials=$(cat ${HOME}/.aws/credentials)
+	export TF_VAR_aws_credentials="${credentials}"
+fi
 
 if [ $IAAS == "gcp" ]; then
     credentials=$(cat ${GOOGLE_APPLICATION_CREDENTIALS})

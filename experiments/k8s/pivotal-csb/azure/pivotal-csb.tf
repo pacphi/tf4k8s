@@ -1,8 +1,7 @@
 module "pivotal-csb" {
-  source = "../../../../modules/pivotal-csb/gcp"
+  source = "../../../../modules/pivotal-csb/aws"
 
-  gcp_credentials = var.gcp_credentials
-  gcp_project = var.gcp_project
+  aws_credentials = var.aws_credentials
 
   db_host = var.db_host
   db_name = var.db_name
@@ -93,10 +92,18 @@ variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
 }
 
-variable "gcp_credentials" {
-  description = "Service account credentials in JSON format"
+variable "az_subscription_id" {
+  description = "Azure Subscription (id)"
 }
 
-variable "gcp_project" {
-  description = "The GCP project that will host all managed services provisioned by the broker"
+variable "az_client_id" {
+  description = "Azure Service Principal (appId)"
+}
+
+variable "az_client_secret" {
+  description = "Azure Service Principal (password)"
+}
+
+variable "az_tenant_id" {
+  description = "Azure Service Principal (tenant)"
 }

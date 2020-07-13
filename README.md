@@ -29,9 +29,10 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
 - [x] Install a registry like [ACR](experiments/azure/registry), [GCR](experiments/gcp/registry), [Harbor](experiments/k8s/harbor) or [JCR](experiments/k8s/jcr)
+- [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
-- [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
+- [x] Install [Pivotal Cloud Service Broker](experiments/k8s/pivotal-csb)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
 - [x] Install [EFK Stack](experiments/k8s/efk-stack)
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
@@ -69,7 +70,7 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] [Google Cloud Platform](https://github.com/GoogleCloudPlatform/gcp-service-broker)
 - [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
 - [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
-- [ ] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/pivotal/cloud-service-broker)
+- [x] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/pivotal/cloud-service-broker)
 
 ### CI/CD
 

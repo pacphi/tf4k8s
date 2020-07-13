@@ -1,30 +1,3 @@
-module "pivotal-csb" {
-  source = "../../../../modules/pivotal-csb/gcp"
-
-  gcp_credentials = var.gcp_credentials
-  gcp_project = var.gcp_project
-
-  db_host = var.db_host
-  db_name = var.db_name
-  db_user = var.db_user
-  db_password = var.db_password
-  db_port = var.db_port
-  db_ca_cert_file = var.db_ca_cert_file
-  db_client_cert_file = var.db_client_cert_file
-  db_client_key_file = var.db_client_key_file
-
-  registry_repository = var.registry_repository
-  registry_username = var.registry_username
-  registry_password = var.registry_password
-
-  container_image = var.container_image
-  container_tag = var.container_tag
-
-  cf_api_endpoint = var.cf_api_endpoint
-  cf_admin_username = var.cf_admin_username
-  cf_admin_password = var.cf_admin_password
-}
-
 variable "db_host" {
   description = "The hostname or IP address of the backing database for the service broker"
 }
@@ -93,10 +66,18 @@ variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
 }
 
-variable "gcp_credentials" {
-  description = "Service account credentials in JSON format"
+variable "az_subscription_id" {
+  description = "Azure Subscription (id)"
 }
 
-variable "gcp_project" {
-  description = "The GCP project that will host all managed services provisioned by the broker"
+variable "az_client_id" {
+  description = "Azure Service Principal (appId)"
+}
+
+variable "az_client_secret" {
+  description = "Azure Service Principal (password)"
+}
+
+variable "az_tenant_id" {
+  description = "Azure Service Principal (tenant)"
 }

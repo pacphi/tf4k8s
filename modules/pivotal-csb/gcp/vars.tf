@@ -32,14 +32,6 @@ variable "db_client_key_file" {
   description = "The path to the private key for the database"
 }
 
-variable "gcp_credentials" {
-  description = "Path to service account credentials file in JSON format"
-}
-
-variable "gcp_project" {
-  description = "The GCP project that will host all managed services provisioned by the broker"
-}
-
 variable "registry_repository" {
  description = "Container image/artifact registry/repository name"
 }
@@ -72,4 +64,12 @@ variable "cf_admin_username" {
 
 variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
+}
+
+variable "gcp_credentials" {
+  description = "Service account credentials in JSON format"
+}
+
+variable "gcp_project" {
+  description = "The GCP project that will host all managed services provisioned by the broker"
 }
