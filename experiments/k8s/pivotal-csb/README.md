@@ -103,3 +103,46 @@ cf service-access
 ## Enabling service access
 
 If you wish for (a) service(s) to be accessible in (an)other organization(s) and space(s) within your `cf4k8s` or `tas4k8s` installation, then please consult the following [guide](https://docs.cloudfoundry.org/services/access-control.html).
+
+
+## Troubleshooting
+
+### on GCP
+
+If you're having trouble creating a Cloud SQL instance via the broker, as in this [article](https://stackoverflow.com/questions/56957596/cant-add-private-ip-vpc-to-new-google-cloud-sql-instance-with-gcloud).
+
+You might try allocating an IP range for services
+
+```
+gcloud compute addresses create google-managed-services-default \
+    --global \
+    --purpose=VPC_PEERING \
+    --prefix-length=16 \
+    --description="Peering range for Google" \
+    --network=default \
+    --project=fe-cphillipson
+```
+
+and establishing a private connection to those services
+
+
+``
+gcloud services vpc-peerings connect \
+    --service=servicenetworking.googleapis.com \
+    --ranges=google-managed-services-default \
+    --network=default \
+    --project=fe-cphillipson
+```
+
+or
+
+```
+gcloud services vpc-peerings update \
+    --service=servicenetworking.googleapis.com \
+    --ranges=google-managed-services-default \
+    --network=default \
+    --project=fe-cphillipson \
+    --force
+```
+
+The above samples are taken from [Configuring private services access](https://cloud.google.com/vpc/docs/configure-private-services-access).
