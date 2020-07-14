@@ -33,6 +33,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
 - [x] Install [Pivotal Cloud Service Broker](experiments/k8s/pivotal-csb)
+- [x] Install [Stratos](experiments/k8s/stratos)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
 - [x] Install [EFK Stack](experiments/k8s/efk-stack)
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
@@ -61,7 +62,7 @@ Above-mentioned experiments will evolve to include automating base configuration
 
 #### Administration
 
-- [ ] Stratos
+- [x] Stratos
 
 #### Open Service Broker-compatible API servers
 

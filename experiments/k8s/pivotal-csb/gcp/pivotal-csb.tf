@@ -35,11 +35,11 @@ variable "db_name" {
 }
 
 variable "db_password" {
-  description = "The database username"
+  description = "The database password"
 }
 
 variable "db_user" {
-  description = "The database password"
+  description = "The database username"
 }
 
 variable "db_port" {

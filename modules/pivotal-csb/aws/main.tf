@@ -114,7 +114,7 @@ resource "null_resource" "register_broker" {
       SECURITY_USER_NAME = random_uuid.api_user.result
       SECURITY_USER_PASSWORD = random_password.api_password.result
     }
-    command = "cf create-service-broker $BROKER_NAME $SECURITY_USER_NAME $SECURITY_USER_PASSWORD https://$(cf app $APP_NAME | grep 'routes:' | cut -d ':' -f 2 | xargs) --space-scoped || cf update-service-broker $BROKER_NAME $SECURITY_USER_NAME $SECURITY_USER_PASSWORD https://$(cf app $APP_NAME | grep 'routes:' | cut -d ':' -f 2 | xargs)"
+    command = "cf create-service-broker $BROKER_NAME $SECURITY_USER_NAME $SECURITY_USER_PASSWORD https://$(cf app $APP_NAME | grep 'routes:' | cut -d ':' -f 2 | xargs) || cf update-service-broker $BROKER_NAME $SECURITY_USER_NAME $SECURITY_USER_PASSWORD https://$(cf app $APP_NAME | grep 'routes:' | cut -d ':' -f 2 | xargs)"
   }
 
   provisioner "local-exec" {
