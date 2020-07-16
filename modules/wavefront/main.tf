@@ -10,7 +10,7 @@ resource "helm_release" "wavefront" {
   namespace  = kubernetes_namespace.wavefront.metadata[0].name
   repository = "https://raw.githubusercontent.com/wavefrontHQ/wavefront-operator/master/install/"
   chart      = "wavefront-operator"
-  version    = "0.9.4"
+  version    = "0.9.5"
 
   set {
     name = "wavefront.url"
