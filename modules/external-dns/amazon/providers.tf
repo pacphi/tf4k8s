@@ -1,9 +1,15 @@
+provider "kubernetes" {
+  config_path = var.kubeconfig_path
+}
 
-provider "aws" {
-  version = "~> 2.0"
-  region  = var.region
+provider "helm" {
+  kubernetes {
+    config_path = var.kubeconfig_path
+  }
+  version = "~> 1.2.0"
 }
 
 terraform {
   required_version = "~> 0.12"
 }
+
