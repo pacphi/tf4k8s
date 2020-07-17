@@ -1,7 +1,0 @@
-#@data/values
----
-namespace: external-dns
-domainFilter: ""
-provider: ""
-zoneIdFilter: ""
-enableIstio: false

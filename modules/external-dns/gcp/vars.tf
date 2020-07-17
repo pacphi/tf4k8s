@@ -1,20 +1,7 @@
-variable "namespace" {
-  default = "external-dns"
-}
+variable "gcp_project" {}
 
-variable "domain_filter" {
-  default = ""
-}
+variable "gcp_service_account_credentials" {}
 
-variable "zone_id_filter" {
-  default = ""
-}
-
-variable "enable_istio" {
-  default = false
-}
+variable "domain_filter" {}
 
 variable "kubeconfig_path" {}
-
-variable "ytt_lib_dir" {}
-
