@@ -126,7 +126,7 @@ gcloud compute addresses create google-managed-services-default \
 and establishing a private connection to those services
 
 
-``
+```
 gcloud services vpc-peerings connect \
     --service=servicenetworking.googleapis.com \
     --ranges=google-managed-services-default \
