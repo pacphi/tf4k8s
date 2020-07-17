@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TEKTON_PIPELINES_VERSION="v0.13.2"
-TEKTON_DASHBOARD_VERSION="v0.7.0"
+TEKTON_PIPELINES_VERSION="v0.14.2"
+TEKTON_DASHBOARD_VERSION="v0.7.1"
 
 curl -LO https://github.com/tektoncd/pipeline/releases/download/${TEKTON_PIPELINES_VERSION}/release.yaml
 curl -LO https://github.com/tektoncd/dashboard/releases/download/${TEKTON_DASHBOARD_VERSION}/tekton-dashboard-release.yaml
