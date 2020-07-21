@@ -4,7 +4,20 @@ resource "kubernetes_namespace" "external_dns" {
   }
 }
 
+resource "kubernetes_secret" "external_dns" {
+  metadata {
+    namespace = kubernetes_namespace.external_dns.metadata[0].name
+    name = "external-dns"
+  }
+
+  data = {
+    "credentials.json" = file(pathexpand(var.gcp_service_account_credentials))
+  }
+}
+
 resource "helm_release" "external_dns" {
+
+  depends_on = [ kubernetes_secret.external_dns ]
 
   name       = "external-dns"
   namespace  = kubernetes_namespace.external_dns.metadata[0].name
@@ -13,6 +26,7 @@ resource "helm_release" "external_dns" {
   version    = "3.2.3"
 
   # For additional configuration options @see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml#L258
+  # And speicl thanks to https://itsmetommy.com/2019/06/14/kubernetes-automated-dns-with-externaldns-on-gke/ for clarity
 
   set {
     name = "provider"
@@ -25,8 +39,8 @@ resource "helm_release" "external_dns" {
   }
 
   set_sensitive {
-    name = "google.serviceAccountSecretKey"
-    value = pathexpand(var.gcp_service_account_credentials)
+    name = "google.serviceAccountSecret"
+    value = "external-dns"
   }
   
   values = [ "\"domainFilters\" : [ \"${var.domain_filter}\" ]" ]
