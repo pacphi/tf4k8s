@@ -14,6 +14,7 @@ Amend the values for
 * `dns_zone_name`
 * `gke_name`
 * `gcp_zone`
+* `gcp_service_account_credentials`
 * `kubeconfig_path`
 
 
