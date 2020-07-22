@@ -18,6 +18,10 @@ variable "dns_zone_name" {
   type = string
 }
 
+variable "gcp_service_account_credentials" {
+  description = "Path to service account credentials file in JSON format"
+}
+
 variable "kubeconfig_path" {
   description = "The path to your .kube/config"
   type = string

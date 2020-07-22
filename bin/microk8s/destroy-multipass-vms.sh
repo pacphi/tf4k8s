@@ -19,3 +19,5 @@ done
 echo "-- master"
 multipass delete kube-master
 
+multipass purge
+multipass list

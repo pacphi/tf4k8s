@@ -13,16 +13,16 @@ echo "» Sit back and relax, this is going to take a while"
 echo "-- master"
 multipass exec kube-master -- sudo usermod -a -G microk8s ubuntu
 multipass exec kube-master -- /snap/bin/microk8s.kubectl cluster-info
-multipass exec kube-master -- /snap/bin/microk8s.enable dns ingress rbac metrics-server storage
+multipass exec kube-master -- /snap/bin/microk8s.enable dns ingress rbac metrics-server prometheus storage
 
 for ((i=1;i<=$NODES;i++));
 do
   echo "-- worker $i"
   multipass exec kube-node-$i -- sudo usermod -a -G microk8s ubuntu
   multipass exec kube-node-$i -- /snap/bin/microk8s.kubectl cluster-info
-  multipass exec kube-node-$i -- /snap/bin/microk8s.enable dns ingress rbac metrics-server storage
+  multipass exec kube-node-$i -- /snap/bin/microk8s.enable dns ingress rbac metrics-server prometheus storage
   multipass exec kube-node-$i -- /snap/bin/microk8s.status
 done
 
 echo "Next step..."
-echo "-- execute [ join-worker-nodes.sh {join-statement} {nodes} ]"
+echo "-- execute [ join-worker-nodes.sh {nodes} ]"

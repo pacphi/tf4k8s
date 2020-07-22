@@ -9,6 +9,18 @@ resource "kubernetes_namespace" "certmanager" {
 
 }
 
+resource "kubernetes_secret" "certmanager" {
+  metadata {
+    namespace = kubernetes_namespace.certmanager.metadata[0].name
+    name = "cert-manager"
+  }
+
+  data = {
+    "credentials.json" = file(pathexpand(var.gcp_service_account_credentials))
+  }
+}
+
+
 data "template_file" "issuer_config" {
   template = file("${path.module}/templates/cluster-issuer.yml")
 
@@ -18,6 +30,8 @@ data "template_file" "issuer_config" {
     domain       = var.domain
     namespace    = kubernetes_namespace.certmanager.metadata[0].name
   }
+
+  depends_on = [ kubernetes_secret.certmanager ]
 }
 
 resource "k14s_kapp" "clusterissuer" {
@@ -36,7 +50,7 @@ resource "helm_release" "certmanager" {
   namespace  = kubernetes_namespace.certmanager.metadata[0].name
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
-  version    = "v0.15.2"
+  version    = "v0.15.1"
 
   set {
     name = "installCRDs"
