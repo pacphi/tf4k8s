@@ -31,12 +31,10 @@
 ./configure-microk8s.sh {nodes}
 ```
 
-### Step 5: Add worker nodes to master
-
-For each worker node you should execute
+### Step 5: Join worker nodes to master
 
 ```
-multipass exec kube-master -- /snap/bin/microk8s.add-node
+./join-worker-nodes.sh {nodes}
 ```
 
 ### Optional: Start and stop scripts

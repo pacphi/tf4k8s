@@ -24,6 +24,5 @@ do
   multipass exec kube-node-$i -- /snap/bin/microk8s.status
 done
 
-echo "Next steps..."
-echo "-- execute [ multipass exec kube-master -- /snap/bin/microk8s.add-node ] once for each of the $NODES kube-node(s) to be added to kube-master"
-echo "-- optionally execute [ multipass exec kube-master -- /snap/bin/microk8s.config ] appending or replacing output to ~/.kube/config"
+echo "Next step..."
+echo "-- execute [ join-worker-nodes.sh {join-statement} {nodes} ]"
