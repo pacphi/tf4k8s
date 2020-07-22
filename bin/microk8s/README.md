@@ -7,11 +7,17 @@
 
 ## Installation
 
+All mentions of a script parameter named `{nodes}` signifies the number of worker nodes the script applies to.
+
 ### Step 1: Create multipass VMs
 
 ```
 ./create-multipass-vms.sh {vcpu} {mem} {disk} {nodes}
 ```
+
+* `{vcpu}` is the number of virtual CPUs (e.g., 2)
+* `{mem}` is an amount of memory (e.g., 2048M, 8G)
+* `{disk}` is the reserved storage capacity (e.g., 50G)
 
 ### Step 2: Install microk8s
 
@@ -37,7 +43,7 @@
 ./join-worker-nodes.sh {nodes}
 ```
 
-### Optional: Start and stop scripts
+### Optional: Start, stop and destroy scripts
 
 Start
 
@@ -51,6 +57,12 @@ Stop
 ```
 ./stop-microk8s.sh {nodes}
 ./stop-multipass-vms.sh {nodes}
+```
+
+Destroy
+
+```
+./destroy-multipass-vms.sh {nodes}
 ```
 
 ## Credits
