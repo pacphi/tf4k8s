@@ -25,4 +25,4 @@ do
 done
 
 echo "Next step..."
-echo "-- execute [ join-worker-nodes.sh {nodes} ]"
+echo "-- execute [ join-worker-nodes.sh $NODES ]"
