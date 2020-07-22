@@ -5,6 +5,7 @@ module "certmanager" {
   domain = var.domain
   acme_email = var.acme_email
   dns_zone_name = var.dns_zone_name
+  gcp_service_account_credentials = var.gcp_service_account_credentials 
   kubeconfig_path = var.kubeconfig_path
 }
 
@@ -22,6 +23,10 @@ variable "acme_email" {
 
 variable "dns_zone_name" {
   description = "A Google Cloud DNS zone name"
+}
+
+variable "gcp_service_account_credentials" {
+  description = "Path to service account credentials file in JSON format"
 }
 
 variable "kubeconfig_path" {
