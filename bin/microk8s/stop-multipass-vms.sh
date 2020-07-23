@@ -19,4 +19,4 @@ echo "-- master"
 multipass stop kube-master
 
 echo "Next step..."
-echo "-- at a time that's convenient, you may wish to execute [ startup-multipass-vms.sh $NODES ]"
+echo "-- at a time that's convenient, you may wish to restart multipass vms with [ startup-multipass-vms.sh $NODES ]"
