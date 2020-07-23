@@ -13,15 +13,15 @@ NODES="$4"
 echo "Creating a cluster of $NODES nodes..."
 
 echo "-- master"
-multipass launch --name kube-master --cpus $VCPU --mem $MEM --disk $DISK
+multipass launch --name kube-master --cpus $VCPU --mem $MEM --disk $DISK 20.04
 
 for ((i=1;i<=$NODES;i++));
 do
   echo "-- worker $i"
-  multipass launch --name kube-node-$i --cpus $VCPU --mem $MEM --disk $DISK  
+  multipass launch --name kube-node-$i --cpus $VCPU --mem $MEM --disk $DISK 20.04
 done
 
 multipass list
 
 echo "Next step..."
-echo "-- execute [ install-microk8s.sh {nodes} ]"
+echo "-- execute [ install-microk8s.sh $NODES ]"

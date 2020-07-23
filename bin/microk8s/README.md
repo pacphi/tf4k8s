@@ -25,19 +25,13 @@ All mentions of a script parameter named `{nodes}` signifies the number of worke
 ./install-microk8s.sh {nodes}
 ```
 
-### Step 3: Start microk8s
-
-```
-./startup-microk8s.sh {nodes}
-```
-
-### Step 4: Configure microk8s
+### Step 3: Configure microk8s
 
 ```
 ./configure-microk8s.sh {nodes}
 ```
 
-### Step 5: Join worker nodes to master
+### Step 4: Join worker nodes to master
 
 ```
 ./join-worker-nodes.sh {nodes}
@@ -75,3 +69,4 @@ Destroy
 
 * [MultiPass does not start on Ubuntu server 18.04](https://forum.snapcraft.io/t/multipass-does-not-start-on-ubuntu-server-18-04/11365/10)
 * [QEMU backend fails to realize dnsmasq died (and doesn't restart it)](https://github.com/canonical/multipass/issues/1475#)
+* [Configure an alternative location for multipass VMs](https://github.com/canonical/multipass/issues/1215)

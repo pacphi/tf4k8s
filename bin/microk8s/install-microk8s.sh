@@ -19,4 +19,4 @@ do
 done
 
 echo "Next step..."
-echo "-- execute [ startup-microk8s.sh $NODES ]"
+echo "-- execute [ configure-microk8s.sh $NODES ]"

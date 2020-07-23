@@ -24,5 +24,7 @@ do
   multipass exec kube-node-$i -- /snap/bin/microk8s.status
 done
 
+multipass info --all
+
 echo "Next step..."
 echo "-- execute [ join-worker-nodes.sh $NODES ]"
