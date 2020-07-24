@@ -42,7 +42,7 @@ OCTANT_VERSION=0.13.1
 wget https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/octant_${OCTANT_VERSION}_Linux-64bit.deb
 sudo dpkg -i octant_${OCTANT_VERSION}_Linux-64bit.deb
 
-curl -L https://k14s.io/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://k14s.io/install.sh)"
 
 curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh | bash
 
