@@ -22,7 +22,7 @@ curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELM
 sudo mv helmfile /usr/local/bin
 
 TERRAFORM_VERSION=0.12.28
-curl -Lo https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 sudo mv terraform /usr/local/bin
