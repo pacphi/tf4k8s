@@ -28,8 +28,18 @@ Amend the values for
 ./create-gitea.sh
 ```
 
+## Use
+
+On first visit to the site in your browser you should register the administrator account.  Click on `Register` link in the upper right-hand corner, scroll to the bottom of the dialog. Just beneath a section named `Optional Settings` is an expandable sub-section labeled `Administrator Account Settings`.  Type in a `username` that is not `admin` as this a reserved account.  Fill in the rest of the details and click the `Install Gitea` button.
+
+You'll be automatically authenticated with those credentials and have the opportunity to update your profile.  Be sure to register a public key in your account `Settings` (i.e., visit `https://git.{domain}/user/settings/keys`).
+
 ## Remove
 
 ```
 ./destroy-gitea.sh
 ```
+
+## Limitations 
+
+The current implementation does not employ a persistent volume, therefore if the pod crashes or is restarted, all state (including accounts and repositories) will be lost.  This will be fixed in an upcoming release.
