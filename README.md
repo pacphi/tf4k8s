@@ -38,6 +38,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [EFK Stack](experiments/k8s/efk-stack)
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
 - [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
+- [x] Provision a distributed version control system with [Gitea](experiments/k8s/gitea)
 - [x] Enable continuous deployment with [Argo CD](experiments/k8s/argo-cd) or [Tekton](experiments/k8s/tekton)
 
 ## Organization
@@ -66,12 +67,18 @@ Above-mentioned experiments will evolve to include automating base configuration
 
 #### Open Service Broker-compatible API servers
 
+Provision your own collection of services
+
+- [ ] [Container Services Manager for VMWare Tanzu](https://docs.pivotal.io/ksm/0-10/index.html)
+
 Provision managed services in a public cloud and bind them to applications
 
-- [ ] [Google Cloud Platform](https://github.com/GoogleCloudPlatform/gcp-service-broker)
-- [ ] [Amazon Web Services](https://github.com/awslabs/aws-servicebroker)
-- [ ] [Microsoft Azure](https://github.com/Azure/open-service-broker-azure)
 - [x] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/pivotal/cloud-service-broker)
+
+### Distributed Version Control
+
+- [x] Gitea
+- [ ] Gitlab
 
 ### CI/CD
 
