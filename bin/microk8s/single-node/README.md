@@ -30,7 +30,7 @@ Stop
 
 I took these scripts for a spin on a Google Compute Engine VM.
 
-In order to give myself some headroom for launching additional Kubernetes workloads I opted for running an Ubuntu 20.04 image on a preemptible [e2-standard-16](https://cloud.google.com/compute/all-pricing#e2_standard_machine_types) instance (16 vCPUs, 64 GB memory) with additional persistent storage of 200Gb at a cost of ~$0.16/hr.
+In order to give myself some headroom for launching additional Kubernetes workloads I opted for running an Ubuntu 20.04 image on a preemptible [e2-standard-16](https://cloud.google.com/compute/all-pricing#e2_standard_machine_types) instance (16 vCPUs, 64 GB memory) with additional persistent storage of 500Gb at a cost of ~$0.16/hr.
 
 After executing the install and configure scripts, I executed the [bom/setup-linux.sh](../../../bom/setup-linux.sh) script to install the remaining complement of software for working with `tf4k8s` experiments and modules.
 
