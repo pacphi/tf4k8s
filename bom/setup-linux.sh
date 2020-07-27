@@ -42,7 +42,25 @@ OCTANT_VERSION=0.13.1
 wget https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/octant_${OCTANT_VERSION}_Linux-64bit.deb
 sudo dpkg -i octant_${OCTANT_VERSION}_Linux-64bit.deb
 
-/bin/bash -c "$(curl -fsSL https://k14s.io/install.sh)"
+YTT_VERSION=0.28.0
+wget -O ytt https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64 && \
+chmod +x ytt && \
+sudo mv ytt /usr/local/bin
+
+VENDIR_VERSION=0.8.0
+wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSION}/vendir-linux-amd64 && \
+chmod +x vendir && \
+sudo mv vendir /usr/local/bin
+
+KAPP_VERSION=0.31.0
+wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 && \
+chmod +x kapp && \
+sudo mv kapp /usr/local/bin
+
+KBLD_VERSION=0.24.0
+wget -O kbld https://github.com/k14s/kbld/releases/download/v${KBLD_VERSION}/kbld-linux-amd64 && \
+chmod +x kbld && \
+sudo mv kbld /usr/local/bin
 
 curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh | bash
 

@@ -5,12 +5,9 @@
 ```
 ./install-microk8s.sh
 ```
+> You'll be prompted for an IP address range to configure `metallb` addon
 
 Logout and login
-
-```
-./configure-microk8s.sh
-```
 
 ### Optional: Start and stop scripts
 
