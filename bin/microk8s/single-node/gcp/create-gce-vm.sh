@@ -25,7 +25,8 @@ if [ "$IS_PREEMPTIBLE" == "true" ] || [ "$IS_PREMEEMPTIBLE" == "True" ] || [ "$I
         --image="${OS_IMAGE}" --image-project="${OS_IMAGE_PROJECT}" \
         --boot-disk-type=pd-standard --boot-disk-device-name=${INSTANCE_NAME}-boot-disk --no-shielded-secure-boot \
         --create-disk=mode=rw,size=${DISK_SIZE},type=projects/${GCP_PROJECT}/zones/${AVAILABILITY_ZONE}/diskTypes/pd-standard,name=${INSTANCE_NAME}-disk-1,device-name=${INSTANCE_NAME}-disk-1 \
-        --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+        --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any \
+        --tags http-server,https-server
 else
     gcloud beta compute --project="${GCP_PROJECT}" instances create "${INSTANCE_NAME}" \
         --zone="${AVAILABILITY_ZONE}" --machine-type=${MACHINE_TYPE} --subnet=default \
@@ -35,5 +36,6 @@ else
         --image="${OS_IMAGE}" --image-project="${OS_IMAGE_PROJECT}" \
         --boot-disk-type=pd-standard --boot-disk-device-name=${INSTANCE_NAME}-boot-disk --no-shielded-secure-boot \
         --create-disk=mode=rw,size=${DISK_SIZE},type=projects/${GCP_PROJECT}/zones/${AVAILABILITY_ZONE}/diskTypes/pd-standard,name=${INSTANCE_NAME}-disk-1,device-name=${INSTANCE_NAME}-disk-1 \
-        --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+        --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any \
+        --tags http-server,https-server
 fi
