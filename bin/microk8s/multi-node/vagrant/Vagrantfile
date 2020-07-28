@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"   
+  config.disksize.size = '60GB'
+  config.vm.provision "shell", path: "bootstrap.sh"
+
+  # Kubernetes Master Node
+  config.vm.define "mk8s-master" do |kmaster|
+    kmaster.vm.hostname = "mk8s-master"
+    kmaster.vm.network "private_network", ip: "172.42.42.100"
+    kmaster.vm.provider "virtualbox" do |v|
+      v.name = "mk8s-master"
+      v.memory = 8192
+      v.cpus = 2
+      # @see https://bugs.launchpad.net/cloud-images/+bug/1829625/comments/5
+      v.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      v.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+      v.customize ["modifyvm", :id, "--nestedpaging", "off"]
+      v.customize ["modifyvm", :id, "--paravirtprovider", "hyperv"]
+    end
+    kmaster.vm.provision "shell", path: "configure_master_node.sh"
+  end
+
+  NodeCount = ENV['NODE_COUNT'].to_i
+
+  # Kubernetes Worker Nodes
+  (1..NodeCount).each do |i|
+    config.vm.define "mk8s-worker-#{i}" do |workernode|
+      workernode.vm.hostname = "mk8s-worker-#{i}"
+      workernode.vm.network "private_network", ip: "172.42.42.10#{i}"
+      workernode.vm.provider "virtualbox" do |v|
+        v.name = "mk8s-worker-#{i}"
+        v.memory = 8192
+        v.cpus = 2
+        # @see https://bugs.launchpad.net/cloud-images/+bug/1829625/comments/5
+        v.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+        v.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+        v.customize ["modifyvm", :id, "--nestedpaging", "off"]
+        v.customize ["modifyvm", :id, "--paravirtprovider", "hyperv"]
+      end
+    end
+  end
+
+end
