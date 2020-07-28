@@ -18,3 +18,4 @@ samples/**/bin/**
 dist/
 Dockerfile
 manifest.yml
+.vagrant/
