@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--nestedpaging", "off"]
       v.customize ["modifyvm", :id, "--paravirtprovider", "hyperv"]
     end
-    kmaster.vm.provision "shell", path: "configure_master_node.sh"
+    kmaster.vm.provision "shell", path: "configure-master-node.sh"
   end
 
   NodeCount = ENV['NODE_COUNT'].to_i

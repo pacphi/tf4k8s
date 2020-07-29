@@ -18,7 +18,6 @@ All mentions of a script parameter named `{nodes}` signifies the number of worke
 export NODE_COUNT={nodes}
 vagrant up
 ```
-> You'll be prompted for an IP address range to configure `metallb` addon
 
 ### Step 2: Join worker nodes to master
 
@@ -55,6 +54,15 @@ To obtain the cluster connection credentials you could
 vagrant ssh mk8s-master -- /snap/bin/microk8s.config
 ```
 > Replace the `server:` IP address with `172.42.42.100` if you intend to store/append the credentials in/to `~/.kube/config`
+
+Enable metallb with
+
+```
+vagrant ssh mk8s-master
+microk8s enable metallb
+exit
+```
+> You'll be prompted for an IP address range to configure `metallb` addon
 
 ## Credits
 
