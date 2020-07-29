@@ -25,6 +25,12 @@ Scripts provided are for convenience only.  Take a look at them, then adapt for 
 ./add-ingress.sh
 ```
 
+### Step 3: Add load balancer
+
+```
+./add-metallb.sh
+```
+
 ### Optional: Teardown
 
 ```
