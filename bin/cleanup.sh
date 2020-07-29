@@ -11,7 +11,7 @@ fi
 IAAS="$1"
 
 EXPERIMENTS=( "certmanager" "cluster" "dns" "external-dns" )
-K8S_MODULES=( "cf4k8s" "efk-stack" "harbor" "loki-stack" "nginx-ingress" "tas4k8s" "wavefront" )
+K8S_MODULES=( "argo-cd" "cf4k8s" "contour" "efk-stack" "gitea" "flagger" "harbor" "jcr" "loki-stack" "minio" "pivotal-csb" "nginx-ingress" "stratos" "tas4k8s" "tekton" "wavefront" )
 
 cd experiments
 cd "${IAAS}"
