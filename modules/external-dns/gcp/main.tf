@@ -42,6 +42,16 @@ resource "helm_release" "external_dns" {
     name = "google.serviceAccountSecret"
     value = "external-dns"
   }
+
+  set {
+    name = "logLevel"
+    value = "debug"
+  }
   
+  set {
+    name = "txtPrefix"
+    value = "txt-"
+  }
+
   values = [ "\"domainFilters\" : [ \"${var.domain_filter}\" ]" ]
 }
