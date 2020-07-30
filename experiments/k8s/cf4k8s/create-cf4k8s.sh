@@ -18,6 +18,8 @@ cp -f iaas.auto.tfvars "../../../modules/cf4k8s/acme/${IAAS}"
 # Fetch specific commit from https://github.com/cloudfoundry/cf-for-k8s
 cd ../../../ytt-libs/cf4k8s || exit
 vendir sync
+# Copy config-optional/use-external-dns-for-wildcard.yml into config
+cp -f config-optional/use-external-dns-for-wildcard.yml config
 
 # Seed configuration using modified version of hack script
 cd ../../modules/cf4k8s || exit

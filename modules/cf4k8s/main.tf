@@ -70,8 +70,7 @@ resource "k14s_kapp" "cf4k8s_cert" {
 
 data "k14s_ytt" "cf4k8s_ytt" {
   files = [
-    "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config",
-    "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config-optional"
+    "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config"
   ]
 
   debug_logs = true
