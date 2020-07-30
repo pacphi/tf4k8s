@@ -10,7 +10,7 @@ Amend the values for
 
 * `base_domain`
 * `registry_domain`
-* `registry_repository`
+* `repository_prefix`
 * `registry_password`
 * `pivnet_username`
 * `pivnet_password`

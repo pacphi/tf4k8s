@@ -3,7 +3,7 @@ module "tas4k8s" {
 
   domain           = "tas.${var.base_domain}"
   registry_domain  = var.registry_domain
-  registry_repository   = var.registry_repository
+  repository_prefix   = var.repository_prefix
   registry_username     = var.registry_username
   registry_password     = var.registry_password
   pivnet_registry_hostname = var.pivnet_registry_hostname
@@ -21,7 +21,7 @@ variable "registry_domain" {
   description = "Container image/artifact registry/repository domain"
 }
 
-variable "registry_repository" {
+variable "repository_prefix" {
  description = "Container image/artifact registry/repository name"
 }
 

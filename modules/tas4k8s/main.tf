@@ -42,7 +42,7 @@ data "template_file" "app_registry_values" {
 
   vars = {
     registry_domain     = var.registry_domain
-    registry_repository = var.registry_repository
+    repository_prefix = var.repository_prefix
     registry_username   = var.registry_username
     registry_password   = var.registry_password
   }

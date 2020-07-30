@@ -8,6 +8,7 @@ module "gke" {
   gke_nodes = var.gke_nodes
   gke_preemptible = var.gke_preemptible
   gke_node_type = var.gke_node_type
+  all_inbound = var.all_ibound
 }
 
 variable "gcp_project" {
@@ -40,6 +41,11 @@ variable "gke_preemptible" {
 variable "gke_node_type" {
   description = "The machine type used for each node in the cluster (@see https://cloud.google.com/compute/docs/machine-types)"
   default = "n1-standard-2"
+}
+
+variable "all_inbound" {
+  description = "Allow inbound access from any IP address?"
+  default = true
 }
 
 output "path_to_kubeconfig" {

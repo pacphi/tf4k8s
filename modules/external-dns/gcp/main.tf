@@ -50,7 +50,7 @@ resource "helm_release" "external_dns" {
   
   set {
     name = "txtPrefix"
-    value = "txt-"
+    value = "txt"
   }
 
   values = [ "\"domainFilters\" : [ \"${var.domain_filter}\" ]" ]

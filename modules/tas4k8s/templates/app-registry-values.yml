@@ -4,7 +4,7 @@
 app_registry:
   hostname: ${registry_domain}
   #! often times this is just your `docker_user`
-  repository: ${registry_repository}
+  repository_prefix: ${repository_prefix}
   username: ${registry_username}
   password: ${registry_password}
 
