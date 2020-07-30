@@ -28,7 +28,7 @@ data "template_file" "cf4k8s_config" {
     cf_admin_password = random_password.gen.result
 
     registry_domain     = var.registry_domain
-    registry_repository = var.registry_repository
+    repository_prefix = var.repository_prefix
     registry_username   = var.registry_username
     registry_password   = var.registry_password
   }

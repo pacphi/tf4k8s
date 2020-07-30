@@ -2,7 +2,7 @@ variable "domain" {}
 
 variable "registry_domain" {}
 
-variable "registry_repository" {}
+variable "repository_prefix" {}
 
 variable "registry_username" {}
 
