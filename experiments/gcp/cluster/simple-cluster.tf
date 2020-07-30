@@ -8,7 +8,7 @@ module "gke" {
   gke_nodes = var.gke_nodes
   gke_preemptible = var.gke_preemptible
   gke_node_type = var.gke_node_type
-  all_inbound = var.all_ibound
+  all_inbound = var.all_inbound
 }
 
 variable "gcp_project" {
