@@ -51,6 +51,8 @@ resource_group_name = ...
 project = ...
 ```
 
+### Kind
+
 If you're deploying [locally](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy-local.md#deploying-cf-for-k8s-locally) to a [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster then you must set the following additional environment variable
 
 ```
