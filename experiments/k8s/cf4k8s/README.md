@@ -47,12 +47,19 @@ resource_group_name = ...
 project = ...
 ```
 
+If you're deploying [locally](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy-local.md#deploying-cf-for-k8s-locally) to a [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster then you must set the following additional environment variable
+
+```
+export IS_KIND=true
+```
+
 ## Install
 
 ```
 ./create-cf4k8s.sh <iaas> <base_domain>
 ```
 > Set `iaas` to be one of [ amazon, azure, gcp ] and set `base_domain` to be the same value as defined in `terraform.tfvars`
+
 
 ## Remove
 

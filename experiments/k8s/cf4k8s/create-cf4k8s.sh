@@ -20,6 +20,15 @@ cd ../../../ytt-libs/cf4k8s || exit
 vendir sync
 # Copy config-optional/use-external-dns-for-wildcard.yml into config
 cp -f config-optional/use-external-dns-for-wildcard.yml config
+# If deploying cf4k8s to a kind cluster then
+# include the remove-resource-requirements.yml, remove-ingressgateway-service.yml, add-metrics-server-components.yml 
+# and patch-metrics-server.yml overlay files in the set of templates to be deployed
+if [ ! -z "$IS_KIND" ]; then
+  cp -f config-optional/remove-resource-requirements.yml config
+  cp -f config-optional/remove-ingressgateway-service.yml config
+  cp -f config-optional/add-metrics-server-components.yml config
+  cp -f config-optional/patch-metrics-server.yml config
+fi
 
 # Seed configuration using modified version of hack script
 cd ../../modules/cf4k8s || exit

@@ -38,3 +38,13 @@ cp -Rf /tmp/tanzu-application-service/configuration-values vendor
 # that directory and copy one or more file into place. In this case, we're integrating external-dns with Istio ingress.
 
 cp -f vendor/config-optional/use-external-dns-for-wildcard.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
+
+# If deploying tas4k8s to a kind cluster then
+# include the remove-resource-requirements.yml, remove-ingressgateway-service.yml, add-metrics-server-components.yml 
+# and patch-metrics-server.yml overlay files in the set of templates to be deployed
+if [ ! -z "$IS_KIND" ]; then
+  cp -f vendor/config-optional/remove-resource-requirements.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
+  cp -f vendor/config-optional/remove-ingressgateway-service.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
+  cp -f vendor/config-optional/add-metrics-server-components.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
+  cp -f vendor/config-optional/patch-metrics-server.yml vendor/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s/config
+fi
