@@ -42,7 +42,7 @@ resource "helm_release" "jcr" {
   namespace  = kubernetes_namespace.jcr.metadata[0].name
   repository = "https://charts.jfrog.io"
   chart      = "artifactory-jcr"
-  version    = "2.4.0"
+  version    = "2.5.1"
 
   values = [data.template_file.jcr_config.rendered]
 
