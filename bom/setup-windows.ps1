@@ -135,23 +135,27 @@ Remove-Item terraform-provider-k14s-binaries.tgz
 md $HOME/.apps/bin -ea 0
 cd $HOME/.apps/bin
 
-Set-Variable YTT_VERSION 0.28.0
+Set-Variable YTT_VERSION 0.30.0
 curl -LO "https://github.com/k14s/ytt/releases/download/v$YTT_VERSION/ytt-windows-amd64.exe"
 Rename-Item -Path "ytt-windows-amd64.exe" -NewName "ytt.exe"
 
-Set-Variable VENDIR_VERSION 0.8.0
+Set-Variable VENDIR_VERSION 0.9.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
 Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
 
-Set-Variable KAPP_VERSION 0.30.0
-curl -LO "https://github.com/k14s/vendir/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
+Set-Variable KAPP_VERSION 0.33.0
+curl -LO "https://github.com/k14s/kapp/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
 Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
+
+Set-Variable KBLD_VERSION 0.24.0
+curl -LO "https://github.com/k14s/kbld/releases/download/v$KAPP_VERSION/kbld-windows-amd64.exe"
+Rename-Item -Path "kbld-windows-amd64.exe" -NewName "kbld.exe"
 
 Set-Variable PIVNET_VERSION 1.0.4
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
-Set-Variable ARGOCD_VERSION 1.6.1
+Set-Variable ARGOCD_VERSION 1.6.2
 curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
 Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
 

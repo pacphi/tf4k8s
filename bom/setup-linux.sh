@@ -17,7 +17,7 @@ sudo snap install k9s
 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-HELMFILE_VERSION=0.119.1
+HELMFILE_VERSION=0.125.7
 curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64
 sudo mv helmfile /usr/local/bin
 
@@ -38,21 +38,21 @@ curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.16
 chmod +x aws-iam-authenticator
 sudo mv aws-iam-authenticator /usr/local/bin
 
-OCTANT_VERSION=0.13.1
+OCTANT_VERSION=0.15.0
 wget https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/octant_${OCTANT_VERSION}_Linux-64bit.deb
 sudo dpkg -i octant_${OCTANT_VERSION}_Linux-64bit.deb
 
-YTT_VERSION=0.28.0
+YTT_VERSION=0.30.0
 wget -O ytt https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64 && \
 chmod +x ytt && \
 sudo mv ytt /usr/local/bin
 
-VENDIR_VERSION=0.8.0
+VENDIR_VERSION=0.9.0
 wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSION}/vendir-linux-amd64 && \
 chmod +x vendir && \
 sudo mv vendir /usr/local/bin
 
-KAPP_VERSION=0.31.0
+KAPP_VERSION=0.33.0
 wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 && \
 chmod +x kapp && \
 sudo mv kapp /usr/local/bin
@@ -71,12 +71,12 @@ curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v${T
 tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/ && \
 rm -Rf terraform-provider-k14s-binaries.tgz
 
-ALIYUN_VERSION=3.0.44 && \
+ALIYUN_VERSION=3.0.56 && \
 curl -LO "https://github.com/aliyun/aliyun-cli/releases/download/v${ALIYUN_VERSION}/aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz" && \
 sudo tar xzvf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz -C /usr/local/bin && \
 rm -Rf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz
 
-BOSH_VERSION=6.3.0 && \
+BOSH_VERSION=6.3.1 && \
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
 chmod +x bosh && \
 sudo mv bosh /usr/local/bin
@@ -86,11 +86,11 @@ wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIV
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
 
-ARGOCD_VERSION=1.6.1 && \
+ARGOCD_VERSION=1.6.2 && \
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-amd64 && \
 chmod +x /usr/local/bin/argocd
 
-TEKTON_VERSION=0.10.0 && \
+TEKTON_VERSION=0.11.0 && \
 curl -LO https://github.com/tektoncd/cli/releases/download/v${TEKTON_VERSION}/tkn_${TEKTON_VERSION}_Linux_x86_64.tar.gz && \
 sudo tar xvzf tkn_${TEKTON_VERSION}_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
 
