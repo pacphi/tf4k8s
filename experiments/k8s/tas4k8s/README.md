@@ -77,6 +77,32 @@ pivnet_registry_hostname = "dev.registry.pivotal.io"
 
 Verify and/or update the values for `TAS4K8S_VERSION` and `TAS4K8S_PRODUCT_FILE_ID` in [download-tas4k8s.sh](../../../ytt-libs/tas4k8s/scripts/download-tas4k8s.sh).  (If the `TAS4K8S_VERSION` variable's value in that script includes `.build`, you're using a pre-release build).
 
+## Usage
+
+```
+terraform output
+```
+> Reveals credentials for authentication
+
+### CLI
+
+```
+cf api {tas_api_endpoint}
+cf auth admin {tas_admin_password}
+```
+
+### Apps Manager
+
+Visit 
+
+```
+https://console.tas.{domain}
+```
+
+in your favorite browser.
+
+The credentials to login are the same as the ones used to authenticate the `{tas_api_endpont}`.
+
 
 ## Remove
 
