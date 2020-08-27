@@ -121,6 +121,7 @@ scoop install kubectl
 scoop install k9s
 scoop install helm
 scoop install helmfile
+choco install -y mkcert
 scoop install octant
 scoop tar install
 choco install -y tektoncd-cli

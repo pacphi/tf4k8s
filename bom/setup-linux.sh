@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y
-sudo apt-get install -y build-essential git gnupg zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
+sudo apt-get install -y build-essential git gnupg libnss3-tools zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
 sudo apt-get install -y snapd unzip graphviz wget
 
 sudo snap install snap-store
@@ -111,3 +111,8 @@ KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
 curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.8.1/kind-$(uname)-amd64" &&
 chmod +x kind &&
 sudo mv kind /usr/local/bin
+
+cd /tmp
+git clone https://github.com/FiloSottile/mkcert && cd mkcert
+go build -ldflags "-X main.Version=$(git describe --tags)"
+sudo mv mkcert /usr/local/bin 
