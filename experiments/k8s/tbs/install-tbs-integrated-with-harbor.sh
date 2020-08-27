@@ -6,20 +6,20 @@ if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ] && [ -z "$4" ]; then
 fi
 
 BUILD_SERVICE_INSTALLATION_NAME="tanzu-build-service"
-CLUSTER_NAME="tbs"
 HARBOR_DOMAIN="$1"
 HARBOR_PROJECT="$2"
 IMAGE_REPO="${HARBOR_DOMAIN}/${HARBOR_PROJECT}/build-service"
 HARBOR_USERNAME="$3"
 HARBOR_PASSWORD="$4"
-BUILDER_IMAGE_TAG="${IMAGE_REPO}/default-builder"
 
-duffle install "${BUILD_SERVICE_INSTALLATION_NAME}" -c /tmp/credentials.yml  \
-    --set kubernetes_env="${CLUSTER_NAME}" \
-    --set docker_registry="${HARBOR_DOMAIN}" \
-    --set docker_repository="${IMAGE_REPO}" \
-    --set registry_username="${HARBOR_USERNAME}" \
-    --set registry_password="${HARBOR_PASSWORD}" \
-    --set custom_builder_image="${BUILDER_IMAGE_TAG}" \
-    -f /tmp/build-service-0.1.0.tgz \
-    -m /tmp/relocated.json
+cd /tmp || exit
+
+ytt -f tbs-install/values.yaml \
+    -f tbs-install/manifests/ \
+    -v docker_repository="${IMAGE_REPO}" \
+    -v docker_username="${HARBOR_USERNAME}" \
+    -v docker_password="${HARBOR_PASSWORD}" \
+    | kbld -f tbs-install/images-relocated.lock -f- \
+    | kapp deploy -a ${BUILD_SERVICE_INSTALLATION_NAME} -f- -y
+
+kp import -f descriptor.yaml

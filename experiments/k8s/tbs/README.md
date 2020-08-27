@@ -13,13 +13,10 @@ Starts with the assumption that you have already provisioned a cluster.
 
 ## Download the bits
 
-> This is going to take awhile... go grab a coffee.
-
 ```
 ./download-tbs.sh {pivnet-api-token}
-./download-tbs-dependencies.sh {pivnet-api-token} {pivnet-username} {pivnet-password}
+./download-tbs-descriptor.sh {pivnet-api-token}
 ```
-> Replace `{pivnet-username}` and `{pivnet-password}` with account credentials you use to login to VMWare Tanzu Network
 
 ## Authenticate Docker with Harbor
 
@@ -35,8 +32,10 @@ Login to the image registry where you want to store the images
 Yes, you could specify an alternate image registry provider
 
 ```
-./relocate-images.sh {image-registry}
+./relocate-images.sh {tanzu-network-username} {tanzu-network-password} {image-repository}
 ```
+
+Sit back and enjoy a beverage... this may take a while.
 
 ## Install TBS integrated with Harbor on a Kubernetes cluster
 
@@ -44,10 +43,11 @@ Yes, you could specify an alternate image registry provider
 ./install-tbs-integrated-with-harbor.sh {harbor-domain} {harbor-project} {harbor-username} {harbor-password}
 ```
 > Replace the curly-braced parameters above with your Harbor domain, project and administrative credentials
-> You'll need to have manually authored credentials in `/tmp/credentials.yml`.  See [Create a Credentials File](https://docs.pivotal.io/build-service/0-1-0/installing.html#other-create-creds-file).
+
+Take another break.
 
 ## Verify your installation
 
 ```
-pb builder list
+kp clusterbuilder list
 ```
