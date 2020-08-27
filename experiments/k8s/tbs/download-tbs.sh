@@ -16,8 +16,8 @@ pivnet login --api-token=$PIVNET_API_TOKEN
 
 cd /tmp || exit
 mkdir -p tbs-install
-TBS_VERSION="1.0.1"
-TBS_PRODUCT_FILE_ID=766634
+TBS_VERSION="1.0.2"
+TBS_PRODUCT_FILE_ID=773503
 pivnet download-product-files --product-slug='build-service' --release-version="${TBS_VERSION}" --product-file-id="${TBS_PRODUCT_FILE_ID}"
 mv build-service-${TBS_VERSION}.tar build-service.tar
 tar xvf build-service.tar -C tbs-install

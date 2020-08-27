@@ -1,6 +1,6 @@
 # Installing Tanzu Build service on Kubernetes
 
-This experiment aims to fast-track [installation](https://docs.pivotal.io/build-service/0-1-0/installing.html) of TBS using a collection of scripts.
+This experiment aims to fast-track [installation](https://docs.pivotal.io/build-service/1-0/installing.html) of TBS using a collection of scripts.
 
 Starts with the assumption that you have already provisioned a cluster.
 
