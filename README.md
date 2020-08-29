@@ -39,6 +39,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
 - [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
 - [x] Provision a distributed version control system with [Gitea](experiments/k8s/gitea)
+- [x] Enable continuous integration (and deployment) with [Concourse](experiments/k8s/concourse)
 - [x] Enable continuous deployment with [Argo CD](experiments/k8s/argo-cd) or [Tekton](experiments/k8s/tekton)
 
 ## Organization
@@ -86,7 +87,7 @@ Provision managed services in a public cloud and bind them to applications
 - [ ] Jenkins
 - [ ] Gitlab
 - [x] VMWare Tanzu Build Service
-- [ ] Concourse
+- [x] Concourse
 - [ ] Spinnaker
 - [x] Tekton
 
