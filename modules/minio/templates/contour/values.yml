@@ -16,3 +16,5 @@ ingress:
       path: /
       tls: true
       tlsSecret: minio-tls-secret
+persistence:
+  size: 100Gi
