@@ -51,3 +51,9 @@ Take another break.
 ```
 kp clusterbuilder list
 ```
+
+## Uninstall TBS
+
+```
+./uninstall-tbs.sh
+```
