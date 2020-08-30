@@ -20,6 +20,14 @@ Amend the values for
 ./create-harbor.sh
 ```
 
+## Use
+
+A few links for your consideration
+
+* Harbor [administration](https://goharbor.io/docs/2.0.0/administration/)
+* [Swagger API](https://editor.swagger.io/?url=https://raw.githubusercontent.com/goharbor/harbor/master/api/v2.0/swagger.yaml)
+* Petr Ruzicka's [tutorial](https://ruzickap.github.io/k8s-harbor)
+
 ## Remove
 
 ```
