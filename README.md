@@ -28,6 +28,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Add DNS Zone management
 - [x] Add Certificate management
 - [x] Add Ingress and External DNS
+- [x] Install [Sealed Secrets](experiments/k8s/sealed-secrets)
 - [x] Install a registry like [ACR](experiments/azure/registry), [GCR](experiments/gcp/registry), [Harbor](experiments/k8s/harbor) or [JCR](experiments/k8s/jcr)
 - [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
