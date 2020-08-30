@@ -7,7 +7,7 @@ Starts with the assumption that you have already provisioned a cluster.
 ## Install Tools
 
 ```
-./install-{os}.sh {pivnet-api-token}
+./install-tools-{os}.sh {pivnet-api-token}
 ```
 > Replace `{os}` with either: `macos` or `linux` and `{pivnet-api-token}` with a valid VMWare Tanzu Network [API Token](https://network.pivotal.io/users/dashboard/edit-profile)
 
