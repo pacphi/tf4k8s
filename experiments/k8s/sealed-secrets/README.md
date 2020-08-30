@@ -11,7 +11,8 @@ Starts with the assumption that you have already provisioned a cluster.
 ## Install CLI
 
 ```
-./install-cli-{os}.sh 
+./install-cli-{os}.sh
+```
 > Replace `{os}` with either: `macos` or `linux`
 
 ## Edit `terraform.tfvars`
