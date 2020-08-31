@@ -110,6 +110,7 @@ scoop install gcloud
 choco install -y gnupg
 scoop install graphviz
 choco install -y libressl
+choco install -y minio-client
 choco install -y openssl
 scoop install terraform
 choco install -y terraform-docs

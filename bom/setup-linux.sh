@@ -115,4 +115,8 @@ sudo mv kind /usr/local/bin
 cd /tmp
 git clone https://github.com/FiloSottile/mkcert && cd mkcert
 go build -ldflags "-X main.Version=$(git describe --tags)"
-sudo mv mkcert /usr/local/bin 
+sudo mv mkcert /usr/local/bin
+
+curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc &&
+chmod +x mc &&
+sudo mv mc /usr/local/bin

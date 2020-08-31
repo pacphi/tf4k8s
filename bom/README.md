@@ -53,6 +53,7 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 - [x] [openssl](https://www.openssl.org/source/)
 - [x] [keybase](https://keybase.io/download)
 - [x] [httpie](https://httpie.org/docs#installation)
+- [x] [mc](https://docs.min.io/docs/minio-client-quickstart-guide.html)
 - [x] [mkcert](https://github.com/FiloSottile/mkcert)
 - [x] [terraform-docs](https://github.com/segmentio/terraform-docs)
 - [x] [tflint](https://github.com/terraform-linters/tflint)

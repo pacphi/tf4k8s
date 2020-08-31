@@ -25,6 +25,8 @@ brew install argoproj/tap/argocd
 brew tap tektoncd/tools
 brew install tektoncd/tools/tektoncd-cli
 
+brew install minio/stable/mc
+
 # Install Terraform k14s provider; @see https://github.com/k14s/terraform-provider-k14s
 TF_K14S_PLUGIN_VERSION=0.6.0 && \
 mkdir -p ~/.terraform.d/plugins && \
