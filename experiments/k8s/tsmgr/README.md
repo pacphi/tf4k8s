@@ -4,7 +4,12 @@ Uses [kubernetes](https://www.terraform.io/docs/providers/kubernetes/index.html)
 
 TSMGR enables operators to provide app developers with access to services through the `cf marketplace`. 
 
-Starts with the assumption that you have already provisioned a cluster.
+Assumes you have:
+
+* access to a cluster
+* a container registry account with read/write access (e.g. Harbor)
+* admin credentials to a Cloud Foundry API endpoint (e.g., cf-for-k8s or tas4k8s)
+* access and secret key credentials to an S3-compatible blobstore
 
 ## Edit `terraform.tfvars`
 
