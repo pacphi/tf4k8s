@@ -33,6 +33,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [VMWare Tanzu Build Service](experiments/k8s/tbs)
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
+- [x] Install [Tanzu Services Manager](experiments/k8s/tsmgr)
 - [x] Install [Pivotal Cloud Service Broker](experiments/k8s/pivotal-csb)
 - [x] Install [Stratos](experiments/k8s/stratos)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
@@ -71,7 +72,7 @@ Above-mentioned experiments will evolve to include automating base configuration
 
 Provision your own collection of services
 
-- [ ] [Container Services Manager for VMWare Tanzu](https://docs.pivotal.io/ksm/0-10/index.html)
+- [x] [Tanzu Services Manager](https://docs.pivotal.io/ksm/0-11/index.html)
 
 Provision managed services in a public cloud and bind them to applications
 

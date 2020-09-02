@@ -1,0 +1,18 @@
+domain = "dug.ironleg.me"
+ingress = "nginx"
+kubeconfig_path = "~/.kube/config"
+
+registry_domain = "harbor.dug.ironleg.me"
+registry_username = "admin"
+registry_password = "why-would-i-share-this-with-you"
+tsmgr_images_prefix = "tanzu-service-manager"
+si_images_prefix = "tanzu-service-manager-si"
+s3_endpoint = "minio.dug.ironleg.me"
+s3_bucket_name = "tanzu-service-manager-offerings"
+s3_access_key = "zqCTZkQl7P"
+s3_secret_key = "why-would-i-share-this-with-you"
+cf_api_endpoint = "api.tas.dug.ironleg.me"
+cf_admin_username = "admin"
+cf_admin_password = "why-would-i-share-this-with-you"
+
+chart_path = "/tmp/tsmgr"

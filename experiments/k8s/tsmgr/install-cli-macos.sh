@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Usage: install-cli-macos.sh {tanzu-network-api-token}"
+	exit 1
+fi
+
+PIVNET_API_TOKEN="$1"
+pivnet login --api-token=$PIVNET_API_TOKEN
+
+VERSION="0.11.8"
+
+TSMGR_PRODUCT_FILE_ID=777773
+pivnet download-product-files --product-slug='tanzu-service-manager' --release-version="${VERSION}" --product-file-id="${TSMGR_PRODUCT_FILE_ID}"
+mv tsmgr-${VERSION}.darwin tsmgr
+chmod +x tsmgr
+sudo mv tsmgr /usr/local/bin
