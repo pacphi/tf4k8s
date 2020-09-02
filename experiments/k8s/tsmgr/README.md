@@ -49,7 +49,7 @@ Amend the values for
 
 ## Use
 
-If you've survived the gauntlet of installation, you're next steps are to configure, package, publish and expose service offerings. 
+If you've survived the gauntlet of installation, your next steps are to configure, package, publish and expose service offerings. 
 
 Have a look at: 
 
