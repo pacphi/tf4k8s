@@ -21,6 +21,7 @@ brew install cloudfoundry/tap/cf-cli
 
 brew tap argoproj/tap
 brew install argoproj/tap/argocd
+brew install argoproj/tap/kubectl-argo-rollouts
 
 brew tap tektoncd/tools
 brew install tektoncd/tools/tektoncd-cli

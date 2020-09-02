@@ -52,7 +52,7 @@ wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSIO
 chmod +x vendir && \
 sudo mv vendir /usr/local/bin
 
-KAPP_VERSION=0.33.0
+KAPP_VERSION=0.34.0
 wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 && \
 chmod +x kapp && \
 sudo mv kapp /usr/local/bin
@@ -86,9 +86,12 @@ wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIV
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
 
-ARGOCD_VERSION=1.6.2 && \
+ARGOCD_VERSION=1.7.3 && \
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-amd64 && \
 chmod +x /usr/local/bin/argocd
+ARGO_ROLLOUTS_VERSION=0.9.0
+curl -sSL -o /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/download/v${ARGO_ROLLOUTS_VERSION}/kubectl-argo-rollouts-linux-amd64 && \
+chmod +x /usr/local/bin/kubectl-argo-rollouts
 
 TEKTON_VERSION=0.11.0 && \
 curl -LO https://github.com/tektoncd/cli/releases/download/v${TEKTON_VERSION}/tkn_${TEKTON_VERSION}_Linux_x86_64.tar.gz && \

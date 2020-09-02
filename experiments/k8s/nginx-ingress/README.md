@@ -16,7 +16,7 @@ If you wish to enable [SSL Passthrough](https://kubernetes.github.io/ingress-ngi
 
 ```
 extra_args_key = "enable-ssl-passthrough"
-extra_args_value = ""
+extra_args_value = "true"
 ```
 
 > You'll want to do this if you intend to install [Argo CD](../argo-cd)

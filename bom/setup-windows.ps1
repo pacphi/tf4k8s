@@ -145,7 +145,7 @@ Set-Variable VENDIR_VERSION 0.9.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
 Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
 
-Set-Variable KAPP_VERSION 0.33.0
+Set-Variable KAPP_VERSION 0.34.0
 curl -LO "https://github.com/k14s/kapp/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
 Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
 
@@ -157,7 +157,7 @@ Set-Variable PIVNET_VERSION 1.0.4
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
-Set-Variable ARGOCD_VERSION 1.6.2
+Set-Variable ARGOCD_VERSION 1.7.3
 curl -LO "https://github.com/argoproj/argo-cd/releases/download/v$ARGOCD_VERSION/argocd-windows-amd64.exe"
 Rename-Item -Path "argocd-windows-amd64.exe" -NewName "argocd.exe"
 
