@@ -18,6 +18,16 @@ Amend the values for
 * `domain`
 * `ingress`
 * `kubeconfig_path`
+* `registry_domain`
+* `registry_username`
+* `registry_password`
+* `s3_endpoint`
+* `s3_access_key`
+* `s3_secret_key`
+* `cf_api_endpoint`
+* `cf_admin_username`
+* `cf_admin_password`
+
 
 ## Install CLI
 
