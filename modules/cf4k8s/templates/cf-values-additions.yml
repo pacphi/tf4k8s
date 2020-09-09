@@ -1,5 +1,3 @@
-#@data/values
----
 #! The password for the CF "admin" user.
 #! - operators can use the admin user to test `cf push`
 cf_admin_password: ${cf_admin_password}
@@ -25,19 +23,10 @@ app_registry:
    username: ${registry_username}
    password: ${registry_password}
 
-#! example below is for a Google container registry. Make sure to remove other registry blocks if you intend to use GCR
-#! app_registry:
-#!  hostname: gcr.io
-#!  repository: <gcr.io/gcp_project_id/cf-workloads>
-#!  username: _json_key
-#!  password: |
-#!    contents_of_service_account_json
-
-#! example below is for a Azure container registry. Make sure to remove other registry blocks if you intend to use ACR
-#! app_registry:
-#!  hostname: <registry-name>.azurecr.io
-#!  repository: <registry-name>.azurecr.io
-#!  username: <username>
-#!  password: <password>
-
-
+remove_resource_requirements: ${remove_resource_requirements}
+add_metrics_server_components: ${add_metrics_server_components}
+enable_load_balancer: ${enable_load_balancer}
+use_external_dns_for_wildcard: ${use_external_dns_for_wildcard}
+enable_automount_service_account_token: ${enable_automount_service_account_token}
+metrics_server_prefer_internal_kubelet_address: ${metrics_server_prefer_internal_kubelet_address}
+use_first_party_jwt_tokens: ${use_first_party_jwt_tokens}

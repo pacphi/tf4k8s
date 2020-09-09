@@ -9,12 +9,16 @@ resource "random_password" "gen" {
   special = false
 }
 
+data "local_file" "cf4k8s_config" {
+  filename = local.cf4k8s_config
+}
+
 data "local_file" "certs_vars" {
   filename = "${path.module}/certs.auto.tfvars"
 }
 
-data "template_file" "cf4k8s_config" {
-  template = file("${path.module}/templates/config.yml")
+data "template_file" "cf4k8s_config_additions" {
+  template = file("${path.module}/templates/cf-values-additions.yml")
 
   vars = {
     system_domain = local.system_domain
@@ -28,15 +32,23 @@ data "template_file" "cf4k8s_config" {
     cf_admin_password = random_password.gen.result
 
     registry_domain     = var.registry_domain
-    repository_prefix = var.repository_prefix
+    repository_prefix   = var.repository_prefix
     registry_username   = var.registry_username
     registry_password   = var.registry_password
+
+    remove_resource_requirements = var.remove_resource_requirements
+    add_metrics_server_components = var.add_metrics_server_components
+    enable_load_balancer = var.enable_load_balancer
+    use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
+    enable_automount_service_account_token = var.enable_automount_service_account_token
+    metrics_server_prefer_internal_kubelet_address = var.metrics_server_prefer_internal_kubelet_address
+    use_first_party_jwt_tokens = var.use_first_party_jwt_tokens
   }
 }
 
-resource "local_file" "cf4k8s_config_rendered" {
-  content     = data.template_file.cf4k8s_config.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/config-rendered.yml"
+resource "local_file" "cf4k8s_joined_config" {
+  content  = join("\n", [ data.local_file.cf4k8s_config.content, data.template_file.cf4k8s_config_additions.rendered ])
+  filename = "${local.tmp_dir}/cf-values-joined.yml"
 }
 
 data "template_file" "cf4k8s_cert" {
@@ -70,21 +82,16 @@ resource "k14s_kapp" "cf4k8s_cert" {
 
 data "k14s_ytt" "cf4k8s_ytt" {
   files = [
-    "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config"
+    "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/github.com/cloudfoundry/cf-for-k8s/config",
+    local_file.cf4k8s_joined_config.filename
   ]
 
   debug_logs = true
-
-  config_yaml = data.template_file.cf4k8s_config.rendered
-
-  depends_on = [
-    local_file.cf4k8s_config_rendered
-  ]
 }
 
-resource "local_file" "cf4k8s_ytt" {
+resource "local_file" "cf4k8s_rendered" {
   content = data.k14s_ytt.cf4k8s_ytt.result
-  filename = "${path.module}/${var.ytt_lib_dir}/cf4k8s/vendor/config-ytt.yml"
+  filename = "${local.tmp_dir}/cf-for-k8s-rendered.yml"
 }
 
 resource "k14s_kapp" "cf4k8s" {
@@ -97,7 +104,6 @@ resource "k14s_kapp" "cf4k8s" {
 
   depends_on = [
     k14s_kapp.cf4k8s_cert,
-    local_file.cf4k8s_ytt
+    local_file.cf4k8s_rendered
   ]
-
 }

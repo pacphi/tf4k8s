@@ -49,10 +49,15 @@ project = ...
 
 ## on Kind
 
-If you're deploying [locally](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy-local.md#deploying-cf-for-k8s-locally) to a [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster then you must set the following additional environment variable
+If you're deploying [locally](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy-local.md#deploying-cf-for-k8s-locally) to a [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) cluster then you must set the following additional variables
 
 ```
-export IS_KIND=true
+remove_resource_requirements = true
+add_metrics_server_components = true
+enable_load_balancer = false
+enable_automount_service_account_token: true
+metrics_server_prefer_internal_kubelet_address: true
+use_first_party_jwt_tokens: true
 ```
 
 ## Install

@@ -1,37 +1,27 @@
 #!/bin/bash
 
+PRODUCT_NAME=cf4k8s
+
 if [ -z "$1" ] && [ -z "$2" ]; then
-	echo "Usage: create-cf4k8s.sh {iaas} {domain}"
+	echo "Usage: create-${PRODUCT_NAME}.sh {iaas} {domain}"
 	exit 1
 fi
 
 IAAS="$1"
 DOMAIN="cf.$2"
 
-rm -f ../../../modules/cf4k8s/templates/config.yml
-rm -Rf ../../../ytt-libs/cf4k8s/vendor
-rm -f ../../../ytt-libs/cf4k8s/vendir.lock.yml
+# Make copy of iaas.auto.tfvars in modules/${PRODUCT_NAME}/acme/${IAAS}
+cp -f iaas.auto.tfvars "../../../modules/${PRODUCT_NAME}/acme/${IAAS}"
 
-# Make copy of iaas.auto.tfvars in modules/cf4k8s/acme/${IAAS}
-cp -f iaas.auto.tfvars "../../../modules/cf4k8s/acme/${IAAS}"
+cd ../../../ytt-libs/${PRODUCT_NAME} || exit
 
-# Fetch specific commit from https://github.com/cloudfoundry/cf-for-k8s
-cd ../../../ytt-libs/cf4k8s || exit
-vendir sync
-# Copy config-optional/use-external-dns-for-wildcard.yml into config
-cp -f config-optional/use-external-dns-for-wildcard.yml config
-# If deploying cf4k8s to a kind cluster then
-# include the remove-resource-requirements.yml, remove-ingressgateway-service.yml, add-metrics-server-components.yml 
-# and patch-metrics-server.yml overlay files in the set of templates to be deployed
-if [ ! -z "$IS_KIND" ]; then
-  cp -f config-optional/remove-resource-requirements.yml config
-  cp -f config-optional/remove-ingressgateway-service.yml config
-  cp -f config-optional/add-metrics-server-components.yml config
-  cp -f config-optional/patch-metrics-server.yml config
-fi
+# Fetch specific release (based on commit hash) of Cloud Foundry for Kubernetes from Github
+./scripts/download-${PRODUCT_NAME}.sh
 
-# Seed configuration using modified version of hack script
-cd ../../modules/cf4k8s || exit
+# Configure before installing
+./scripts/configure-${PRODUCT_NAME}.sh "${DOMAIN}"
+
+cd ../../modules/${PRODUCT_NAME} || exit
 
 # Generate certs.auto.tfvars encapsulating key-value pair configuration for system and workloads domain certificates
 cd "acme/$IAAS" || exit
@@ -39,13 +29,10 @@ terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
-cd ../.. || exit
+cd ../../../.. || exit
 
-cp -n templates/fragment.yml templates/config.yml
-./scripts/seed-config.sh -d "${DOMAIN}" >> templates/config.yml
-cd ../.. || exit
-
-cd experiments/k8s/cf4k8s || exit
+# Install
+cd experiments/k8s/${PRODUCT_NAME} || exit
 terraform init
 terraform validate
 terraform graph | dot -Tsvg > graph.svg

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# Modified variant of hack script
+# Modified variant of hack script!
+# @see https://github.com/cloudfoundry/cf-for-k8s/blob/master/hack/generate-values.sh
 
 set -euo pipefail
 
@@ -77,6 +78,8 @@ variables:
   type: password
 - name: uaa_db_password
   type: password
+- name: uaa_login_secret
+  type: password
 - name: uaa_admin_client_secret
   type: password
 - name: uaa_encryption_key_passphrase
@@ -106,68 +109,17 @@ variables:
     ca: default_ca
     common_name: uaa_jwt_policy_signing_key
 
-- name: log_cache_ca
+- name: uaa_login_service_provider
   type: certificate
   options:
-    is_ca: true
-    common_name: log-cache-ca
-
-- name: log_cache
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_syslog
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-syslog
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_metrics
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-metrics
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_gateway
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-gateway
-    alternative_names:
-    - localhost
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: metric_proxy_ca
-  type: certificate
-  options:
-    is_ca: true
-    common_name: metric-proxy-ca
-
-- name: metric_proxy
-  type: certificate
-  options:
-    ca: metric_proxy_ca
-    common_name: metric-proxy
-    extended_key_usage:
-    - client_auth
-    - server_auth
+    ca: default_ca
+    common_name: uaa_login_service_provider
 EOF
 ) >/dev/null
 
 cat <<EOF
+#@data/values
+---
 system_domain: "${DOMAIN}"
 app_domains:
 #@overlay/append
@@ -192,34 +144,6 @@ internal_certificate:
   key: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | base64 | tr -d '\n')
   ca: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | base64 | tr -d '\n')
 
-log_cache_ca:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_ca/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_ca/private_key | base64 | tr -d '\n')
-
-log_cache:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache/private_key | base64 | tr -d '\n')
-
-log_cache_metrics:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_metrics/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_metrics/private_key | base64 | tr -d '\n')
-
-log_cache_gateway:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_gateway/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_gateway/private_key | base64 | tr -d '\n')
-
-log_cache_syslog:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_syslog/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_syslog/private_key | base64 | tr -d '\n')
-
-metric_proxy:
-  ca:
-    crt: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy_ca/certificate | base64 | tr -d '\n' )
-    key: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy_ca/private_key | base64 | tr -d '\n' )
-  cert:
-    crt: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy/certificate | base64 | tr -d '\n' )
-    key: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy/private_key | base64 | tr -d '\n' )
-
 uaa:
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/uaa_db_password)
@@ -229,6 +153,13 @@ uaa:
 $(bosh interpolate "${VARS_FILE}" --path=/uaa_jwt_policy_signing_key/private_key | sed -e 's#^#      #')
   encryption_key:
     passphrase: $(bosh interpolate "${VARS_FILE}" --path=/uaa_encryption_key_passphrase)
+  login:
+    service_provider:
+      key: |
+$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key | sed -e 's#^#        #')
+      certificate: |
+$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | sed -e 's#^#        #')
+  login_secret: $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_secret)
 EOF
 
 if [[ -n "${K8S_ENV:-}" ]] ; then
