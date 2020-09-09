@@ -1,6 +1,6 @@
 # Terraform for installing Weaveworks Flagger
 
-Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to install [Flagger](https://docs.flagger.app) with support for Contour canary deployments.
+Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to install [Flagger](https://docs.flagger.app) with support for Contour canary deployments.  Employs this helm [chart](https://hub.helm.sh/charts/flagger/flagger).
 
 Flagger is a Kubernetes operator that automates the promotion of canary deployments using a routing provider (e.g., Contour) for traffic shifting and Prometheus metrics for canary analysis. The canary analysis can be extended with webhooks for running system integration/acceptance tests, load tests, or any other custom validation.
 
