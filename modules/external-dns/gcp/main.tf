@@ -26,7 +26,7 @@ resource "helm_release" "external_dns" {
   version    = "3.4.0"
 
   # For additional configuration options @see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml#L258
-  # And speicl thanks to https://itsmetommy.com/2019/06/14/kubernetes-automated-dns-with-externaldns-on-gke/ for clarity
+  # And special thanks to https://itsmetommy.com/2019/06/14/kubernetes-automated-dns-with-externaldns-on-gke/ for clarity
 
   set {
     name = "provider"
