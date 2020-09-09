@@ -153,7 +153,7 @@ Set-Variable KBLD_VERSION 0.24.0
 curl -LO "https://github.com/k14s/kbld/releases/download/v$KAPP_VERSION/kbld-windows-amd64.exe"
 Rename-Item -Path "kbld-windows-amd64.exe" -NewName "kbld.exe"
 
-Set-Variable PIVNET_VERSION 1.0.4
+Set-Variable PIVNET_VERSION 2.0.0
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 
