@@ -9,16 +9,10 @@ IAAS="$1"
 DOMAIN="tas.$2"
 PIVNET_API_TOKEN="$3"
 
-rm -Rf ../../../ytt-libs/tas4k8s/vendor
-rm -Rf ../../../ytt-libs/tas4k8s/vendir.lock.yml
-
 # Make copy of iaas.auto.tfvars in modules/tas4k8s/acme/${IAAS}
 cp -f iaas.auto.tfvars "../../../modules/tas4k8s/acme/${IAAS}"
 
-# Fetch specific commit from https://github.com/cloudfoundry/cf-for-k8s
-# Enables external-dns
 cd ../../../ytt-libs/tas4k8s || exit
-vendir sync
 
 # Fetch specific release of VMWare Tanzu Application Service for Kuberenetes from VMWare Tanzu Network
 ./scripts/download-tas4k8s.sh "${PIVNET_API_TOKEN}"

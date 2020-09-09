@@ -113,76 +113,19 @@ variables:
   options:
     ca: default_ca
     common_name: uaa_login_service_provider
-
-- name: log_cache_ca
-  type: certificate
-  options:
-    is_ca: true
-    common_name: log-cache-ca
-
-- name: log_cache
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_syslog
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-syslog
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_metrics
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-metrics
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: log_cache_gateway
-  type: certificate
-  options:
-    ca: log_cache_ca
-    common_name: log-cache-gateway
-    alternative_names:
-    - localhost
-    extended_key_usage:
-    - client_auth
-    - server_auth
-
-- name: metric_proxy_ca
-  type: certificate
-  options:
-    is_ca: true
-    common_name: metric-proxy-ca
-
-- name: metric_proxy
-  type: certificate
-  options:
-    ca: metric_proxy_ca
-    common_name: metric-proxy
-    extended_key_usage:
-    - client_auth
-    - server_auth
 EOF
 ) >/dev/null
 
 cat <<EOF
+#@data/values
+---
 system_domain: "${DOMAIN}"
 app_domains:
 #@overlay/append
 - "apps.${DOMAIN}"
 
-cf_blobstore:
-  secret_key: $(bosh interpolate ${VARS_FILE} --path=/blobstore_secret_key)
+blobstore:
+  secret_access_key: $(bosh interpolate ${VARS_FILE} --path=/blobstore_secret_key)
 
 cf_db:
   admin_password: $(bosh interpolate ${VARS_FILE} --path=/db_admin_password)
@@ -200,34 +143,6 @@ internal_certificate:
   key: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | base64 | tr -d '\n')
   ca: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | base64 | tr -d '\n')
 
-log_cache_ca:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_ca/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_ca/private_key | base64 | tr -d '\n')
-
-log_cache:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache/private_key | base64 | tr -d '\n')
-
-log_cache_metrics:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_metrics/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_metrics/private_key | base64 | tr -d '\n')
-
-log_cache_gateway:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_gateway/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_gateway/private_key | base64 | tr -d '\n')
-
-log_cache_syslog:
-  crt: $(bosh interpolate ${VARS_FILE} --path=/log_cache_syslog/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/log_cache_syslog/private_key | base64 | tr -d '\n')
-
-metric_proxy:
-  ca:
-    crt: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy_ca/certificate | base64 | tr -d '\n' )
-    key: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy_ca/private_key | base64 | tr -d '\n' )
-  cert:
-    crt: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy/certificate | base64 | tr -d '\n' )
-    key: $( bosh interpolate ${VARS_FILE} --path=/metric_proxy/private_key | base64 | tr -d '\n' )
-
 uaa:
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/uaa_db_password)
@@ -244,6 +159,8 @@ $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key
       certificate: |
 $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | sed -e 's#^#        #')
   login_secret: $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_secret)
+
+((CF_VALUE_ADDITIONS))
 EOF
 
 if [[ -n "${K8S_ENV:-}" ]] ; then

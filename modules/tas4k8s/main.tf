@@ -14,7 +14,7 @@ data "local_file" "certs_vars" {
 }
 
 data "template_file" "cf_values" {
-  template = file("${path.module}/templates/cf-values.yml")
+  template = file("${path.module}/templates/cf-value-additions.yml")
 
   vars = {
     cf_admin_password = random_password.gen.result
@@ -23,6 +23,14 @@ data "template_file" "cf_values" {
     system_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1)
     workloads_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1)
     workloads_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1)
+
+    remove_resource_requirements = var.remove_resource_requirements
+    add_metrics_server_components = var.add_metrics_server_components
+    enable_load_balancer = var.enable_load_balancer
+    use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
+    enable_automount_service_account_token = var.enable_automount_service_account_token
+    metrics_server_prefer_internal_kubelet_address = var.metrics_server_prefer_internal_kubelet_address
+    use_first_party_jwt_tokens = var.use_first_party_jwt_tokens
   }
 }
 
@@ -30,10 +38,10 @@ data "local_file" "deployment_values_tmp" {
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.tmp"
 }
 
-# PATCH #3
-# Prepend cf-values.yml to the originally generated deployment-values.tmp
+# PATCH #2
+# Insert contents of cf-value-additions.yml within previously generated deployment-values.tmp at plaecholder
 resource "local_file" "cf_values_rendered" {
-  content  = replace(data.local_file.deployment_values_tmp.content, "#@library/ref \"@github.com/cloudfoundry/cf-for-k8s\"", data.template_file.cf_values.rendered)
+  content  = replace(data.local_file.deployment_values_tmp.content, "((CF_VALUE_ADDITIONS))", data.template_file.cf_values.rendered)
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
@@ -66,11 +74,6 @@ data "template_file" "system_registry_values" {
 resource "local_file" "system_registry_values_rendered" {
   content     = data.template_file.system_registry_values.rendered
   filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/system-registry-values.yml"
-}
-
-resource "local_file" "load_balancer_values_rendered" {
-  content     = file("${path.module}/templates/load-balancer-values.yml")
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/load-balancer-values.yml"
 }
 
 data "template_file" "tas4k8s_cert" {
@@ -112,8 +115,7 @@ data "k14s_ytt" "tas4k8s_ytt" {
   depends_on = [
     local_file.cf_values_rendered,
     local_file.app_registry_values_rendered,
-    local_file.system_registry_values_rendered,
-    local_file.load_balancer_values_rendered
+    local_file.system_registry_values_rendered
   ]
 }
 

@@ -2,13 +2,24 @@ module "tas4k8s" {
   source = "../../../modules/tas4k8s"
 
   domain           = "tas.${var.base_domain}"
+
   registry_domain  = var.registry_domain
   repository_prefix   = var.repository_prefix
   registry_username     = var.registry_username
   registry_password     = var.registry_password
+  
   pivnet_registry_hostname = var.pivnet_registry_hostname
   pivnet_username     = var.pivnet_username
   pivnet_password     = var.pivnet_password
+
+  remove_resource_requirements = var.remove_resource_requirements
+  add_metrics_server_components = var.add_metrics_server_components
+  enable_load_balancer = var.enable_load_balancer
+  use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
+  enable_automount_service_account_token = var.enable_automount_service_account_token
+  metrics_server_prefer_internal_kubelet_address = var.metrics_server_prefer_internal_kubelet_address
+  use_first_party_jwt_tokens = var.use_first_party_jwt_tokens
+
   kubeconfig_path  = var.kubeconfig_path
   ytt_lib_dir      = var.ytt_lib_dir
 }
@@ -45,6 +56,34 @@ variable "pivnet_username" {
 
 variable "pivnet_password" {
   description = "Tanzu Network image/artifact registry/repository password"
+}
+
+variable "remove_resource_requirements" {
+  default = "false"
+}
+
+variable "add_metrics_server_components" {
+  default = "false"
+}
+
+variable "enable_load_balancer" {
+  default = "true"
+}
+
+variable "use_external_dns_for_wildcard" {
+  default = "true"
+}
+
+variable "enable_automount_service_account_token" {
+  default = "false"
+}
+
+variable "metrics_server_prefer_internal_kubelet_address" {
+  default = "false"
+}
+
+variable "use_first_party_jwt_tokens" {
+  default = "false"
 }
 
 variable "kubeconfig_path" {
