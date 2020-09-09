@@ -25,7 +25,7 @@ resource "helm_release" "nginx-ingress" {
   namespace  = kubernetes_namespace.nginx.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "nginx-ingress-controller"
-  version    = "5.4.5"
+  version    = "5.5.1"
 
   # For additional configuration  options @see https://github.com/helm/charts/tree/master/stable/nginx-ingress#configuration
 

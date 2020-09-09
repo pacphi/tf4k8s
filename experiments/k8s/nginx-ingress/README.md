@@ -1,6 +1,6 @@
 # Terraform for configuring NGINX Ingress
 
-Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to configure [nginx ingress](https://kubernetes.github.io/ingress-nginx/).
+Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform provider to configure [nginx ingress](https://hub.helm.sh/charts/bitnami/nginx-ingress-controller).
 
 Starts with the assumption that you have already provisioned a cluster.
 
