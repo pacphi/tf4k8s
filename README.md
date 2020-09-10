@@ -44,6 +44,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Provision a distributed version control system with [Gitea](experiments/k8s/gitea)
 - [x] Enable continuous integration (and deployment) with [Concourse](experiments/k8s/concourse)
 - [x] Enable continuous deployment with [Argo CD](experiments/k8s/argo-cd) or [Tekton](experiments/k8s/tekton)
+- [x] Install [edukates](experiments/k8s/eduk8s) a set of custom resources used to deploy workshop training portals
 
 ## Organization
 
