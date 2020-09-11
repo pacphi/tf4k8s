@@ -76,7 +76,7 @@ curl -LO "https://github.com/aliyun/aliyun-cli/releases/download/v${ALIYUN_VERSI
 sudo tar xzvf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz -C /usr/local/bin && \
 rm -Rf aliyun-cli-linux-${ALIYUN_VERSION}-amd64.tgz
 
-BOSH_VERSION=6.3.1 && \
+BOSH_VERSION=6.4.0 && \
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
 chmod +x bosh && \
 sudo mv bosh /usr/local/bin
