@@ -24,6 +24,17 @@ Assumes:
 ./load-workshops.sh {domain}
 ```
 
+### What about creating my own workshop content?
+
+* [Sample workshop templates](https://docs.edukates.io/en/latest/workshop-content/workshop-images.html#templates-for-creating-a-workshop)
+* [Content and layout](https://docs.edukates.io/en/latest/workshop-content/workshop-images.html#workshop-content-directory-layout)
+* [Exercises directory structure](https://docs.edukates.io/en/latest/workshop-content/workshop-images.html#directory-for-workshop-exercises)
+* [Workshop Configuration](https://docs.edukates.io/en/latest/workshop-content/workshop-config.html)
+* [Page Formatting](https://docs.edukates.io/en/latest/workshop-content/page-formatting.html)
+* [Workshop Runtime](https://docs.edukates.io/en/latest/workshop-content/workshop-runtime.html)
+* [Presenter Slides](https://docs.edukates.io/en/latest/workshop-content/presenter-slides.html)
+* [Building an image](https://docs.edukates.io/en/latest/workshop-content/building-an-image.html)
+
 ## Obtain Training Portal Credentials
 
 Share the URL with workshop participants.  Catalog has public visibility, but participants must register before taking training.
@@ -37,3 +48,4 @@ Share the URL with workshop participants.  Catalog has public visibility, but pa
 ```
 ./destroy-eduk8s.sh {release-version}
 ```
+
