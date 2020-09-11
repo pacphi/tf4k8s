@@ -2,7 +2,22 @@
 
 Deploy a commercially supported beta of the Cloud Foundry Application Runtime on Kubernetes.
 
-Starts with the assumption that you have already provisioned a cluster.
+Asssumes:
+
+* You have a cloud account on Azure, AWS, or Google
+* You have already provisioned a cluster that meets [minimum operating requirements](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy.md#kubernetes-cluster-requirements)
+* You have registered a domain (perhaps via [managed DNS](https://www.thousandeyes.com/learning/techtorials/managed-dns))
+* You have installed 
+  * [cert-manager](https://github.com/jetstack/cert-manager#cert-manager)
+  * [nginx-ingress-controller](https://bitnami.com/stack/nginx-ingress-controller/helm) or [Contour](https://projectcontour.io/getting-started/)
+  * [external-dns](https://github.com/kubernetes-sigs/external-dns#externaldns)
+  * [Harbor](https://goharbor.io/docs/2.0.0/install-config/), [JFrog Container Registry](https://www.jfrog.com/confluence/display/JCR6X/Helm+Registry), [Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/#overview), or [Google Container Registry](https://cloud.google.com/container-registry/docs/quickstart)
+* You have credentials for 
+  * [Tanzu Network](https://network.pivotal.io/)
+  * your container registry
+  * your cluster (i.e., ~/.kube/config)
+
+> Review the [experiments](..) directory for help addressing these pre-requisites before getting started.
 
 ## Edit `terraform.tfvars`
 
@@ -11,6 +26,7 @@ Amend the values for
 * `base_domain`
 * `registry_domain`
 * `repository_prefix`
+* `registry_username`
 * `registry_password`
 * `pivnet_username`
 * `pivnet_password`
@@ -59,9 +75,9 @@ If you're deploying [locally](https://github.com/cloudfoundry/cf-for-k8s/blob/ma
 remove_resource_requirements = true
 add_metrics_server_components = true
 enable_load_balancer = false
-enable_automount_service_account_token: true
-metrics_server_prefer_internal_kubelet_address: true
-use_first_party_jwt_tokens: true
+enable_automount_service_account_token = true
+metrics_server_prefer_internal_kubelet_address = true
+use_first_party_jwt_tokens = true
 ```
 
 ## Install

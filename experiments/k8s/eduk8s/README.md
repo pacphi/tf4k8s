@@ -8,8 +8,16 @@ Although edukates requires Kubernetes to run, and is being used to teach users a
 
 Assumes:
 
-* You have a cluster and cluster admin credentials
-* You have pre-installed nginx-ingress-controller, cert-manager, and external-dns
+* You have already provisioned a cluster
+* You have registered a domain (perhaps via [managed DNS](https://www.thousandeyes.com/learning/techtorials/managed-dns))
+* You have installed 
+  * [cert-manager](https://github.com/jetstack/cert-manager#cert-manager)
+  * [nginx-ingress-controller](https://bitnami.com/stack/nginx-ingress-controller/helm)
+  * [external-dns](https://github.com/kubernetes-sigs/external-dns#externaldns)
+* You have credentials for
+  * your cluster (i.e., ~/.kube/config)
+
+> Review the [experiments](..) directory for help addressing these pre-requisites before getting started.
 
 ## Install
 
