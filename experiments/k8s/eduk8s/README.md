@@ -21,13 +21,15 @@ Assumes:
 ## Load Workshops
 
 ```
-./load-workshops.sh
+./load-workshops.sh {domain}
 ```
 
-## List Workshops
+## Obtain Training Portal Credentials
+
+Share the URL with workshop participants.  Catalog has public visibility, but participants must register before taking training.
 
 ```
-./list-workshops.sh
+./obtain-training-portal-admin-creds.sh
 ```
 
 ## Remove

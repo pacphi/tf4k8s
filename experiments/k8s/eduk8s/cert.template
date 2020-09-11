@@ -5,7 +5,7 @@ metadata:
   namespace: eduk8s
 spec:
   dnsNames:
-  - "*.EDUK8S_DOMAIN"
+  - '*.EDUK8S_DOMAIN'
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod

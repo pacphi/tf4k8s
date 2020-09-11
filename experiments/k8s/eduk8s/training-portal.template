@@ -1,0 +1,23 @@
+apiVersion: training.eduk8s.io/v1alpha1
+kind: TrainingPortal
+metadata:
+  name: eduk8s
+spec:
+  portal:
+    catalog:
+      visibility: public
+    ingress:
+      domain: EDUK8S_DOMAIN
+      secret: EDUK8S_SECRET
+    sessions:
+      maximum: 15
+    expires: 60m
+    orphaned: 5m
+  workshops:
+    - name: lab-container-basics
+    - name: lab-k8s-fundamentals
+    - name: lab-getting-started-with-octant
+    - name: lab-getting-started-with-carvel
+    - name: lab-spring-boot-k8s-gs
+    - name: lab-spring-boot-k8s-probes
+    - name: lab-image-security

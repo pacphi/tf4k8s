@@ -1,34 +1,41 @@
 #!/bin/bash
 
-# Load workshop definitions and create workshop training portals
+if [ -z "$1" ] && [ -z "$2" ]; then
+	echo "Usage: load-workshops.sh {domain}"
+	exit 1
+fi
+
+DOMAIN="$1"
+TLS_SECRET=eduk8s-tls-secret
+
+# Load workshop definitions
 
 ## Container Basics
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-container-basics/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-container-basics/master/resources/training-portal.yaml
 
 ## Kubernetes Fundamentals
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-k8s-fundamentals/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-k8s-fundamentals/master/resources/training-portal.yaml
 
 ## Getting Started with Carvel
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-getting-started-with-carvel/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-getting-started-with-carvel/master/resources/training-portal.yaml
 
 ## Getting Started with Spring Boot Kubernetes 
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-spring-boot-k8s-getting-started/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-spring-boot-k8s-getting-started/master/resources/training-portal.yaml
 
 ## Spring Boot Kubernetes Probes
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-spring-boot-k8s-probes/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-spring-boot-k8s-probes/master/resources/training-portal.yaml
  
 ## Getting Started with Octant
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-getting-started-with-octant/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-getting-started-with-octant/master/resources/training-portal.yaml
 
 ## Image Security
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-image-security/master/resources/workshop.yaml
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-image-security/master/resources/training-portal.yaml
+
+## Setup training portal
+cp training-portal.template training-portal.yml 
+sed -i "s/EDUK8S_DOMAIN/$DOMAIN/" training-portal.yml
+sed -i "s/EDUK8S_SECRET/$TLS_SECRET/" training-portal.yml
+kubectl apply -f training-portal.yml
 
 # Verify resources were created
 kubectl get eduk8s-training -o name

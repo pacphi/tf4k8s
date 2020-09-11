@@ -16,5 +16,5 @@ kubectl get workshops,trainingportals,workshoprequests,workshopsessions,workshop
 # Destroy the eduk8s operator
 kubectl delete -k "github.com/eduk8s/eduk8s?ref=${RELEASE_VERSION}"
 
-# Delete certificate file
-rm cert.yml
+# Delete certificate and training-portal resources
+rm cert.yml training-portal.yml
