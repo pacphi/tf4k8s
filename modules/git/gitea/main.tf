@@ -44,7 +44,7 @@ resource "helm_release" "gitea" {
   namespace  = kubernetes_namespace.gitea.metadata[0].name
   repository = "https://keyporttech.github.io/helm-charts/"
   chart      = "gitea"
-  version    = "0.2.1"
+  version    = "0.2.7"
 
   values = [data.template_file.gitea_config.rendered]
 
