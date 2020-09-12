@@ -5,7 +5,7 @@ resource "helm_release" "elasticsearch" {
   namespace  = var.namespace
   repository = "https://Helm.elastic.co"
   chart      = "elasticsearch"
-  version    = "7.8.1"
+  version    = "7.9.1"
 
   # Warning this combination of settings could consume quite a bit of memory
   set {
