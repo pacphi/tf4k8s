@@ -36,6 +36,7 @@ data "template_file" "cf4k8s_config_additions" {
     registry_username   = var.registry_username
     registry_password   = var.registry_password
 
+    https_only = var.https_only
     remove_resource_requirements = var.remove_resource_requirements
     add_metrics_server_components = var.add_metrics_server_components
     enable_load_balancer = var.enable_load_balancer

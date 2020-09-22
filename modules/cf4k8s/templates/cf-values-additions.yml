@@ -23,6 +23,9 @@ app_registry:
    username: ${registry_username}
    password: ${registry_password}
 
+gateway:
+  https_only: ${https_only}
+
 remove_resource_requirements: ${remove_resource_requirements}
 add_metrics_server_components: ${add_metrics_server_components}
 enable_load_balancer: ${enable_load_balancer}

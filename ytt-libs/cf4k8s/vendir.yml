@@ -6,7 +6,7 @@ directories:
   - path: github.com/cloudfoundry/cf-for-k8s
     git:
       url: https://github.com/cloudfoundry/cf-for-k8s
-      ref: 657481780716f727b5aebaa5ea14c0337394b82c
+      ref: 4038b16bb69ed86a5381df26fac19f3df2edcb11
     includePaths:
     - config/**/*
     - hack/**/*

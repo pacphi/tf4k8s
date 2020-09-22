@@ -7,6 +7,7 @@ module "cf4k8s" {
   registry_username     = var.registry_username
   registry_password     = var.registry_password
 
+  https_only = var.https_only
   remove_resource_requirements = var.remove_resource_requirements
   add_metrics_server_components = var.add_metrics_server_components
   enable_load_balancer = var.enable_load_balancer
@@ -38,6 +39,10 @@ variable "registry_username" {
 
 variable "registry_password" {
   description = "Container image/artifact registry/repository password"
+}
+
+variable "https_only" {
+  default = true
 }
 
 variable "remove_resource_requirements" {

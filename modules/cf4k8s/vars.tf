@@ -8,6 +8,10 @@ variable "registry_username" {}
 
 variable "registry_password" {}
 
+variable "https_only" {
+  default = true
+}
+
 variable "remove_resource_requirements" {
   default = "false"
 }
