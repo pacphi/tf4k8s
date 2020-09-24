@@ -93,7 +93,7 @@ ARGO_ROLLOUTS_VERSION=0.9.0
 curl -sSL -o /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/download/v${ARGO_ROLLOUTS_VERSION}/kubectl-argo-rollouts-linux-amd64 && \
 chmod +x /usr/local/bin/kubectl-argo-rollouts
 
-TEKTON_VERSION=0.11.0 && \
+TEKTON_VERSION=0.12.1 && \
 curl -LO https://github.com/tektoncd/cli/releases/download/v${TEKTON_VERSION}/tkn_${TEKTON_VERSION}_Linux_x86_64.tar.gz && \
 sudo tar xvzf tkn_${TEKTON_VERSION}_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
 

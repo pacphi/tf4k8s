@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEKTON_PIPELINES_VERSION="v0.15.1"
+TEKTON_PIPELINES_VERSION="v0.16.3"
 TEKTON_DASHBOARD_VERSION="v0.9.0"
 
 curl -LO https://github.com/tektoncd/pipeline/releases/download/${TEKTON_PIPELINES_VERSION}/release.yaml
