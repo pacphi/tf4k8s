@@ -101,7 +101,7 @@ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key |
 echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 
 sudo apt-get update -y
-sudo apt-get install -y cf-cli
+sudo apt-get install -y cf7-cli
 
 # @see https://krew.sigs.k8s.io/docs/user-guide/setup/install/
 set -x; cd "$(mktemp -d)" &&

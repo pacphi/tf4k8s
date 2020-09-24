@@ -17,7 +17,7 @@ brew install jpoon/homebrew-oci-cli/oci-cli
 brew install cloudfoundry/tap/bosh-cli
 brew install pivotal/tap/pivnet-cli
 
-brew install cloudfoundry/tap/cf-cli
+brew install cloudfoundry/tap/cf-cli@7
 
 brew tap argoproj/tap
 brew install argoproj/tap/argocd
