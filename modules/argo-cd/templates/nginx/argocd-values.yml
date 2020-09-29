@@ -20,7 +20,7 @@ dex:
 
   image:
     repository: quay.io/dexidp/dex
-    tag: v2.24.0
+    tag: v2.25.0
  
 redis:
   enabled: true
@@ -28,7 +28,7 @@ redis:
 
   image:
     repository: redis
-    tag: 6.0.7
+    tag: 6.0.8
  
 server:
   name: server

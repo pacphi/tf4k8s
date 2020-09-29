@@ -30,7 +30,7 @@ resource "helm_release" "minio" {
   namespace  = kubernetes_namespace.minio.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "minio"
-  version    = "3.7.5"
+  version    = "3.7.10"
 
   values = [data.template_file.minio_config.rendered]
 
