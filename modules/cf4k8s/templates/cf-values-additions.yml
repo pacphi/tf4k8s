@@ -28,8 +28,10 @@ gateway:
 
 remove_resource_requirements: ${remove_resource_requirements}
 add_metrics_server_components: ${add_metrics_server_components}
-enable_load_balancer: ${enable_load_balancer}
 use_external_dns_for_wildcard: ${use_external_dns_for_wildcard}
 enable_automount_service_account_token: ${enable_automount_service_account_token}
 metrics_server_prefer_internal_kubelet_address: ${metrics_server_prefer_internal_kubelet_address}
 use_first_party_jwt_tokens: ${use_first_party_jwt_tokens}
+
+load_balancer:
+  enable: ${enable_load_balancer}
