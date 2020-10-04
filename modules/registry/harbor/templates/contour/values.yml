@@ -2,8 +2,10 @@ externalURL: https://${harbor_domain}
 harborAdminPassword: ${admin_password}
 expose:
   tls:
-    secretName: harbor-tls-secret
-    notarySecretName: harbor-tls-secret
+    certSource: secret
+    secret:
+      secretName: harbor-tls-secret
+      notarySecretName: harbor-tls-secret
   ingress:
     hosts:
       core: ${harbor_domain}

@@ -2,7 +2,7 @@ provider "helm" {
   kubernetes {
     config_path = var.kubeconfig_path
   }
-  version = "~> 1.2.0"
+  version = "~> 1.3.1"
 }
 
 terraform {
