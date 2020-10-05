@@ -20,5 +20,5 @@ output "tas_admin_username" {
 
 output "tas_admin_password" {
   description = "The Tanzu Application Service cluster's administrator password"
-  value = random_password.gen.result
+  value = random_password.cf.result
 }

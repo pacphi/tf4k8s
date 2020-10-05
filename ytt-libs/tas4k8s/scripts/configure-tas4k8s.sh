@@ -19,7 +19,7 @@ cp -f scripts/generate-values.sh ${VENDIR_DIR}/hack/generate-values.sh
 mkdir -p /tmp/tanzu-application-service/configuration-values
 YTT_LIB_DIR="${PWD}"
 cd /tmp/tanzu-application-service || exit
-./bin/generate-values.sh -d "${DOMAIN}" > /tmp/tanzu-application-service/configuration-values/deployment-values.tmp
+./bin/generate-values.sh -d "${DOMAIN}" > /tmp/tanzu-application-service/configuration-values/generated-values.yml
 cd "${YTT_LIB_DIR}" || exit
 
 # Copy config into place

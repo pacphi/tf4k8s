@@ -160,7 +160,6 @@ $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key
 $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | sed -e 's#^#        #')
   login_secret: $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_secret)
 
-((CF_VALUE_ADDITIONS))
 EOF
 
 if [[ -n "${K8S_ENV:-}" ]] ; then
