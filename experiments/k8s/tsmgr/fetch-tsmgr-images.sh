@@ -8,7 +8,7 @@ fi
 USERNAME="$1"
 PASSWORD="$2"
 
-VERSION=0.11.27
+VERSION=1.0.1
 
 docker login -u "${USERNAME}" -p "${PASSWORD}" registry.pivotal.io
 docker pull registry.pivotal.io/tanzu-service-manager/broker:${VERSION}

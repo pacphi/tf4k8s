@@ -8,9 +8,9 @@ fi
 PIVNET_API_TOKEN="$1"
 pivnet login --api-token=$PIVNET_API_TOKEN
 
-VERSION="0.11.27"
+VERSION="1.0.1"
 
-TSMGR_PRODUCT_FILE_ID=785221
+TSMGR_PRODUCT_FILE_ID=799678
 pivnet download-product-files --product-slug='tanzu-service-manager' --release-version="${VERSION}" --product-file-id="${TSMGR_PRODUCT_FILE_ID}"
 mv tsmgr-${VERSION}.darwin tsmgr
 chmod +x tsmgr
