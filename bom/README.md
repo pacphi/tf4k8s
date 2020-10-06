@@ -26,6 +26,10 @@ You may choose to install them ad hoc or use one of the OS-specific scripts to m
 
 - [x] [VMWare Tanzu Network](https://network.pivotal.io) client ([pivnet](https://github.com/pivotal-cf/pivnet-cli#installing))
 
+### Tanzu-specific
+
+- [x] [tmc](https://bit.ly/2GmAhkJ)
+
 ### Cloud Foundry-centric
 
 - [x] [cf](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
