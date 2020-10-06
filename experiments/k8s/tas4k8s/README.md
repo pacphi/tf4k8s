@@ -132,3 +132,20 @@ The credentials to login are the same as the ones used to authenticate the `{tas
 ```
 > Set `iaas` to be one of [ amazon, azure, gcp ]
 
+
+## Known Issues
+
+The `PersistentVolumeClaim` named `postgres-pvc` in the `postgres-dbms` namespace does not get deleted on execution of `destroy-tas4k8s.sh`.
+
+The work-around is to execute
+
+```
+kubectl delete pvc -n postgres-dbms postgres-pvc --force
+```
+
+Additionally, you may have to execute
+
+```
+kubectl delete pod pgsqlcfdb-postgresql-0 -n postgres-dbms --force
+kubectl delete namespace postgres-dbms
+```

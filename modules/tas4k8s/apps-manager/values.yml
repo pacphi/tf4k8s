@@ -1,0 +1,18 @@
+#@library/ref "@github.com/pivotal/apps-manager-k8s-release"
+#@data/values
+---
+apps_manager:
+  display_plan_prices: "false"
+  poll_interval: 30
+  app_details_poll_interval: 10
+  
+  resources:
+    instances: 1
+
+  whitelabeling:
+    product_name: "Apps Manager"
+    accent_color: "#00A79D"
+
+search_server:
+  resources:
+    instances: 2

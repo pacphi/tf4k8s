@@ -143,6 +143,7 @@ internal_certificate:
   key: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | base64 | tr -d '\n')
   ca: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | base64 | tr -d '\n')
 
+
 uaa:
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/uaa_db_password)
@@ -159,8 +160,6 @@ $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key
       certificate: |
 $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | sed -e 's#^#        #')
   login_secret: $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_secret)
-
-((CF_VALUE_ADDITIONS))
 EOF
 
 if [[ -n "${K8S_ENV:-}" ]] ; then
