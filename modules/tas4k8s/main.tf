@@ -71,12 +71,12 @@ resource "local_file" "apps_manager_values" {
 }
 
 data "local_file" "generated_values" {
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/generated-values.yml"
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
 resource "local_file" "cf_values_rendered" {
   content  = data.template_file.baseline_values.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/cf-values.yml"
+  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/values.yml"
 }
 
 data "template_file" "postgres_pvc" {
