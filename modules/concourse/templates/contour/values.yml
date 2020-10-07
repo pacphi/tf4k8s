@@ -23,3 +23,6 @@ secrets:
 concourse:
   web:
     externalUrl: https://${concourse_domain}
+    auth:
+      mainTeam:
+        localUser: "${concourse_username}"
