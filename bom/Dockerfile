@@ -1,13 +1,13 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as build
 LABEL author=cphillipson@pivotal.io
 
 # Welcome to tf4k8s-toolsuite!
 # This image installs the following versions of CLIs on an Ubuntu Focal image
 
-ENV TZ=America/Los_Angeles
-ENV DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=noninteractive 
 
-ENV BOSH_VERSION=6.4.0 \
+ENV TZ=America/Los_Angeles \
+    BOSH_VERSION=6.4.0 \
     CF_VERSION=7.1.0 \
     CREDHUB_VERSION=2.8.0 \
     HELM_VERSION=3.3.4 \
@@ -108,9 +108,14 @@ RUN mkdir downloads && cd downloads && \
     curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc && \
     chmod +x mc && \
     sudo mv mc /usr/local/bin && \
-    cd .. && rm -Rf downloads
+    cd .. && rm -Rf downloads /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    apt clean
 
 USER docker
+
+FROM scratch
+
+COPY --from=build / /
 
 CMD /bin/bash
       
