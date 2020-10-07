@@ -109,15 +109,15 @@ sudo apt-get update -y
 sudo apt-get install -y cf7-cli
 
 # @see https://krew.sigs.k8s.io/docs/user-guide/setup/install/
-set -x; cd "$(mktemp -d)" &&
-curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}" &&
-tar zxvf krew.tar.gz &&
-KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
-"$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+set -x; cd "$(mktemp -d)" && \
+curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}" && \
+tar zxvf krew.tar.gz && \
+KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" && \
+"$KREW" install --manifest=krew.yaml --archive=krew.tar.gz && \
 "$KREW" update
 
-curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.8.1/kind-$(uname)-amd64" &&
-chmod +x kind &&
+curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.8.1/kind-$(uname)-amd64" && \
+chmod +x kind && \
 sudo mv kind /usr/local/bin
 
 cd /tmp
@@ -125,6 +125,6 @@ git clone https://github.com/FiloSottile/mkcert && cd mkcert
 go build -ldflags "-X main.Version=$(git describe --tags)"
 sudo mv mkcert /usr/local/bin
 
-curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc &&
-chmod +x mc &&
+curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc && \
+chmod +x mc && \
 sudo mv mc /usr/local/bin

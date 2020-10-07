@@ -16,6 +16,5 @@ modules/**/templates/kpack-webhook.yml
 samples/**/bin/**
 .ytt/
 dist/
-Dockerfile
 manifest.yml
 .vagrant/

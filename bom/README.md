@@ -92,3 +92,12 @@ Employs [apt-get](https://help.ubuntu.com/community/AptGet/Howto) and [snap](htt
 ```
 
 Employs [chocolatey](https://chocolatey.org) and [scoop](https://scoop.sh)
+
+## Docker image
+
+If you want to build and run a portable container image, then execute
+
+```
+docker build -t tanzu/tf4k8s-toolsuite .
+docker run -it tanzu/tf4k8s-toolsuite /bin/bash 
+```
