@@ -2,6 +2,7 @@ module "managed-zone" {
   source = "../../../modules/dns/gcp"
 
   project = var.project
+  gcp_service_account_credentials = var.gcp_service_account_credentials
   root_zone_name = var.root_zone_name
   environment_name = var.environment_name
   dns_prefix = var.dns_prefix
@@ -9,6 +10,10 @@ module "managed-zone" {
 
 variable "project" {
   description = "A Google Cloud Platform project id"
+}
+
+variable "gcp_service_account_credentials" {
+  description = "The path to your Google Cloud Platform IAM service account credentials file"
 }
 
 variable "root_zone_name" {
