@@ -21,7 +21,7 @@ resource "random_password" "postgres" {
 }
 
 data "local_file" "certs_vars" {
-  filename = "${path.module}/certs.auto.tfvars"
+  filename = var.certificate_variables_file_path
 }
 
 data "template_file" "baseline_values" {
