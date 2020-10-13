@@ -32,7 +32,7 @@ brew install minio/stable/mc
 TF_K14S_PLUGIN_VERSION=0.6.0 && \
 mkdir -p ~/.terraform.d/plugins && \
 curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v${TF_K14S_PLUGIN_VERSION}/terraform-provider-k14s-binaries.tgz" && \
-tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/
+tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION
 rm -Rf terraform-provider-k14s-binaries.tgz
 
 TMC_VERSION=0.1.0-829a6124 && \

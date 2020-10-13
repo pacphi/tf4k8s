@@ -7,7 +7,3 @@ provider "k14s" {
     kubeconfig_yaml = file(var.kubeconfig_path)
   }
 }
-
-terraform {
-  required_version = "~> 0.12"
-}

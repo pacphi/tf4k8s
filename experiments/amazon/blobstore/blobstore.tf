@@ -30,5 +30,5 @@ output "s3_bucket_hosted_zone_id" {
 }
 
 provider "aws" {
-  version = "~> 2.54.0"
+  version = ">= 3.9.0"
 }

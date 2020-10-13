@@ -12,6 +12,3 @@ provider "google-beta" {
   region      = var.gcp_region
 }
 
-terraform {
-  required_version = "~> 0.12"
-}

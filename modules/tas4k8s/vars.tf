@@ -1,5 +1,9 @@
 variable "domain" {}
 
+variable "certificate_variables_file_path" {
+  default = ""
+}
+
 variable "registry_domain" {}
 
 variable "repository_prefix" {}
