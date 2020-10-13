@@ -1,7 +1,7 @@
 variable "domain" {}
 
 variable "certficate_variables_file_path" {
-  default = "${path.module}/certs.auto.tfvars"
+  default = ""
 }
 
 variable "registry_domain" {}
