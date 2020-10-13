@@ -1,6 +1,6 @@
 variable "domain" {}
 
-variable "certficate_variables_file_path" {
+variable "certificate_variables_file_path" {
   default = ""
 }
 
