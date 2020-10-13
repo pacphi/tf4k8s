@@ -1,9 +1,3 @@
-provider "acme" {
-  server_url = "https://acme-v02.api.letsencrypt.org/directory"
-
-  version = "~> 1.5.0"
-}
-
 resource "tls_private_key" "private_key" {
   algorithm = "RSA"
 }
