@@ -6,7 +6,3 @@ provider "azurerm" {
   tenant_id = var.az_tenant_id
   features {}
 }
-
-terraform {
-  required_version = "~> 0.12"
-}

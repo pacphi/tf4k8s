@@ -21,7 +21,7 @@ HELMFILE_VERSION=0.125.7
 curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64
 sudo mv helmfile /usr/local/bin
 
-TERRAFORM_VERSION=0.12.28
+TERRAFORM_VERSION=0.13.4
 wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
@@ -68,7 +68,7 @@ curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/
 TF_K14S_PLUGIN_VERSION=0.6.0 && \
 mkdir -p ~/.terraform.d/plugins && \
 curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v${TF_K14S_PLUGIN_VERSION}/terraform-provider-k14s-binaries.tgz" && \
-tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/ && \
+tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION && \
 rm -Rf terraform-provider-k14s-binaries.tgz
 
 ALIYUN_VERSION=3.0.56 && \

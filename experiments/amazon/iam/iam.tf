@@ -104,10 +104,6 @@ output "this_iam_user_unique_id" {
 }
 
 provider "aws" {
-  version = "~> 3.9.0"
+  version = ">= 3.9.0"
   region  = var.region
-}
-
-terraform {
-  required_version = "~> 0.12"
 }

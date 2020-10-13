@@ -4,6 +4,3 @@ provider "k14s" {
   }
 }
 
-terraform {
-  required_version = "~> 0.12"
-}

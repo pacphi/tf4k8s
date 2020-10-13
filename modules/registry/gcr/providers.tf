@@ -3,7 +3,3 @@ provider "google" {
   credentials = file(var.credentials)
   project     = var.project
 }
-
-terraform {
-  required_version = "~> 0.12"
-}

@@ -105,10 +105,14 @@ resource "null_resource" "push_broker" {
 }
 
 resource "null_resource" "register_broker" {
+  triggers {
+    broker_name = "csb-${random_id.suffix.hex}"
+  }
+  
   provisioner "local-exec" {
     environment = {
       APP_NAME = "cloud-service-broker"
-      BROKER_NAME = "csb-${random_id.suffix.hex}"
+      BROKER_NAME = self.triggers.broker_name
       SECURITY_USER_NAME = random_uuid.api_user.result
       SECURITY_USER_PASSWORD = random_password.api_password.result
     }
@@ -118,7 +122,7 @@ resource "null_resource" "register_broker" {
   provisioner "local-exec" {
     when = destroy
     environment = {
-      BROKER_NAME = "csb-${random_id.suffix.hex}"
+      BROKER_NAME = self.triggers.broker_name
     }
     command = "cf delete-service-broker $BROKER_NAME -f"
   }

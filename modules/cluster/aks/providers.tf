@@ -6,7 +6,3 @@ provider "azurerm" {
   client_secret = var.az_client_secret
   features {}
 }
-
-terraform {
-  required_version = "~> 0.12"
-}
