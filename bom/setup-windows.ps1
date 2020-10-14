@@ -128,7 +128,7 @@ scoop tar install
 choco install -y tektoncd-cli
 
 Set-Variable TF_K14S_PLUGIN_VERSION 0.6.0
-md $HOME/.terraform.d/plugins -ea 0
+md $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION -ea 0
 curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v$TF_K14S_PLUGIN_VERSION/terraform-provider-k14s-binaries.tgz"
 tar xzvf terraform-provider-k14s-binaries.tgz -C $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION
 Remove-Item terraform-provider-k14s-binaries.tgz
