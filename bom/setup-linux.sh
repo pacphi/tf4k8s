@@ -47,7 +47,7 @@ wget -O ytt https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/ytt-li
 chmod +x ytt && \
 sudo mv ytt /usr/local/bin
 
-VENDIR_VERSION=0.9.0
+VENDIR_VERSION=0.10.0
 wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSION}/vendir-linux-amd64 && \
 chmod +x vendir && \
 sudo mv vendir /usr/local/bin
@@ -57,7 +57,7 @@ wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kap
 chmod +x kapp && \
 sudo mv kapp /usr/local/bin
 
-KBLD_VERSION=0.24.0
+KBLD_VERSION=0.25.0
 wget -O kbld https://github.com/k14s/kbld/releases/download/v${KBLD_VERSION}/kbld-linux-amd64 && \
 chmod +x kbld && \
 sudo mv kbld /usr/local/bin

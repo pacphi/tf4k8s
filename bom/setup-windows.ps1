@@ -141,7 +141,7 @@ Set-Variable YTT_VERSION 0.30.0
 curl -LO "https://github.com/k14s/ytt/releases/download/v$YTT_VERSION/ytt-windows-amd64.exe"
 Rename-Item -Path "ytt-windows-amd64.exe" -NewName "ytt.exe"
 
-Set-Variable VENDIR_VERSION 0.9.0
+Set-Variable VENDIR_VERSION 0.10.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
 Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
 
@@ -149,7 +149,7 @@ Set-Variable KAPP_VERSION 0.34.0
 curl -LO "https://github.com/k14s/kapp/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
 Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
 
-Set-Variable KBLD_VERSION 0.24.0
+Set-Variable KBLD_VERSION 0.25.0
 curl -LO "https://github.com/k14s/kbld/releases/download/v$KAPP_VERSION/kbld-windows-amd64.exe"
 Rename-Item -Path "kbld-windows-amd64.exe" -NewName "kbld.exe"
 
