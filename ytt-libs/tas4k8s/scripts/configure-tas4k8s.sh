@@ -1,11 +1,18 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	echo "Usage: configure-tas4k8s.sh {domain}"
+	echo "Usage: configure-tas4k8s.sh {domain} {vendor_dir}"
+	echo "  Note: {vendor_dir} is an optional parameter and if not specified defaults to [ vendor ] relative to the scipt execution path"
 	exit 1
 fi
 
 DOMAIN="$1"
+VENDOR_DIR="vendor"
+
+if [ -z "$2" ]; then
+	VENDOR_DIR="$2"
+fi
+
 TMP_DIR=/tmp/tanzu-application-service
 VENDIR_DIR=${TMP_DIR}/config/_ytt_lib/github.com/cloudfoundry/cf-for-k8s
 
@@ -23,7 +30,7 @@ cd /tmp/tanzu-application-service || exit
 cd "${YTT_LIB_DIR}" || exit
 
 # Copy config into place
-mkdir -p vendor
-cp -Rf /tmp/tanzu-application-service/config vendor
-cp -Rf /tmp/tanzu-application-service/config-optional vendor
-cp -Rf /tmp/tanzu-application-service/configuration-values vendor
+mkdir -p $VENDOR_DIR
+cp -Rf /tmp/tanzu-application-service/config $VENDOR_DIR
+cp -Rf /tmp/tanzu-application-service/config-optional $VENDOR_DIR
+cp -Rf /tmp/tanzu-application-service/configuration-values $VENDOR_DIR
