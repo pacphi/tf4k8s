@@ -1,15 +1,16 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
+if [ $# -eq 0  ]; then
 	echo "Usage: configure-tas4k8s.sh {domain} {vendor_dir}"
 	echo "  Note: {vendor_dir} is an optional parameter and if not specified defaults to [ vendor ] relative to the scipt execution path"
 	exit 1
 fi
 
 DOMAIN="$1"
-VENDOR_DIR="vendor"
 
 if [ -z "$2" ]; then
+  	VENDOR_DIR="vendor"
+else
 	VENDOR_DIR="$2"
 fi
 
