@@ -67,16 +67,16 @@ data "local_file" "apps_manager_values" {
 
 resource "local_file" "apps_manager_values" {
   content = data.local_file.apps_manager_values.content
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/apps-manager-values.yml"
+  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/apps-manager-values.yml"
 }
 
 data "local_file" "generated_values" {
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
+  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
 resource "local_file" "cf_values_rendered" {
   content  = data.template_file.baseline_values.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values/values.yml"
+  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/values.yml"
 }
 
 data "template_file" "postgres_pvc" {
@@ -132,7 +132,7 @@ data "template_file" "tas4k8s_cert" {
 
 resource "local_file" "tas4k8s_cert_rendered" {
   content     = data.template_file.tas4k8s_cert.rendered
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/cert-rendered.yml"
+  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/cert-rendered.yml"
 }
 
 resource "k14s_kapp" "tas4k8s_cert" {
@@ -151,8 +151,8 @@ resource "k14s_kapp" "tas4k8s_cert" {
 
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/config",
-    "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/configuration-values"
+    "${local.ytt_lib_dir}/tas4k8s/vendor/config",
+    "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values"
   ]
 
   debug_logs = true
@@ -171,7 +171,7 @@ data "k14s_kbld" "tas4k8s_config" {
 
 resource "local_file" "tas4k8s_config" {
   content     = data.k14s_kbld.tas4k8s_config.result
-  filename = "${path.module}/${var.ytt_lib_dir}/tas4k8s/vendor/tas.yml"
+  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/tas.yml"
 }
 
 resource "k14s_kapp" "tas4k8s" {
