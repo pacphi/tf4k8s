@@ -86,7 +86,7 @@ wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIV
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
 
-ARGOCD_VERSION=1.7.3 && \
+ARGOCD_VERSION=1.7.8 && \
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-amd64 && \
 chmod +x /usr/local/bin/argocd
 ARGO_ROLLOUTS_VERSION=0.9.0
