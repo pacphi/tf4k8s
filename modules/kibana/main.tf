@@ -34,7 +34,7 @@ resource "helm_release" "kibana" {
   namespace  = var.namespace
   repository = "https://Helm.elastic.co"
   chart      = "kibana"
-  version    = "7.9.1"
+  version    = "7.9.2"
 
   values = [data.template_file.kibana_config.rendered]
 }
