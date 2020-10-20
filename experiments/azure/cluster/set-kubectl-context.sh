@@ -5,4 +5,4 @@ if [ -z "$1" ] && [ -z "$2" ]; then
 	exit 1
 fi
 
-az aks get-credentials --name "$1" --resource-group "$2"
+az aks get-credentials --admin --name "$1" --resource-group "$2"
