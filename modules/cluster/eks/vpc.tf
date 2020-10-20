@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "2.38.0"
+  version = ">=2.59.0"
   name = "${var.eks_name}-${random_id.cluster_name.hex}-vpc"
   azs = var.availability_zones
   cidr = "10.60.0.0/18"
