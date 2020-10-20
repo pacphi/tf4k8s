@@ -18,7 +18,7 @@ resource "helm_release" "kubeapps" {
   namespace  = kubernetes_namespace.kubeapps.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kubeapps"
-  version    = "3.9.2"
+  version    = "4.0.4"
 
   values = [data.template_file.kubeapps_config.rendered]
 }
