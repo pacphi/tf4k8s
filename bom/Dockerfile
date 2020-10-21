@@ -12,6 +12,7 @@ ENV TZ=America/Los_Angeles \
     CREDHUB_VERSION=2.8.0 \
     HELM_VERSION=3.3.4 \
     HELMFILE_VERSION=0.125.7 \
+    AWS_IAM_AUTHENTICATOR_VERSION="1.18.8/2020-09-18" \
     KAPP_VERSION=0.34.0 \
     KBLD_VERSION=0.24.0 \
     KUBECTL_VERSION=1.18.9 \
@@ -37,7 +38,7 @@ RUN mkdir downloads && cd downloads && \
     useradd -m docker && echo "docker:docker" | chpasswd && \
     adduser docker sudo && \
     python3 -m pip install awscli && \
-    curl -o aws-iam-authenticator curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator && \
+    curl -o aws-iam-authenticator curl -o aws-iam-authenticator "https://amazon-eks.s3.us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VERSION}/bin/linux/amd64/aws-iam-authenticator" && \
     chmod +x aws-iam-authenticator && \
     sudo mv aws-iam-authenticator /usr/local/bin && \
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash && \
