@@ -39,16 +39,6 @@ Amend the values for
 
 ## Troubleshooting
 
-### Deleting the management cluster
-
-With tkg 1.2, attempting to delete the management cluster fails.  
-
-Here's the work-around...
-
-* Download and install the 0.5.5 release of [clusterawsadm](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v0.5.5).  (Pick a binary suitable for the operating system that hosts your development or continuous integration environment.).
-* Export the missing environment variable with `export AWS_B64ENCODED_CREDENTIALS=$(clusterawsadm alpha bootstrap encode-aws-credentials)`
-* Re-attempt to delete the management cluster with `tkg delete management-cluster {tkg_mgmt_cluster_name} --config {path_to_config_yaml_file}`
-
 ### Removing the bootstrap cluster
 
 The bootstrap cluster runs with [kind](https://kind.sigs.k8s.io/docs/user/quick-start/).  
