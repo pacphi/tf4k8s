@@ -37,3 +37,6 @@ variable "path_to_tkg_config_yaml" {
   description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tkg/{env}/config.yaml)"
 }
 
+output "kubeconfig_contents" {
+  value = module.tkg_aws_guest_cluster.kubeconfig_contents
+}

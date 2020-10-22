@@ -32,3 +32,37 @@ resource "null_resource" "tkg_guest_cluster" {
     command = "tkg delete cluster $TKG_GUEST_CLUSTER_NAME --config $TKG_CONFIG"
   }
 }
+
+resource "null_resource" "tkg_cluster_credentials" {
+  triggers = {
+    config_filename = data.local_file.config.filename
+    cluster_name = "tkg-${var.environment}-${random_string.suffix.result}-guest"
+  }
+  provisioner "local-exec" {
+    environment = {
+      TKG_CONFIG = self.triggers.config_filename
+      TKG_GUEST_CLUSTER_NAME = self.triggers.cluster_name
+    }
+    command = "tkg get credentials $TKG_GUEST_CLUSTER_NAME --config $TKG_CONFIG"
+  }
+
+  depends_on = [
+    null_resource.tkg_guest_cluster
+  ]
+}
+
+resource "null_resource" "kubeconfig" {
+  triggers = {
+    cluster_name = "tkg-${var.environment}-${random_string.suffix.result}-guest"
+  }
+  provisioner "local-exec" {
+    environment = {
+      TKG_GUEST_CLUSTER_NAME = self.triggers.cluster_name
+    }
+    command = "kubectl config use-context $TKG_GUEST_CLUSTER_NAME-admin@$TKG_GUEST_CLUSTER_NAME"
+  }
+
+  depends_on = [
+    null_resource.tkg_cluster_credentials
+  ]
+}

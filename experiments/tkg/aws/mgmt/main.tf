@@ -57,7 +57,7 @@ variable "aws_node_az_1" {
 }
 
 variable "aws_node_az_2" {
-  description = "Use for management cluster control plane node placement in a tertiary availability zone. This availability zone must be in the same region as AWS_NODE_AZ."
+  description = "Use for management cluster control plane node placement in a tertiary availability zone. Set this variable if you want to deploy a prod management cluster with three control plane nodes. This availability zone must be in the same region as AWS_NODE_AZ."
   default = "us-west-2c"
 }
 
