@@ -1,0 +1,5 @@
+environment = "m00"
+aws_secret_key_id = "why-would-i-share-this-with-you"
+aws_secret_access_key = "why-would-i-share-this-with-you"
+aws_ssh_key_name = "default.pem"
+path_to_tkg_config_yaml = "~/.tkg/m00/config.yaml"
