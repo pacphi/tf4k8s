@@ -9,7 +9,9 @@ Assumes:
 * You have an Azure service principal with the Administrator role
 * You have downloaded and installed the tkg CLI
 * You have [registered an SSH Public Key](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-mgmt-clusters-azure.html#ssh-key)
-
+* You have accepted the license for the base Kubernetes version and machine OS
+  * To do this, execute `az vm image terms accept --publisher vmware-inc --offer tkg-capi --plan k8s-1dot19dot1-ubuntu-1804`
+   
 ## Edit `terraform.tfvars`
 
 Amend the values for
