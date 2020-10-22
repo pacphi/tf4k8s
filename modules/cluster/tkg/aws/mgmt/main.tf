@@ -30,13 +30,6 @@ resource "null_resource" "tkg_management_cluster" {
   provisioner "local-exec" { 
     command = "tkg get management-cluster"
   }
-  provisioner "local-exec" {
-    when = destroy
-    environment = {
-      TKG_ENVIRONMENT_NAME = self.triggers.env_name
-    }
-    command = "rm -Rf ~/.tkg/$TKG_ENVIRONMENT_NAME"
-  }
 }
 
 data "local_file" "config" {
@@ -55,6 +48,21 @@ resource "local_file" "merged_config" {
 resource "random_string" "suffix" {
   length = 4
   special = false
+}
+
+resource "null_resource" "tkg_config_permissions" {
+  triggers = {
+    config_filename = local_file.merged_config.filename
+    cluster_name = "tkg-${var.environment}-${random_string.suffix.result}-mgmt"
+  }
+  provisioner "local-exec" {
+    environment = {
+      TKG_CONFIG = self.triggers.config_filename
+      TKG_PLAN_NAME = var.tkg_plan
+      TKG_MANAGEMENT_CLUSTER_NAME = self.triggers.cluster_name
+    }
+    command = "tkg config permissions aws --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
+  } 
 }
 
 resource "null_resource" "tkg_init" {
@@ -84,4 +92,7 @@ resource "null_resource" "tkg_init" {
     //   Execute the command below supplying the management cluster name
     command = "tkg delete management-cluster $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
   }
+  depends_on = [
+    null_resource.tkg_config_permissions
+  ]
 }
