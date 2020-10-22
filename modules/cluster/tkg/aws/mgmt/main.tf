@@ -45,30 +45,22 @@ resource "local_file" "merged_config" {
   filename = pathexpand("~/.tkg/${var.environment}/config.yaml")
 }
 
-resource "random_string" "suffix" {
-  length = 4
-  special = false
-}
-
 resource "null_resource" "tkg_config_permissions" {
   triggers = {
     config_filename = local_file.merged_config.filename
-    cluster_name = "tkg-${var.environment}-${random_string.suffix.result}-mgmt"
   }
   provisioner "local-exec" {
     environment = {
       TKG_CONFIG = self.triggers.config_filename
-      TKG_PLAN_NAME = var.tkg_plan
-      TKG_MANAGEMENT_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg config permissions aws --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
-  } 
+    command = "tkg config permissions aws --config $TKG_CONFIG"
+  }
 }
 
 resource "null_resource" "tkg_init" {
   triggers = {
     config_filename = local_file.merged_config.filename
-    cluster_name = "tkg-${var.environment}-${random_string.suffix.result}-mgmt"
+    cluster_name = "tkg-aws-${var.environment}-mgmt-cluster"
   }
   provisioner "local-exec" {
     environment = {

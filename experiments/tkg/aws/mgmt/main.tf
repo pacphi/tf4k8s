@@ -112,13 +112,13 @@ variable "cluster_cidr" {
 }
 
 variable "control_plane_machine_type" {
-  description = "The EC2 compute instance type for all control plane nodes (e.g., t3.small)"
-  default = "t3a.medium"
+  description = "The EC2 compute instance type for all control plane nodes (e.g., t3.medium)"
+  default = "m5a.large"
 }
 
 variable "node_machine_type" {
-  description = "The EC2 compute instance type for all worker nodes (e.g., m5.xlarge)"
-  default = "t3a.xlarge"
+  description = "The EC2 compute instance type for all worker nodes (e.g., t3.xlarge)"
+  default = "m5a.xlarge"
 }
 
 variable "path_to_tkg_config_yaml" {
