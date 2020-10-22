@@ -1,14 +1,3 @@
-module "tkg_aws_guest_cluster" {
-  source = "../../../../modules/cluster/tkg/aws/guest"
-
-  environment = var.environment
-  tkg_plan = var.tkg_plan
-  tkg_kubernetes_version = var.tkg_kubernetes_version
-  tkg_control_plane_node_count = var.tkg_control_plane_node_count
-  tkg_worker_node_count = var.tkg_worker_node_count
-  path_to_tkg_config_yaml = var.path_to_tkg_config_yaml
-}
-
 variable "environment" {
   description = "An arbitrary name used to describe this Tanzu Kubernetes Grid environment"
 }
@@ -34,9 +23,5 @@ variable "tkg_worker_node_count" {
 }
 
 variable "path_to_tkg_config_yaml" {
-  description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tf4k8s/tkg/{env}/config.yaml)"
-}
-
-output "kubeconfig_contents" {
-  value = module.tkg_aws_guest_cluster.kubeconfig_contents
+  description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tkg/{env}/config.yaml)"
 }

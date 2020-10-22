@@ -1,5 +1,5 @@
-module "tkg_aws_guest_cluster" {
-  source = "../../../../modules/cluster/tkg/aws/guest"
+module "tkg_azure_guest_cluster" {
+  source = "../../../../modules/cluster/tkg/azure/guest"
 
   environment = var.environment
   tkg_plan = var.tkg_plan
@@ -38,5 +38,5 @@ variable "path_to_tkg_config_yaml" {
 }
 
 output "kubeconfig_contents" {
-  value = module.tkg_aws_guest_cluster.kubeconfig_contents
+  value = module.tkg_azure_guest_cluster.kubeconfig_contents
 }

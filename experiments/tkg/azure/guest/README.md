@@ -1,12 +1,12 @@
-# Terraform for Provisioning a TKG Guest cluster in AWS
+# Terraform for Provisioning a TKG Guest cluster in Azure
 
-Uses Terraform to install Tanzu Kubernetes Grid guest cluster in AWS.
+Uses Terraform to install Tanzu Kubernetes Grid guest cluster in Azure.
 
 See [Deploying Tanzu Kubernetes Clusters and Managing their Lifecycle](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-tanzu-k8s-clusters-create.html#deploy)
 
 Assumes:
 
-* You have an AWS account with the Administrator role
+* You have an Azure service principal with the Administrator role
 * You have downloaded and installed the tkg CLI 
 * You have already [provisioned a TKG management cluster](../mgmt/README.md)
 

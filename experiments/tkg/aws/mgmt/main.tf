@@ -122,5 +122,5 @@ variable "node_machine_type" {
 }
 
 variable "path_to_tkg_config_yaml" {
-  description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tkg/{env}/config.yaml)"
+  description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tf4k8s/tkg/{env}/config.yaml)"
 }
