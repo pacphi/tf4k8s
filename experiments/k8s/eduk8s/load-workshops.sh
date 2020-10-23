@@ -28,8 +28,8 @@ kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-spring-boot-k
 ## Getting Started with Octant
 kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-getting-started-with-octant/master/resources/workshop.yaml
 
-## Image Security
-kubectl apply -f https://raw.githubusercontent.com/eduk8s-labs/lab-image-security/master/resources/workshop.yaml
+## Tanzu End-to-end 
+kubectl apply -f https://raw.githubusercontent.com/tanzu-end-to-end/end-to-end-workshop/main/resources/workshop.yaml
 
 ## Setup training portal
 cp training-portal.template training-portal.yml 

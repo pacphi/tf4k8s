@@ -10,7 +10,7 @@ spec:
       domain: EDUK8S_DOMAIN
       secret: EDUK8S_SECRET
     sessions:
-      maximum: 15
+      maximum: 25
     expires: 60m
     orphaned: 5m
   workshops:
@@ -20,4 +20,4 @@ spec:
     - name: lab-getting-started-with-carvel
     - name: lab-spring-boot-k8s-gs
     - name: lab-spring-boot-k8s-probes
-    - name: lab-image-security
+    - name: tanzu-end-to-end
