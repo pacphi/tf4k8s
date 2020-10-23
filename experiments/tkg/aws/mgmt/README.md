@@ -36,6 +36,13 @@ Amend the values for
 
 ## Troubleshooting
 
+### Sleuthing cluster-api error indicators in bootstrap cluster
+
+```
+kubectl describe cluster-api -A --kubeconfig ~/.kube-tkg/tmp/{config}
+```
+> Look for occurrences of "Error" or "Exception"
+
 ### Deleting the management cluster
 
 With tkg 1.2, attempting to delete the management cluster fails.  

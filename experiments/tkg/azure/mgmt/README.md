@@ -41,6 +41,13 @@ Amend the values for
 
 ## Troubleshooting
 
+### Sleuthing cluster-api error indicators in bootstrap cluster
+
+```
+kubectl describe cluster-api -A --kubeconfig ~/.kube-tkg/tmp/{config}
+```
+> Look for occurrences of "Error" or "Exception"
+
 ### Removing the bootstrap cluster
 
 The bootstrap cluster runs with [kind](https://kind.sigs.k8s.io/docs/user/quick-start/).  
