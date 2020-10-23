@@ -33,6 +33,8 @@ Amend the values for
 ./create-mgmt-cluster.sh
 ```
 
+> If you chose the `dev` plan the installation normally completes in less than 10 minutes.
+
 ## Destroy
 
 ```
