@@ -13,10 +13,9 @@ Choose your own adventure on one of the following cloud providers
 - [x] [Google Cloud Platform (GKE)](experiments/gcp)
 - [x] [Microsoft Azure (AKS)](experiments/azure)
 - [x] [Amazon Web Service (EKS)](experiments/amazon)
-
-Manage clusters in your own data-center with
-
-- [ ] VMWare vSphere 7 with Kubernetes (VMWare Tanzu Kubernetes Grid)
+- [x] VMWare Tanzu Kubernetes Grid 
+  - on AWS [management](experiments/tkg/aws/mgmt) and [workload](experiments/tkg/aws/workload) clusters
+  - on Azure [management](experiments/tkg/azure/mgmt) and [workload](experiments/tkg/azure/workload) clusters
 
 Or provision new / attach existing Kubernetes clusters via
 
@@ -147,10 +146,3 @@ Deploy and manage application and services with ease through an administrative i
 - [ ] MySQL
 - [ ] Postgres
 
-### Cloud Native Samples
-
-#### Microservices
-
-- [ ] Java with Spring Boot and Spring Cloud
-- [ ] DotNet Core with Steeltoe
-- [ ] Python with Django and Flask
