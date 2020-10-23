@@ -26,7 +26,7 @@ resource "null_resource" "tkg_management_cluster" {
   }
 }
 
-data "local_file" "config" {
+data "local_file" "base_config" {
   filename = pathexpand("~/.tkg/config.yaml")
 
   depends_on = [
@@ -35,8 +35,8 @@ data "local_file" "config" {
 }
 
 resource "local_file" "merged_config" {
-  content = join("\n", [ data.local_file.config.content, data.template_file.config_additions.rendered ])
-  filename = pathexpand("~/.tkg/${var.environment}/config.yaml")
+  content = join("\n", [ data.local_file.base_config.content, data.template_file.config_additions.rendered ])
+  filename = pathexpand(var.path_to_tkg_config_yaml)
 }
 
 resource "null_resource" "tkg_init" {

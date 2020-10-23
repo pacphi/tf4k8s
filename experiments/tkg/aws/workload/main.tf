@@ -1,5 +1,5 @@
-module "tkg_aws_guest_cluster" {
-  source = "../../../../modules/cluster/tkg/aws/guest"
+module "tkg_aws_workload_cluster" {
+  source = "../../../../modules/cluster/tkg/aws/workload"
 
   environment = var.environment
   tkg_plan = var.tkg_plan
@@ -24,12 +24,12 @@ variable "tkg_kubernetes_version" {
 }
 
 variable "tkg_control_plane_node_count" {
-  description = "The number of nodes to provision in the guest cluster's control plane"
+  description = "The number of nodes to provision in the workload cluster's control plane"
   default = 1
 }
 
 variable "tkg_worker_node_count" {
-  description = "The number of woerker nodes to provision in the guest cluster's control plane"
+  description = "The number of woerker nodes to provision in the workload cluster's control plane"
   default = 3
 }
 
@@ -38,5 +38,5 @@ variable "path_to_tkg_config_yaml" {
 }
 
 output "kubeconfig_contents" {
-  value = module.tkg_aws_guest_cluster.kubeconfig_contents
+  value = module.tkg_aws_workload_cluster.kubeconfig_contents
 }

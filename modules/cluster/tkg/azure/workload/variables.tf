@@ -13,12 +13,12 @@ variable "tkg_kubernetes_version" {
 }
 
 variable "tkg_control_plane_node_count" {
-  description = "The number of nodes to provision in the guest cluster's control plane"
+  description = "The number of nodes to provision in the workload cluster's control plane"
   default = 1
 }
 
 variable "tkg_worker_node_count" {
-  description = "The number of woerker nodes to provision in the guest cluster's control plane"
+  description = "The number of woerker nodes to provision in the workload cluster's control plane"
   default = 3
 }
 
