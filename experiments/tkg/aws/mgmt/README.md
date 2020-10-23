@@ -74,3 +74,7 @@ docker container prune                              ## Prunes all unused contain
 docker volume prune                                 ## Prunes all unused volumes, reclaiming disk space
 docker rmi registry.tkg.vmware.run/kind/node:{tag}  ## Removes the container image used to provision TKG clusters
 ```
+
+### More tips
+
+Consult the VMWare Tanzu Kubernetes Grid [troubleshooting documentation](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-troubleshooting-tkg-tips.html)
