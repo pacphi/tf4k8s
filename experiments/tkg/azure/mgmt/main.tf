@@ -1,4 +1,4 @@
-module "tkg_aws_mgmt_cluster" {
+module "tkg_azure_mgmt_cluster" {
   source = "../../../../modules/cluster/tkg/azure/mgmt"
 
   environment = var.environment
@@ -62,13 +62,13 @@ variable "az_resource_group_name" {
 }
 
 variable "service_cidr" {
-  description = "The CIDR range to use for the Kubernetes services. The recommended range is 100.64.0.0/13. Change this value only if the recommended range is unavailable."
-  default = "100.64.0.0./13"
+  description = "The CIDR range to use for the Kubernetes services. If left blank it will be auto-created."
+  default = ""
 }
 
 variable "cluster_cidr" {
-  description = "The CIDR range to use for pods. The recommended range is 100.96.0.0/11. Change this value only if the recommended range is unavailable."
-  default = "100.96.0.0./11"
+  description = "The CIDR range to use for pods. If left blank it will be auto-created."
+  default = ""
 }
 
 variable "control_plane_machine_type" {
