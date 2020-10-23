@@ -29,8 +29,8 @@ variable "az_client_secret" {
 }
 
 variable "az_location" {
-  description = "The name of the Azure region in which to deploy the management cluster"
-  default = "West US 2"
+  description = "The name of the Azure region in which to deploy the management cluster. Pick one value from 'name' column if executing [ az account list-locations -o table ]."
+  default = "westus2"
 }
 
 variable "az_ssh_public_key_b64" {
