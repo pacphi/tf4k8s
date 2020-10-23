@@ -68,7 +68,7 @@ resource "null_resource" "tkg_init" {
       TKG_PLAN_NAME = var.tkg_plan
       TKG_MANAGEMENT_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg init --infrastructure aws --plan $TKG_PLAN_NAME --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg init --infrastructure aws --plan $TKG_PLAN_NAME --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG --v 6"
   }
   provisioner "local-exec" {
     when = destroy
@@ -82,7 +82,7 @@ resource "null_resource" "tkg_init" {
     //   Visit https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v0.5.5, download and install clusterawsadm
     //   Set the missing environment variable -- AWS_B64ENCODED_CREDENTIALS=$(clusterawsadm alpha bootstrap encode-aws-credentials)
     //   Execute the command below supplying the management cluster name
-    command = "tkg delete management-cluster $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg delete management-cluster $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG --v 6"
   }
   depends_on = [
     null_resource.tkg_config_permissions

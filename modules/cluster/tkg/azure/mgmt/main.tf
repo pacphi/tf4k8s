@@ -50,7 +50,7 @@ resource "null_resource" "tkg_init" {
       TKG_PLAN_NAME = var.tkg_plan
       TKG_MANAGEMENT_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg init --infrastructure azure --plan $TKG_PLAN_NAME --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg init --infrastructure azure --plan $TKG_PLAN_NAME --name $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG --v 6"
   }
   provisioner "local-exec" {
     when = destroy
@@ -58,7 +58,7 @@ resource "null_resource" "tkg_init" {
       TKG_CONFIG = self.triggers.config_filename
       TKG_MANAGEMENT_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg delete management-cluster $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg delete management-cluster $TKG_MANAGEMENT_CLUSTER_NAME --config $TKG_CONFIG --v 6"
   }
 
 }

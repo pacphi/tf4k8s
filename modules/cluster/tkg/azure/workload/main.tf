@@ -21,7 +21,7 @@ resource "null_resource" "tkg_workload_cluster" {
       TKG_WORKLOAD_CLUSTER_CONTROL_PLANE_COUNT = var.tkg_control_plane_count
       TKG_WORKLOAD_CLUSTER_WORKER_NODE_COUNT = var.tkg_worker_node_count
     }
-    command = "tkg create cluster $TKG_WORKLOAD_CLUSTER_NAME -p $TKG_PLAN_NAME -c $TKG_WORKLOAD_CLUSTER_CONTROL_PLANE_NODE_COUNT -w $TKG_WORKLOAD_CLUSTER_WORKER_NODE_COUNT --kubernetes-version $TKG_K8S_VERSION --config $TKG_CONFIG"
+    command = "tkg create cluster $TKG_WORKLOAD_CLUSTER_NAME -p $TKG_PLAN_NAME -c $TKG_WORKLOAD_CLUSTER_CONTROL_PLANE_NODE_COUNT -w $TKG_WORKLOAD_CLUSTER_WORKER_NODE_COUNT --kubernetes-version $TKG_K8S_VERSION --config $TKG_CONFIG --v 6"
   }
   provisioner "local-exec" {
     when = destroy
@@ -29,7 +29,7 @@ resource "null_resource" "tkg_workload_cluster" {
       TKG_CONFIG = self.triggers.config_filename
       TKG_WORKLOAD_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg delete cluster $TKG_WORKLOAD_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg delete cluster $TKG_WORKLOAD_CLUSTER_NAME --config $TKG_CONFIG --v 6"
   }
 }
 
