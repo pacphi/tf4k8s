@@ -105,7 +105,7 @@ resource "null_resource" "push_broker" {
 }
 
 resource "null_resource" "register_broker" {
-  triggers {
+  triggers = {
     broker_name = "csb-${random_id.suffix.hex}"
   }
   
