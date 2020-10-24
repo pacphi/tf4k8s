@@ -35,8 +35,6 @@ brew install argoproj/tap/kubectl-argo-rollouts
 brew tap tektoncd/tools
 brew install tektoncd/tools/tektoncd-cli
 
-brew install minio/stable/mc
-
 # Install Terraform k14s provider; @see https://github.com/k14s/terraform-provider-k14s
 TF_K14S_PLUGIN_VERSION=0.6.0 && \
 mkdir -p ~/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION && \
@@ -48,3 +46,7 @@ TMC_VERSION=0.1.0-829a6124 && \
 wget -O tmc https://vmware.bintray.com/tmc/${TMC_VERSION}/linux/x64/tmc && \
 chmod +x tmc && \
 sudo mv tmc /usr/local/bin
+
+curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc && \
+chmod +x mc && \
+sudo mv mc /usr/local/bin
