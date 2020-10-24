@@ -24,7 +24,6 @@ brew install derailed/k9s/k9s
 brew install jpoon/homebrew-oci-cli/oci-cli
 
 brew install cloudfoundry/tap/bosh-cli
-brew install pivotal/tap/pivnet-cli
 
 brew install cloudfoundry/tap/cf-cli@7
 
@@ -46,6 +45,11 @@ TMC_VERSION=0.1.0-829a6124 && \
 wget -O tmc https://vmware.bintray.com/tmc/${TMC_VERSION}/linux/x64/tmc && \
 chmod +x tmc && \
 sudo mv tmc /usr/local/bin
+
+PIVNET_VERSION=2.0.1 && \
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
+chmod +x pivnet && \
+sudo mv pivnet /usr/local/bin
 
 curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc && \
 chmod +x mc && \
