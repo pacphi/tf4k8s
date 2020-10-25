@@ -35,7 +35,7 @@ curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v${T
 tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION
 rm -Rf terraform-provider-k14s-binaries.tgz
 
-TMC_VERSION=0.1.0-829a6124 && \
+TMC_VERSION=0.2.0-f783ab07 && \
 wget -O tmc https://vmware.bintray.com/tmc/${TMC_VERSION}/darwin/x64/tmc && \
 chmod +x tmc && \
 sudo mv tmc /usr/local/bin
