@@ -93,22 +93,21 @@ variables:
   options:
     is_ca: true
     common_name: ca
-
 - name: internal_certificate
   type: certificate
   options:
     ca: default_ca
     common_name: "*.cf-system.svc.cluster.local"
+    alternative_names:
+    - "*.cf-system.svc.cluster.local"
     extended_key_usage:
     - client_auth
     - server_auth
-
 - name: uaa_jwt_policy_signing_key
   type: certificate
   options:
     ca: default_ca
     common_name: uaa_jwt_policy_signing_key
-
 - name: uaa_login_service_provider
   type: certificate
   options:
@@ -127,10 +126,8 @@ app_domains:
 
 blobstore:
   secret_access_key: $(bosh interpolate ${VARS_FILE} --path=/blobstore_secret_key)
-
 cf_db:
   admin_password: $(bosh interpolate ${VARS_FILE} --path=/db_admin_password)
-
 capi:
   cc_username_lookup_client_secret: $(bosh interpolate ${VARS_FILE} --path=/cc_username_lookup_client_secret)
   cf_api_controllers_client_secret: $(bosh interpolate ${VARS_FILE} --path=/cf_api_controllers_client_secret)
@@ -139,26 +136,28 @@ capi:
     encryption_key: $(bosh interpolate ${VARS_FILE} --path=/capi_db_encryption_key)
 
 internal_certificate:
-  #! This certificates and keys are base64 encoded and should be valid for *.cf-system.svc.cluster.local
-  crt: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/certificate | base64 | tr -d '\n')
-  key: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | base64 | tr -d '\n')
-  ca: $(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | base64 | tr -d '\n')
-
+  #! This certificates and keys should be valid for *.cf-system.svc.cluster.local
+  crt: |
+$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/certificate | grep -Ev '^$' | sed -e 's/^/    /')
+  key: |
+$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | grep -Ev '^$' | sed -e 's/^/    /')
+  ca: |
+$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | grep -Ev '^$' | sed -e 's/^/    /')
 uaa:
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/uaa_db_password)
   admin_client_secret: $(bosh interpolate ${VARS_FILE} --path=/uaa_admin_client_secret)
   jwt_policy:
     signing_key: |
-$(bosh interpolate "${VARS_FILE}" --path=/uaa_jwt_policy_signing_key/private_key | sed -e 's#^#      #')
+$(bosh interpolate "${VARS_FILE}" --path=/uaa_jwt_policy_signing_key/private_key | grep -Ev '^$' | sed -e 's/^/      /')
   encryption_key:
     passphrase: $(bosh interpolate "${VARS_FILE}" --path=/uaa_encryption_key_passphrase)
   login:
     service_provider:
       key: |
-$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key | sed -e 's#^#        #')
+$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/private_key | grep -Ev '^$' | sed -e 's/^/        /')
       certificate: |
-$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | sed -e 's#^#        #')
+$(bosh interpolate "${VARS_FILE}" --path=/uaa_login_service_provider/certificate | grep -Ev '^$' | sed -e 's/^/        /')
   login_secret: $(bosh interpolate "${VARS_FILE}" --path=/uaa_login_secret)
 EOF
 
@@ -166,9 +165,11 @@ if [[ -n "${K8S_ENV:-}" ]] ; then
     k8s_env_path=$HOME/workspace/relint-ci-pools/k8s-dev/ready/claimed/"$K8S_ENV"
     if [[ -f "$k8s_env_path" ]] ; then
 	      ip_addr=$(jq -r .lb_static_ip < "$k8s_env_path")
-        echo 1>&2 "Detected \$K8S_ENV environment var; writing \"istio_static_ip: $ip_addr\" entry to end of output"
+        echo 1>&2 "Detected \$K8S_ENV environment var; writing \"load_balancer.static_ip: $ip_addr\" entry to end of output"
         echo "
-istio_static_ip: $ip_addr
+load_balancer:
+  enable: true
+  static_ip: $ip_addr
 "
     fi
 fi
