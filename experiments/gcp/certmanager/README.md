@@ -4,7 +4,7 @@ This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) t
 
 Starts with the assumption that you have already provisioned a GKE cluster.
 
-## Edit `terraform.tfvars`
+## Copy `terraform.tfvars.sample` to `terraform.tfvars`
 
 Amend the values for
 

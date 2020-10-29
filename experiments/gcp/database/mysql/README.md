@@ -8,7 +8,7 @@ This sample takes advantage of the [mysql](https://registry.terraform.io/modules
 
 Starts with the assumption that you will use a service account's credentials that has appropriate role/permissions to create/delete a Cloud SQL database instance.
 
-## Edit `terraform.tfvars`
+## Copy `terraform.tfvars.sample` to `terraform.tfvars`
 
 Amend the values for
 
@@ -36,7 +36,7 @@ You'll probably want to connect to the database instance you just created, huh?
 
 In order to obtain the ssl_key, ssl_cert, and ssl_ca you'll, there's a convenient script to generate them and a sample [mysql](https://cloud.google.com/sql/docs/mysql/connect-admin-ip#connect-ssl) client command
 
-### Edit terraform.tfvars 
+### Edit terraform.tfvars
 
 > This time within the `connect` subdirectory
 
