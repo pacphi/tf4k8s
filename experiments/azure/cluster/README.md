@@ -8,6 +8,12 @@ Assumes:
 * service account has been created with appropriate role and permissions to create an AKS cluster
 * an SSH private/public [key-pair](https://www.ssh.com/ssh/keygen/) using RSA algorithm has been created
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

@@ -7,6 +7,12 @@ terraform-google-storage-bucket](https://github.com/SweetOps/terraform-google-st
 
 Starts with the assumption that you will use a service account's credentials that has appropriate role/permissions to create/delete a GCP storage bucket.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

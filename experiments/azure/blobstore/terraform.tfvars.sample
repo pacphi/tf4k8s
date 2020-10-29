@@ -1,0 +1,7 @@
+resource_group_name = "resource-group"
+storage_account_name = "storage_account"
+storage_container_name = "storage-container"
+az_subscription_id = "why-would-i-share-this-with-you"
+az_tenant_id = "why-would-i-share-this-with-you"
+az_client_id = "why-would-i-share-this-with-you"
+az_client_secret = "why-would-i-share-this-with-you"

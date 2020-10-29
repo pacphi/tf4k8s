@@ -18,6 +18,12 @@ Assumes:
 
 > Review the [experiments](..) directory for help addressing these pre-requisites before getting started.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

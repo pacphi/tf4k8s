@@ -11,6 +11,12 @@ Assumes you have:
 * admin credentials to a Cloud Foundry API endpoint (e.g., cf-for-k8s or tas4k8s)
 * access and secret key credentials to an S3-compatible blobstore
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

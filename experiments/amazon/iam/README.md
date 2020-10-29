@@ -17,6 +17,11 @@ You'll be prompted to supply
 * `region`
 * `output format`
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
 
 ## Edit `terraform.tfvars` and update
 

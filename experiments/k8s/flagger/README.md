@@ -13,6 +13,12 @@ Assumes
 * you have already provisioned a cluster
 * you have configured [Contour](../k8s/contour) for ingress
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the value for

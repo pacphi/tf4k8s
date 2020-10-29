@@ -37,6 +37,12 @@ Assumes that you have:
 ./publish-container-image.sh {registry_domain} {registry_repository} {registry_username} {registry_password} {image} {tag}
 ```
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

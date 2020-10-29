@@ -1,7 +1,0 @@
-project = "fe-cphillipson"
-region = "us-west1"
-instance_name = "test-db-91d4b03e"
-database_name = "default"
-database_username = "default"
-instance_public_ip_address = "34.82.117.211"
-service_account_credentials = "~/.ssh/FE-cphillipson-c116bc661602.json"

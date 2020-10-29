@@ -1,0 +1,7 @@
+access_key = "why-would-i-share-this-with-you"
+secret_key = "why-would-i-share-this-with-you"
+region = "us-west-2"
+domain = "your.domain.com"
+hosted_zone_id = "why-would-i-share-this-with-you"
+acme_email = "your@email.com"
+kubeconfig_path = "~/.kube/config"

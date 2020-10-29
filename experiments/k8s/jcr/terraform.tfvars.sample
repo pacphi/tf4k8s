@@ -1,0 +1,3 @@
+domain = "some.domain.com"
+ingress = "nginx"
+kubeconfig_path = "~/.kube/config"

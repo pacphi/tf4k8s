@@ -10,6 +10,13 @@ Assumes:
 * You have downloaded and installed the tkg CLI
 * You have [registered an SSH Public Key](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-mgmt-clusters-aws.html#register-ssh)
 
+
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

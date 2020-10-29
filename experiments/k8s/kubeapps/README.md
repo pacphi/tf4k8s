@@ -6,6 +6,12 @@ Kubeapps is a web-based UI for deploying and managing applications in Kubernetes
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

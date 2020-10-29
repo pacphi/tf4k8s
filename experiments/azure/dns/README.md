@@ -8,6 +8,12 @@ Assumes:
 * a managed zone (known as the "root zone") has already been set up in Azure DNS.
 * resource group already exists
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

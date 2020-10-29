@@ -6,6 +6,12 @@ Assumes:
 
 * IAM user has been created with appropriate role and permissions to create an EKS cluster
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

@@ -1,0 +1,8 @@
+cluster_issuer_resource_group = "resource-group"
+az_subscription_id = "why-would-i-share-this-with-you"
+az_tenant_id = "why-would-i-share-this-with-you"
+az_client_id = "why-would-i-share-this-with-you"
+az_client_secret = "why-would-i-share-this-with-you"
+domain = "some.domain.com"
+acme_email = "your@email.com"
+kubeconfig_path = "~/.kube/config"

@@ -1,6 +1,0 @@
-project = "fe-cphillipson"
-domain = "two.ironleg.me"
-acme_email = "cphillipson@vmware.com"
-dns_zone_name = "two-zone"
-gcp_service_account_credentials = "~/.tf4k8s/gcp/terraform-fe-cphillipson-service-account-credentials.json"
-kubeconfig_path = "~/.kube/config"

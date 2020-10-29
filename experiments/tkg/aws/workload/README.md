@@ -10,6 +10,12 @@ Assumes:
 * You have downloaded and installed the tkg CLI 
 * You have already [provisioned a TKG management cluster](../mgmt/README.md)
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

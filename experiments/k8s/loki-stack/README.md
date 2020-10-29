@@ -6,6 +6,12 @@ Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation 
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

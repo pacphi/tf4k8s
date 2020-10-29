@@ -9,6 +9,12 @@ Supports plugins such as Prometheus, Telegraf, and Systemd; enabling you to coll
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

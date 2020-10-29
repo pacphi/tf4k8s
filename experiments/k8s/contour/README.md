@@ -4,6 +4,12 @@ Uses k14s [kapp](https://github.com/k14s/terraform-provider-k14s/blob/master/doc
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

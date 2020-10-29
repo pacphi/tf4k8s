@@ -7,6 +7,12 @@ terraform-aws-s3-bucket](https://github.com/terraform-aws-modules/terraform-aws-
 
 Starts with the assumption that you will use an IAM user's credentials that has appropriate role/permissions to create/delete an S3 bucket.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

@@ -11,6 +11,12 @@ Assumes:
 * You have [registered an SSH Public Key](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-mgmt-clusters-azure.html#ssh-key)
 * You have accepted the license for the base Kubernetes version and machine OS
   * To do this, execute `az vm image terms accept --publisher vmware-inc --offer tkg-capi --plan k8s-1dot19dot1-ubuntu-1804`
+
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
    
 ## Edit `terraform.tfvars`
 

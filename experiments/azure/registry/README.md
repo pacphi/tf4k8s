@@ -4,6 +4,12 @@ Sometimes you need a place to put your container images.  Why not use Microsoft 
 
 Starts with the assumption that you will use a service principals's credentials that has appropriate role/permissions to create/destroy a Microsoft Azure Container Registry.  (Note: destroying this resource does not destroy the backing bucket).
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

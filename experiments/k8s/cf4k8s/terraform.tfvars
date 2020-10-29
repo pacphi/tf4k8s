@@ -1,6 +1,0 @@
-base_domain = "jug.ironleg.me"
-registry_domain = "harbor.jug.ironleg.me"
-repository_prefix = "harbor.jug.ironleg.me/library"
-registry_username = "admin"
-registry_password = "why-would-i-share-this-with-you"
-kubeconfig_path = "~/.kube/config"

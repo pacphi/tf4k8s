@@ -1,0 +1,4 @@
+domain_filter    = "some.domain.com"
+kubeconfig_path = "~/.kube/config"
+gcp_project = "my-project"
+gcp_service_account_credentials = "~/.tf4k8s/gcp/terraform-my-project-service-account-credentials.json"

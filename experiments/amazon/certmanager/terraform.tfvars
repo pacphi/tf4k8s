@@ -1,7 +1,0 @@
-access_key = "AKIA9ZWKS9I6BAU9SRGF"
-secret_key = "why-would-i-share-this-with-you"
-region = "us-west-2"
-domain = "lab.techblitz.io"
-hosted_zone_id = "Z03745661PAZQ19EGIKJO"
-acme_email = "cphillipson@vmware.com"
-kubeconfig_path = "~/.kube/config"

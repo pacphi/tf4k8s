@@ -7,6 +7,12 @@ Assumes:
 * your authoritative names servers and DNS record information is managed external to Amazon Web Services
 * a managed zone (known as the "root zone") has already been set up in Amazon Web Services Route53
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

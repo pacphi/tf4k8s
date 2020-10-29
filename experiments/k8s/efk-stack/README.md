@@ -8,6 +8,12 @@ Uses [kubernetes](https://www.terraform.io/docs/providers/kubernetes/index.html)
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

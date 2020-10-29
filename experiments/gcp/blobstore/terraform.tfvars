@@ -1,5 +1,0 @@
-gcp_project = "fe-cphillipson"
-gcp_region = "us-west1"
-gcp_bucket_name = "my-bucket"
-environment = "dev"
-namespace = "cloudmonk"

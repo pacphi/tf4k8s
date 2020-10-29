@@ -6,6 +6,12 @@ JFrog Container Registry is a free Artifactory edition with Docker and Helm repo
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

@@ -6,6 +6,12 @@ This sample makes use of this [chart](https://github.com/concourse/concourse-cha
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

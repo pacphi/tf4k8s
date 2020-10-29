@@ -1,0 +1,4 @@
+domain = "some.domain.com"
+persistence_enabled = false
+persistence_storageclass = ""
+kubeconfig_path = "~/.kube/config"

@@ -4,6 +4,12 @@ Uses [helm](https://www.terraform.io/docs/providers/helm/index.html) Terraform p
 
 Starts with the assumption that you have already provisioned a cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

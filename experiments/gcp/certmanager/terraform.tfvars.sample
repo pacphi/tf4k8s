@@ -1,0 +1,6 @@
+project = "my-project"
+domain = "some.domain.com"
+acme_email = "your@email.com"
+dns_zone_name = "a-zone"
+gcp_service_account_credentials = "~/.tf4k8s/gcp/terraform-my-project-service-account-credentials.json"
+kubeconfig_path = "~/.kube/config"

@@ -16,6 +16,12 @@ Assumes
 * that you have already provisioned a cluster
 * that you have installed and configured nginx-ingress with [SSL Passthrough](../nginx-ingress/README.md#enabling-ssl-passthrough)
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

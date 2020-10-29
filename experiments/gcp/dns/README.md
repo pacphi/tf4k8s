@@ -4,6 +4,11 @@ Oftentimes, you'll have the requirement to add and manage DNS sub-domains.
 
 This sample assumes your authoritative names servers and DNS record information is managed external to Google.  It's also assumed a managed zone (known as the "root zone") has already been set up in Google Cloud DNS.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
 
 ## Edit `terraform.tfvars` 
 

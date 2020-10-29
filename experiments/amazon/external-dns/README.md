@@ -4,6 +4,12 @@ Uses [k14s](https://github.com/k14s/terraform-provider-k14s) Terraform provider 
 
 Starts with the assumption that you have already provisioned an EKS cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

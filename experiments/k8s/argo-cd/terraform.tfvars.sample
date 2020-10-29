@@ -1,0 +1,2 @@
+domain = "some.domain.com"
+kubeconfig_path = "~/.kube/config"

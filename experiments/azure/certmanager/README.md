@@ -4,6 +4,12 @@ This sample leverages [cert-manager](https://github.com/jetstack/cert-manager) t
 
 Starts with the assumption that you have already provisioned an AKS cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars` 
 
 Amend the values for

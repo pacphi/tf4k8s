@@ -6,6 +6,12 @@ This sample mimics the [azurerm_storage_container](https://www.terraform.io/docs
 
 Starts with the assumption that you will use a service principal's credentials that has appropriate permissions to create/delete a storage account and storage container.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

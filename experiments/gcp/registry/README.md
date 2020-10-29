@@ -4,6 +4,12 @@ Sometimes you need a place to put your container images.  Why not use Google Clo
 
 Starts with the assumption that you will use a service account's credentials that has appropriate role/permissions (i.e., `roles/storage.admin`) to create/destroy a Google Container Registry.  (Note: destroying this resource does not destroy the backing bucket).
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

@@ -15,6 +15,12 @@ Starts with the assumption that you have already provisioned a cluster.
 ```
 > Replace `{os}` with either: `macos` or `linux`
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

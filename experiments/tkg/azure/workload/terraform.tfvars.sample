@@ -1,0 +1,2 @@
+environment = "coffee"
+path_to_tkg_config_yaml = "~/.tf4k8s/tkg/coffee/config.yaml"

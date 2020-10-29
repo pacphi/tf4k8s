@@ -1,0 +1,6 @@
+base_domain = "some.domain.com"
+registry_domain = "harbor.some.domain.com"
+repository_prefix = "harbor.some.domain.com/library"
+registry_username = "admin"
+registry_password = "why-would-i-share-this-with-you"
+kubeconfig_path = "~/.kube/config"

@@ -4,6 +4,12 @@ Based on the following Terraform [example](https://www.terraform.io/docs/provide
 
 Assumes a service account has been created with appropriate role and permissions to create a GKE cluster.
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
+
 ## Edit `terraform.tfvars`
 
 Amend the values for

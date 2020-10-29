@@ -1,0 +1,5 @@
+domain_filter  = "some.domain.com"
+aws_access_key = "why-would-i-share-this-with-you"
+aws_secret_key = "why-would-i-share-this-with-you"
+region = "us-west-2"
+kubeconfig_path = "~/.kube/config"

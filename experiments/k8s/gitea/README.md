@@ -11,7 +11,13 @@ Employs John Felten's Helm [chart](https://github.com/jfelten/gitea-helm-chart).
 Assumes:
 
 * you have already provisioned a cluster
-* you're using nginx for Ingress
+* you're using `nginx` for Ingress
+
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
 
 ## Edit `terraform.tfvars`
 

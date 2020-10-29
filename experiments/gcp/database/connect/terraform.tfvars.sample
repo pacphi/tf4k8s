@@ -1,0 +1,7 @@
+project = "my-project"
+region = "us-west1"
+instance_name = "instance-name"
+database_name = "default"
+database_username = "default"
+instance_public_ip_address = "10.10.10.10"
+service_account_credentials = "~/.ssh/my-project-sac.json"

@@ -9,6 +9,11 @@ Assumes that you have:
 * already provisioned a cluster
 * an installation of cf4k8s or tas4k8s with admin account credentials
 
+## Copy sample configuration
+
+```
+cp terraform.tfvars.sample terraform.tfvars
+```
 
 ## Edit `terraform.tfvars`
 
