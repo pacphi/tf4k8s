@@ -36,8 +36,8 @@ Once authenticated, an onboarding wizard will start guiding you through the step
 * Enter a password in the `New Password` and `Confirm Password` fields of the `Reset Admin Password` step, then click the `Next` button.
 * Enter a url in the `Select Base URL` field of the `Set base URL` step, then click the `Next` button.  (The value you enter here should be the same as the `jcr_endpoint` value from your Terraform output).
 * Click the `Next` button accepting the defaults in the `Configure Default Proxy` step.  (We're choosing not to configure or secure a proxy).
-* Chick the checkboxes underneath the `Docker` and `Helm` icons underneath the `Freemium Offering` heading in the `Create Repositories` step, then click the `Next` button.
-* Click the `Finish` button to complete the one-time setup process.
+* Choose to create a `Local Repository`. Click the `Docker` icon and enter a name for your repository (e.g., `images`), accept the defaults for other options, then click `Save & Finish`. 
+  * You may choose to repeat this process in order to create a `Helm` chart repository; in that case you'd click on the `Helm` icon instead and supply a unique name (e.g., `helm-charts`). 
 
 > The steps above are illustrated in the JFrog Container Registry `Getting Started` documentation [here](https://www.jfrog.com/confluence/display/JFROG/Get+Started%3A+JFrog+Container+Registry).
 
