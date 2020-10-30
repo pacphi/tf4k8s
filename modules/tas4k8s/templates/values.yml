@@ -5,7 +5,20 @@ app_domains:
 #@overlay/append
 - "${app_domain}"
 
-enable_load_balancer: ${enable_load_balancer}
+#! The password for the CF "admin" user.
+#! - operators can use the admin user to test `cf push`
+cf_admin_password: ${cf_admin_password}
+
+system_certificate:
+  #! These certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
+  crt: ${system_fullchain_certificate}
+  key: ${system_private_key}
+  ca: ""
+workloads_certificate:
+  #! These certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
+  crt: ${workloads_fullchain_certificate}
+  key: ${workloads_private_key}
+  ca: ""
 
 app_registry:
   hostname: ${registry_domain}
@@ -41,27 +54,16 @@ usage_service:
     name: usage_service
     ca_cert: ""
 
+ingress:
+  load_balancer:
+    enable: ${enable_load_balancer}
+
 #@library/ref "@github.com/cloudfoundry/cf-for-k8s/config"
 #@data/values
 ---
-#! The password for the CF "admin" user.
-#! - operators can use the admin user to test `cf push`
-cf_admin_password: ${cf_admin_password}
-
-system_certificate:
-  #! These certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
-  crt: ${system_fullchain_certificate}
-  key: ${system_private_key}
-  ca: ""
-workloads_certificate:
-  #! These certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
-  crt: ${workloads_fullchain_certificate}
-  key: ${workloads_private_key}
-  ca: ""
   
 remove_resource_requirements: ${remove_resource_requirements}
 add_metrics_server_components: ${add_metrics_server_components}
 use_external_dns_for_wildcard: ${use_external_dns_for_wildcard}
 enable_automount_service_account_token: ${enable_automount_service_account_token}
 metrics_server_prefer_internal_kubelet_address: ${metrics_server_prefer_internal_kubelet_address}
-use_first_party_jwt_tokens: ${use_first_party_jwt_tokens}

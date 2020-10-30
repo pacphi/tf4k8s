@@ -18,7 +18,6 @@ module "tas4k8s" {
   use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
   enable_automount_service_account_token = var.enable_automount_service_account_token
   metrics_server_prefer_internal_kubelet_address = var.metrics_server_prefer_internal_kubelet_address
-  use_first_party_jwt_tokens = var.use_first_party_jwt_tokens
 
   kubeconfig_path  = var.kubeconfig_path
   ytt_lib_dir      = var.ytt_lib_dir
@@ -79,10 +78,6 @@ variable "enable_automount_service_account_token" {
 }
 
 variable "metrics_server_prefer_internal_kubelet_address" {
-  default = "false"
-}
-
-variable "use_first_party_jwt_tokens" {
   default = "false"
 }
 

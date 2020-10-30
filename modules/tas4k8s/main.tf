@@ -57,7 +57,6 @@ data "template_file" "baseline_values" {
     use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
     enable_automount_service_account_token = var.enable_automount_service_account_token
     metrics_server_prefer_internal_kubelet_address = var.metrics_server_prefer_internal_kubelet_address
-    use_first_party_jwt_tokens = var.use_first_party_jwt_tokens
   }
 }
 
@@ -68,10 +67,6 @@ data "local_file" "apps_manager_values" {
 resource "local_file" "apps_manager_values" {
   content = data.local_file.apps_manager_values.content
   filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/apps-manager-values.yml"
-}
-
-data "local_file" "generated_values" {
-  filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/deployment-values.yml"
 }
 
 resource "local_file" "cf_values_rendered" {
@@ -186,4 +181,8 @@ resource "k14s_kapp" "tas4k8s" {
     k14s_kapp.tas4k8s_cert,
     helm_release.postgres
   ]
+
+  deploy {
+    raw_options = ["--wait-timeut=30m0s"]
+  }
 }
