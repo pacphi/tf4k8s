@@ -128,7 +128,7 @@ https://console.tas.{domain}
 
 in your favorite browser.
 
-The credentials to login are the same as the ones used to authenticate the `{tas_api_endpont}`.
+The credentials to login are the same as the ones used to authenticate the `{tas_api_endpoint}`.
 
 
 ## Remove
