@@ -19,9 +19,6 @@ cd ../../../ytt-libs/tas4k8s || exit
 # Configure before installing
 ./scripts/configure-tas4k8s.sh
 
-# Move .tar and extracted content to waste bin
-./scripts/cleanup-tas4k8s.sh
-
 cd ../../modules/tas4k8s || exit
 
 # Generate certs.auto.tfvars encapsulating key-value pair configuration for system and workloads domain certificates

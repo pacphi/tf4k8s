@@ -89,9 +89,9 @@ use_first_party_jwt_tokens = true
 ## Install
 
 ```
-./create-tas4k8s.sh <iaas> <base_domain> <tanzu-network-api-token>
+./create-tas4k8s.sh <iaas> <tanzu-network-api-token>
 ```
-> Set `iaas` to be one of [ amazon, azure, gcp ], set `base_domain` to be the same value as defined in `terraform.tfvars`, and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
+> Set `iaas` to be one of [ amazon, azure, gcp ] and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
 
 ### Where are the install images sourced?
 

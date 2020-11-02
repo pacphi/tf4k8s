@@ -16,5 +16,8 @@ rm -Rf .terraform/ terraform.log terraform.tfstate* iaas.auto.tfvars
 cd ../.. || exit
 rm -f certs.auto.tfvars
 
-cd ../.. || exit
-rm -Rf ytt-libs/tas4k8s/vendor
+cd ../../ytt-libs/tas4k8s || exit
+
+# Move .tar and extracted content to waste bin
+./scripts/cleanup-tas4k8s.sh
+rm -Rf vendor
