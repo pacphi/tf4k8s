@@ -182,7 +182,4 @@ resource "k14s_kapp" "tas4k8s" {
     helm_release.postgres
   ]
 
-  deploy {
-    raw_options = ["--wait-timeut=30m0s"]
-  }
 }
