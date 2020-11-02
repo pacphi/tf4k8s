@@ -2,7 +2,7 @@
 
 Deploy a commercially supported beta of the Cloud Foundry Application Runtime on Kubernetes.
 
-Asssumes:
+Assumes:
 
 * You have a cloud account on Azure, AWS, or Google
 * You have already provisioned a cluster that meets [minimum operating requirements](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy.md#kubernetes-cluster-requirements)
