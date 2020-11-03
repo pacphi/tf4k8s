@@ -1,5 +1,6 @@
 .history/
 
+.terraform.tfstate.lock.info
 .terraform/
 terraform.log
 terraform.tfstate
