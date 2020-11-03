@@ -57,5 +57,3 @@ usage_service:
 ingress:
   load_balancer:
     enable: ${enable_load_balancer}
-    static_external_ip: ""
-  external_traffic_policy: "Cluster"

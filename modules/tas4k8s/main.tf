@@ -37,10 +37,10 @@ data "template_file" "baseline_values" {
     postgres_instance_name = local.postgres_instance_name
     postgres_instance_namespace = kubernetes_namespace.postgres.metadata[0].name
     
-    system_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1)
-    system_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1)
-    workloads_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1)
-    workloads_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1)
+    system_fullchain_certificate = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1))]))
+    system_private_key = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1))]))
+    workloads_fullchain_certificate = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1))]))
+    workloads_private_key = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1))]))
 
     registry_domain     = var.registry_domain
     repository_prefix   = var.repository_prefix
@@ -146,7 +146,7 @@ resource "helm_release" "postgres" {
   namespace  = kubernetes_namespace.postgres.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
-  version    = "9.8.1"
+  version    = "9.8.9"
 
   values = [data.template_file.postgres_db_values.rendered]
 
