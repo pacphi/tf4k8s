@@ -185,7 +185,8 @@ resource "k14s_kapp" "tas4k8s_cert" {
 data "k14s_ytt" "tas4k8s_ytt" {
   files = [
     "${local.ytt_lib_dir}/tas4k8s/vendor/config",
-    "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values"
+    "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values",
+    "${local.ytt_lib_dir}/tas4k8s/vendor/config-optional"
   ]
 
   debug_logs = true
