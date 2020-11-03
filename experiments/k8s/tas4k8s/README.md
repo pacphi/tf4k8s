@@ -2,7 +2,7 @@
 
 Deploy a commercially supported beta of the Cloud Foundry Application Runtime on Kubernetes.
 
-Asssumes:
+Assumes:
 
 * You have a cloud account on Azure, AWS, or Google
 * You have already provisioned a cluster that meets [minimum operating requirements](https://github.com/cloudfoundry/cf-for-k8s/blob/master/docs/deploy.md#kubernetes-cluster-requirements)
@@ -89,9 +89,9 @@ use_first_party_jwt_tokens = true
 ## Install
 
 ```
-./create-tas4k8s.sh <iaas> <base_domain> <tanzu-network-api-token>
+./create-tas4k8s.sh <iaas> <tanzu-network-api-token>
 ```
-> Set `iaas` to be one of [ amazon, azure, gcp ], set `base_domain` to be the same value as defined in `terraform.tfvars`, and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
+> Set `iaas` to be one of [ amazon, azure, gcp ] and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
 
 ### Where are the install images sourced?
 
@@ -128,7 +128,7 @@ https://console.tas.{domain}
 
 in your favorite browser.
 
-The credentials to login are the same as the ones used to authenticate the `{tas_api_endpont}`.
+The credentials to login are the same as the ones used to authenticate the `{tas_api_endpoint}`.
 
 
 ## Remove
@@ -138,29 +138,3 @@ The credentials to login are the same as the ones used to authenticate the `{tas
 ```
 > Set `iaas` to be one of [ amazon, azure, gcp ]
 
-
-## Troubleshooting
-
-If you have trouble tearing down the installation, try executing the following
-
-```
-kapp delete -a tas -y
-kapp delete -a tas4k8s-cert -y
-```
-
-The `PersistentVolumeClaim` named `postgres-pvc` in the `postgres-dbms` namespace does not get deleted on execution of `destroy-tas4k8s.sh`.
-
-The work-around is to execute
-
-```
-kubectl delete pvc -n postgres-dbms postgres-pvc --force
-```
-
-Additionally, you may have to execute
-
-```
-kubectl delete pod pgsqlcfdb-postgresql-0 -n postgres-dbms --force
-kubectl delete namespace postgres-dbms
-```
-
-Also try re-running `terraform destroy` after completing the above steps to clean-up any other leftover resources.

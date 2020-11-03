@@ -1,24 +1,23 @@
 #!/bin/bash
 
-if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ]; then
-	echo "Usage: create-tas4k8s.sh {iaas} {domain} {pivnet-api-token}"
+if [ -z "$1" ] && [ -z "$2" ]; then
+	echo "Usage: create-tas4k8s.sh {iaas} {pivnet-api-token}"
 	exit 1
 fi
 
 IAAS="$1"
-DOMAIN="tas.$2"
-PIVNET_API_TOKEN="$3"
+PIVNET_API_TOKEN="$2"
 
 # Make copy of iaas.auto.tfvars in modules/tas4k8s/acme/${IAAS}
 cp -f iaas.auto.tfvars "../../../modules/tas4k8s/acme/${IAAS}"
 
 cd ../../../ytt-libs/tas4k8s || exit
 
-# Fetch specific release of VMWare Tanzu Application Service for Kuberenetes from VMWare Tanzu Network
+# Fetch specific release of VMWare Tanzu Application Service for Kubernetes from VMWare Tanzu Network
 ./scripts/download-tas4k8s.sh "${PIVNET_API_TOKEN}"
 
 # Configure before installing
-./scripts/configure-tas4k8s.sh "${DOMAIN}"
+./scripts/configure-tas4k8s.sh
 
 # Move .tar and extracted content to waste bin
 ./scripts/cleanup-tas4k8s.sh

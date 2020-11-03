@@ -42,10 +42,6 @@ variable "metrics_server_prefer_internal_kubelet_address" {
   default = "false"
 }
 
-variable "use_first_party_jwt_tokens" {
-  default = "false"
-}
-
 variable "kubeconfig_path" {}
 
 variable "ytt_lib_dir" {}
