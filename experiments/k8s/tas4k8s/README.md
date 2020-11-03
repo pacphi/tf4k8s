@@ -83,7 +83,6 @@ add_metrics_server_components = true
 enable_load_balancer = false
 enable_automount_service_account_token = true
 metrics_server_prefer_internal_kubelet_address = true
-use_first_party_jwt_tokens = true
 ```
 
 ## Install
