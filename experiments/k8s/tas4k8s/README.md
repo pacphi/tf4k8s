@@ -83,14 +83,10 @@ add_metrics_server_components = true
 enable_load_balancer = false
 enable_automount_service_account_token = true
 metrics_server_prefer_internal_kubelet_address = true
+use_first_party_jwt = true
 ```
 
-## Install
-
-```
-./create-tas4k8s.sh <iaas> <tanzu-network-api-token>
-```
-> Set `iaas` to be one of [ amazon, azure, gcp ] and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
+## Preflight checklist
 
 ### Where are the install images sourced?
 
@@ -102,6 +98,46 @@ pivnet_registry_hostname = "dev.registry.pivotal.io"
 > Note `pivnet_username` must be a user group member in order to pull images from this registry.
 
 Verify and/or update the values for `TAS4K8S_VERSION` and `TAS4K8S_PRODUCT_FILE_ID` in [download-tas4k8s.sh](../../../ytt-libs/tas4k8s/scripts/download-tas4k8s.sh).  (If the `TAS4K8S_VERSION` variable's value in that script includes `.build`, you're using a pre-release build).
+
+
+### How may I influence the number of replicas available for each resource?
+
+You may have limited available compute capacity or you may want to scale out the deployment footprint to accommodate increased demand.
+
+Before you invoke the `create-tas4k8s.sh` script, create a new file named `resource-replicas.yml`, and place it in a new subdirectory underneath the [ytt-libs/tas4k8s](https://github.com/pacphi/tf4k8s/tree/master/ytt-libs/tas4k8s) directory named `config-optional`.  Paste and save the following content into it
+
+```
+#@data/values
+---
+resources:
+  istiod:
+    replicas: 1
+  usage-service-server-deployment:
+    replicas: 1
+  uaa:
+    replicas: 1
+  search-server-deployment:
+    replicas: 1
+  routecontroller:
+    replicas: 1
+  metric-proxy:
+    replicas: 1
+  webhook-server:
+    replicas: 1
+  inject-ca-certs-into-running-apps:
+    replicas: 1
+  cf-api-server:
+    replicas: 1
+  apps-manager-js:
+    replicas: 1
+```
+
+## Install
+
+```
+./create-tas4k8s.sh <iaas> <tanzu-network-api-token>
+```
+> Set `iaas` to be one of [ amazon, azure, gcp ] and set`tanzu-network-api-token` to be a valid API token for an [account](https://network.pivotal.io/users/dashboard/edit-profile) on the [Tanzu Network](https://network.pivotal.io)
 
 ## Usage
 
@@ -136,4 +172,3 @@ The credentials to login are the same as the ones used to authenticate the `{tas
 ./destroy-tas4k8s.sh <iaas>
 ```
 > Set `iaas` to be one of [ amazon, azure, gcp ]
-

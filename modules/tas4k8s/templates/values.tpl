@@ -57,3 +57,5 @@ usage_service:
 ingress:
   load_balancer:
     enable: ${enable_load_balancer}
+
+use_first_party_jwt: ${use_first_party_jwt}

@@ -16,10 +16,10 @@ vendir.lock.yml
 modules/**/templates/config.yml
 modules/**/templates/kpack-webhook.yml
 
+ytt-libs/tas4k8s/config-optional/
+
 *.tgz
 *.tar
-
-samples/**/bin/**
 
 .ytt/
 

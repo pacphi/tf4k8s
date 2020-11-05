@@ -52,6 +52,7 @@ data "template_file" "baseline_values" {
     pivnet_password          = var.pivnet_password
 
     enable_load_balancer = var.enable_load_balancer
+    use_first_party_jwt  = var.use_first_party_jwt
   }
 }
 
@@ -61,7 +62,6 @@ resource "local_file" "cf_values_rendered" {
 }
 
 # Generate initial configuration values
-# Detect cluster type, set cluster-specific values
 resource "null_resource" "configure_tas4k8s" {
   triggers = {
     vendor_dir = "${local.ytt_lib_dir}/tas4k8s/vendor"
@@ -70,7 +70,7 @@ resource "null_resource" "configure_tas4k8s" {
     environment = {
       VENDOR_DIR = self.triggers.vendor_dir
     }
-    command = "cd $VENDOR_DIR && ./bin/generate-values.sh $VENDOR_DIR/configuration-values && ./bin/cluster-detect.sh > $VENDOR_DIR/configuration-values/cluster-values.yml"
+    command = "cd $VENDOR_DIR && ./bin/generate-values.sh $VENDOR_DIR/configuration-values"
   }
 
   depends_on = [
