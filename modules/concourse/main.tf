@@ -44,7 +44,7 @@ resource "helm_release" "concourse" {
   namespace  = kubernetes_namespace.concourse.metadata[0].name
   repository = "https://concourse-charts.storage.googleapis.com"
   chart      = "concourse"
-  version    = "14.0.1"
+  version    = "14.2.0"
 
   values = [data.template_file.concourse_config.rendered]
 
