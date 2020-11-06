@@ -6,12 +6,12 @@ mkdir -p ${DOWNLOADS_DIR}/aws
 mkdir -p ${DOWNLOADS_DIR}/azure
 mkdir -p ${DOWNLOADS_DIR}/gcp
 
-AZURE_RELEASE_VERSION=sb-0.1.0-rc.51-azure-0.0.1-rc.130
-AZURE_BROKERPAK_VERSION=0.0.1-rc.130
-AWS_RELEASE_VERSION=sb-0.1.0-rc.51-aws-0.0.1-rc.125
-AWS_BROKERPAK_VERSION=0.0.1-rc.125
-GCP_RELEASE_VERSION=sb-0.1.0-rc.51-gcp-0.0.1-rc.83
-GCP_BROKERPAK_VERSION=0.0.1-rc.83
+AZURE_RELEASE_VERSION=v0.8.1-beta
+AZURE_BROKERPAK_VERSION=1.0.0-rc.7
+AWS_RELEASE_VERSION=v0.8.1-beta
+AWS_BROKERPAK_VERSION=0.0.1-rc.141
+GCP_RELEASE_VERSION=v0.8.1-beta
+GCP_BROKERPAK_VERSION=0.0.1-rc.94
 
 curl -Lo ${DOWNLOADS_DIR}/aws/cloud-service-broker https://github.com/pivotal/cloud-service-broker/releases/download/${AWS_RELEASE_VERSION}/cloud-service-broker
 curl -Lo ${DOWNLOADS_DIR}/azure/cloud-service-broker https://github.com/pivotal/cloud-service-broker/releases/download/${AZURE_RELEASE_VERSION}/cloud-service-broker
