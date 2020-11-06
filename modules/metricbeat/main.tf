@@ -5,6 +5,6 @@ resource "helm_release" "metricbeat" {
   namespace  = var.namespace
   repository = "https://Helm.elastic.co"
   chart      = "metricbeat"
-  version    = "7.9.2"
+  version    = "7.9.3"
 
 }
