@@ -42,7 +42,7 @@ resource "helm_release" "stratos" {
   namespace  = kubernetes_namespace.stratos.metadata[0].name
   repository = "https://cloudfoundry.github.io/stratos"
   chart      = "console"
-  version    = "4.2.0"
+  version    = "4.2.1"
 
   values = [data.template_file.stratos_config.rendered]
 
