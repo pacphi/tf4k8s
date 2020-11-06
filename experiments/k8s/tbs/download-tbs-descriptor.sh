@@ -18,8 +18,8 @@ PIVNET_API_TOKEN="$1"
 pivnet login --api-token=$PIVNET_API_TOKEN
 
 cd /tmp || exit
-TBS_VERSION="100.0.20"
-TBS_PRODUCT_FILE_ID=797406
+TBS_VERSION="100.0.42"
+TBS_PRODUCT_FILE_ID=822933
 pivnet accept-eula --product-slug='tbs-dependencies' --release-version="${TBS_VERSION}"
 pivnet download-product-files --product-slug='tbs-dependencies' --release-version="${TBS_VERSION}" --product-file-id=${TBS_PRODUCT_FILE_ID}
 mv descriptor-${TBS_VERSION}.yaml descriptor.yaml
