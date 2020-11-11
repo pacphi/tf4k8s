@@ -84,7 +84,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   location   = var.gcp_region
   cluster    = google_container_cluster.gke.name
   node_count = var.gke_nodes
-  version    = data.google_container_engine_versions.region.latest_node_version
+  version    = data.google_container_engine_versions.region.latest_master_version
 
   node_config {
     preemptible     = var.gke_preemptible
