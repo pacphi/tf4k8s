@@ -31,6 +31,10 @@ Amend the values for
 ./create-workload-cluster.sh
 ```
 
+## Resizing a cluster
+
+See [Scale Tanzu Kubernetes Clusters](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-tanzu-k8s-clusters-scale-cluster.html)
+
 ## Destroy
 
 ```

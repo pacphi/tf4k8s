@@ -40,6 +40,10 @@ Use the name and location of the cluster you just created to update `kubeconfig`
 ./set-kubectl-context.sh <gke-cluster-name> <gke-zone>
 ```
 
+## Resizing a cluster
+
+See [Resizing a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/resizing-a-cluster).
+
 ## Validate you have some pods running
 
 ```

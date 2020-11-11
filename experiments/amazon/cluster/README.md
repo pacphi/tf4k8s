@@ -47,6 +47,10 @@ Use the name and location of the cluster you just created to update `kubeconfig`
 ./set-kubectl-context.sh <aws-region> <eks-cluster-name>
 ```
 
+## Resizing a cluster
+
+See [How can I check, scale, delete, or drain my worker nodes in Amazon EKS?](https://aws.amazon.com/premiumsupport/knowledge-center/eks-worker-node-actions/)
+
 ## Validate you have some pods running
 
 ```

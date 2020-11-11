@@ -54,6 +54,10 @@ Use the name and location of the cluster you just created to update `kubeconfig`
 ./set-kubectl-context.sh <aks-cluster-name> <azure-resource-group>
 ```
 
+## Resizing a cluster
+
+See [Scale cluster nodes](https://docs.microsoft.com/en-us/azure/////////aks/scale-cluster#scale-the-cluster-nodes)
+
 ## Validate you have some pods running
 
 ```
