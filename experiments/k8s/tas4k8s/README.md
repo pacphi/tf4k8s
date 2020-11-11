@@ -88,6 +88,12 @@ use_first_party_jwt = true
 
 ## Preflight checklist
 
+### Have I provisioned a cluster with enough compute?
+
+Your workload cluster should consist of at least 8 nodes each with 4vCPU, 16Gb RAM and 60Gb storage.
+
+If you've provisioned a regional cluster (e.g., one with nodes balanced across availability zones, the same rule applies, each zone should have 8 nodes).
+
 ### Where are the install images sourced?
 
 If you intend to install a pre-release build of VMware Tanzu Application Service for Kubernetes, then edit `terraform.tfvars` so that it includes:
