@@ -38,6 +38,17 @@ variable "gke_nodes" {
   default     = 2
 }
 
+variable "gke_node_version_prefix" {
+  description = "GKE node version prefix (e.g., `1.18.`)"
+  type = string
+  default = "1.18."
+}
+
+variable "release_channel" {
+  type = string
+  default = "RAPID"
+}
+
 variable "gke_preemptible" {
   description = "Use GKE preemptible nodes (e.g. `false`)"
   type        = bool
@@ -66,11 +77,6 @@ variable "gke_oauth_scopes" {
     "https://www.googleapis.com/auth/logging.write",
     "https://www.googleapis.com/auth/monitoring"
   ]
-}
-
-variable "release_channel" {
-  type = string
-  default = "RAPID"
 }
 
 variable "all_inbound" {

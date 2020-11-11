@@ -19,11 +19,19 @@ locals {
   workstation-external-cidr = var.all_inbound ? "0.0.0.0/0" : "${chomp(data.http.workstation-external-ip.body)}/32"
 }
 
+data "google_container_engine_versions" "region" {
+  provider       = google-beta
+  location       = var.gcp_region
+  version_prefix = var.gke_node_version_prefix
+}
+
 resource "google_container_cluster" "gke" {
   provider           = google-beta
   name               = "${var.gke_name}-${random_id.cluster_name.hex}"
   location           = var.gcp_region
   project            = var.gcp_project
+  min_master_version = data.google_container_engine_versions.region.latest_master_version
+  node_version       = data.google_container_engine_versions.region.latest_node_version
 
   release_channel {
     channel = var.release_channel
@@ -63,6 +71,11 @@ resource "google_container_cluster" "gke" {
       cidr_block   = local.workstation-external-cidr
     }
   }
+
+  timeouts {
+    create = "30m"
+    update = "45m"
+  }
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
@@ -71,6 +84,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   location   = var.gcp_region
   cluster    = google_container_cluster.gke.name
   node_count = var.gke_nodes
+  version    = data.google_container_engine_versions.region.latest_node_version
 
   node_config {
     preemptible     = var.gke_preemptible
@@ -82,6 +96,10 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     }
 
     oauth_scopes = var.gke_oauth_scopes
+  }
+
+  management {
+    auto_repair = false
   }
 }
 
