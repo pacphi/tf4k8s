@@ -72,13 +72,14 @@ variable "gke_oauth_scopes" {
   type        = list(string)
   default = [
     "https://www.googleapis.com/auth/compute",
-    "https://www.googleapis.com/auth/ndev.clouddns.readwrite",
     "https://www.googleapis.com/auth/devstorage.read_only",
     "https://www.googleapis.com/auth/logging.write",
-    "https://www.googleapis.com/auth/monitoring"
+    "https://www.googleapis.com/auth/monitoring",
+    "https://www.googleapis.com/auth/servicecontrol",
+    "https://www.googleapis.com/auth/service.management.readonly",
+    "https://www.googleapis.com/auth/trace.append"
   ]
 }
-
 variable "all_inbound" {
   description = "Allow inbound access from any IP address?"
   type = bool

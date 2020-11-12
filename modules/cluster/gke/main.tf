@@ -72,13 +72,15 @@ resource "google_container_cluster" "gke" {
     }
   }
 
+  // Allow plenty of time for each operation to finish (default was 10m)
   timeouts {
     create = "30m"
-    update = "45m"
+    update = "30m"
+    delete = "30m"
   }
 }
 
-resource "google_container_node_pool" "primary_preemptible_nodes" {
+resource "google_container_node_pool" "np" {
   project    = var.gcp_project
   name       = "np-${random_id.cluster_name.hex}"
   location   = var.gcp_region
@@ -87,8 +89,10 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   version    = data.google_container_engine_versions.region.latest_master_version
 
   node_config {
+    machine_type = var.gke_node_type
+    disk_type    = "pd-ssd"
+    image_type   = "COS"
     preemptible     = var.gke_preemptible
-    machine_type    = var.gke_node_type
     service_account = var.gke_serviceaccount
 
     metadata = {
@@ -98,9 +102,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     oauth_scopes = var.gke_oauth_scopes
   }
 
-  management {
-    auto_repair = false
-  }
 }
 
 data "template_file" "kubeconfig" {
