@@ -38,17 +38,6 @@ variable "gke_nodes" {
   default     = 2
 }
 
-variable "gke_node_version_prefix" {
-  description = "GKE node version prefix (e.g., `1.18.`)"
-  type = string
-  default = "1.18."
-}
-
-variable "release_channel" {
-  type = string
-  default = "RAPID"
-}
-
 variable "gke_preemptible" {
   description = "Use GKE preemptible nodes (e.g. `false`)"
   type        = bool
