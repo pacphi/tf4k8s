@@ -1,4 +1,4 @@
-# tf4k8s Demo Scripts
+# tf4k8s Demo Transcript
 
 This collection of scripts will serve as a guided tour through tf4k8s capabilities. 
 
