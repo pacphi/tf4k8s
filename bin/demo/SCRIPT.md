@@ -6,7 +6,7 @@ This collection of scripts will serve as a guided tour through tf4k8s capabiliti
 
 We're going to launch an Ubuntu virtual machine so we can simulate what the experience might be like to go from "zero-to-hero".
 
-### Download and install 
+### Download and install Multipass
 
 * [Windows](https://multipass.run/download/windows)
 * [MacOS](https://multipass.run/download/macos)
