@@ -28,3 +28,5 @@ dist/
 manifest.yml
 
 .vagrant/
+
+demo-config.sh

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+NAME="your name"
+EMAIL_ADDRESS="your email address"
+TITLE="your title"
+ORG="your org @ your company"
+TANZU_NETWORK_ACCOUNT_USERNAME=$EMAIL_ADDRESS
+TANZU_NETWORK_ACCOUNT_PASSWORD="replace_me"
+TANZU_NETWORK_API_TOKEN="replace_me"
+
+GCP_PROJECT="replace_me"
+GCP_SERVICE_ACCOUNT="tf4k8s-sa"
+
+K8S_ENV="tf4k8s-demo"
+REGISTRAR="hover.com"
+BASE_NAME="base"
+BASE_DOMAIN="$BASE_NAME.com"
+SUB_NAME="west"
+SUB_DOMAIN="$SUB_NAME.$BASE_DOMAIN"

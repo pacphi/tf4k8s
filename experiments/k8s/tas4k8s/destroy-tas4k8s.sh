@@ -7,6 +7,12 @@ fi
 
 IAAS="$1"
 
+# Manually uninstall the Postgres service instance before delegating to terraform destroy
+# This is done because Helm will not automatically remove the persistent volume claim
+helm uninstall pgsqlcfdb -n postgres-dbms
+kubectl delete pvc -n postgres-dbms postgres-pvc --force
+kubectl delete ns postgres-dbms
+
 terraform destroy -auto-approve
 
 cd "../../../modules/tas4k8s/acme/${IAAS}" || exit
