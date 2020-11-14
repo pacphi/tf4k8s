@@ -17,7 +17,7 @@ HELMFILE_VERSION=0.119.1
 curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64
 sudo mv helmfile /usr/local/bin
 
-TERRAFORM_VERSION=0.12.28
+TERRAFORM_VERSION=0.13.5
 wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
@@ -30,22 +30,22 @@ curl -Lo ./terraform-docs https://github.com/segmentio/terraform-docs/releases/d
 chmod +x ./terraform-docs
 sudo mv terraform-docs /usr/local/bin
 
-YTT_VERSION=0.28.0
+YTT_VERSION=0.30.0
 wget -O ytt https://github.com/k14s/ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64 && \
 chmod +x ytt && \
 sudo mv ytt /usr/local/bin
 
-VENDIR_VERSION=0.8.0
+VENDIR_VERSION=0.13.0
 wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSION}/vendir-linux-amd64 && \
 chmod +x vendir && \
 sudo mv vendir /usr/local/bin
 
-KAPP_VERSION=0.31.0
+KAPP_VERSION=0.34.0
 wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 && \
 chmod +x kapp && \
 sudo mv kapp /usr/local/bin
 
-KBLD_VERSION=0.24.0
+KBLD_VERSION=0.27.0
 wget -O kbld https://github.com/k14s/kbld/releases/download/v${KBLD_VERSION}/kbld-linux-amd64 && \
 chmod +x kbld && \
 sudo mv kbld /usr/local/bin
