@@ -10,6 +10,9 @@ TANZU_NETWORK_API_TOKEN="replace_me"
 
 GCP_PROJECT="replace_me"
 GCP_SERVICE_ACCOUNT="tf4k8s-sa"
+GCP_REGION="us-west1"
+GKE_NODE_TYPE="e2-standard-4"
+GKE_NODES=8
 
 K8S_ENV="tf4k8s-demo"
 REGISTRAR="hover.com"

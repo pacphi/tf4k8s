@@ -2,30 +2,91 @@
 
 # tf4k8s Demo Script
 # @author Chris Phillipson
-# @version 1.0
+# @version 1.1
 
 while test $# -gt 0
 do
   case "$1" in
 
     --dry-run | -dr)
-    COMMAND=echo
-    TYPE_SPEED_MULTIPLIER=10
+    DRY_RUN=true
+    declare -i TYPE_SPEED_MULTIPLIER=10
     ;;
 
-    *)
-    COMMAND=pe
-    TYPE_SPEED_MULTIPLIER=1
+    --run | -r)
+    DRY_RUN=false
+    declare -i TYPE_SPEED_MULTIPLIER=1
     ;;
 
   esac
   shift
 done
 
+function r() {
+  if [ "$DRY_RUN" = true ]; then
+    echo "$@"
+  else
+    pe "$@"
+  fi
+}
+
+function rc() {
+  if [ "$DRY_RUN" = true ]; then
+    echo ""
+  else
+    echo "$@"
+  fi
+}
+
 # Configuration options
 source demo-config.sh
 
-TFVARS1=$(cat <<EOF
+declare -i TOTAL_ZONAL_NODES=$GKE_NODES*3
+GCP_SA_KEY_FILE_PATH="~/.tf4k8s/gcp/$GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json"
+
+CLUSTER_TFVARS=$(cat <<EOF
+gcp_project = "$GCP_PROJECT"
+gcp_region = "$GCP_REGION"
+gke_name = "$K8S_ENV"
+gke_nodes = $GKE_NODES
+gke_preemptible = false
+gke_node_type = "$GKE_NODE_TYPE"
+gcp_service_account_credentials = "$GCP_SA_KEY_FILE_PATH"
+EOF
+)
+
+DNS_TFVARS=$(cat <<EOF
+project = "$GCP_PROJECT"
+root_zone_name = "$BASE_NAME-zone"
+environment_name = "$SUB_NAME"
+dns_prefix = "$SUB_NAME"
+gcp_service_account_credentials = "$GCP_SA_KEY_FILE_PATH"
+EOF
+)
+
+CERTMGR_TFVARS=$(cat <<EOF
+project = "$GCP_PROJECT"
+domain = "$SUB_DOMAIN"
+acme_email = "$EMAIL_ADDRESS"
+dns_zone_name = "$SUB_NAME-zone"
+gcp_service_account_credentials = "$GCP_SA_KEY_FILE_PATH"
+EOF
+)
+
+EXTERNAL_DNS_TFVARS=$(cat <<EOF
+domain_filter = "$SUB_DOMAIN"
+gcp_project = "$GCP_PROJECT"
+gcp_service_account_credentials = "$GCP_SA_KEY_FILE_PATH"
+EOF
+)
+
+HARBOR_TFVARS=$(cat <<EOF
+domain = "$SUB_DOMAIN"
+ingress = "nginx"
+EOF
+)
+
+TAS4K8S_TFVARS=$(cat <<EOF
 base_domain = "$SUB_DOMAIN"
 registry_domain = "harbor.$SUB_DOMAIN"
 repository_prefix = "harbor.$SUB_DOMAIN/library"
@@ -35,7 +96,7 @@ pivnet_password = "$TANZU_NETWORK_ACCOUNT_PASSWORD"
 EOF
 )
 
-TFVARS2=$(cat <<EOF
+ACME_TFVARS=$(cat <<EOF
 email = "$EMAIL_ADDRESS"
 domain = "$SUB_DOMAIN"
 project = "$GCP_PROJECT"
@@ -48,7 +109,8 @@ EOF
 
 # Include the demo-magic.sh utility script (@see https://github.com/paxtonhare/demo-magic)
 . ./demo-magic.sh -n
-TYPE_SPEED=100*$TYPE_SPEED_MULTIPLIER
+declare -i TYPE_SPEED=100*$TYPE_SPEED_MULTIPLIER
+
 
 # Utility function for a prompt; in order to provide helpful explanation at each step
 function prompt() {
@@ -58,6 +120,8 @@ function prompt() {
 
 # Get ourselves into a safe place
 cd /tmp
+# Clean-up any prior clone
+rm -Rf /tmp/tf4k8s
 
 # Hide the evidence
 clear
@@ -75,8 +139,8 @@ wait
 
 prompt Cloning the repo
 p "Start by cloning the tf4k8s repository then hop into the bom directory."
-$COMMAND git clone https://github.com/pacphi/tf4k8s
-$COMMAND cd tf4k8s/bom
+r git clone https://github.com/pacphi/tf4k8s
+r cd tf4k8s/bom
 
 p "Execute the setup script appropriate for your operating system in order to download and install the necessary libraries and CLIs that tf4k8s needs."  
 p "The bom directory has a README file that lists all the software that is downloaded and installed."
@@ -91,7 +155,9 @@ wait
 prompt Sign-up and authentication
 p "You'll need to sign-up for an account if you don't have one.  I've got one already.  But I need to authenticate."
 p "My employer requires two-factor authentication, so I'll need to supply a password and PIN."
-$COMMAND gcloud auth login
+wait
+r gcloud auth login
+wait
 
 prompt Setting up a service account
 p "I may choose to create a new project if the account I authenticated with is authorized to do so."
@@ -99,26 +165,31 @@ p "However, I'm going to stick with an existing project that my account is assig
 p "Next, we'll want to create a service account and assign a role. In the context of this demo, "
 p "I'm assigning the [ owner ] role, but I wouldn't recommend you do that."
 p "You should really think about granting a reduced set of privileges to any service account based upon one or more roles and/or permissions."
-$COMMAND gcloud iam service-accounts create $GCP_SERVICE_ACCOUNT
-$COMMAND gcloud projects add-iam-policy-binding $GCP_PROJECT --member="serviceAccount:$GCP_SERVICE_ACCOUNT@$GCP_PROJECT.iam.gserviceaccount.com" --role="roles/owner"
+wait
+r gcloud iam service-accounts create $GCP_SERVICE_ACCOUNT
+r gcloud projects add-iam-policy-binding $GCP_PROJECT --member="serviceAccount:$GCP_SERVICE_ACCOUNT@$GCP_PROJECT.iam.gserviceaccount.com" --role="roles/owner"
 wait
 
 prompt Store the service account key file somewhere
 p "Let's fetch and store the service account key file that we'll use for subsequent operations."
-$COMMAND gcloud iam service-accounts keys create $GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json --iam-account=$GCP_SERVICE_ACCOUNT@$GCP_PROJECT.iam.gserviceaccount.com
-$COMMAND mkdir -p ~/.tf4k8s/gcp
-$COMMAND mv $GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json ~/.tf4k8s/gcp
+wait
+r gcloud iam service-accounts keys create $GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json --iam-account=$GCP_SERVICE_ACCOUNT@$GCP_PROJECT.iam.gserviceaccount.com
+r mkdir -p ~/.tf4k8s/gcp
+r mv $GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json ~/.tf4k8s/gcp
 wait
 
 prompt The first experiment - provisioning a GKE cluster
 p "Let's place ourselves within the [ gcp ] sub-tree of the [ tf4k8s/experiments ] directory."
-$COMMAND cd ../experiments/gcp
+r cd ../experiments/gcp
+wait
 p "Let's take a look at the contents of this directory."
-$COMMAND ls -la
+r ls -la
+wait
 p "Where should we go in order to provision a GKE cluster?"
 p "The cluster sub-directory of course."
-$COMMAND cd cluster
-$COMMAND ls -la
+r cd cluster
+r ls -la
+wait
 p "I want to draw attention to the fact that all experiments are structured similarly."
 p "You'll employ BaSH scripts to create and destroy resources."
 p "Those scripts delegate to Terraform which will in turn delegate to an array of providers."
@@ -132,28 +203,30 @@ p "Make a copy of sample configuration into a file named [ terraform.tfvars ], t
 p "Finally, you'll execute a BaSH script."
 p "Of course, all these steps, and any prerequisites, are explained in the README of each experiment."
 p "So, let's see what we need to do."
-$COMMAND cat simple-cluster.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cat simple-cluster.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "The Terraform module we employ will deploy a public cluster (all nodes will be publicly addressable) in a regional topology."
 p "It's important that we size the cluster appropriately to accommodate all forthcoming workloads."
-p "So we're going to set [ gke_nodes ] to [ 8 ], which will provision 8 nodes per zone and 3 zones per region for a total of 24 nodes."
+p "So we're going to set [ gke_nodes ] to [ $GKE_NODES ], which will provision $GKE_NODES nodes per zone and 3 zones per region for a total of $TOTAL_ZONAL_NODES nodes."
 p "And there's a few other settings we'll tweak like the cluster name, node type, and service account key file location."
-$COMMAND sed -i "s/terraform-my-project-service-account-credentials.json/$GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json/g" terraform.tfvars
-$COMMAND sed -i "s/my-project/$GCP_PROJECT/g" terraform.tfvars
-$COMMAND sed -i "s/k8s/$K8S_ENV/g" terraform.tfvars
-$COMMAND sed -i 's/3/8/g' terraform.tfvars
-$COMMAND sed -i 's/n1-standard-4/e2-standard-4/g' terraform.tfvars
-$COMMAND cat terraform.tfvars
+rc "$CLUSTER_TFVARS" > terraform.tfvars
+r cat terraform.tfvars
+wait
 p "Ready, set, go..."
-$COMMAND "./create-cluster.sh"
+r "./create-cluster.sh"
+wait
 p "Note Terraform returns the name and location (i.e., region) of your cluster and hands you a kubeconfig."
 p "Let's set the KUBECONFIG environment variable."
-$COMMAND export KUBECONFIG=$(terraform output path_to_kubeconfig)
+r export KUBECONFIG=$(terraform output path_to_kubeconfig)
+wait
 p "We're going to need it as we journey beyond just having secured Kubernetes dial-tone."
 p "Before we wrap this first experiment, let's check in on the nodes and pods in our cluster."
-$COMMAND kubectl get nodes -A -o wide
-$COMMAND kubectl get pods -A -o wide
+wait
+r kubectl get nodes -A -o wide
+wait
+r kubectl get pods -A -o wide
 wait
 
 prompt How to deliver a platform?
@@ -177,18 +250,18 @@ p "I have a domain that I've secured through [ $REGISTRAR ], a domain registrar,
 p "provisioned a cloud zone known as [ $BASE_NAME-zone ] that is responsible for managing [ NS ] records for [ $BASE_DOMAIN ]."
 p "I now want to create a new domain known as [ $SUB_DOMAIN ] and that domain will be managed in a new cloud-zone known as [ $SUB_NAME-zone ]."
 p "Let's see how this is done."
-$COMMAND cd ../dns
-$COMMAND cat managed-zone.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cd ../dns
+r cat managed-zone.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "We're going to edit the path to the service account key file, the GCP project id, the root zone, DNS prefix and environment."
-$COMMAND sed -i "s/terraform-my-project-service-account-credentials.json/$GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json/g" terraform.tfvars
-$COMMAND sed -i "s/my-project/$GCP_PROJECT/g" terraform.tfvars
-$COMMAND sed -i "s/some-zone/$BASE_NAME-zone/g" terraform.tfvars
-$COMMAND sed -i "s/foo/$SUB_NAME/g" terraform.tfvars
-$COMMAND sed -i "s/prefix/$SUB_NAME/g" terraform.tfvars
-$COMMAND cat terraform.tfvars
-$COMMAND ./create-dns.sh
+wait
+rc "$DNS_TFVARS" > terraform.tfvars
+r cat terraform.tfvars
+wait
+r ./create-zone.sh
+wait
 p "That was pretty straight-forward, huh?"
 wait
 
@@ -197,54 +270,59 @@ p "[ cert-manager ] is a native Kubernetes certificate management controller. It
 p "such as Let’s Encrypt, HashiCorp Vault, Venafi, a simple signing key pair, or self signed."
 p "It will ensure certificates are valid and up to date, and attempt to renew certificates at a configured time before expiry."
 p "Terraform will delegate to a Jetstack Helm chart to install it."
-$COMMAND cd ../certmanager
-$COMMAND cat certmanager.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cd ../certmanager
+r cat certmanager.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "We're going to edit the path to service account key file, the domain, the GCP project id, email address, cloud zone, and the path to kubeconfig."
-$COMMAND sed -i "s/terraform-my-project-service-account-credentials.json/$GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json/g" terraform.tfvars
-$COMMAND sed -i "s/some.domain.com/$SUB_DOMAIN/g" terraform.tfvars
-$COMMAND sed -i "s/my-project/$GCP_PROJECT/g" terraform.tfvars
-$COMMAND sed -i "s/your@email.com/$EMAIL_ADDRESS/g" terraform.tfvars
-$COMMAND sed -i "s/a-zone/$SUB_NAME-zone/g" terraform.tfvars
-$COMMAND sed -i "s+~/.kube/config+$KUBECONFIG+g" terraform.tfvars
-$COMMAND cat terraform.tfvars
-$COMMAND ./create-certmanager.sh
+wait
+rc "$CERTMGR_TFVARS" > terraform.tfvars
+rc "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
+r cat terraform.tfvars
+wait
+r ./create-certmanager.sh
 p "Let's verify it is deployed correctly by checking the [ cert-manager ] namespace for running pods."
-$COMMAND kubectl get pods --namespace cert-manager
+r kubectl get pods --namespace cert-manager
 wait
 
 prompt Step 3: Install ingress controller
 p "[ nginx-ingress ] is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer."
 p "Terraform will delegate to a Bitnami Helm chart to install it."
-$COMMAND cd ../../k8s/nginx-ingress
-$COMMAND cat nginx-ingress.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cd ../../k8s/nginx-ingress
+r cat nginx-ingress.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "Not much to edit save for the the path to kubeconfig."
-$COMMAND sed -i "s+~/.kube/config+$KUBECONFIG+g" terraform.tfvars
-$COMMAND cat terraform.tfvars
-$COMMAND ./create-nginx-ingress.sh
+wait
+rc "$INGRESS_TFVARS" > terraform.tfvars
+rc "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
+r cat terraform.tfvars
+wait
+r ./create-nginx-ingress.sh
 p "Let's verify it is deployed correctly by checking the [ nginx-ingress ] namespace for running pods."
-$COMMAND kubectl get pods --namespace nginx-ingress
+r kubectl get pods --namespace nginx-ingress
 wait
 
 prompt Step 4: Install external-dns
 p "[ external-dns ] allows you to control DNS records dynamically via Kubernetes resources in a provider-agnostic way."
 p "Terraform will again delegate to a Bitnami Helm chart to install it."
-$COMMAND cd ../../gcp/external-dns
-$COMMAND cat external-dns.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cd ../../gcp/external-dns
+r cat external-dns.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "We're going to edit the path to kubeconfig, the GCP project id, and the domain."
-$COMMAND sed -i "s/terraform-my-project-service-account-credentials.json/$GCP_SERVICE_ACCOUNT.$GCP_PROJECT.json/g" terraform.tfvars
-$COMMAND sed -i "s+~/.kube/config+$KUBECONFIG+g" terraform.tfvars
-$COMMAND sed -i "s/my-project/$GCP_PROJECT/g" terraform.tfvars
-$COMMAND sed -i "s/some.domain.com/$SUB_DOMAIN/g" terraform.tfvars
-$COMMAND cat terraform.tfvars
-$COMMAND ./create-external-dns.sh
+wait
+rc "$EXTERNAL_DNS_TFVARS" > terraform.tfvars
+rc "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
+r cat terraform.tfvars
+wait
+r ./create-external-dns.sh
+wait
 p "Let's verify it is deployed correctly by checking the [ external-dns ] namespace for running pods."
-$COMMAND kubectl get pods --namespace external-dns
+r kubectl get pods --namespace external-dns
 wait
 
 prompt Step 5: Install a private container image registry
@@ -253,22 +331,26 @@ p "ensures images are scanned and free from vulnerabilities, and signs images as
 p "Harbor, a CNCF graduated project, delivers compliance, performance, and interoperability to help you"
 p "consistently and securely manage artifacts across cloud native compute platforms like Kubernetes."
 p "Terraform will delegate to the Harbor Helm chart to install it."
-$COMMAND cd ../../k8s/harbor
-$COMMAND cat harbor.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND cp terraform.tfvars.sample terraform.tfvars
+wait
+r cd ../../k8s/harbor
+r cat harbor.tf
+r cat terraform.tfvars.sample
+r cp terraform.tfvars.sample terraform.tfvars
 p "All we need to edit is the domain and the path to kubeconfig."
-$COMMAND sed -i "s/some.domain.com/$SUB_DOMAIN/g" terraform.tfvars
-$COMMAND sed -i "s+~/.kube/config+$KUBECONFIG+g" terraform.tfvars
-$COMMAND cat terraform.tfvars
-$COMMAND ./create-harbor.sh
+wait
+rc "$HARBOR_TFVARS" > terraform.tfvars
+rc "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
+r cat terraform.tfvars
+wait
+r ./create-harbor.sh
+wait
 p "Notice how Terraform handed you back an endpoint and admin credentials?"
 p "Take note of the them.  Verify you can login to Harbor by visiting the endpoint in your favorite browser."
 p "In the last step, we're going to integrate Harbor with Tanzu Application Service for Kubernetes."
 p "Harbor will be the backing repository for all container images."
 p "Let's set a few environment variables for convenience."
-$COMMAND export HARBOR_ENDPOINT=$(terraform output harbor_endpoint)
-$COMMAND export HARBOR_ADMIN_PASSWORD=$(terraform output harbor_admin_password)
+r export HARBOR_ENDPOINT=$(terraform output harbor_endpoint)
+r export HARBOR_ADMIN_PASSWORD=$(terraform output harbor_admin_password)
 wait
 
 prompt Step 6: Install Tanzu Application Service for Kubernetes
@@ -281,21 +363,25 @@ p "dozens of virtual machines."
 p "Terraform is going to delegate to the Carvel (formerly known as k14s) provider to install TAS."
 p "You know the drill. We're going to make a copy of sample configuration then edit the copy."
 p "This time around we'll have to add one more .tfvars file to store the credentials used to generate certificates via Let's Encrypt."
-$COMMAND cd ../tas4k8s
-$COMMAND cat tas4k8s.tf
-$COMMAND cat terraform.tfvars.sample
-$COMMAND echo "$TFVARS1" > terraform.tfvars
-$COMMAND echo "registry_password = \"$HARBOR_ADMIN_PASSWORD\"" >> terraform.tfvars
-$COMMAND echo "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
-$COMMAND echo "$TFVARS2" > iaas.auto.tfvars
+wait
+r cd ../tas4k8s
+r cat tas4k8s.tf
+r cat terraform.tfvars.sample
+rc "$TAS4K8S_TFVARS" > terraform.tfvars
+rc "registry_password = \"$HARBOR_ADMIN_PASSWORD\"" >> terraform.tfvars
+rc "kubeconfig_path = \"$KUBECONFIG\"" >> terraform.tfvars
+rc "$ACME_TFVARS" > iaas.auto.tfvars
 p "Let's light this candle!"
+wait
 p "In the meanwhile, lets take some time to stand up and stretch.  Come back a few moments later, and if we're lucky,"
 p "we should be rewarded with a CF API endpoint and admin credentials."
-$COMMAND ./create-tas4k8s gcp $TANZU_NETWORK_API_TOKEN
+wait
+r ./create-tas4k8s.sh gcp $TANZU_NETWORK_API_TOKEN
+wait
 p "Congratulations! You've just up-leveled your Kubernetes game and built a foundation your developers will love."
 p "Let's test it out."
-$COMMAND cf api $(terraform output tas_api_endpoint)
-$COMMAND cf auth $(terraform output tas_admin_username) $(terraform output tas_admin_password)
+r cf api $(terraform output tas_api_endpoint)
+r cf auth $(terraform output tas_admin_username) $(terraform output tas_admin_password)
 p "Yup! We can login with administrator credentials and get to work creating organizations, setting quotas, creating spaces and of course onboarding new users."
 wait
 

@@ -45,7 +45,7 @@ This will put the script in dry-run mode and not execute any of the embedded com
 If you really want to launch the script, execute
 
 ```
-./launch-demo.sh
+./launch-demo.sh --run
 ```
 
 On occasion you'll have to press the Enter key to proceed, but this is largely a hands-off experience.
