@@ -17,7 +17,7 @@ HELMFILE_VERSION=0.119.1
 curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64
 sudo mv helmfile /usr/local/bin
 
-TERRAFORM_VERSION=0.13.5
+TERRAFORM_VERSION=0.14.2
 wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
