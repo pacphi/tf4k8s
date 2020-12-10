@@ -65,3 +65,8 @@ variable "path_to_tkg_config_yaml" {
   description = "The path to the configuration used by Tanzu Kubernetes Grid CLI"
   default = "~/.tkg/config.yaml"
 }
+
+variable "do_init" {
+  description = "Whether or not to execute tkg init.  Defaults to true."
+  default = true
+}

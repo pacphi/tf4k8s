@@ -40,6 +40,7 @@ resource "local_file" "merged_config" {
 }
 
 resource "null_resource" "tkg_init" {
+  count = var.do_init ? 1 : 0
   triggers = {
     config_filename = local_file.merged_config.filename
     cluster_name = "tkg-az-${var.environment}-mgmt-cluster"
