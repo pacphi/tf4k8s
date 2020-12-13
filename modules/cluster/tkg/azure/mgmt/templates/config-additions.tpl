@@ -5,6 +5,8 @@ AZURE_CLIENT_ID: ${az_client_id}
 AZURE_CLIENT_SECRET: ${az_client_secret}
 AZURE_LOCATION: ${az_location}
 AZURE_SSH_PUBLIC_KEY_B64: ${az_ssh_public_key_b64}
+AZURE_RESOURCE_GROUP: ${az_resource_group_name}
+AZURE_VNET_RESOURCE_GROUP: ${az_resource_group_name}
 SERVICE_CIDR: ${service_cidr}
 CLUSTER_CIDR: ${cluster_cidr}
 AZURE_CONTROL_PLANE_MACHINE_TYPE: ${control_plane_machine_type}
