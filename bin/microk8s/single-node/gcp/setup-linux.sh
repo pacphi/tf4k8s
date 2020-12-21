@@ -40,7 +40,7 @@ wget -O vendir https://github.com/k14s/vendir/releases/download/v${VENDIR_VERSIO
 chmod +x vendir && \
 sudo mv vendir /usr/local/bin
 
-KAPP_VERSION=0.34.0
+KAPP_VERSION=0.35.0
 wget -O kapp https://github.com/k14s/kapp/releases/download/v${KAPP_VERSION}/kapp-linux-amd64 && \
 chmod +x kapp && \
 sudo mv kapp /usr/local/bin

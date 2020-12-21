@@ -145,7 +145,7 @@ Set-Variable VENDIR_VERSION 0.13.0
 curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
 Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
 
-Set-Variable KAPP_VERSION 0.34.0
+Set-Variable KAPP_VERSION 0.35.0
 curl -LO "https://github.com/k14s/kapp/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
 Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
 
