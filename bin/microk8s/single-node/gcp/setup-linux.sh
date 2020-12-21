@@ -17,7 +17,7 @@ HELMFILE_VERSION=0.119.1
 curl -Lo ./helmfile https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64
 sudo mv helmfile /usr/local/bin
 
-TERRAFORM_VERSION=0.14.2
+TERRAFORM_VERSION=0.14.3
 wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
@@ -57,12 +57,12 @@ curl -LO "https://github.com/k14s/terraform-provider-k14s/releases/download/v${T
 tar xzvf terraform-provider-k14s-binaries.tgz -C ~/.terraform.d/plugins/ && \
 rm -Rf terraform-provider-k14s-binaries.tgz
 
-BOSH_VERSION=6.3.0 && \
+BOSH_VERSION=6.4.1 && \
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
 chmod +x bosh && \
 sudo mv bosh /usr/local/bin
 
-PIVNET_VERSION=1.0.4 && \
+PIVNET_VERSION=2.0.2 && \
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
