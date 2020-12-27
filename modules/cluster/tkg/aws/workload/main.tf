@@ -74,7 +74,7 @@ resource "null_resource" "tkg_cluster_credentials" {
       TKG_CONFIG = self.triggers.config_filename
       TKG_WORKLOAD_CLUSTER_NAME = self.triggers.cluster_name
     }
-    command = "tkg get credentials $TKG_WORKLOAD_CLUSTER_NAME --config $TKG_CONFIG"
+    command = "tkg get credentials $TKG_WORKLOAD_CLUSTER_NAME --config $TKG_CONFIG --export-file ~/.kube/config --v 6"
   }
 
   depends_on = [
