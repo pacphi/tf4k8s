@@ -1,3 +1,17 @@
+resource "null_resource" "install_specific_version_of_kubectl" {
+  provisioner "local-exec" {
+    environment = {
+      TKG_K8S_VERSION = var.tkg_kubernetes_version
+    }
+    command =<<EOT
+      KUBECTL_VERSION = $(echo $TKG_K8S_VERSION | sed -e 's/v\(.*\)+vmware\(.*\)/\1/')
+      curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl
+      chmod +x kubectl
+      mv kubectl /usr/local/bin
+    EOT
+  }
+}
+
 resource "null_resource" "gzipped_tkg_mgmt_cluster_config_extraction" {
   triggers = {
     gzipped_config_exists = fileexists(var.path_to_gzipped_management_cluster_config)
@@ -13,6 +27,10 @@ resource "null_resource" "gzipped_tkg_mgmt_cluster_config_extraction" {
       fi
     EOT
   }
+
+  depends_on = [
+    null_resource.install_specific_version_of_kubectl
+  ]
 }
 data "local_file" "config" {
   filename = fileexists(var.path_to_gzipped_management_cluster_config) ? pathexpand("~/.tkg/config.yaml"): pathexpand(var.path_to_tkg_config_yaml)
