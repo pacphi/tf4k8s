@@ -5,7 +5,7 @@ resource "null_resource" "install_specific_version_of_kubectl" {
     }
     command =<<EOT
       KUBECTL_VERSION = $(echo $TKG_K8S_VERSION | sed -e 's/v\(.*\)+vmware\(.*\)/\1/')
-      curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl
+      wget -O kubectl https://storage.googleapis.com/kubernetes-release/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl
       chmod +x kubectl
       mv kubectl /usr/local/bin
     EOT
