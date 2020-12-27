@@ -9,7 +9,7 @@ variable "tkg_plan" {
 
 variable "tkg_kubernetes_version" {
   description = "A version of Kubernetes that is made available by a management cluster"
-  default = "v1.19.1+vmware.2"
+  default = "v1.19.3+vmware.1"
 }
 
 variable "tkg_control_plane_node_count" {
@@ -24,4 +24,9 @@ variable "tkg_worker_node_count" {
 
 variable "path_to_tkg_config_yaml" {
   description = "The path to the configuration used by Tanzu Kubernetes Grid CLI (e.g., ~/.tkg/{env}/config.yaml)"
+}
+
+variable "path_to_gzipped_management_cluster_config" {
+  description = "Optional path to the configuration used by Tanzu Kuberenetes Grid CLI (to be used when .tkg and .kube-tkg directories are not already available on or have been ported from another filesystem).  Configuration supplied a path to compressed file whose contents will be extracted the to the $HOME directory."
+  default = ""
 }

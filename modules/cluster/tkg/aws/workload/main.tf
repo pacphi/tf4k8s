@@ -1,11 +1,35 @@
+resource "null_resource" "tkg_gzipped_tkg_mgmt_cluster_config_extraction" {
+  triggers = {
+    gzipped_config_exists = fileexists(var.path_to_gzipped_management_cluster_config)
+  }
+  provisioner "local-exec" {
+    triggers = {
+      gzipped_config_exists = fileexists(var.path_to_gzipped_management_cluster_config)
+    }
+    environment = {
+      GZIPPED_CONFIG_EXISTS = self.triggers.gzipped_config_exists
+      GZIPPED_CONFIG = var.path_to_gzipped_management_cluster_config
+    }
+    command =<<EOT
+      if [ "$GZIPPED_CONFIG_EXISTS" == "true" ]; then 
+        tar -xvf $GZIPPED_CONFIG -C ~ 
+      fi
+    EOT
+  }
+}
 data "local_file" "config" {
-  filename = pathexpand(var.path_to_tkg_config_yaml)
+  filename = fileexists(var.path_to_gzipped_management_cluster_config) ? pathexpand("~/.tkg/config.yaml"): pathexpand(var.path_to_tkg_config_yaml)
+
+  depends_on = [
+    null_resource.tkg_gzipped_tkg_mgmt_cluster_config_extraction
+  ]
 }
 
 resource "null_resource" "tkg_workload_cluster" {
   triggers = {
     config_filename = data.local_file.config.filename
     cluster_name = "tkg-aws-${var.environment}-work-cluster"
+    
   }
   provisioner "local-exec" {
     environment = {
