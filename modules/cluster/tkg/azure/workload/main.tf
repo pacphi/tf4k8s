@@ -13,16 +13,12 @@ resource "null_resource" "install_specific_version_of_kubectl" {
 }
 
 resource "null_resource" "gzipped_tkg_mgmt_cluster_config_extraction" {
-  triggers = {
-    gzipped_config_exists = fileexists(var.path_to_gzipped_management_cluster_config)
-  }
   provisioner "local-exec" {
     environment = {
-      GZIPPED_CONFIG_EXISTS = self.triggers.gzipped_config_exists
       GZIPPED_CONFIG = var.path_to_gzipped_management_cluster_config
     }
     command =<<EOT
-      if [ "$GZIPPED_CONFIG_EXISTS" == "true" ]; then 
+      if [ -f "$GZIPPED_CONFIG" ]; then 
         tar -xvf $GZIPPED_CONFIG -C ~ 
       fi
     EOT
@@ -32,6 +28,7 @@ resource "null_resource" "gzipped_tkg_mgmt_cluster_config_extraction" {
     null_resource.install_specific_version_of_kubectl
   ]
 }
+
 data "local_file" "config" {
   filename = fileexists(var.path_to_gzipped_management_cluster_config) ? pathexpand("~/.tkg/config.yaml"): pathexpand(var.path_to_tkg_config_yaml)
 
