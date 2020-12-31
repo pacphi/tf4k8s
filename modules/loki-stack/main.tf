@@ -33,7 +33,7 @@ resource "helm_release" "loki_stack" {
   namespace  = kubernetes_namespace.loki_stack.metadata[0].name
   repository = "https://grafana.github.io/helm-charts "
   chart      = "loki-stack"
-  version    = "2.2.0"
+  version    = "2.3.0"
 
   set {
     name = "fluent-bit.enabled"
