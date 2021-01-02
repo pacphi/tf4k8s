@@ -37,7 +37,9 @@ RUN mkdir downloads && cd downloads && \
     python3 -m pip install --user virtualenv && \
     useradd -m docker && echo "docker:docker" | chpasswd && \
     adduser docker sudo && \
-    python3 -m pip install awscli && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    sudo ./aws/install && \
     curl -o aws-iam-authenticator curl -o aws-iam-authenticator "https://amazon-eks.s3.us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VERSION}/bin/linux/amd64/aws-iam-authenticator" && \
     chmod +x aws-iam-authenticator && \
     sudo mv aws-iam-authenticator /usr/local/bin && \

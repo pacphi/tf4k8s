@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y
-sudo apt-get install -y build-essential gnupg libnss3-tools zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
+sudo apt-get install -y build-essential gnupg libnss3-tools zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev python3 sqlite3
 sudo apt-get install -y pv snapd unzip graphviz wget
 
 sudo snap install snap-store
@@ -9,13 +9,17 @@ sudo snap install snap-store
 sudo snap install google-cloud-sdk --classic
 sudo snap install code --classic
 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+unzip awscliv2.zip && \
+sudo ./aws/install
+
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Install Homebrew; @see https://brew.sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Install minimal complement of tools
-brew install awscli aws-iam-authenticator aliyun-cli doctl git libressl mkcert nss openssl terraform terraform-docs tflint httpie kind kubernetes-cli kubeseal helm helmfile krew octant
+brew install aws-iam-authenticator aliyun-cli doctl git libressl mkcert nss openssl terraform terraform-docs tflint httpie kind kubernetes-cli kubeseal helm helmfile krew octant
 
 brew tap k14s/tap
 brew install ytt kbld kapp imgpkg kwt vendir
