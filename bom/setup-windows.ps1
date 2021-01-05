@@ -166,7 +166,7 @@ curl -LO "https://github.com/kubernetes-sigs/krew/releases/download/v$KREW_VERSI
 curl -LO "https://github.com/kubernetes-sigs/krew/releases/download/v$KREW_VERSION/krew.yaml"
 krew install --manifest=krew.yaml
 
-Set-Variable TMC_VERSION 0.2.0-001dbc95
+Set-Variable TMC_VERSION 0.2.0-ba47223d
 curl -LO "https://vmware.bintray.com/tmc/$TMC_VERSION/windows/x64/tmc.exe"
 
 Add-EnvPath -Path "$HOME/.apps/bin" -Container "Machine"
