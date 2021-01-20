@@ -1,0 +1,4 @@
+jenkins_instance_name = "prod-jenkins"
+jenkins_namespace = "jenkins"
+jenkins_k8s_operator_commit_hash = "fe81e5ab3df0b79d532a4cd5d576df4c0586955a"
+kubeconfig_path = "~/.kube/config"

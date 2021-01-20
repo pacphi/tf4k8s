@@ -93,7 +93,7 @@ Deploy and manage application and services with ease through an administrative i
 ### CI/CD
 
 - [x] Argo CD
-- [ ] Jenkins
+- [x] Jenkins
 - [ ] Gitlab
 - [x] VMWare Tanzu Build Service
 - [x] Concourse
