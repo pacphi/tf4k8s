@@ -27,7 +27,6 @@ Amend the values for
 ```
 ./create-jenkins.sh
 ```
-> You can override the default `{jenkins_instance_name}` and `{jenkins_namespace}` by passing them as arguments to this script.
 
 ## Use
 
@@ -36,6 +35,7 @@ Amend the values for
 ```
 ./get-credentials.sh
 ```
+> You can override the default `{jenkins_instance_name}` and `{jenkins_namespace}` by passing them as arguments to this script.
 
 ### Setup port-forwarding
 
