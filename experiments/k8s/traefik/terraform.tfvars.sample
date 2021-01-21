@@ -1,0 +1,2 @@
+traefik_log_level = "INFO"
+kubeconfig_path = "~/.kube/config"
