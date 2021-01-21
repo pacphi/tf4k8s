@@ -1,0 +1,6 @@
+kubeturbo_operator_commit_hash = "5cc0b03a4a0b3e91fe8b055fdea0c35fa2c772ff"
+turbo_username = "foo"
+turbo_password = "bar"
+turbo_server_url = "https://my.turbonomics.acme.me"
+turbo_server_version = "8.0.6"
+kubeconfig_path = "~/.kube/config"
