@@ -14,7 +14,7 @@ resource "kubernetes_secret" "certmanager" {
   }
 
   data = {
-    "access-token" = var.venafi_tpp_acess_token
+    "access-token" = var.venafi_tpp_access_token
   }
 }
 
