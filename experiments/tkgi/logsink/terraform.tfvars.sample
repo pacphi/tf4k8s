@@ -1,0 +1,6 @@
+tkgi_cluster_name = "foo-cluster"
+sink_hostname = "fabulous.cluster.me"
+sink_port = 443
+sink_tls_enabled = true
+sink_insecure_skip_verify = true
+kubeconfig_path = "~/.kube/config"
