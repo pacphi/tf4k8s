@@ -16,6 +16,7 @@ Choose your own adventure on one of the following cloud providers
 - [x] VMWare Tanzu Kubernetes Grid 
   - on AWS [management](experiments/tkg/aws/mgmt) and [workload](experiments/tkg/aws/workload) clusters
   - on Azure [management](experiments/tkg/azure/mgmt) and [workload](experiments/tkg/azure/workload) clusters
+- [x] [VMWare Tanzu Kubernetes Grid Integrated](experiments/tkgi/cluster)
 
 Or provision new / attach existing Kubernetes clusters via
 
@@ -41,7 +42,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Integrate a cloud provider's blobstore or install [Minio](experiments/k8s/minio)
 - [x] Integrate [VMware Tanzu Observability](experiments/k8s/wavefront)
 - [x] Provision a distributed version control system with [Gitea](experiments/k8s/gitea)
-- [x] Enable continuous integration (and deployment) with [Concourse](experiments/k8s/concourse)
+- [x] Enable continuous integration (and deployment) with [Concourse](experiments/k8s/concourse) or [Jenkins](experiments/k8s/jenkins)
 - [x] Enable continuous deployment with [Argo CD](experiments/k8s/argo-cd) or [Tekton](experiments/k8s/tekton)
 - [x] Install [edukates](experiments/k8s/eduk8s) a set of custom resources used to deploy workshop training portals
 
@@ -97,12 +98,11 @@ Deploy and manage application and services with ease through an administrative i
 - [ ] Gitlab
 - [x] VMWare Tanzu Build Service
 - [x] Concourse
-- [ ] Spinnaker
 - [x] Tekton
 
 #### Reference Pipelines
 
-// TBD
+* See [tf4k8s-pipelines](https://github.com/pacphi/tf4k8s-pipelines)
 
 ### Logging/Monitoring/Metrics
 
