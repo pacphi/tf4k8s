@@ -1,0 +1,7 @@
+infoblox_cidr = "10.215.209.0/24"
+infoblox_dns_zone = "tkgi.test"
+infoblox_password = "testing"
+infoblox_server = "10.215.209.27"
+infoblox_tenant_id = "test"
+infoblox_user = "admin"
+infoblox_vmname = "test-cluster"
