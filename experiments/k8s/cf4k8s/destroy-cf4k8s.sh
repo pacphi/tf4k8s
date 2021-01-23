@@ -8,9 +8,11 @@ fi
 IAAS="$1"
 
 terraform destroy -auto-approve
+rm -Rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup terraform.log graph.svg
 
 cd "../../../modules/cf4k8s/acme/${IAAS}" || exit
 terraform destroy -auto-approve
+rm -Rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup terraform.log graph.svg
 rm -Rf .terraform/ terraform.log terraform.tfstate* iaas.auto.tfvars
 
 cd ../.. || exit

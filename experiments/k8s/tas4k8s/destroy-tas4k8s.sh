@@ -14,9 +14,11 @@ kubectl delete pvc -n postgres-dbms postgres-pvc --force
 kubectl delete ns postgres-dbms
 
 terraform destroy -auto-approve
+rm -Rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup terraform.log graph.svg
 
 cd "../../../modules/tas4k8s/acme/${IAAS}" || exit
 terraform destroy -auto-approve
+rm -Rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup terraform.log graph.svg
 rm -Rf .terraform/ terraform.log terraform.tfstate terraform.tfstate.backup iaas.auto.tfvars
 
 cd ../.. || exit
