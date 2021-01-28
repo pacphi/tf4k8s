@@ -126,6 +126,11 @@ choco install -y mkcert
 scoop install octant
 scoop tar install
 choco install -y tektoncd-cli
+choco install -y vendir
+choco install -y ytt
+choco install -y kapp
+choco install -y kbld
+choco install -y imgpkg
 
 Set-Variable TF_K14S_PLUGIN_VERSION 0.6.0
 md $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/k14s/$TF_K14S_PLUGIN_VERSION -ea 0
@@ -136,22 +141,6 @@ Remove-Item terraform-provider-k14s-binaries.tgz
 
 md $HOME/.apps/bin -ea 0
 cd $HOME/.apps/bin
-
-Set-Variable YTT_VERSION 0.30.0
-curl -LO "https://github.com/k14s/ytt/releases/download/v$YTT_VERSION/ytt-windows-amd64.exe"
-Rename-Item -Path "ytt-windows-amd64.exe" -NewName "ytt.exe"
-
-Set-Variable VENDIR_VERSION 0.13.0
-curl -LO "https://github.com/k14s/vendir/releases/download/v$VENDIR_VERSION/vendir-windows-amd64.exe"
-Rename-Item -Path "vendir-windows-amd64.exe" -NewName "vendir.exe"
-
-Set-Variable KAPP_VERSION 0.35.0
-curl -LO "https://github.com/k14s/kapp/releases/download/v$KAPP_VERSION/kapp-windows-amd64.exe"
-Rename-Item -Path "kapp-windows-amd64.exe" -NewName "kapp.exe"
-
-Set-Variable KBLD_VERSION 0.27.0
-curl -LO "https://github.com/k14s/kbld/releases/download/v$KAPP_VERSION/kbld-windows-amd64.exe"
-Rename-Item -Path "kbld-windows-amd64.exe" -NewName "kbld.exe"
 
 Set-Variable PIVNET_VERSION 2.0.2
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"

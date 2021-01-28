@@ -8,7 +8,7 @@ brew install awscli aws-iam-authenticator aliyun-cli azure-cli doctl git gpg gra
 
 brew cask install google-cloud-sdk keybase
 
-brew tap k14s/tap
+brew tap vmware-tanzu/carvel
 brew install ytt kbld kapp imgpkg kwt vendir
 brew install derailed/k9s/k9s
 

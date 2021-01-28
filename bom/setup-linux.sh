@@ -21,7 +21,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 # Install minimal complement of tools
 brew install aws-iam-authenticator aliyun-cli doctl git libressl mkcert nss openssl terraform terraform-docs tflint httpie kind kubernetes-cli kubeseal helm helmfile krew octant
 
-brew tap k14s/tap
+brew tap vmware-tanzu/carvel
 brew install ytt kbld kapp imgpkg kwt vendir
 brew install derailed/k9s/k9s
 
