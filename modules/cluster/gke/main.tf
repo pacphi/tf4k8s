@@ -77,7 +77,6 @@ resource "google_container_node_pool" "np" {
   
   management {
     auto_upgrade = "false"
-    auto_repair = "false"
   }
 
   node_config {
