@@ -74,10 +74,6 @@ resource "google_container_node_pool" "np" {
   location   = var.gcp_region
   cluster    = google_container_cluster.gke.name
   node_count = var.gke_nodes
-  
-  management {
-    auto_upgrade = "false"
-  }
 
   node_config {
     machine_type = var.gke_node_type
