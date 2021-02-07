@@ -28,8 +28,8 @@ cd ../../modules/tas4k8s || exit
 cd "acme/$IAAS" || exit
 terraform init
 terraform validate
-terraform plan
-terraform apply -auto-approve
+terraform plan -out terraform.plan
+terraform apply -state terraform.tfstate terraform.plan -auto-approve
 cd ../../../.. || exit
 
 # Install
@@ -37,5 +37,5 @@ cd experiments/k8s/tas4k8s || exit
 terraform init
 terraform validate
 terraform graph | dot -Tsvg > graph.svg
-terraform plan
-terraform apply -auto-approve
+terraform plan -out terraform.plan
+terraform apply -state terraform.tfstate terraform.plan -auto-approve

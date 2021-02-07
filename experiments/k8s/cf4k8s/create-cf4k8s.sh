@@ -27,8 +27,8 @@ cd ../../modules/${PRODUCT_NAME} || exit
 cd "acme/$IAAS" || exit
 terraform init
 terraform validate
-terraform plan
-terraform apply -auto-approve
+terraform plan -out terraform.plan
+terraform apply -state terraform.tfstate terraform.plan -auto-approve
 cd ../../../.. || exit
 
 # Install
@@ -36,5 +36,5 @@ cd experiments/k8s/${PRODUCT_NAME} || exit
 terraform init
 terraform validate
 terraform graph | dot -Tsvg > graph.svg
-terraform plan
-terraform apply -auto-approve
+terraform plan -out terraform.plan
+terraform apply -state terraform.tfstate terraform.plan -auto-approve
