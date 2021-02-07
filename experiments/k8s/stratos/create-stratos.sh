@@ -3,4 +3,4 @@
 terraform init
 terraform validate
 terraform plan -out terraform.plan
-terraform apply -state terraform.tfstate terraform.plan -auto-approve
+terraform apply -auto-approve -state terraform.tfstate terraform.plan
