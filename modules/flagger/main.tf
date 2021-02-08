@@ -4,7 +4,7 @@ resource "helm_release" "flagger" {
   namespace  = "projectcontour"
   repository = "https://flagger.app"
   chart      = "flagger"
-  version    = "1.6.1"
+  version    = "1.6.2"
 
   set {
     name = "meshProvider"
