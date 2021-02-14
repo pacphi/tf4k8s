@@ -39,6 +39,7 @@ data "template_file" "cf4k8s_config_additions" {
     https_only = var.https_only
     remove_resource_requirements = var.remove_resource_requirements
     add_metrics_server_components = var.add_metrics_server_components
+    allow_prometheus_metrics_access = var.allow_prometheus_metrics_access
     enable_load_balancer = var.enable_load_balancer
     use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
     enable_automount_service_account_token = var.enable_automount_service_account_token

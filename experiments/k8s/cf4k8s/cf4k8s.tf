@@ -10,6 +10,7 @@ module "cf4k8s" {
   https_only = var.https_only
   remove_resource_requirements = var.remove_resource_requirements
   add_metrics_server_components = var.add_metrics_server_components
+  allow_prometheus_metrics_access = var.allow_prometheus_metrics_access
   enable_load_balancer = var.enable_load_balancer
   use_external_dns_for_wildcard = var.use_external_dns_for_wildcard
   enable_automount_service_account_token = var.enable_automount_service_account_token
@@ -46,31 +47,35 @@ variable "https_only" {
 }
 
 variable "remove_resource_requirements" {
-  default = "false"
+  default = true
 }
 
 variable "add_metrics_server_components" {
-  default = "false"
+  default = false
+}
+
+variable "allow_prometheus_metrics_access" {
+  default = true
 }
 
 variable "enable_load_balancer" {
-  default = "true"
+  default = true
 }
 
 variable "use_external_dns_for_wildcard" {
-  default = "true"
+  default = true
 }
 
 variable "enable_automount_service_account_token" {
-  default = "false"
+  default = false
 }
 
 variable "metrics_server_prefer_internal_kubelet_address" {
-  default = "false"
+  default = false
 }
 
 variable "use_first_party_jwt_tokens" {
-  default = "false"
+  default = false
 }
 
 variable "kubeconfig_path" {
