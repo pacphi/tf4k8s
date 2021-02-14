@@ -25,11 +25,15 @@ resource "google_container_cluster" "gke" {
   location           = var.gcp_region
   project            = var.gcp_project
 
+  release_channel {
+    channel = var.release_channel
+  }
+  
   maintenance_policy {
     recurring_window {
       start_time = "2020-01-01T00:00:00-07:00"
       end_time = "2050-01-01T06:00:00-07:00"
-      recurrence = "FREQ=WEEKLY"
+      recurrence = "FREQ=DAILY"
     }
   }
 
@@ -58,6 +62,16 @@ resource "google_container_cluster" "gke" {
       display_name = "gke-admin"
       cidr_block   = local.workstation-external-cidr
     }
+  }
+
+  addons_config {
+    network_policy_config {
+      disabled = false
+    }
+  }
+
+  network_policy {
+    enabled = true
   }
 
   // Allow plenty of time for each operation to finish (default was 10m)

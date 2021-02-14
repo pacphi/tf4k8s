@@ -69,8 +69,14 @@ variable "gke_oauth_scopes" {
     "https://www.googleapis.com/auth/trace.append"
   ]
 }
+
 variable "all_inbound" {
   description = "Allow inbound access from any IP address?"
   type = bool
   default = true
+}
+
+variable "release_channel" {
+  type = string
+  default = "RAPID"
 }
