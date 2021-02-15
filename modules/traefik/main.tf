@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "traefik" {
 }
 
 data "template_file" "traefik_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/values.tpl")
 
   vars = {
     traefik_log_level = var.traefik_log_level

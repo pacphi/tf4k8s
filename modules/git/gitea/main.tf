@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "gitea" {
 }
 
 data "template_file" "gitea_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     gitea_domain = local.gitea_domain
@@ -27,7 +27,7 @@ resource "random_password" "inpod_postgres_secret" {
 }
 
 data "template_file" "gitea_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     gitea_domain  = local.gitea_domain

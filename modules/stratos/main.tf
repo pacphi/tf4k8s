@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "stratos" {
 }
 
 data "template_file" "stratos_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     stratos_domain = local.stratos_domain
@@ -27,7 +27,7 @@ resource "random_password" "session_store_secret" {
 }
 
 data "template_file" "stratos_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     stratos_domain  = local.stratos_domain

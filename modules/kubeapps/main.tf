@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "kubeapps" {
 }
 
 data "template_file" "kubeapps_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     kubeapps_domain  = local.kubeapps_domain

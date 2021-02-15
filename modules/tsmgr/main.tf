@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "tsmgr" {
 }
 
 data "template_file" "tsmgr_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     tsmgr_domain = var.domain
@@ -39,7 +39,7 @@ resource "random_password" "chartmuseum_password" {
 }
 
 data "template_file" "tsmgr_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     tsmgr_domain  = var.domain

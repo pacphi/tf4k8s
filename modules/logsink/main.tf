@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "tkgi_logsink" {
 }
 
 data "template_file" "tkgi_logsink_install" {
-  template = file("${path.module}/templates/cluster-log-sink.yml")
+  template = file("${path.module}/templates/cluster-log-sink.tpl")
 
   vars = {
     name = var.tkgi_cluster_name

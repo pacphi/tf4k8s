@@ -12,7 +12,7 @@ resource "kubernetes_namespace" "nginx" {
 }
 
 data "template_file" "nginx_config" {
-  template = file("${path.module}/templates/values.yml")
+  template = file("${path.module}/templates/values.tpl")
 
   vars = {
     extraArgsExpression  = local.extraArgsExpression

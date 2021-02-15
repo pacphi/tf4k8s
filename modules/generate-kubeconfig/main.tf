@@ -1,5 +1,5 @@
 data "template_file" "kubeconfig" {
-  template = file("${path.module}/templates/kubeconfig.tmpl")
+  template = file("${path.module}/templates/kubeconfig.tpl")
   vars = {
     username = var.username
     cluster_name = var.cluster_name

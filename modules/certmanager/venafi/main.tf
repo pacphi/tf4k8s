@@ -19,7 +19,7 @@ resource "kubernetes_secret" "certmanager" {
 }
 
 data "template_file" "issuer_config" {
-  template = file("${path.module}/templates/cluster-issuer.yml")
+  template = file("${path.module}/templates/cluster-issuer.tpl")
 
   vars = {
     venafi_policy_zone_guid = var.venafi_policy_zone_guid

@@ -1,5 +1,5 @@
 data "template_file" "kibana_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     kibana_domain = local.kibana_domain
@@ -19,7 +19,7 @@ resource "k14s_kapp" "kibana_cert" {
 }
 
 data "template_file" "kibana_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     kibana_domain  = local.kibana_domain

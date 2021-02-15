@@ -10,7 +10,7 @@ resource "random_password" "postgres_password" {
 }
 
 data "template_file" "jcr_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     jcr_domain = local.jcr_domain
@@ -27,7 +27,7 @@ resource "k14s_kapp" "jcr_cert" {
 }
 
 data "template_file" "jcr_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     jcr_domain  = local.jcr_domain

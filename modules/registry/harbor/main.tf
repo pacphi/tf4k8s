@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "harbor" {
 }
 
 data "template_file" "harbor_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     harbor_domain = local.harbor_domain
@@ -28,7 +28,7 @@ resource "random_password" "admin_password" {
 }
 
 data "template_file" "harbor_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     harbor_domain  = local.harbor_domain

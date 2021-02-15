@@ -11,7 +11,7 @@ resource "kubernetes_namespace" "argo_rollouts" {
 }
 
 data "template_file" "argocd_config" {
-  template = file("${path.module}/templates/${var.ingress}/argocd-values.yml")
+  template = file("${path.module}/templates/${var.ingress}/argocd-values.tpl")
 
   vars = {
     argocd_domain  = local.argocd_domain
@@ -20,7 +20,7 @@ data "template_file" "argocd_config" {
 }
 
 data "template_file" "argo_rollouts_config" {
-  template = file("${path.module}/templates/${var.ingress}/argo-rollouts-values.yml")
+  template = file("${path.module}/templates/${var.ingress}/argo-rollouts-values.tpl")
 
   vars = {
     argo_rollouts_version = local.argo_rollouts_version

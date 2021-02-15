@@ -10,7 +10,7 @@ resource "random_password" "concourse_password" {
 }
 
 data "template_file" "concourse_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     concourse_domain = local.concourse_domain
@@ -28,7 +28,7 @@ resource "k14s_kapp" "concourse_cert" {
 
 
 data "template_file" "concourse_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     concourse_domain  = local.concourse_domain

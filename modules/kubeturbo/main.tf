@@ -39,7 +39,7 @@ resource "k14s_kapp" "kubeturbo_operator_install" {
 }
 
 data "template_file" "kubeturbo_install" {
-  template = file("${path.module}/templates/charts_v1alpha1_kubeturbo_cr.yaml")
+  template = file("${path.module}/templates/charts_v1alpha1_kubeturbo_cr.tpl")
 
   vars = {
     turbo_username = var.turbo_username

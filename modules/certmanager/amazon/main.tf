@@ -21,7 +21,7 @@ resource "kubernetes_secret" "aws_client_secret" {
 }
 
 data "template_file" "issuer_config" {
-  template = file("${path.module}/templates/cluster-issuer.yml")
+  template = file("${path.module}/templates/cluster-issuer.tpl")
 
   vars = {
     region       = var.region

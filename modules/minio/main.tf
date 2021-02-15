@@ -15,7 +15,7 @@ resource "random_password" "secretkey_password" {
 }
 
 data "template_file" "minio_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     minio_domain  = local.minio_domain

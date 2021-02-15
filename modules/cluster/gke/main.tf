@@ -107,7 +107,7 @@ resource "google_container_node_pool" "np" {
 }
 
 data "template_file" "kubeconfig" {
-  template = file("${path.module}/kubeconfig-template.yaml")
+  template = file("${path.module}/templates/kubeconfig-template.tpl")
 
   vars = {
     cluster_name    = google_container_cluster.gke.name

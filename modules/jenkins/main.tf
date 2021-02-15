@@ -1,5 +1,5 @@
 locals {
-  jenkins_instance_config_file_path = var.path_to_jenkins_instance_config == "" ? "${path.module}/templates/jenkins.yaml" : var.path_to_jenkins_instance_config
+  jenkins_instance_config_file_path = var.path_to_jenkins_instance_config == "" ? "${path.module}/templates/jenkins.tpl" : var.path_to_jenkins_instance_config
 }
 
 data "http" "jenkins_crd" {

@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "loki_stack" {
 }
 
 data "template_file" "loki_stack_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     grafana_domain = local.grafana_domain
@@ -69,7 +69,7 @@ resource "helm_release" "loki_stack" {
 }
 
 data "template_file" "grafana_config" {
-  template = file("${path.module}/templates/${var.ingress}/values.yml")
+  template = file("${path.module}/templates/${var.ingress}/values.tpl")
 
   vars = {
     grafana_domain  = local.grafana_domain
