@@ -13,21 +13,16 @@ data "local_file" "cf4k8s_config" {
   filename = local.cf4k8s_config
 }
 
-data "local_file" "certs_vars" {
-  filename = "${path.module}/certs.auto.tfvars"
+data "local_file" "certs_and_keys_file" {
+  filename = "${path.module}/certs-and-keys.yml"
 }
 
 data "template_file" "cf4k8s_config_additions" {
-  template = file("${path.module}/templates/cf-values-additions.yml")
+  template = file("${path.module}/templates/cf-values-additions.tpl")
 
   vars = {
     system_domain = local.system_domain
     app_domain = local.app_domain
-
-    system_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1)
-    system_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1)
-    workloads_fullchain_certificate = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1)
-    workloads_private_key = element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1)
 
     cf_admin_password = random_password.gen.result
 
@@ -49,12 +44,12 @@ data "template_file" "cf4k8s_config_additions" {
 }
 
 resource "local_file" "cf4k8s_joined_config" {
-  content  = join("\n", [ data.local_file.cf4k8s_config.content, data.template_file.cf4k8s_config_additions.rendered ])
+  content  = join("\n", [ data.local_file.cf4k8s_config.content, data.template_file.cf4k8s_config_additions.rendered, data.local_file.certs_and_keys_file.content ])
   filename = "${local.tmp_dir}/cf-values-joined.yml"
 }
 
 data "template_file" "cf4k8s_cert" {
-  template = file("${path.module}/templates/cert.yml")
+  template = file("${path.module}/templates/cert.tpl")
 
   vars = {
     system_domain = local.system_domain

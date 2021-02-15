@@ -3,12 +3,15 @@
 .terraform.tfstate.lock.info
 .terraform/
 terraform.log
+terraform.plan
 terraform.tfstate
 terraform.tfstate.*
 terraform.tfvars
 terraform.tfvars.backup
 *.auto.tfvars
 graph.svg
+*.hcl
+*.real
 
 vendor/
 vendir.lock.yml

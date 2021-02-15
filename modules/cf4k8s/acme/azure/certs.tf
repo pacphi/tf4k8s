@@ -27,16 +27,19 @@ module "workloads_cert" {
   common_name = "*.apps.${local.cf_domain}"
 }
 
-resource "local_file" "certs_var_file" {
-  content = join(
-    "\n", [
-      "system_fullchain_certificate = ${base64encode(module.system_cert.cert_full_chain)}",
-      "system_private_key = ${base64encode(module.system_cert.cert_key)}",
-      "workloads_fullchain_certificate = ${base64encode(module.workloads_cert.cert_full_chain)}",
-      "workloads_private_key = ${base64encode(module.workloads_cert.cert_key)}"
-    ]
-  )
-  filename = "../../certs.auto.tfvars"
+data "template_file" "certs_and_keys" {
+  template = file("${path.module}/../templates/certs-and-keys.tpl")
+
+  vars = {
+    system_certificate_full_chain = indent(4, module.system_cert.cert_full_chain)
+    system_cert_key = indent(4, module.system_cert.cert_key)
+    workloads_certificate_full_chain = indent(4, module.workloads_cert.cert_full_chain)
+    workloads_cert_key = indent(4, module.workloads_cert.cert_key)
+  }
+}
+resource "local_file" "certs_and_keys_file" {
+  content = data.template_file.certs_and_keys.rendered
+  filename = "../../certs-and-keys.yml"
 }
 
 variable "client_id" {}

@@ -55,7 +55,7 @@ variable "add_metrics_server_components" {
 }
 
 variable "allow_prometheus_metrics_access" {
-  default = true
+  default = false
 }
 
 variable "enable_load_balancer" {
