@@ -86,6 +86,8 @@ variables:
   type: password
 - name: cc_username_lookup_client_secret
   type: password
+- name: cf_api_backup_metadata_generator_client_secret
+  type: password
 - name: cf_api_controllers_client_secret
   type: password
 - name: default_ca
@@ -93,16 +95,6 @@ variables:
   options:
     is_ca: true
     common_name: ca
-- name: internal_certificate
-  type: certificate
-  options:
-    ca: default_ca
-    common_name: "*.cf-system.svc.cluster.local"
-    alternative_names:
-    - "*.cf-system.svc.cluster.local"
-    extended_key_usage:
-    - client_auth
-    - server_auth
 - name: uaa_jwt_policy_signing_key
   type: certificate
   options:
@@ -131,18 +123,11 @@ cf_db:
 capi:
   cc_username_lookup_client_secret: $(bosh interpolate ${VARS_FILE} --path=/cc_username_lookup_client_secret)
   cf_api_controllers_client_secret: $(bosh interpolate ${VARS_FILE} --path=/cf_api_controllers_client_secret)
+  cf_api_backup_metadata_generator_client_secret: $(bosh interpolate ${VARS_FILE} --path=/cf_api_backup_metadata_generator_client_secret)
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/capi_db_password)
     encryption_key: $(bosh interpolate ${VARS_FILE} --path=/capi_db_encryption_key)
 
-internal_certificate:
-  #! This certificates and keys should be valid for *.cf-system.svc.cluster.local
-  crt: |
-$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/certificate | grep -Ev '^$' | sed -e 's/^/    /')
-  key: |
-$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/private_key | grep -Ev '^$' | sed -e 's/^/    /')
-  ca: |
-$(bosh interpolate ${VARS_FILE} --path=/internal_certificate/ca | grep -Ev '^$' | sed -e 's/^/    /')
 uaa:
   database:
     password: $(bosh interpolate ${VARS_FILE} --path=/uaa_db_password)

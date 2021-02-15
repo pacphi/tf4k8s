@@ -2,32 +2,22 @@
 #! - operators can use the admin user to test `cf push`
 cf_admin_password: ${cf_admin_password}
 
-system_certificate:
-  #! This certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
-  crt: ${system_fullchain_certificate}
-  key: ${system_private_key}
-  ca: ""
-workloads_certificate:
-  #! This certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
-  crt: ${workloads_fullchain_certificate}
-  key: ${workloads_private_key}
-  ca: ""
-
 #! To push apps from source code, you need to configure the `app_registry` block
 #! Example below is for docker hub. For other registry examples, see below.
 
 app_registry:
-   hostname: ${registry_domain}
-   #! often times this is just your `docker_user`
-   repository_prefix: ${repository_prefix}
-   username: ${registry_username}
-   password: ${registry_password}
+  hostname: ${registry_domain}
+  #! often times this is just your `docker_user`
+  repository_prefix: ${repository_prefix}
+  username: ${registry_username}
+  password: ${registry_password}
 
 gateway:
   https_only: ${https_only}
 
 remove_resource_requirements: ${remove_resource_requirements}
 add_metrics_server_components: ${add_metrics_server_components}
+allow_prometheus_metrics_access: ${allow_prometheus_metrics_access}
 use_external_dns_for_wildcard: ${use_external_dns_for_wildcard}
 enable_automount_service_account_token: ${enable_automount_service_account_token}
 metrics_server_prefer_internal_kubelet_address: ${metrics_server_prefer_internal_kubelet_address}
