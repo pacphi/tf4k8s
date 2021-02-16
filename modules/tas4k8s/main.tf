@@ -20,8 +20,8 @@ resource "random_password" "postgres" {
   special = false
 }
 
-data "local_file" "certs_vars" {
-  filename = var.certificate_variables_file_path != "" ? var.certificate_variables_file_path: "${path.module}/certs.auto.tfvars"
+data "local_file" "certs_and_keys_file" {
+  filename = var.certificate_variables_file_path != "" ? var.certificate_variables_file_path: "${path.module}/certs-and-keys.yml"
 }
 
 data "template_file" "baseline_values" {
@@ -36,11 +36,6 @@ data "template_file" "baseline_values" {
     postgres_password = random_password.postgres.result
     postgres_instance_name = local.postgres_instance_name
     postgres_instance_namespace = kubernetes_namespace.postgres.metadata[0].name
-    
-    system_fullchain_certificate = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 0)), 1))]))
-    system_private_key = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 1)), 1))]))
-    workloads_fullchain_certificate = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 2)), 1))]))
-    workloads_private_key = indent(4, join("\n", ["|", base64decode(element(split(" = ", element(split("\n", data.local_file.certs_vars.content), 3)), 1))]))
 
     registry_domain     = var.registry_domain
     repository_prefix   = var.repository_prefix
@@ -57,7 +52,7 @@ data "template_file" "baseline_values" {
 }
 
 resource "local_file" "cf_values_rendered" {
-  content  = data.template_file.baseline_values.rendered
+  content  = join("\n", [ data.template_file.baseline_values.rendered, data.local_file.certs_and_keys_file.content ])
   filename = "${local.ytt_lib_dir}/tas4k8s/vendor/configuration-values/values.yml"
 }
 
@@ -146,7 +141,7 @@ resource "helm_release" "postgres" {
   namespace  = kubernetes_namespace.postgres.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
-  version    = "9.8.9"
+  version    = "10.3.2"
 
   values = [data.template_file.postgres_db_values.rendered]
 
