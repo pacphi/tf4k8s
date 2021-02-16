@@ -9,17 +9,6 @@ app_domains:
 #! - operators can use the admin user to test `cf push`
 cf_admin_password: ${cf_admin_password}
 
-system_certificate:
-  #! These certificates and keys are base64 encoded and should be valid for *.system.cf.example.com
-  crt: ${system_fullchain_certificate}
-  key: ${system_private_key}
-  ca: ""
-workloads_certificate:
-  #! These certificates and keys are base64 encoded and should be valid for *.apps.cf.example.com
-  crt: ${workloads_fullchain_certificate}
-  key: ${workloads_private_key}
-  ca: ""
-
 app_registry:
   hostname: ${registry_domain}
   repository_prefix: ${repository_prefix}
@@ -57,5 +46,6 @@ usage_service:
 ingress:
   load_balancer:
     enable: ${enable_load_balancer}
+  external_traffic_policy: "Local"
 
 use_first_party_jwt: ${use_first_party_jwt}

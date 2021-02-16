@@ -9,8 +9,8 @@ PIVNET_API_TOKEN="$1"
 pivnet login --api-token="${PIVNET_API_TOKEN}"
 
 # Download and extract
-TAS4K8S_VERSION="3.1.0-build.57"
-TAS4K8S_PRODUCT_FILE_ID=824238
+TAS4K8S_VERSION="0.7.0"
+TAS4K8S_PRODUCT_FILE_ID=872737
 pivnet download-product-files --product-slug='tas-for-kubernetes' --release-version="${TAS4K8S_VERSION}" --product-file-id="${TAS4K8S_PRODUCT_FILE_ID}" --accept-eula
 FILENAME=$(find . -type f -name "tanzu-application-service.*" -print | head -n 1)
 tar -xvf "$FILENAME" -C /tmp
