@@ -11,7 +11,7 @@ fi
 IAAS="$1"
 
 EXPERIMENTS=( "certmanager" "cluster" "dns" "external-dns" )
-K8S_MODULES=( "argo-cd" "cf4k8s" "concourse" "contour" "efk-stack" "gitea" "flagger" "harbor" "jcr" "loki-stack" "minio" "pivotal-csb" "nginx-ingress" "stratos" "tas4k8s" "tsmgr" "tekton" "wavefront" )
+K8S_MODULES=( "argo-cd" "cf4k8s" "concourse" "contour" "efk-stack" "gitea" "flagger" "harbor" "jcr" "jenkins" "kubeapps" "kubeturbo" "loki-stack" "minio" "pivotal-csb" "nginx-ingress" "sealed-secrets" "stratos" "tas4k8s" "tsmgr" "tekton" "traefik" "wavefront" )
 PAAS_MODULES=( "cf4k8s" "tas4k8s" )
 
 cd experiments
@@ -20,7 +20,7 @@ cd "${IAAS}"
 for i in "${EXPERIMENTS[@]}"
 do
   cd "$i"
-  rm -Rf .terraform/ terraform.tfstate* terraform.log graph.svg
+  rm -Rf *.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
   cd ..
 done
 
@@ -28,7 +28,7 @@ cd ../k8s
 for i in "${K8S_MODULES[@]}"
 do
   cd $i
-  rm -Rf .terraform/ terraform.tfstate* terraform.log graph.svg
+  rm -Rf *.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
   cd ..
 done
 
@@ -37,7 +37,7 @@ for i in "${PAAS_MODULES[@]}"
 do
   cd "$i"
   rm -Rf *.tfvars
-  rm -Rf acme/$IAAS/*.tfvars acme/$IAAS/.terraform acme/$IAAS/terraform.tfstate* acme/$IAAS/terraform.log
+  rm -Rf acme/$IAAS/*.tfvars acme/$IAAS/*.hcl acme/$IAAS/.terraform acme/$IAAS/terraform.tfstate* acme/$IAAS/terraform.log acme/$IAAS/terraform.plan
   cd ..
 done
 

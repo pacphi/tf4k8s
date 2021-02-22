@@ -33,3 +33,4 @@ manifest.yml
 .vagrant/
 
 demo-config.sh
+certs-and-keys.yml
