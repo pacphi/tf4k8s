@@ -1,12 +1,10 @@
-# Terraform for installing Pivotal Cloud Service Broker
+# Terraform for installing Cloud Service Broker
 
-Uses Terraform providers to install [Pivotal Cloud Service Broker](https://github.com/pivotal/cloud-service-broker).
+Uses Terraform providers to install [Cloud Service Broker](https://github.com/cloudfoundry-incubator/cloud-service-broker).
 
 Assumes that you have:
 
 * already provisioned a cluster
-* a Pivotal Okta account
-  * release artifacts are sourced from a private Github repository
 * an installation of cf4k8s or tas4k8s with admin account credentials
   * and that Docker support has been [enabled](https://docs.cloudfoundry.org/adminguide/docker.html#feature-flag)
 * already provisioned a database host and a database named `servicebroker` to store metadata for each brokered service instance instantiated

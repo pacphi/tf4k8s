@@ -1,3 +1,30 @@
+module "cloud-service-broker" {
+  source = "../../../../modules/cloud-service-broker/gcp"
+
+  gcp_credentials = var.gcp_credentials
+  gcp_project = var.gcp_project
+
+  db_host = var.db_host
+  db_name = var.db_name
+  db_user = var.db_user
+  db_password = var.db_password
+  db_port = var.db_port
+  db_ca_cert_file = var.db_ca_cert_file
+  db_client_cert_file = var.db_client_cert_file
+  db_client_key_file = var.db_client_key_file
+
+  registry_repository = var.registry_repository
+  registry_username = var.registry_username
+  registry_password = var.registry_password
+
+  container_image = var.container_image
+  container_tag = var.container_tag
+
+  cf_api_endpoint = var.cf_api_endpoint
+  cf_admin_username = var.cf_admin_username
+  cf_admin_password = var.cf_admin_password
+}
+
 variable "db_host" {
   description = "The hostname or IP address of the backing database for the service broker"
 }
@@ -46,11 +73,11 @@ variable "registry_password" {
 }
 
 variable "container_image" {
-  description = "Container image name for Pivotal Cloud Service Broker"
+  description = "Container image name for Cloud Service Broker"
 }
 
 variable "container_tag" {
-  description = "The specific tag/version of the container image for Pivotal Cloud Service Broker"
+  description = "The specific tag/version of the container image for Cloud Service Broker"
 }
 
 variable "cf_api_endpoint" {

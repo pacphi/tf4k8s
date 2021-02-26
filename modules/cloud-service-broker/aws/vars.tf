@@ -1,29 +1,3 @@
-module "pivotal-csb" {
-  source = "../../../../modules/pivotal-csb/aws"
-
-  aws_credentials = var.aws_credentials
-
-  db_host = var.db_host
-  db_name = var.db_name
-  db_user = var.db_user
-  db_password = var.db_password
-  db_port = var.db_port
-  db_ca_cert_file = var.db_ca_cert_file
-  db_client_cert_file = var.db_client_cert_file
-  db_client_key_file = var.db_client_key_file
-
-  registry_repository = var.registry_repository
-  registry_username = var.registry_username
-  registry_password = var.registry_password
-
-  container_image = var.container_image
-  container_tag = var.container_tag
-
-  cf_api_endpoint = var.cf_api_endpoint
-  cf_admin_username = var.cf_admin_username
-  cf_admin_password = var.cf_admin_password
-}
-
 variable "db_host" {
   description = "The hostname or IP address of the backing database for the service broker"
 }
@@ -72,11 +46,11 @@ variable "registry_password" {
 }
 
 variable "container_image" {
-  description = "Container image name for Pivotal Cloud Service Broker"
+  description = "Container image name for Cloud Service Broker"
 }
 
 variable "container_tag" {
-  description = "The specific tag/version of the container image for Pivotal Cloud Service Broker"
+  description = "The specific tag/version of the container image for Cloud Service Broker"
 }
 
 variable "cf_api_endpoint" {
@@ -92,18 +66,6 @@ variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
 }
 
-variable "az_subscription_id" {
-  description = "Azure Subscription (id)"
-}
-
-variable "az_client_id" {
-  description = "Azure Service Principal (appId)"
-}
-
-variable "az_client_secret" {
-  description = "Azure Service Principal (password)"
-}
-
-variable "az_tenant_id" {
-  description = "Azure Service Principal (tenant)"
+variable "aws_credentials" {
+  description = "Path to AWS credentials file (e.g., ~/.aws/credentials)"
 }

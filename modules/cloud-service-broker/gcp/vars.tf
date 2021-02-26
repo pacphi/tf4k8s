@@ -46,11 +46,11 @@ variable "registry_password" {
 }
 
 variable "container_image" {
-  description = "Container image name for Pivotal Cloud Service Broker"
+  description = "Container image name for Cloud Service Broker"
 }
 
 variable "container_tag" {
-  description = "The specific tag/version of the container image for Pivotal Cloud Service Broker"
+  description = "The specific tag/version of the container image for Cloud Service Broker"
 }
 
 variable "cf_api_endpoint" {
@@ -66,18 +66,10 @@ variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
 }
 
-variable "az_subscription_id" {
-  description = "Azure Subscription (id)"
+variable "gcp_credentials" {
+  description = "Service account credentials in JSON format"
 }
 
-variable "az_client_id" {
-  description = "Azure Service Principal (appId)"
-}
-
-variable "az_client_secret" {
-  description = "Azure Service Principal (password)"
-}
-
-variable "az_tenant_id" {
-  description = "Azure Service Principal (tenant)"
+variable "gcp_project" {
+  description = "The GCP project that will host all managed services provisioned by the broker"
 }

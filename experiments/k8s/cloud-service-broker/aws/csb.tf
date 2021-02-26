@@ -1,5 +1,5 @@
-module "pivotal-csb" {
-  source = "../../../../modules/pivotal-csb/aws"
+module "cloud-service-broker" {
+  source = "../../../../modules/cloud-service-broker/aws"
 
   aws_credentials = var.aws_credentials
 
@@ -72,11 +72,11 @@ variable "registry_password" {
 }
 
 variable "container_image" {
-  description = "Container image name for Pivotal Cloud Service Broker"
+  description = "Container image name for Cloud Service Broker"
 }
 
 variable "container_tag" {
-  description = "The specific tag/version of the container image for Pivotal Cloud Service Broker"
+  description = "The specific tag/version of the container image for Cloud Service Broker"
 }
 
 variable "cf_api_endpoint" {

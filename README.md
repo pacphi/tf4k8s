@@ -34,7 +34,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
 - [x] Install [Tanzu Services Manager](experiments/k8s/tsmgr)
-- [x] Install [Pivotal Cloud Service Broker](experiments/k8s/pivotal-csb)
+- [x] Install [Cloud Service Broker](experiments/k8s/pivotal-csb)
 - [x] Install [Kubeapps](experiments/k8s/kubeapps)
 - [x] Install [Stratos](experiments/k8s/stratos)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
