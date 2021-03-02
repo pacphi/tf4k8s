@@ -142,7 +142,7 @@ Remove-Item terraform-provider-k14s-binaries.tgz
 md $HOME/.apps/bin -ea 0
 cd $HOME/.apps/bin
 
-Set-Variable PIVNET_VERSION 2.0.2
+Set-Variable PIVNET_VERSION 3.0.1
 curl -LO "https://github.com/pivotal-cf/pivnet-cli/releases/download/v$PIVNET_VERSION/pivnet-windows-amd64-$PIVNET_VERSION"
 Rename-Item -Path "pivnet-linux-amd64-$PIVNET_VERSION.exe" -NewName "pivnet.exe"
 

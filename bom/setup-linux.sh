@@ -50,7 +50,7 @@ wget -O tmc https://vmware.bintray.com/tmc/${TMC_VERSION}/linux/x64/tmc && \
 chmod +x tmc && \
 sudo mv tmc /usr/local/bin
 
-PIVNET_VERSION=2.0.2 && \
+PIVNET_VERSION=3.0.1 && \
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNET_VERSION}/pivnet-linux-amd64-${PIVNET_VERSION} && \
 chmod +x pivnet && \
 sudo mv pivnet /usr/local/bin
