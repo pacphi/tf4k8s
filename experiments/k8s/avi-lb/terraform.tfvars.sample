@@ -1,0 +1,5 @@
+avi_hostname = "my.domain.me"
+avi_controller_username = "admin"
+avi_cni_plugin = "calico"
+avi_cluster_name = "my-avi-cluster"
+kubeconfig_path = "~/.kube/config"
