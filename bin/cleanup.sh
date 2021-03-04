@@ -20,7 +20,7 @@ cd "${IAAS}"
 for i in "${EXPERIMENTS[@]}"
 do
   cd "$i"
-  rm -Rf *.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
+  rm -Rf .terraform.lock.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
   cd ..
 done
 
@@ -28,7 +28,7 @@ cd ../k8s
 for i in "${K8S_MODULES[@]}"
 do
   cd $i
-  rm -Rf *.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
+  rm -Rf .terraform.lock.hcl .terraform/ terraform.tfstate* terraform.log terraform.plan graph.svg
   cd ..
 done
 
@@ -37,7 +37,7 @@ for i in "${PAAS_MODULES[@]}"
 do
   cd "$i"
   rm -Rf *.tfvars
-  rm -Rf acme/$IAAS/*.tfvars acme/$IAAS/*.hcl acme/$IAAS/.terraform acme/$IAAS/terraform.tfstate* acme/$IAAS/terraform.log acme/$IAAS/terraform.plan
+  rm -Rf acme/$IAAS/*.tfvars acme/$IAAS/.terraform.lock.hcl acme/$IAAS/.terraform acme/$IAAS/terraform.tfstate* acme/$IAAS/terraform.log acme/$IAAS/terraform.plan
   cd ..
 done
 
