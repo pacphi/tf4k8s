@@ -5,6 +5,7 @@ module "avi_lb" {
   avi_cluster_name = var.avi_cluster_name
   avi_cni_plugin = var.avi_cni_plugin
   avi_controller_username = var.avi_controller_username
+  avi_controller_password = var.avi_controller_password
   kubeconfig_path = var.kubeconfig_path
 }
 
@@ -20,6 +21,10 @@ variable "avi_cni_plugin" {
 
 variable "avi_controller_username" {
   default = "admin"
+}
+
+variable "avi_controller_password" {
+  sensitive = true
 }
 
 variable "kubeconfig_path" {

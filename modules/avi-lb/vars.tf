@@ -16,3 +16,7 @@ variable "avi_cni_plugin" {
 variable "avi_controller_username" {
   default = "admin"
 }
+
+variable "avi_controller_password" {
+  sensitive = true
+}

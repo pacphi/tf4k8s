@@ -25,6 +25,7 @@ Amend the values for
 * `avi_cluster_name`
 * `avi_cni_plugin`
 * `avi_controller_username`
+* `avi_controller_password`
 * `kubeconfig_path`
 
 ## Create

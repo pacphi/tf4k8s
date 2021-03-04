@@ -4,11 +4,6 @@ resource "kubernetes_namespace" "avi" {
   }
 }
 
-resource "random_password" "avi_controller_password" {
-  length = 16
-  special = false
-}
-
 data "template_file" "avi_config" {
   template = file("${path.module}/templates/values.tpl")
 
@@ -17,7 +12,7 @@ data "template_file" "avi_config" {
     avi_cluster_name = var.avi_cluster_name
     avi_cni_plugin = var.avi_cni_plugin
     avi_controller_username = var.avi_controller_username
-    avi_controller_password = random_password.avi_controller_password.result
+    avi_controller_password = var.avi_controller_password
   }
 }
 
