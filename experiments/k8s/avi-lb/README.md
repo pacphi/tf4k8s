@@ -21,6 +21,7 @@ cp terraform.tfvars.sample terraform.tfvars
 
 Amend the values for
 
+* `avi_hostname`
 * `avi_cluster_name`
 * `avi_cni_plugin`
 * `avi_controller_username`
