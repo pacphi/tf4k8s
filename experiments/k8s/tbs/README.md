@@ -35,12 +35,15 @@ Yes, you could specify an alternate image registry provider
 ./relocate-images.sh {tanzu-network-username} {tanzu-network-password} {image-repository}
 ```
 
+> Before you run the command above you'll want to login to Harbor with admin credentials and manually create a new Project named `tanzu`.  Then make sure the value you set for `{image-repository}` is set to `{image-registry}/tanzu/build-service`.
+
+
 Sit back and enjoy a beverage... this may take a while.
 
 ## Install TBS integrated with Harbor on a Kubernetes cluster
 
 ```
-./install-tbs-integrated-with-harbor.sh {harbor-domain} {harbor-project} {harbor-username} {harbor-password}
+./install-tbs-integrated-with-harbor.sh {harbor-domain} tanzu {harbor-username} {harbor-password}
 ```
 > Replace the curly-braced parameters above with your Harbor domain, project and administrative credentials
 
