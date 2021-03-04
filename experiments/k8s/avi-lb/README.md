@@ -6,11 +6,12 @@ Operator used to deploy, manage and remove an instance of the AKO controller. Th
 * ClusterRole and ClusterRoleBinding
 * ConfigMap required for the AKO controller and other artifacts.
 
-
 This sample makes use of this [chart](https://github.com/avinetworks/avi-helm-charts/blob/master/docs/AKO/install/operator.md).
 
-Starts with the assumption that you have already provisioned a cluster.
+Prerequisites:
 
+* Starts with the assumption that you have already provisioned a cluster.
+* You've configured an Avi Controller with a vCenter [cloud](https://avinetworks.com/docs/18.2/installing-avi-vantage-for-vmware-vcenter/). (Avi Controller should be versioned 18.2.10 / 20.1.2 or later).
 ## Copy sample configuration
 
 ```
@@ -33,10 +34,6 @@ Amend the values for
 ```
 ./create-avi-lb.sh
 ```
-
-## Use
-
-// TODO
 
 ## Destroy
 
