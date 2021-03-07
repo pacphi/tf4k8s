@@ -9,10 +9,12 @@ variable "db_name" {
 
 variable "db_password" {
   description = "The database password"
+  sensitive = true
 }
 
 variable "db_user" {
   description = "The database username"
+  sensitive = true
 }
 
 variable "db_port" {
@@ -39,10 +41,12 @@ variable "registry_repository" {
 variable "registry_username" {
   description = "Container image/artifact registry/repository username"
   default = "admin"
+  sensitive = true
 }
 
 variable "registry_password" {
   description = "Container image/artifact registry/repository password"
+  sensitive = true
 }
 
 variable "container_image" {
@@ -60,24 +64,30 @@ variable "cf_api_endpoint" {
 variable "cf_admin_username" {
   description = "The user name of the account used to administrate cf4k8s/tas4k8s"
   default = "admin"
+  sensitive = true
 }
 
 variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
+  sensitive = true
 }
 
 variable "az_subscription_id" {
   description = "Azure Subscription (id)"
+  sensitive = true
 }
 
 variable "az_client_id" {
   description = "Azure Service Principal (appId)"
+  sensitive = true
 }
 
 variable "az_client_secret" {
   description = "Azure Service Principal (password)"
+  sensitive = true
 }
 
 variable "az_tenant_id" {
   description = "Azure Service Principal (tenant)"
+  sensitive = true
 }

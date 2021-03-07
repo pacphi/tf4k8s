@@ -12,6 +12,7 @@ variable "gcp_service_account_credentials" {
 variable "gcp_project" {
   description = "GCP Project ID"
   type        = string
+  sensitive = true
 }
 
 variable "gcp_region" {

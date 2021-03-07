@@ -1,4 +1,6 @@
-variable "project" {}
+variable "project" {
+  sensitive = true
+}
 
 variable "gcp_service_account_credentials" {
   description = "Path to service account credentials file in JSON format"

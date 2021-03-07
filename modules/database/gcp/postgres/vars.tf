@@ -13,6 +13,7 @@ variable "database_tier" {
 
 variable "database_username" {
   description = "The name of the database instance default user"
+  sensitive = true
 }
 
 variable "encryption_key_name" {
@@ -25,6 +26,7 @@ variable "name" {
 
 variable "project" {
   description = "The project ID to manage the Cloud SQL resources"
+  sensitive = true
 }
 
 variable "region" {

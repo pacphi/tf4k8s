@@ -1,10 +1,18 @@
-variable "client_id" {}
+variable "client_id" {
+  sensitive = true
+}
 
-variable "client_secret" {}
+variable "client_secret" {
+  sensitive = true
+}
 
-variable "tenant_id" {}
+variable "tenant_id" {
+  sensitive = true
+}
 
-variable "subscription_id" {}
+variable "subscription_id" {
+  sensitive = true
+}
 
 variable "resource_group_name" {}
 

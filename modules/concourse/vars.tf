@@ -6,6 +6,7 @@ variable "ingress" {
 
 variable "concourse_username" {
   default = "admin"
+  sensitive = true
 }
 
 variable "kubeconfig_path" {}

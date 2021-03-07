@@ -1,4 +1,6 @@
-variable "project" {}
+variable "project" {
+  sensitive = true
+}
 
 variable "email" {}
 

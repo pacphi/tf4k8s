@@ -1,11 +1,13 @@
 variable "access_key" {
   description = "Access key for the IAM User with policy attachment that provides appropriate permissions; @see https://cert-manager.io/docs/configuration/acme/dns01/route53/#set-up-an-iam-role"
   type = string
+  sensitive = true
 }
 
 variable "secret_key" {
   description = "Secret key for the IAM User with policy attachment that provides appropriate permissions; @see https://cert-manager.io/docs/configuration/acme/dns01/route53/#set-up-an-iam-role"
   type = string
+  sensitive = true
 }
 
 variable "domain" {

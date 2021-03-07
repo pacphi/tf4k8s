@@ -4,9 +4,13 @@ variable "registry_domain" {}
 
 variable "repository_prefix" {}
 
-variable "registry_username" {}
+variable "registry_username" {
+  sensitive = true
+}
 
-variable "registry_password" {}
+variable "registry_password" {
+  sensitive = true
+}
 
 variable "https_only" {
   default = true

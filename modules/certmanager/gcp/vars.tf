@@ -1,6 +1,7 @@
 variable "project" {
   description = "A Google Cloud Platform project id"
   type = string
+  sensitive = true
 }
 
 variable "domain" {

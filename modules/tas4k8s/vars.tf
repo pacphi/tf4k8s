@@ -8,15 +8,23 @@ variable "registry_domain" {}
 
 variable "repository_prefix" {}
 
-variable "registry_username" {}
+variable "registry_username" {
+  sensitive = true
+}
 
-variable "registry_password" {}
+variable "registry_password" {
+  sensitive = true
+}
 
 variable "pivnet_registry_hostname" {}
 
-variable "pivnet_username" {}
+variable "pivnet_username" {
+  sensitive = true
+}
 
-variable "pivnet_password" {}
+variable "pivnet_password" {
+  sensitive = true
+}
 
 variable "remove_resource_requirements" {
   default = "false"
