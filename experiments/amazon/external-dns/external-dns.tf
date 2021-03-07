@@ -10,10 +10,12 @@ module "external_dns" {
 
 variable "aws_access_key" {
   description = "Access key for the IAM User with policy attachment that provides appropriate permissions to set records in Route53 zone"
+  sensitive = true
 }
 
 variable "aws_secret_key" {
   description = "Secret key for the IAM User with policy attachment that provides appropriate permissions to set records in Route53 zone"
+  sensitive = true
 }
 
 variable "region" {

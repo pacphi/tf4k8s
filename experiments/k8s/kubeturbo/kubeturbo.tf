@@ -15,9 +15,13 @@ variable "kubeturbo_operator_commit_hash" {
   default = "5cc0b03a4a0b3e91fe8b055fdea0c35fa2c772ff"
 }
 
-variable "turbo_username" {}
+variable "turbo_username" {
+  sensitive = true
+}
 
-variable "turbo_password" {}
+variable "turbo_password" {
+  sensitive = true
+}
 
 variable "turbo_server_url" {}
 

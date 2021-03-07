@@ -9,6 +9,7 @@ module "cloudsql_connect" {
 
 variable "project" {
   description = "The project ID to manage the Cloud SQL resources"
+  sensitive = true
 }
 
 variable "region" {
@@ -28,6 +29,7 @@ variable "database_name" {
 variable "database_username" {
   description = "The name of a database instance user"
   default = "default"
+  sensitive = true
 }
 
 variable "instance_public_ip_address" {

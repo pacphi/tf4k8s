@@ -30,18 +30,22 @@ variable "ssh_public_key" {
 
 variable "az_subscription_id" {
   description = "Azure Subscription id"
+  sensitive = true
 }
 
 variable "az_client_id" {
   description = "Azure Service Principal appId"
+  sensitive = true
 }
 
 variable "az_client_secret" {
   description = "Azure Service Principal password"
+  sensitive = true
 }
 
 variable "az_tenant_id" {
   description = "Azure Service Principal tenant"
+  sensitive = true
 }
 
 variable "aks_region" {

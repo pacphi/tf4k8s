@@ -17,6 +17,7 @@ variable "wavefront_url" {
 
 variable "wavefront_api_token" {
   description = "Wavefront API Token that may be retrieved from https://{wavefront_url}/getstarted/platform/kubernetes"
+  sensitive = true
 }
 
 variable "kubeconfig_path" {

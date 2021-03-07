@@ -11,6 +11,7 @@ module "gcp_blobstore" {
 
 variable "gcp_project" {
   description = "A Google Cloud Platform project id"
+  sensitive = true
 }
 
 variable "gcp_region" {

@@ -35,10 +35,12 @@ variable "tkg_plan" {
 
 variable "aws_secret_key_id" {
   description = ""
+  sensitive = true
 }
 
 variable "aws_secret_access_key" {
   description = ""
+  sensitive = true
 }
 
 variable "aws_region" {

@@ -18,6 +18,7 @@ variable "kubeconfig_path" {
 
 variable "gcp_project" {
   description = "A Google Cloud Platform project id"
+  sensitive = true
 }
 
 variable "gcp_service_account_credentials" {

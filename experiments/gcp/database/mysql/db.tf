@@ -34,11 +34,13 @@ variable "database_tier" {
 variable "database_username" {
   description = "The name of the database instance default user"
   default = "default"
+  sensitive = true
 }
 
 variable "encryption_key_name" {
   description = "The full path to the encryption key used for the CMEK disk encryption"
   default = ""
+  sensitive = true
 }
 
 variable "name" {
@@ -47,6 +49,7 @@ variable "name" {
 
 variable "project" {
   description = "The project ID to manage the Cloud SQL resources"
+  sensitive = true
 }
 
 variable "region" {

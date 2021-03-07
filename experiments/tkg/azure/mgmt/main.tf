@@ -34,18 +34,22 @@ variable "az_environment" {
 
 variable "az_tenant_id" {
   description = "The tenant ID of your Azure account"
+  sensitive = true
 }
 
 variable "az_subscription_id" {
   description = "The subscription ID of your Azure subscription"
+  sensitive = true
 }
 
 variable "az_client_id" {
   description = "The client ID of the app for Tanzu Kubernetes Grid that you registered with Azure"
+  sensitive = true
 }
 
 variable "az_client_secret" {
   description = "Client secret. See https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.2/vmware-tanzu-kubernetes-grid-12/GUID-mgmt-clusters-azure.html#register-app."
+  sensitive = true
 }
 
 variable "az_location" {

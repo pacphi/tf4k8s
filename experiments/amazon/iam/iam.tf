@@ -24,6 +24,7 @@ variable "permissions_boundary" {
 
 variable "pgp_key" {
   description = "Either a base-64 encoded PGP public key, or a keybase username in the form keybase:username. Used to encrypt password and access key. pgp_key is required when create_iam_user_login_profile is set to true."
+  sensitive = true
 }
 
 variable "tags" {

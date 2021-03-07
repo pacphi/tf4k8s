@@ -46,10 +46,12 @@ variable "registry_domain" {
 variable "registry_username" {
   description = "Container image/artifact registry/repository username"
   default = "admin"
+  sensitive = true
 }
 
 variable "registry_password" {
   description = "Container image/artifact registry/repository password"
+  sensitive = true
 }
 
 variable "tsmgr_images_prefix" {
@@ -73,10 +75,12 @@ variable "s3_endpoint" {
 
 variable "s3_access_key" {
   description = "The access key used to authenticate to the S3-compatible service instance"
+  sensitive = true
 }
 
 variable "s3_secret_key" {
   description = "The secret key used to authenticate to the S3-compatible service instance"
+  sensitive = true
 }
 
 variable "cf_api_endpoint" {
@@ -86,8 +90,10 @@ variable "cf_api_endpoint" {
 variable "cf_admin_username" {
   description = "The user name of the account used to administrate cf4k8s/tas4k8s"
   default = "admin"
+  sensitive = true
 }
 
 variable "cf_admin_password" {
   description = "The password of the account used to administrate cf4k8s/tas4k8s"
+  sensitive = true
 }

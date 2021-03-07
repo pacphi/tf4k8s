@@ -11,6 +11,7 @@ module "certmanager" {
 
 variable "project" {
   description = "A Google Cloud Platform project id"
+  sensitive = true
 }
 
 variable "domain" {

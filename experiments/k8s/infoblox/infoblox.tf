@@ -20,6 +20,7 @@ variable "infoblox_dns_zone" {
 
 variable "infoblox_password" {
   description = "Infoblox account password"
+  sensitive = true
 }
 
 variable "infoblox_server" {
@@ -28,10 +29,12 @@ variable "infoblox_server" {
 
 variable "infoblox_tenant_id" {
   description = "Infoblox tenant id"
+  sensitive = true
 }
 
 variable "infoblox_user" {
   description = "Infoblox account username"
+  sensitive = true
 }
 
 variable "infoblox_vmname" {

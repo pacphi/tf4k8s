@@ -10,6 +10,7 @@ module "managed-zone" {
 
 variable "project" {
   description = "A Google Cloud Platform project id"
+  sensitive = true
 }
 
 variable "gcp_service_account_credentials" {
