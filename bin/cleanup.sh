@@ -11,7 +11,7 @@ fi
 IAAS="$1"
 
 EXPERIMENTS=( "certmanager" "cluster" "dns" "external-dns" )
-K8S_MODULES=( "argo-cd" "cf4k8s" "concourse" "contour" "efk-stack" "gitea" "flagger" "harbor" "jcr" "jenkins" "kubeapps" "kubeturbo" "loki-stack" "minio" "pivotal-csb" "nginx-ingress" "sealed-secrets" "stratos" "tas4k8s" "tsmgr" "tekton" "traefik" "wavefront" )
+K8S_MODULES=( "argo-cd" "cf4k8s" "concourse" "contour" "efk-stack" "gitea" "flagger" "harbor" "jcr" "jenkins" "kubeapps" "kubeturbo" "loki-stack" "minio" "cloud-service-broker" "nginx-ingress" "sealed-secrets" "stratos" "tas4k8s" "tsmgr" "tekton" "traefik" "wavefront" )
 PAAS_MODULES=( "cf4k8s" "tas4k8s" )
 
 cd experiments
