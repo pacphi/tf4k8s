@@ -80,6 +80,7 @@ variable "service_account_credentials" {
 
 output "db_username" {
   value = var.database_username
+  sensitive = true
 }
 
 output "db_password" {
