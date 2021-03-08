@@ -28,7 +28,7 @@ variable "max_nodes" {
 }
 
 variable "kubernetes_version" {
-  default = "1.16.4-1-amazon2"
+  default = "1.19.6-1-amazon2"
 }
 
 variable "region" {
