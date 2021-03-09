@@ -29,5 +29,5 @@ EOF
 mv ${TCS_VALUES_FILE_PARENT_DIR}/${TCS_VALUES_FILENAME} ${TCS_VALUES_FILE_PARENT_DIR}/${TCS_VALUES_FILENAME}.backup
 echo "${TCS_VALUES_FILE_CONTENT}" > ${TCS_VALUES_FILE_PARENT_DIR}/${TCS_VALUES_FILENAME}
 
-#./scripts/relocate-images.sh ${IMAGE_REPO}
+./scripts/relocate-images.sh ${IMAGE_REPO}
 ./scripts/install-tanzu-configuration-service.sh

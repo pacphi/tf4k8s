@@ -7,7 +7,7 @@ Starts with the assumption that you have already provisioned a cluster.
 ## Download the bits
 
 ```
-./download-tcs.sh {pivnet-api-token}
+./download-tcs.sh {tanzu-network-api-token}
 ```
 
 ## Authenticate Docker with Harbor

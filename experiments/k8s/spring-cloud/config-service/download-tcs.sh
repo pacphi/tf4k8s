@@ -11,7 +11,7 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-PIVNET_API_TOKEN="$1"
+TANZU_NETWORK_API_TOKEN="$1"
 pivnet login --api-token=${TANZU_NETWORK_API_TOKEN}
 
 cd /tmp || exit
