@@ -43,9 +43,9 @@ Sit back and enjoy a beverage... this may take a while.
 ## Install TBS integrated with Harbor on a Kubernetes cluster
 
 ```
-./install-tbs-integrated-with-harbor.sh {harbor-domain} tanzu {harbor-username} {harbor-password}
+./install-tbs-integrated-with-harbor.sh {harbor-domain} tanzu {harbor-username} {harbor-password} {harbor-ca-cert-optional}
 ```
-> Replace the curly-braced parameters above with your Harbor domain, project and administrative credentials
+> Replace the curly-braced parameters above with your Harbor domain, project and administrative credentials, the harbor-ca-cert is optional but needed if you have a self signed cert on your registry
 
 Take another break.
 
