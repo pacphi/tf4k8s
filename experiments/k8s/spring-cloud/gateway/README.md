@@ -25,7 +25,7 @@ Login to the image registry where you want to store the images
 ```
 ./install-scg-integrated-with-harbor.sh {harbor-domain} tanzu
 ```
-> Replace the curly-braced parameters above with your Harbor domain, project and administrator username. The project named `tanzu` should already exist within Harbor.  You'll be prompted to enter the password too.
+> Replace the curly-braced parameters above with your Harbor domain, project and administrator username. The project named `tanzu` should already exist within Harbor.
 
 ## Using SCG
 
