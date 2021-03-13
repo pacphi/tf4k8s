@@ -34,7 +34,7 @@ Or provision new / attach existing Kubernetes clusters via
 - [x] Install [cf-for-k8s](experiments/k8s/cf4k8s)
 - [x] Install [VMWare Tanzu Application Service for Kubernetes](experiments/k8s/tas4k8s)
 - [x] Install [Tanzu Services Manager](experiments/k8s/tsmgr)
-- [x] Install [Cloud Service Broker](experiments/k8s/pivotal-csb)
+- [x] Install [Cloud Service Broker](experiments/k8s/cloud-service-broker)
 - [x] Install [Kubeapps](experiments/k8s/kubeapps)
 - [x] Install [Stratos](experiments/k8s/stratos)
 - [x] Install [Loki Stack](experiments/k8s/loki-stack)
@@ -78,7 +78,7 @@ Provision your own collection of services
 
 Provision managed services in a public cloud and bind them to applications
 
-- [x] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/pivotal/cloud-service-broker)
+- [x] [Open Service Broker for Cloud Platform (GCP, Azure, AWS)](https://github.com/cloudfoundry-incubator/cloud-service-broker)
 
 ### Service catalog
 
@@ -134,6 +134,7 @@ Deploy and manage application and services with ease through an administrative i
 #### Stream Processing
 
 - [ ] Kafka
+- [ ] RabbitMQ
 - [ ] Spring Cloud Dataflow
 
 #### Caching
@@ -143,6 +144,11 @@ Deploy and manage application and services with ease through an administrative i
 #### Databases
 
 - [ ] Mongo
-- [ ] MySQL
-- [ ] Postgres
+- [x] [MySQL](experiments/k8s/tds/mysql)
+- [x] [Postgres](experiments/k8s/tds/postgres)
 
+
+##### Spring Cloud
+
+- [x] [Gateway](experiments/k8s/spring-cloud/gateway)
+- [x] [Configuration Service](experiments/k8s/spring-cloud/config-service)
