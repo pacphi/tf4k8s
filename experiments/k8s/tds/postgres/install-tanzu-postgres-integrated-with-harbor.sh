@@ -34,7 +34,7 @@ kapp deploy -a postgres-operator -y \
 -o yaml)
 
 helm upgrade --install postgres-operator ./operator \
---wait \
+--atomic \
 --set operatorImageRepository="${IMAGE_REPO}/postgres-operator" \
 --set postgresImageRepository="${IMAGE_REPO}/postgres-instance" \
 --set dockerRegistrySecretName="postgres-harbor"
