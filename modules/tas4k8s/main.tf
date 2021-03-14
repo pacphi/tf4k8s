@@ -141,7 +141,7 @@ resource "helm_release" "postgres" {
   namespace  = kubernetes_namespace.postgres.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
-  version    = "10.3.2"
+  version    = "10.3.13"
 
   values = [data.template_file.postgres_db_values.rendered]
 

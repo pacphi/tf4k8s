@@ -84,7 +84,7 @@ resource "helm_release" "grafana" {
   namespace  = kubernetes_namespace.loki_stack.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "grafana"
-  version    = "3.3.0"
+  version    = "5.2.4"
 
   values = [data.template_file.grafana_config.rendered]
 
