@@ -139,6 +139,7 @@ Deploy and manage application and services with ease through an administrative i
 
 #### Caching
 
+- [x] [Gemfire](experiments/k8s/tds/gemfire)
 - [ ] Redis
 
 #### Databases
