@@ -134,8 +134,7 @@ Deploy and manage application and services with ease through an administrative i
 #### Stream Processing
 
 - [ ] Kafka
-- [ ] RabbitMQ
-- [ ] Spring Cloud Dataflow
+- [x] [RabbitMQ](experiments/k8s/tds/rabbitmq)
 
 #### Caching
 
@@ -153,3 +152,4 @@ Deploy and manage application and services with ease through an administrative i
 
 - [x] [Gateway](experiments/k8s/spring-cloud/gateway)
 - [x] [Configuration Service](experiments/k8s/spring-cloud/config-service)
+- [ ] Spring Cloud Dataflow
