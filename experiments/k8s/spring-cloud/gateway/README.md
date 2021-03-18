@@ -36,3 +36,7 @@ Consult the [developer guide](https://docs.pivotal.io/scg-k8s/1-0/getting-starte
 ```
 ./uninstall-scg.sh
 ```
+
+## Additional Material
+
+* [Adib Sakaili](https://github.com/asaikali)'s awesome Tanzu Spring Cloud Gateway [demo](https://github.com/asaikali/tanzu-spring-cloud-gateway)
