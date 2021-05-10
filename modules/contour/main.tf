@@ -1,9 +1,9 @@
 data "http" "contour_operator" {
-  url = "https://raw.githubusercontent.com/projectcontour/contour-operator/release-1.13/examples/operator/operator.yaml"
+  url = "https://raw.githubusercontent.com/projectcontour/contour-operator/release-1.15/examples/operator/operator.yaml"
 }
 
 data "http" "contour" {
-  url = "https://raw.githubusercontent.com/projectcontour/contour-operator/release-1.13/examples/contour/contour.yaml"
+  url = "https://raw.githubusercontent.com/projectcontour/contour-operator/release-1.15/examples/contour/contour.yaml"
 }
 
 resource "k14s_kapp" "contour_operator" {

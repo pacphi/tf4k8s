@@ -11,8 +11,8 @@ module "kubeturbo" {
 }
 
 variable "kubeturbo_operator_commit_hash" {
-  // this commit hash corresponds to the 8.0.6 release
-  default = "5cc0b03a4a0b3e91fe8b055fdea0c35fa2c772ff"
+  // this commit hash corresponds to the 8.1.6 release
+  default = "ab9408f5e1359c6e86131e9d4456fdd104e20ab6"
 }
 
 variable "turbo_username" {
