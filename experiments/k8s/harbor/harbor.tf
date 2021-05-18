@@ -32,5 +32,6 @@ output "harbor_admin_username" {
 output "harbor_admin_password" {
   description = "Harbor registry admin password"
   value       = module.harbor.harbor_admin_password
+  sensitive = true
 }
 

@@ -65,4 +65,5 @@ output "acr_admin_username" {
 output "acr_admin_password" {
   description = "The password associated with the Container Registry admin account"
   value = module.acr.acr_admin_password
+  sensitive = true
 }

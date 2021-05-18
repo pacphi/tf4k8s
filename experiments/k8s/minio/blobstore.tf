@@ -25,8 +25,10 @@ output "minio_domain" {
 
 output "minio_accesskey_password" {
   value = module.minio_blobstore.minio_accesskey_password
+  sensitive = true
 }
 
 output "minio_secretkey_password" {
   value = module.minio_blobstore.minio_secretkey_password
+  sensitive = true
 }

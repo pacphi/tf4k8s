@@ -39,4 +39,5 @@ output "avi_controller_username" {
 
 output "avi_controller_password" {
   value = module.avi_lb.avi_controller_password
+  sensitive = true
 }

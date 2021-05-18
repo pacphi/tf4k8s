@@ -103,4 +103,5 @@ output "cf_admin_username" {
 output "cf_admin_password" {
   description = "Cloud Foundry admin password"
   value       = module.cf4k8s.cf_admin_password
+  sensitive = true
 }

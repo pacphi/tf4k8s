@@ -113,4 +113,5 @@ output "tas_admin_username" {
 output "tas_admin_password" {
   description = "Cloud Foundry admin password"
   value       = module.tas4k8s.tas_admin_password
+  sensitive = true
 }

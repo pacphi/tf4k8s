@@ -92,6 +92,7 @@ output "this_iam_user_arn" {
 output "this_iam_user_login_profile_encrypted_password" {
   description = "The encrypted password, base64 encoded"
   value = module.iam_user.this_iam_user_login_profile_encrypted_password
+  sensitive = true
 }
 
 output "this_iam_user_login_profile_key_fingerprint" {

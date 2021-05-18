@@ -25,6 +25,7 @@ output "grafana_username" {
 
 output "grafana_password" {
   value = module.loki-stack.grafana_password
+  sensitive = true
 }
 
 output "grafana_domain" {

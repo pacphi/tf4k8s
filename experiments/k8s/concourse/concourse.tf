@@ -29,4 +29,5 @@ output "concourse_username" {
 
 output "concourse_password" {
   value = module.concourse.concourse_password
+  sensitive = true
 }

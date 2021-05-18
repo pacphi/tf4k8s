@@ -47,15 +47,6 @@ resource "google_container_cluster" "gke" {
     service_account = var.gke_serviceaccount
   }
 
-  master_auth {
-    username = random_id.username.hex
-    password = random_id.password.hex
-
-    client_certificate_config {
-      issue_client_certificate = false
-    }
-  }
-
   # (Required for private cluster, optional otherwise) network (cidr) from which cluster is accessible
   master_authorized_networks_config {
     cidr_blocks {
@@ -106,21 +97,16 @@ resource "google_container_node_pool" "np" {
 
 }
 
-data "template_file" "kubeconfig" {
-  template = file("${path.module}/templates/kubeconfig-template.tpl")
+module "gke_auth" {
+  source               = "terraform-google-modules/kubernetes-engine/google//modules/auth"
 
-  vars = {
-    cluster_name    = google_container_cluster.gke.name
-    endpoint        = google_container_cluster.gke.endpoint
-    user_name       = google_container_cluster.gke.master_auth.0.username
-    user_password   = google_container_cluster.gke.master_auth.0.password
-    cluster_ca      = google_container_cluster.gke.master_auth.0.cluster_ca_certificate
-    client_cert     = google_container_cluster.gke.master_auth.0.client_certificate
-    client_cert_key = google_container_cluster.gke.master_auth.0.client_key
-  }
+  project_id           = var.gcp_project
+  cluster_name         = "${var.gke_name}-${random_id.cluster_name.hex}"
+  location             = var.gcp_region
+  use_private_endpoint = true
 }
 
 resource "local_file" "kubeconfig" {
-  content  = data.template_file.kubeconfig.rendered
+  content  = module.gke_auth.kubeconfig_raw
   filename = pathexpand("~/.tf4k8s/gcp/${var.gke_name}-${random_id.cluster_name.hex}-kubeconfig")
 }

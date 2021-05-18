@@ -85,6 +85,7 @@ output "db_username" {
 
 output "db_password" {
   value = module.cloudsql_postgres.db_password
+  sensitive = true
 }
 
 output "db_instance_name" {

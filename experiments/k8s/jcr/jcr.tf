@@ -32,8 +32,10 @@ output "jcr_admin_username" {
 output "jcr_admin_password" {
   description = "jcr registry admin password"
   value       = module.jcr.jcr_admin_password
+  sensitive = true
 }
 
 output "jcr_postgresql_password" {
   value       = module.jcr.jcr_postgresql_password
+  sensitive = true
 }
