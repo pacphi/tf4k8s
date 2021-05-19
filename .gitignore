@@ -1,36 +1,41 @@
+# IDE
+.vscode/
 .history/
 
+
+# Terraform
+.terraform.lock.hcl
 .terraform.tfstate.lock.info
+.terraformrc
 .terraform/
-terraform.log
-terraform.plan
-terraform.tfstate
 terraform.tfstate.*
-terraform.tfvars
-terraform.tfvars.backup
-*.auto.tfvars
-graph.svg
-*.hcl
+terraform.tfstate
+terraform.plan
+terraform.rc
+*.tfvars
+*.tfvars.backup
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.log
 *.real
 
-vendor/
-vendir.lock.yml
 
-modules/**/templates/config.yml
-modules/**/templates/kpack-webhook.yml
-
-ytt-libs/tas4k8s/config-optional/
-
+# Miscellaneous
+dist/
 *.tgz
 *.tar
-
-.ytt/
-
-dist/
-
-manifest.yml
-
+graph.svg
+vendor/
+vendir.lock.yml
+modules/**/templates/config.yml
+modules/**/templates/kpack-webhook.yml
 .vagrant/
-
+.ytt/
+ytt-libs/tas4k8s/config-optional/
+manifest.yml
 demo-config.sh
 certs-and-keys.yml
+experiments/gcp/certmanager/.terraform.lock.hcl
+.gitignore
