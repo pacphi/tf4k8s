@@ -39,3 +39,5 @@ demo-config.sh
 certs-and-keys.yml
 experiments/gcp/certmanager/.terraform.lock.hcl
 .gitignore
+
+*.hcl
