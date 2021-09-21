@@ -5,10 +5,10 @@ if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ]; then
 	exit 1
 fi
 
+TBS_VERSION="1.2.2"
 PIVNET_USERNAME="$1"
 PIVNET_PASSWORD="$2"
 IMAGE_REPOSITORY="$3"
 
-cd /tmp || exit
 docker login registry.pivotal.io -u "${PIVNET_USERNAME}" -p "${PIVNET_PASSWORD}"
-kbld relocate -f tbs-install/images.lock --lock-output tbs-install/images-relocated.lock --repository ${IMAGE_REPOSITORY}
+imgpkg copy -b "registry.pivotal.io/build-service/bundle:${TBS_VERSION}" --to-repo ${IMAGE_REPOSITORY}
