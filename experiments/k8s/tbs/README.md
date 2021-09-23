@@ -69,6 +69,7 @@ Take another break.
 
 ```
 kp clusterbuilder list
+kp clusterstack list
 ```
 
 ## Uninstall TBS

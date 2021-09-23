@@ -31,7 +31,7 @@ if [ -z "${PATH_TO_CA_CERT}" ]; then
         | kapp deploy -a ${BUILD_SERVICE_INSTALLATION_NAME} -f- -y
 
     kp import -f /tmp/descriptor.yaml
-    #kp import -f /tmp/windows-descriptor.yaml
+    kp import -f /tmp/windows-descriptor.yaml
 
 else
     echo "CA cert passed"
@@ -46,7 +46,7 @@ else
         | kbld -f /tmp/bundle/.imgpkg/images.yml -f- \
         | kapp deploy -a ${BUILD_SERVICE_INSTALLATION_NAME} -f- -y
 
-    kp import -f /tmp/descriptor.yaml --registry-ca-cert-path  ${PATH_TO_CA_CERT}
-    #kp import -f /tmp/windows-descriptor.yaml --registry-ca-cert-path  ${PATH_TO_CA_CERT}
+    kp import -f /tmp/descriptor.yaml --registry-ca-cert-path ${PATH_TO_CA_CERT}
+    kp import -f /tmp/windows-descriptor.yaml --registry-ca-cert-path ${PATH_TO_CA_CERT}
 
 fi
