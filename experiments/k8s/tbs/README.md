@@ -65,6 +65,16 @@ Sit back and enjoy a beverage... this may take a while.
 
 Take another break.
 
+### Troubleshooting
+
+On occasion an import of a cluster builder will stall.  The quickest way to sort the issue is to:
+
+```
+kubectl get pods -n kpack
+kubectl delete pod kpac-controller-{suffiix} -n kpack
+kp import -f descriptor-{version}.yaml
+```
+
 ## Verify your installation
 
 ```
