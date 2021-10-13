@@ -42,7 +42,7 @@ Scripts provided are for convenience only.  Take a look at them, then adapt for 
 To obtain the cluster connection credentials you could
 
 ```
-export KUBECONFG=$(kind get kubeconfig-path --name=kind-demo)
+export KUBECONFIG=$(kind get kubeconfig-path --name=kind-demo)
 ```
 
 ## Observations

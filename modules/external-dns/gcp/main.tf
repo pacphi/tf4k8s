@@ -23,7 +23,7 @@ resource "helm_release" "external_dns" {
   namespace  = kubernetes_namespace.external_dns.metadata[0].name
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "external-dns"
-  version    = "5.0.0"
+  version    = "5.4.11"
 
   # For additional configuration options @see https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml#L258
   # And special thanks to https://itsmetommy.com/2019/06/14/kubernetes-automated-dns-with-externaldns-on-gke/ for clarity
@@ -47,7 +47,7 @@ resource "helm_release" "external_dns" {
     name = "logLevel"
     value = "debug"
   }
-  
+
   set {
     name = "txtPrefix"
     value = "txt"

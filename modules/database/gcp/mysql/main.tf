@@ -4,7 +4,7 @@ resource "random_id" "suffix" {
 
 module "cloudsql_mysql" {
   source  = "GoogleCloudPlatform/sql-db/google//modules/mysql"
-  version = "3.2.0"
+  version = "7.1.0"
   
   database_version = var.database_version
   tier = var.database_tier

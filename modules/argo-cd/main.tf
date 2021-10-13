@@ -33,7 +33,7 @@ resource "helm_release" "argocd" {
   namespace  = kubernetes_namespace.argocd.metadata[0].name
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  version    = "3.2.3"
+  version    = "3.25.0"
 
   values = [data.template_file.argocd_config.rendered]
 
@@ -46,7 +46,7 @@ resource "helm_release" "argo_rollouts" {
   namespace  = kubernetes_namespace.argo_rollouts.metadata[0].name
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-rollouts"
-  version    = "0.5.2"
+  version    = "2.1.1"
 
   values = [data.template_file.argo_rollouts_config.rendered]
 
