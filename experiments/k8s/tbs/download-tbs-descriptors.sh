@@ -18,8 +18,8 @@ if [ -f "$FILE" ]; then
 	exit 1
 fi
 
-TBS_DESCRIPTOR_VERSION="100.0.170"
-TBS_PRODUCT_FILE_ID=1044254
+TBS_DESCRIPTOR_VERSION="100.0.198"
+TBS_PRODUCT_FILE_ID=1069537
 pivnet accept-eula --product-slug='tbs-dependencies' --release-version="${TBS_DESCRIPTOR_VERSION}"
 pivnet download-product-files --product-slug='tbs-dependencies' --release-version="${TBS_DESCRIPTOR_VERSION}" --product-file-id=${TBS_PRODUCT_FILE_ID}
 mv descriptor-${TBS_DESCRIPTOR_VERSION}.yaml /tmp/descriptor.yaml
@@ -30,8 +30,8 @@ if [ -f "$FILE" ]; then
 	exit 1
 fi
 
-TBS_DESCRIPTOR_VERSION="100.0.11"
-TBS_PRODUCT_FILE_ID=1043277
+TBS_DESCRIPTOR_VERSION="100.0.17"
+TBS_PRODUCT_FILE_ID=1063296
 pivnet accept-eula --product-slug='tbs-dependencies-windows' --release-version="${TBS_DESCRIPTOR_VERSION}"
 pivnet download-product-files --product-slug='tbs-dependencies-windows' --release-version="${TBS_DESCRIPTOR_VERSION}" --product-file-id=${TBS_PRODUCT_FILE_ID}
 mv descriptor-${TBS_DESCRIPTOR_VERSION}.yaml /tmp/windows-descriptor.yaml

@@ -5,7 +5,7 @@ if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ]; then
 	exit 1
 fi
 
-TBS_VERSION="1.2.2"
+TBS_VERSION="1.3.0"
 PIVNET_USERNAME="$1"
 PIVNET_PASSWORD="$2"
 IMAGE_REPOSITORY="$3"
