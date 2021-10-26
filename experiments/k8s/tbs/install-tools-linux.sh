@@ -18,7 +18,7 @@ fi
 TANZU_NETWORK_API_TOKEN="$1"
 pivnet login --api-token=$TANZU_NETWORK_API_TOKEN
 
-TBS_VERSION="1.3.0"
+TBS_VERSION="1.3.1"
 
 KP_PRODUCT_FILE_ID=1058206
 pivnet download-product-files --product-slug='build-service' --release-version="${TBS_VERSION}" --product-file-id="${KP_PRODUCT_FILE_ID}"

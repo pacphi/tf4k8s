@@ -5,7 +5,7 @@ if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ] && [ -z "$4" ] && [ -z "$5" ] && [ 
 	exit 1
 fi
 
-TBS_VERSION="1.3.0"
+TBS_VERSION="1.3.1"
 PATH_TO_CA_CERT=${7:-}
 BUILD_SERVICE_INSTALLATION_NAME="tanzu-build-service"
 HARBOR_DOMAIN="$1"
