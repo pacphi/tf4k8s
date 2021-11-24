@@ -71,7 +71,7 @@ On occasion an import of a cluster builder will stall.  The quickest way to sort
 
 ```
 kubectl get pods -n kpack
-kubectl delete pod kpac-controller-{suffiix} -n kpack
+kubectl delete pod kpack-controller-{suffix} -n kpack
 kp import -f descriptor-{version}.yaml
 ```
 
