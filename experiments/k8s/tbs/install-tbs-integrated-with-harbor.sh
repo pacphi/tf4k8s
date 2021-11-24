@@ -25,7 +25,7 @@ if [ -z "${PATH_TO_CA_CERT}" ]; then
         -v kp_default_repository="${IMAGE_REPO}" \
         -v kp_default_repository_username="${HARBOR_USERNAME}" \
         -v kp_default_repository_password="${HARBOR_PASSWORD}" \
-        -v pull_from_kp_default_repo=true
+        -v pull_from_kp_default_repo=true \
         -v tanzunet_username="${TANZU_NETWORK_USERNAME}" \
         -v tanzunet_password="${TANZU_NETWORK_PASSWORD}" \
         | kbld -f /tmp/bundle/.imgpkg/images.yml -f- \
@@ -42,7 +42,7 @@ else
         -v kp_default_repository="${IMAGE_REPO}" \
         -v kp_default_repository_username="${HARBOR_USERNAME}" \
         -v kp_default_repository_password="${HARBOR_PASSWORD}" \
-        -v pull_from_kp_default_repo=true
+        -v pull_from_kp_default_repo=true \
         -v tanzunet_username="${TANZU_NETWORK_USERNAME}" \
         -v tanzunet_password="${TANZU_NETWORK_PASSWORD}" \
         | kbld -f /tmp/bundle/.imgpkg/images.yml -f- \
