@@ -22,9 +22,10 @@ if [ -z "${PATH_TO_CA_CERT}" ]; then
     echo "No CA cert assuming public trusted cert on registry"
     ytt -f /tmp/bundle/values.yaml \
         -f /tmp/bundle/config/ \
-        -v docker_repository="${IMAGE_REPO}" \
-        -v docker_username="${HARBOR_USERNAME}" \
-        -v docker_password="${HARBOR_PASSWORD}" \
+        -v kp_default_repository="${IMAGE_REPO}" \
+        -v kp_default_repository_username="${HARBOR_USERNAME}" \
+        -v kp_default_repository_password="${HARBOR_PASSWORD}" \
+        -v pull_from_kp_default_repo=true
         -v tanzunet_username="${TANZU_NETWORK_USERNAME}" \
         -v tanzunet_password="${TANZU_NETWORK_PASSWORD}" \
         | kbld -f /tmp/bundle/.imgpkg/images.yml -f- \
@@ -38,9 +39,10 @@ else
     ytt -f /tmp/bundle/values.yaml \
         -f /tmp/bundle/config/ \
         -f ${PATH_TO_CA_CERT} \
-        -v docker_repository="${IMAGE_REPO}" \
-        -v docker_username="${HARBOR_USERNAME}" \
-        -v docker_password="${HARBOR_PASSWORD}" \
+        -v kp_default_repository="${IMAGE_REPO}" \
+        -v kp_default_repository_username="${HARBOR_USERNAME}" \
+        -v kp_default_repository_password="${HARBOR_PASSWORD}" \
+        -v pull_from_kp_default_repo=true
         -v tanzunet_username="${TANZU_NETWORK_USERNAME}" \
         -v tanzunet_password="${TANZU_NETWORK_PASSWORD}" \
         | kbld -f /tmp/bundle/.imgpkg/images.yml -f- \
