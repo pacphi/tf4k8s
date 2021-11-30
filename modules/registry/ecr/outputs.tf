@@ -14,7 +14,7 @@ data "aws_ecr_authorization_token" "token" {
 
 output "ecr_admin_username" {
   description = "The username associated with the Container Registry admin account"
-  value = data.aws_ecr_authorization_token.token.username
+  value = data.aws_ecr_authorization_token.token.user_name
 }
 
 output "ecr_admin_password" {
