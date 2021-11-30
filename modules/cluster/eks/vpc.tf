@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">=2.59.0"
+  version = "3.11.0"
   name = "${var.eks_name}-${random_id.cluster_name.hex}-vpc"
   azs = var.availability_zones
   cidr = "10.60.0.0/18"
@@ -29,9 +29,6 @@ module "vpc" {
     },
   )
 
-  enable_ecr_dkr_endpoint              = true
-  ecr_dkr_endpoint_private_dns_enabled = true
-  ecr_dkr_endpoint_security_group_ids  = [aws_security_group.vpc_endpoint.id]
   enable_s3_endpoint = true
 }
 
