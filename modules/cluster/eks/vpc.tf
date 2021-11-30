@@ -28,8 +28,6 @@ module "vpc" {
       "kubernetes.io/cluster/${var.eks_name}-${random_id.cluster_name.hex}" = "shared"
     },
   )
-
-  enable_s3_endpoint = true
 }
 
 # Security Group configuration for VPC endpoints
