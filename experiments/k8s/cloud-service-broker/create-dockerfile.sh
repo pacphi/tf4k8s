@@ -10,7 +10,7 @@ ARTIFACT_DIR="dist/${IAAS}"
 
 cat << EOF > Dockerfile
 
-FROM alpine:3.22.1
+FROM alpine:3.23.2
 
 COPY ${ARTIFACT_DIR}/cloud-service-broker /bin/cloud-service-broker
 COPY ${ARTIFACT_DIR}/*.brokerpak /${IAAS}-brokerpak/
